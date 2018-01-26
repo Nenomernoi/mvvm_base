@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary_text"
+    android:clickable="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    >
+
+  <ImageView
+      android:id="@+id/imgBg"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:scaleType="centerCrop"
+      />
+
+  <EditText
+      android:id="@+id/edt"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_above="@+id/txtTitle"
+      />
+
+  <TextView
+      android:id="@+id/txtTitle"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_centerInParent="true"
+      android:fontFamily="@font/pacifico"
+      android:gravity="center"
+      android:text="@string/app_name"
+      android:textColor="@color/colorPrimary"
+      android:textSize="18sp"
+      />
+
+  <TextView
+      android:id="@+id/txtList"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_below="@+id/txtTitle"
+      android:gravity="center"
+      android:text="@string/not_found_data"
+      android:textAppearance="@style/AppFontStyle"
+      android:textColor="@color/colorPrimary"
+      android:textSize="18sp"
+      />
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:gravity="center"
+      android:orientation="horizontal"
+      android:weightSum="90"
+      >
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/btnPhoto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="30"
+        android:fontFamily="@font/pacifico"
+        android:text="@string/popup_open_open"
+        style="@style/Widget.AppCompat.Button.Colored"
+        />
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/btnImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="30"
+        android:fontFamily="@font/pacifico"
+        android:text="@string/popup_open_open"
+        style="@style/Widget.AppCompat.Button.Colored"
+        />
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/btnPermission"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="30"
+        android:fontFamily="@font/pacifico"
+        android:text="@string/popup_open_open"
+        style="@style/Widget.AppCompat.Button.Colored"
+        />
+  </LinearLayout>
+
+  <RelativeLayout
+      android:id="@+id/pbLoad"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:visibility="gone"
+      >
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        />
+  </RelativeLayout>
+</RelativeLayout>

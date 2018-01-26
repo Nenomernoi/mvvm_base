@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="main_tab">
+        <item>@string/drawer_open</item>
+        <item>@string/drawer_close</item>
+    </string-array>
+
+</resources>

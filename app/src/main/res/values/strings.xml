@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">baseKotlin</string>
+    <string name="warning">Warning</string>
+    <string name="error_full_permission">Permissions Camera and Access to memory card allows you to work with the basic functions of the application. Please turn on them in the settings of the application.</string>
+    <string name="not_found_lan">Net not found. Check connection.</string>
+    <string name="base_error">Server\'s or net\'s error. Try again later.</string>
+    <string name="not_found_data">List is Empty</string>
+
+    <string name="drawer_open">Open drawer</string>
+    <string name="drawer_close">Close drawer</string>
+
+    <string name="cancel">Отмена</string>
+    <string name="ok">Ок</string>
+
+    <string name="popup_open_image">Загрузить из галереи</string>
+    <string name="popup_open_photo">Сделать снимок</string>
+    <string name="popup_open_open">Открыть</string>
+    <string name="popup_open_delete">Удалить</string>
+    <string name="popup_title">Фотография</string>
+</resources>
