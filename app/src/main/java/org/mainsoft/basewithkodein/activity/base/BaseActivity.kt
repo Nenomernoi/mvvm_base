@@ -17,7 +17,6 @@ import android.support.v4.app.FragmentManager
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.inputmethod.InputMethodManager
-import com.github.salomonbrys.kodein.instance
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
@@ -27,6 +26,7 @@ import com.google.android.gms.location.LocationSettingsRequest
 import com.google.android.gms.location.SettingsClient
 import com.tbruyelle.rxpermissions2.RxPermissions
 import kotlinx.android.synthetic.main.activity_main.toolbar
+import org.kodein.generic.instance
 import org.mainsoft.basewithkodein.App
 import org.mainsoft.basewithkodein.R
 import org.mainsoft.basewithkodein.screen.fragment.base.BaseFragment
@@ -43,7 +43,7 @@ abstract class BaseActivity : AppCompatActivity(), ActivityCallback {
         const val UPDATE_SCREEN = "screenUpdate"
     }
 
-    protected val setting: Setting = App.kodein.instance()
+    protected val setting: Setting by App.kodein.instance()
 
     private var fm: FragmentManager? = null
 

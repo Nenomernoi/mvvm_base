@@ -2,10 +2,10 @@ package org.mainsoft.basewithkodein.screen.presenter.base
 
 import android.content.Context
 import android.os.Bundle
-import com.github.salomonbrys.kodein.instance
 import io.objectbox.BoxStore
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
+import org.kodein.generic.instance
 import org.mainsoft.basewithkodein.App
 import org.mainsoft.basewithkodein.net.Api
 import org.mainsoft.basewithkodein.net.manager.base.BaseNetManager
@@ -26,13 +26,13 @@ abstract class BasePresenter(val view: BaseView) : Presenter {
         const val EMPTY_INT = -1
     }
 
-    protected val api: Api = App.kodein.instance()
+    protected val api: Api by App.kodein.instance()
 
-    protected val db: BoxStore = App.kodein.instance()
+    protected val db: BoxStore by App.kodein.instance()
 
-    protected val setting: Setting = App.kodein.instance()
+    protected val setting: Setting by App.kodein.instance()
 
-    private val compositeDisposable: CompositeDisposable = App.kodein.instance()
+    private val compositeDisposable: CompositeDisposable by App.kodein.instance()
 
     protected lateinit var netManager: BaseNetManager
 

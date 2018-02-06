@@ -1,8 +1,6 @@
 package org.mainsoft.basewithkodein.screen.fragment
 
 import android.os.Bundle
-import com.github.salomonbrys.kodein.factory
-import org.mainsoft.basewithkodein.App
 import org.mainsoft.basewithkodein.R
 import org.mainsoft.basewithkodein.adapter.MainAdapter
 import org.mainsoft.basewithkodein.base.OnItemClickListener

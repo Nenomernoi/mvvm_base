@@ -1,13 +1,13 @@
 package org.mainsoft.basewithkodein
 
 import android.app.Application
-import com.github.salomonbrys.kodein.Kodein
-import com.github.salomonbrys.kodein.bind
-import com.github.salomonbrys.kodein.factory
-import com.github.salomonbrys.kodein.singleton
 import com.miguelbcr.ui.rx_paparazzo2.RxPaparazzo
 import io.objectbox.BoxStore
 import io.reactivex.disposables.CompositeDisposable
+import org.kodein.Kodein
+import org.kodein.generic.bind
+import org.kodein.generic.factory
+import org.kodein.generic.singleton
 import org.mainsoft.basewithkodein.net.Api
 import org.mainsoft.basewithkodein.net.ApiRest
 import org.mainsoft.basewithkodein.net.response.MyObjectBox
@@ -31,9 +31,9 @@ class App : Application() {
     private fun initDb() = MyObjectBox.builder().androidContext(this@App).build()
 
     private val screenModule = Kodein.Module {
-       // bind<MainPresenter>() with factory { view: MainView -> MainPresenter(view) }
-       // bind<MainListPresenter>() with factory { view: MainListView -> MainListPresenter(view) }
-        bind<MainPagePresenter>() with factory { view: MainPageView -> MainPagePresenter(view) }
+         bind<MainPresenter>() with factory { view: MainView -> MainPresenter(view) }
+         bind<MainListPresenter>() with factory { view: MainListView -> MainListPresenter(view) }
+         bind<MainPagePresenter>() with factory { view: MainPageView -> MainPagePresenter(view) }
     }
 
     companion object {

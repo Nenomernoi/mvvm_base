@@ -15,10 +15,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
-import com.github.salomonbrys.kodein.KodeinInjector
 import kotlinx.android.synthetic.main.fragment_base.pbLoad
-import org.mainsoft.basewithkodein.App
-import org.mainsoft.basewithkodein.App.Companion
 import org.mainsoft.basewithkodein.R
 import org.mainsoft.basewithkodein.activity.base.ActivityCallback
 import org.mainsoft.basewithkodein.listener.BaseEditTextListener
@@ -215,5 +212,5 @@ abstract class BaseFragment : Fragment(), BaseView {
     ////////////////////////////////////////////////////////////////////////////
 
     abstract fun getLayout(): Int
-    fun <V : Any> getPresenter(): V?= presenter as? V
+    fun <V : Any> getPresenter(): V? = presenter as? V
 }
