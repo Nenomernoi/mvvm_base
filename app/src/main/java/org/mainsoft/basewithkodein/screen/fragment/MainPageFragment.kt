@@ -1,6 +1,9 @@
 package org.mainsoft.basewithkodein.screen.fragment
 
 import kotlinx.android.synthetic.main.fragment_base_page.vpMain
+import org.kodein.direct
+import org.kodein.generic.instance
+import org.mainsoft.basewithkodein.App
 import org.mainsoft.basewithkodein.adapter.MainPageAdapter
 import org.mainsoft.basewithkodein.screen.fragment.base.BasePageFragment
 import org.mainsoft.basewithkodein.screen.presenter.MainPagePresenter
@@ -9,7 +12,7 @@ import org.mainsoft.basewithkodein.screen.view.MainPageView
 class MainPageFragment : BasePageFragment(), MainPageView {
 
     init {
-        presenter = MainPagePresenter(this)
+        presenter = App.kodein.direct.instance<MainPageView,MainPagePresenter>(arg = this)
     }
 
     override fun initAdapter() {

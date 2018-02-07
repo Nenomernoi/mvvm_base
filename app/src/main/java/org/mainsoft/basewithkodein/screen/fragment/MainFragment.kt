@@ -8,6 +8,9 @@ import kotlinx.android.synthetic.main.fragment_base.btnPermission
 import kotlinx.android.synthetic.main.fragment_base.btnPhoto
 import kotlinx.android.synthetic.main.fragment_base.imgBg
 import kotlinx.android.synthetic.main.fragment_base.txtList
+import org.kodein.direct
+import org.kodein.generic.instance
+import org.mainsoft.basewithkodein.App
 import org.mainsoft.basewithkodein.R
 import org.mainsoft.basewithkodein.activity.base.PermissionListener
 import org.mainsoft.basewithkodein.screen.fragment.base.BaseFragment
@@ -18,8 +21,7 @@ import org.mainsoft.basewithkodein.screen.view.MainView
 class MainFragment : BaseFragment(), MainView {
 
     init {
-      //  presenter = App.kodein.factory<MainView, MainPresenter>() as MainPresenter
-        presenter = MainPresenter(this)
+        presenter = App.kodein.direct.instance<MainView, MainPresenter>(arg = this)
     }
 
     //////////////////////////////////////////////////////////////////////////////////////
@@ -46,7 +48,7 @@ class MainFragment : BaseFragment(), MainView {
     }
 
     private fun onClickDrawer() {
-         activityCallback.openFragment(MainListFragment::class.java, true, Bundle())
+        activityCallback.openFragment(MainListFragment::class.java, true, Bundle())
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////
@@ -83,6 +85,5 @@ class MainFragment : BaseFragment(), MainView {
         }, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.ACCESS_FINE_LOCATION)
 
     }
-
 
 }

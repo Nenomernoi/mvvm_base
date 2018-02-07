@@ -1,6 +1,9 @@
 package org.mainsoft.basewithkodein.screen.fragment
 
 import android.os.Bundle
+import org.kodein.direct
+import org.kodein.generic.instance
+import org.mainsoft.basewithkodein.App
 import org.mainsoft.basewithkodein.R
 import org.mainsoft.basewithkodein.adapter.MainAdapter
 import org.mainsoft.basewithkodein.base.OnItemClickListener
@@ -13,8 +16,7 @@ import org.mainsoft.basewithkodein.screen.view.MainListView
 class MainListFragment : BaseMainListFragment<CountryResponse>(), MainListView {
 
     init {
-       // presenter = App.kodein.factory<MainListView, MainListPresenter>() as MainListPresenter
-        presenter = MainListPresenter(this)
+        presenter = App.kodein.direct.instance<MainListView,MainListPresenter>(arg = this)
     }
 
     //////////////////////////////////////////////////////////////////////////////////////
