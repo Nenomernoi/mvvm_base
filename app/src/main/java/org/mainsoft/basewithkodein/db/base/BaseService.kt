@@ -2,6 +2,7 @@ package org.mainsoft.basewithkodein.db.base
 
 import io.objectbox.Box
 import io.objectbox.BoxStore
+import io.objectbox.Property
 import io.objectbox.query.QueryBuilder
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -10,17 +11,97 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.functions.Consumer
 import io.reactivex.schedulers.Schedulers
 import java.util.ArrayList
+import java.util.Calendar
 import java.util.concurrent.Callable
 
 abstract class BaseService<T>(db: BoxStore) {
 
     private val subscriptions = CompositeDisposable()
 
-    val notesBox: Box<T> = db.boxFor<T>(getType())
-    val builder: QueryBuilder<T> = notesBox.query()
+    private val notesBox: Box<T> = db.boxFor<T>(getType())
+    protected var builder: QueryBuilder<T> = notesBox.query()
+
+    protected fun close() {
+        builder.close()
+    }
+
+    private fun reInit() {
+        close()
+        builder = notesBox.query()
+    }
 
     fun readAll(consumer: Consumer<MutableList<T>>) {
-        addSubscribe(initDisposabe({ builder.build().find() }, consumer))
+        addSubscribe(initDisposable({ builder.build().find() }, consumer))
+    }
+
+    private fun readSortAll(property: Property, consumer: Consumer<MutableList<T>>, isAsc: Boolean) {
+        addSubscribe(initDisposable({
+            if (isAsc) {
+                builder.order(property).build().find()
+            } else {
+                builder.orderDesc(property).build().find()
+            }
+        }, consumer))
+    }
+
+    fun readSortAllAsc(property: Property, consumer: Consumer<MutableList<T>>) {
+        readSortAll(property, consumer, true)
+    }
+
+    fun readSortAllDesc(property: Property, consumer: Consumer<MutableList<T>>) {
+        readSortAll(property, consumer, false)
+    }
+
+    fun readSortAll(propertyWhere: Property, value: Long,
+                    propertyOrder: Property,
+                    consumer: Consumer<MutableList<T>>) {
+        addSubscribe(initDisposable({
+            builder.equal(propertyWhere, value)
+                    .order(propertyOrder)
+                    .build()
+                    .find()
+        }, consumer))
+    }
+
+    fun readLessSortAll(property: Property,
+                        value: Long,
+                        propertyOrder: Property,
+                        consumer: Consumer<MutableList<T>>) {
+        addSubscribe(initDisposable({
+            builder
+                    .less(property, value)
+                    .order(propertyOrder)
+                    .build()
+                    .find()
+        }, consumer))
+    }
+
+    fun readGreaterSortAll(value: Long,
+                           property: Property,
+                           propertyOrder: Property,
+                           consumer: Consumer<MutableList<T>>) {
+        addSubscribe(initDisposable({
+            builder.greater(property, value)
+                    .order(propertyOrder)
+                    .build()
+                    .find()
+        }, consumer))
+    }
+
+    fun readBetweenSortAll(value: Long, valueSecond: Long,
+                           property: Property,
+                           propertyOrder: Property,
+                           consumer: Consumer<MutableList<T>>) {
+        addSubscribe(initDisposable({
+            builder.between(property, value, valueSecond)
+                    .order(propertyOrder)
+                    .build()
+                    .find()
+        }, consumer))
+    }
+
+    fun readById(id: Long, consumer: Consumer<T>) {
+        addSubscribe(initItemDisposable({ notesBox.get(id) }, consumer))
     }
 
     fun reSave(items: List<T>) {
@@ -44,11 +125,26 @@ abstract class BaseService<T>(db: BoxStore) {
         })
     }
 
+    fun reSave(id: Long, item: T, consumer: Consumer<Boolean>) {
+        addSubscribe(initBolDisposable(Callable {
+            notesBox.remove(id)
+            notesBox.put(item)
+            true
+        }, consumer))
+    }
+
     fun save(item: T, consumer: Consumer<Boolean>) {
         addSubscribe(initBolDisposable(Callable {
             notesBox.put(item)
             true
         }, consumer))
+    }
+
+    fun saveAndLoad(item: T, consumer: Consumer<MutableList<T>>) {
+        addSubscribe(initBolDisposable(Callable {
+            notesBox.put(item)
+            true
+        }, Consumer { readAll(consumer) }))
     }
 
     fun save(items: List<T>) {
@@ -73,6 +169,19 @@ abstract class BaseService<T>(db: BoxStore) {
     fun remove(item: T, consumer: Consumer<Boolean>) {
         addSubscribe(initBolDisposable(Callable {
             notesBox.remove(item)
+            true
+        }, consumer))
+    }
+
+    fun remove(items: List<T>) {
+        remove(items, Consumer {
+            //LISTENER SAVE
+        })
+    }
+
+    fun remove(items: List<T>, consumer: Consumer<Boolean>) {
+        addSubscribe(initBolDisposable(Callable {
+            notesBox.remove(items)
             true
         }, consumer))
     }
@@ -119,32 +228,82 @@ abstract class BaseService<T>(db: BoxStore) {
     ////////////////////////////////////////////////////////////////////////////
 
     protected fun initBolDisposable(callable: Callable<Boolean>, consumer: Consumer<Boolean>): Disposable {
-
-        return Observable.fromCallable(callable).subscribeOn(Schedulers.computation()).observeOn(
-                AndroidSchedulers.mainThread()).onErrorReturn { throwable -> false }.subscribe(consumer)
+        return Observable.fromCallable(callable)
+                .subscribeOn(Schedulers.computation())
+                .observeOn(AndroidSchedulers.mainThread())
+                .onErrorReturn { false }
+                .subscribe { t ->
+                    consumer.accept(t)
+                    reInit()
+                    onStop()
+                }
     }
 
     ////////////////////////////////////////////////////////////////////////////
 
-    protected fun initDisposabe(callable: () -> MutableList<T>, consumer: Consumer<MutableList<T>>): Disposable {
+    protected fun initDisposable(callable: () -> MutableList<T>, consumer: Consumer<MutableList<T>>): Disposable {
+        return Observable.fromCallable(callable)
+                .subscribeOn(Schedulers.computation())
+                .observeOn(AndroidSchedulers.mainThread())
+                .onErrorReturn { ArrayList() }
+                .subscribe { t ->
+                    consumer.accept(t)
+                    reInit()
+                    onStop()
+                }
+    }
 
-        return Observable.fromCallable(callable).subscribeOn(Schedulers.computation()).observeOn(
-                AndroidSchedulers.mainThread()).onErrorReturn { throwable -> ArrayList() }.subscribe(consumer)
+    ////////////////////////////////////////////////////////////////////////////
+
+    protected fun initItemDisposable(callable: () -> T, consumer: Consumer<T>): Disposable {
+        return Observable.fromCallable(callable)
+                .subscribeOn(Schedulers.computation())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe { t ->
+                    consumer.accept(t)
+                    reInit()
+                    onStop()
+                }
     }
 
     ////////////////////////////////////////////////////////////////////////////
 
     protected fun addSubscribe(subscription: Disposable) {
+        onStop()
         subscriptions.add(subscription)
     }
 
     ////////////////////////////////////////////////////////////////////////////
 
-    fun onStop() {
+    protected fun onStop() {
         subscriptions.clear()
     }
 
     ////////////////////////////////////////////////////////////////////////////
 
     protected abstract fun getType(): Class<T>
+
+
+    ////////////////////////////////////////////////////////////////////////////
+
+
+    protected fun getEndOfDay(date: Long): Long {
+        val calendar = Calendar.getInstance()
+        calendar.timeInMillis = date
+        calendar.set(Calendar.HOUR_OF_DAY, 23)
+        calendar.set(Calendar.MINUTE, 59)
+        calendar.set(Calendar.SECOND, 59)
+        calendar.set(Calendar.MILLISECOND, 999)
+        return calendar.timeInMillis
+    }
+
+    protected fun getStartOfDay(date: Long): Long {
+        val calendar = Calendar.getInstance()
+        calendar.timeInMillis = date
+        calendar.set(Calendar.HOUR_OF_DAY, 0)
+        calendar.set(Calendar.MINUTE, 0)
+        calendar.set(Calendar.SECOND, 0)
+        calendar.set(Calendar.MILLISECOND, 0)
+        return calendar.timeInMillis
+    }
 }

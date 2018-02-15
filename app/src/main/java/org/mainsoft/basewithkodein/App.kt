@@ -31,9 +31,9 @@ class App : Application() {
     private fun initDb() = MyObjectBox.builder().androidContext(this@App).build()
 
     private val screenModule = Kodein.Module {
-         bind<MainPresenter>() with factory { view: MainView -> MainPresenter(view) }
-         bind<MainListPresenter>() with factory { view: MainListView -> MainListPresenter(view) }
-         bind<MainPagePresenter>() with factory { view: MainPageView -> MainPagePresenter(view) }
+        bind<MainPresenter>() with factory { view: MainView -> MainPresenter(view) }
+        bind<MainListPresenter>() with factory { view: MainListView -> MainListPresenter(view) }
+        bind<MainPagePresenter>() with factory { view: MainPageView -> MainPagePresenter(view) }
     }
 
     companion object {

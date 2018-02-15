@@ -1,11 +1,14 @@
 package org.mainsoft.basewithkodein.util
 
+import android.app.DatePickerDialog
+import android.app.DatePickerDialog.OnDateSetListener
 import android.content.Context
 import android.content.DialogInterface
 import android.support.v4.content.res.ResourcesCompat
 import android.support.v7.app.AlertDialog
 import android.widget.TextView
 import org.mainsoft.basewithkodein.R
+import java.util.Calendar
 
 class DialogUtil {
     companion object {
@@ -26,6 +29,35 @@ class DialogUtil {
         fun showWarningErrorDialog(context: Context, message: String?,
                                    listener: DialogInterface.OnClickListener) {
             baseMessageDialog(context, R.string.warning, message, R.string.ok, listener)
+        }
+
+        /////////////////////////////////////////////////////////////////////////////////////////
+
+        fun showBaseCalendarDialog(context: Context, date: Long?, dateMin: Long?, dateMax: Long?,
+                                   listener: OnDateSetListener) {
+            val cal = Calendar.getInstance()
+            if (date != null) {
+                cal.timeInMillis = date
+            }
+
+            val dialog = DatePickerDialog(context, listener,
+                    cal.get(Calendar.YEAR),
+                    cal.get(Calendar.MONTH),
+                    cal.get(Calendar.DAY_OF_MONTH))
+
+            val calMax = Calendar.getInstance()
+            if (dateMax != null) {
+                calMax.timeInMillis = dateMax
+            }
+            dialog.datePicker.maxDate = calMax.timeInMillis
+
+            if (dateMin != null) {
+                val calMin = Calendar.getInstance()
+                calMin.timeInMillis = dateMin
+                dialog.datePicker.minDate = calMin.timeInMillis
+            }
+
+            dialog.show()
         }
 
         /////////////////////////////////////////////////////////////////////////////////////////
