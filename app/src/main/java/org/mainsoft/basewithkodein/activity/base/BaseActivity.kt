@@ -17,6 +17,8 @@ import android.support.v4.app.FragmentManager
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.inputmethod.InputMethodManager
+import androidx.content.systemService
+import androidx.net.toUri
 import com.google.android.gms.location.*
 import com.tbruyelle.rxpermissions2.RxPermissions
 import kotlinx.android.synthetic.main.activity_main.*
@@ -287,7 +289,7 @@ abstract class BaseActivity : AppCompatActivity(), ActivityCallback {
                 token = currentFocus!!.windowToken
             }
             if (token != null) {
-                val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                val imm = systemService<InputMethodManager>()
                 imm.hideSoftInputFromWindow(token, 0)
             }
         }
@@ -323,40 +325,42 @@ abstract class BaseActivity : AppCompatActivity(), ActivityCallback {
     }
 
     override fun openPermissionBase(isRepeat: Boolean, listener: PermissionListener, vararg permissions: String) {
-        RxPermissions(this).requestEach(*permissions).subscribe { permission ->
-            if (permission.granted) {
-                listener.onComplete()
-            } else if (permission.shouldShowRequestPermissionRationale) {
+        RxPermissions(this)
+                .requestEach(*permissions)
+                .subscribe { permission ->
+                    if (permission.granted) {
+                        listener.onComplete()
+                    } else if (permission.shouldShowRequestPermissionRationale) {
 
-                if (!isRepeat) {
-                    listener.onError()
-                    return@subscribe
-                }
+                        if (!isRepeat) {
+                            listener.onError()
+                            return@subscribe
+                        }
 
-                openPermission(listener, *permissions)
+                        openPermission(listener, *permissions)
 
-            } else {
+                    } else {
 
-                if (!isStartSetting) {
+                        if (!isStartSetting) {
 
-                    isStartSetting = true
+                            isStartSetting = true
 
-                    listener.onError()
+                            listener.onError()
 
-                    DialogUtil.Companion.showErrorPermissionDialog(this,
-                            DialogInterface.OnClickListener { dialog, _ ->
-                                startActivity(Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
-                                        Uri.parse("package:" + packageName)))
+                            DialogUtil.Companion.showErrorPermissionDialog(this,
+                                    DialogInterface.OnClickListener { dialog, _ ->
+                                        startActivity(Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+                                                "package:$packageName".toUri()))
+                                        dialog.dismiss()
+                                        isStartSetting = false
+                                    }, DialogInterface.OnClickListener { dialog, _ ->
                                 dialog.dismiss()
+                                listener.onError()
                                 isStartSetting = false
-                            }, DialogInterface.OnClickListener { dialog, _ ->
-                        dialog.dismiss()
-                        listener.onError()
-                        isStartSetting = false
-                    })
+                            })
+                        }
+                    }
                 }
-            }
-        }
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////

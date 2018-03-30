@@ -3,6 +3,7 @@ package org.mainsoft.basewithkodein.util
 import android.app.Activity
 import android.content.Context
 import android.util.Base64
+import androidx.content.edit
 
 class Setting(private var context: Context) {
 
@@ -23,9 +24,10 @@ class Setting(private var context: Context) {
     }
 
     fun saveAll() {
-        val editor = context.getSharedPreferences(Param.PREF_NAME, Activity.MODE_PRIVATE).edit()
-        editor.putString(Param.TAG_TOKEN, token)
-        editor.apply()
+        context.getSharedPreferences(Param.PREF_NAME, Activity.MODE_PRIVATE)
+                .edit {
+                    putString(Param.TAG_TOKEN, token)
+                }
     }
 
     fun logOut() {
