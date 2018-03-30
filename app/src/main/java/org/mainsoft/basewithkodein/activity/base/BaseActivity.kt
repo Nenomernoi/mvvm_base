@@ -17,15 +17,9 @@ import android.support.v4.app.FragmentManager
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.inputmethod.InputMethodManager
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationCallback
-import com.google.android.gms.location.LocationRequest
-import com.google.android.gms.location.LocationResult
-import com.google.android.gms.location.LocationServices
-import com.google.android.gms.location.LocationSettingsRequest
-import com.google.android.gms.location.SettingsClient
+import com.google.android.gms.location.*
 import com.tbruyelle.rxpermissions2.RxPermissions
-import kotlinx.android.synthetic.main.activity_main.toolbar
+import kotlinx.android.synthetic.main.activity_main.*
 import org.kodein.generic.instance
 import org.mainsoft.basewithkodein.App
 import org.mainsoft.basewithkodein.R
@@ -109,7 +103,7 @@ abstract class BaseActivity : AppCompatActivity(), ActivityCallback {
     ///////////////////////////////////////////////////////////////////////////////////////////
 
     override fun openNewActivity(intent: Intent) {
-        intent?.putExtra(UPDATE_SCREEN, true)
+        intent.putExtra(UPDATE_SCREEN, true)
         startActivity(intent)
     }
 

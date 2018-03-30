@@ -15,7 +15,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
-import kotlinx.android.synthetic.main.fragment_base.pbLoad
+import kotlinx.android.synthetic.main.fragment_base.*
 import org.mainsoft.basewithkodein.R
 import org.mainsoft.basewithkodein.activity.base.ActivityCallback
 import org.mainsoft.basewithkodein.listener.BaseEditTextListener
@@ -31,8 +31,9 @@ abstract class BaseFragment : Fragment(), BaseView {
 
     //////////////////////////////////////////////////////////////////////////////////////
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? = inflater!!.inflate(getLayout(), container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? =
+            inflater.inflate(getLayout(), container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -50,7 +51,7 @@ abstract class BaseFragment : Fragment(), BaseView {
     }
 
     protected open fun onRestore(savedInstanceState: Bundle?, arguments: Bundle?) {
-        presenter.initData(activity, savedInstanceState, arguments)
+        presenter.initData(activity!!, savedInstanceState, arguments)
     }
 
     protected open fun initListeners() {
@@ -83,11 +84,11 @@ abstract class BaseFragment : Fragment(), BaseView {
     }
 
     override fun showMessageError(message: String?, listener: DialogInterface.OnClickListener) {
-        DialogUtil.showWarningErrorDialog(activity, message, listener)
+        DialogUtil.showWarningErrorDialog(activity!!, message, listener)
     }
 
     override fun showMessageError(message: Int, listener: DialogInterface.OnClickListener) {
-        DialogUtil.showWarningErrorDialog(activity, getString(message), listener)
+        DialogUtil.showWarningErrorDialog(activity!!, getString(message), listener)
     }
 
     override fun showMessageError(message: Int) {
@@ -190,20 +191,20 @@ abstract class BaseFragment : Fragment(), BaseView {
         if (activity != null) {
             Handler().post({
                 view.requestFocus()
-                (activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager)
+                (activity!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager)
                         .showSoftInput(view, InputMethodManager.SHOW_IMPLICIT)
             })
         }
     }
 
     fun hideSoftKeyboard(view: View?) {
-        val imm = activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        val imm = activity!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         var token: IBinder? = null
         if (view != null) {
             token = view.windowToken
         }
-        if (token == null && activity.currentFocus != null) {
-            token = activity.currentFocus.windowToken
+        if (token == null && activity!!.currentFocus != null) {
+            token = activity!!.currentFocus.windowToken
         }
         if (token != null) {
             imm.hideSoftInputFromWindow(token, 0)

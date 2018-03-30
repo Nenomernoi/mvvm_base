@@ -1,6 +1,12 @@
 buildscript {
-    ext.kotlin_version = '1.2.21'
-    ext.objectboxVersion = '1.4.0'
+
+    ext.kotlin_version = '1.2.31'
+    ext.objectbox_version = '1.4.3'
+    ext.base_version = '27.1.0'
+    ext.retrofit_version = '2.3.0'
+    ext.service_version = '12.0.1'
+    ext.multidex_version = '1.0.3'
+
     repositories {
         google()
         jcenter()
@@ -10,8 +16,8 @@ buildscript {
         maven { url "https://jitpack.io" }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.1'
-        classpath "io.objectbox:objectbox-gradle-plugin:$objectboxVersion"
+        classpath 'com.android.tools.build:gradle:3.1.0'
+        classpath "io.objectbox:objectbox-gradle-plugin:$objectbox_version"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
     }
@@ -30,4 +36,7 @@ allprojects {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+ext {
+    versionNameGlobal = "0.0.3"
 }

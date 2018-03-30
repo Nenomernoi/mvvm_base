@@ -5,7 +5,7 @@ import android.os.Parcelable
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-class Currency() : Object(), Parcelable {
+class Currency() : Parcelable {
 
     @SerializedName("code")
     @Expose

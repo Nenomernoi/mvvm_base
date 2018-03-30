@@ -10,8 +10,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.functions.Consumer
 import io.reactivex.schedulers.Schedulers
-import java.util.ArrayList
-import java.util.Calendar
+import java.util.*
 import java.util.concurrent.Callable
 
 abstract class BaseService<T>(db: BoxStore) {
@@ -227,7 +226,7 @@ abstract class BaseService<T>(db: BoxStore) {
 
     ////////////////////////////////////////////////////////////////////////////
 
-    protected fun initBolDisposable(callable: Callable<Boolean>, consumer: Consumer<Boolean>): Disposable {
+    protected open fun initBolDisposable(callable: Callable<Boolean>, consumer: Consumer<Boolean>): Disposable {
         return Observable.fromCallable(callable)
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -241,7 +240,7 @@ abstract class BaseService<T>(db: BoxStore) {
 
     ////////////////////////////////////////////////////////////////////////////
 
-    protected fun initDisposable(callable: () -> MutableList<T>, consumer: Consumer<MutableList<T>>): Disposable {
+    protected open fun initDisposable(callable: () -> MutableList<T>, consumer: Consumer<MutableList<T>>): Disposable {
         return Observable.fromCallable(callable)
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -255,7 +254,7 @@ abstract class BaseService<T>(db: BoxStore) {
 
     ////////////////////////////////////////////////////////////////////////////
 
-    protected fun initItemDisposable(callable: () -> T, consumer: Consumer<T>): Disposable {
+    protected open fun initItemDisposable(callable: () -> T, consumer: Consumer<T>): Disposable {
         return Observable.fromCallable(callable)
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -268,14 +267,14 @@ abstract class BaseService<T>(db: BoxStore) {
 
     ////////////////////////////////////////////////////////////////////////////
 
-    protected fun addSubscribe(subscription: Disposable) {
+    protected open fun addSubscribe(subscription: Disposable) {
         onStop()
         subscriptions.add(subscription)
     }
 
     ////////////////////////////////////////////////////////////////////////////
 
-    protected fun onStop() {
+    protected open fun onStop() {
         subscriptions.clear()
     }
 

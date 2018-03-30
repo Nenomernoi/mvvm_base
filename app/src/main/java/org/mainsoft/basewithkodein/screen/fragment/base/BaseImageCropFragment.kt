@@ -21,7 +21,7 @@ abstract class BaseImageCropFragment : BaseFragment() {
     }
 
     fun initFile(path: File?) {
-        CropImage.activity(Uri.fromFile(path)).setAspectRatio(getAspectX(), getAspectY()).start(activity)
+        CropImage.activity(Uri.fromFile(path)).setAspectRatio(getAspectX(), getAspectY()).start(activity!!)
     }
 
     protected open fun getAspectX(): Int = ASPECT_X
