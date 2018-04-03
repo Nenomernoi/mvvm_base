@@ -11,12 +11,12 @@ import org.kodein.generic.singleton
 import org.mainsoft.basewithkodein.net.Api
 import org.mainsoft.basewithkodein.net.ApiRest
 import org.mainsoft.basewithkodein.net.response.MyObjectBox
-import org.mainsoft.basewithkodein.screen.presenter.MainListPresenter
-import org.mainsoft.basewithkodein.screen.presenter.MainPagePresenter
-import org.mainsoft.basewithkodein.screen.presenter.MainPresenter
-import org.mainsoft.basewithkodein.screen.view.MainListView
-import org.mainsoft.basewithkodein.screen.view.MainPageView
-import org.mainsoft.basewithkodein.screen.view.MainView
+import org.mainsoft.basewithkodein.screen.presenter.ExampleListPresenter
+import org.mainsoft.basewithkodein.screen.presenter.ExamplePagePresenter
+import org.mainsoft.basewithkodein.screen.presenter.ExamplePresenter
+import org.mainsoft.basewithkodein.screen.view.ExampleListView
+import org.mainsoft.basewithkodein.screen.view.ExamplePageView
+import org.mainsoft.basewithkodein.screen.view.ExampleView
 import org.mainsoft.basewithkodein.util.Setting
 
 class App : Application() {
@@ -31,9 +31,9 @@ class App : Application() {
     private fun initDb() = MyObjectBox.builder().androidContext(this@App).build()
 
     private val screenModule = Kodein.Module {
-        bind<MainPresenter>() with factory { view: MainView -> MainPresenter(view) }
-        bind<MainListPresenter>() with factory { view: MainListView -> MainListPresenter(view) }
-        bind<MainPagePresenter>() with factory { view: MainPageView -> MainPagePresenter(view) }
+        bind<ExamplePresenter>() with factory { view: ExampleView -> ExamplePresenter(view) }
+        bind<ExampleListPresenter>() with factory { view: ExampleListView -> ExampleListPresenter(view) }
+        bind<ExamplePagePresenter>() with factory { view: ExamplePageView -> ExamplePagePresenter(view) }
     }
 
     companion object {

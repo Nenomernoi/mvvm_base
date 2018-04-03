@@ -11,7 +11,7 @@ import org.mainsoft.basewithkodein.base.BaseSupportAdapter
 import org.mainsoft.basewithkodein.base.OnItemClickListener
 import org.mainsoft.basewithkodein.net.response.CountryResponse
 
-class MainAdapter(data: MutableList<CountryResponse>, onItemClickListener: OnItemClickListener) :
+class ExampleAdapter(data: MutableList<CountryResponse>, onItemClickListener: OnItemClickListener) :
         BaseSupportAdapter<CountryResponse>(data, onItemClickListener) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

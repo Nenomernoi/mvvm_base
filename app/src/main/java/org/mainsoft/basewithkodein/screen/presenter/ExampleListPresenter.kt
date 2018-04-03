@@ -2,15 +2,14 @@ package org.mainsoft.basewithkodein.screen.presenter
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import io.reactivex.functions.Consumer
 import org.mainsoft.basewithkodein.db.CountryService
 import org.mainsoft.basewithkodein.net.manager.GetCurrenciesManager
 import org.mainsoft.basewithkodein.net.response.CountryResponse
 import org.mainsoft.basewithkodein.screen.presenter.base.BaseListPresenter
-import org.mainsoft.basewithkodein.screen.view.MainListView
+import org.mainsoft.basewithkodein.screen.view.ExampleListView
 
-class MainListPresenter(view: MainListView)
+class ExampleListPresenter(view: ExampleListView)
     : BaseListPresenter<CountryResponse>(view),
       GetCurrenciesManager.LoadListener {
 
@@ -59,7 +58,7 @@ class MainListPresenter(view: MainListView)
 
     fun openItemScreen(position: Int) {
         val bundle = Bundle()
-        (view as? MainListView)!!.openItemScreen(bundle)
+        (view as? ExampleListView)!!.openItemScreen(bundle)
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////

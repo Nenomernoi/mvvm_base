@@ -3,9 +3,9 @@ package org.mainsoft.basewithkodein.screen.presenter
 import android.content.Context
 import org.mainsoft.basewithkodein.R
 import org.mainsoft.basewithkodein.screen.presenter.base.BasePagePresenter
-import org.mainsoft.basewithkodein.screen.view.MainPageView
+import org.mainsoft.basewithkodein.screen.view.ExamplePageView
 
-class MainPagePresenter(view: MainPageView) : BasePagePresenter<String>(view) {
+class ExamplePagePresenter(view: ExamplePageView) : BasePagePresenter<String>(view) {
 
     override fun getTabs(mContext: Context): MutableList<String> {
         var tabs: MutableList<String> = mutableListOf()
