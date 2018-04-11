@@ -3,7 +3,7 @@ package org.mainsoft.basewithkodein.util
 import android.app.Activity
 import android.content.Context
 import android.util.Base64
-import androidx.content.edit
+import androidx.core.content.edit
 
 class Setting(private var context: Context) {
 

@@ -15,7 +15,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
-import androidx.content.systemService
+import androidx.core.content.systemService
 import kotlinx.android.synthetic.main.fragment_base.*
 import org.mainsoft.basewithkodein.R
 import org.mainsoft.basewithkodein.activity.base.ActivityCallback

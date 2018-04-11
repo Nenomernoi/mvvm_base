@@ -15,20 +15,35 @@ import android.view.ViewTreeObserver
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.LinearLayout
-import androidx.animation.addListener
-import androidx.content.edit
-import androidx.content.systemService
-import androidx.net.toUri
-import androidx.os.bundleOf
-import androidx.os.persistableBundleOf
-import androidx.os.postAtTime
-import androidx.os.postDelayed
-import androidx.text.*
-import androidx.time.component1
-import androidx.time.component2
-import androidx.time.component3
-import androidx.time.component4
-import androidx.view.*
+import androidx.core.animation.addListener
+import androidx.core.content.edit
+import androidx.core.content.systemService
+import androidx.core.net.toUri
+import androidx.core.os.bundleOf
+import androidx.core.os.persistableBundleOf
+import androidx.core.os.postAtTime
+import androidx.core.os.postDelayed
+import androidx.core.text.backgroundColor
+import androidx.core.text.bold
+import androidx.core.text.buildSpannedString
+import androidx.core.text.italic
+import androidx.core.text.underline
+import androidx.core.view.contains
+import androidx.core.view.doOnPreDraw
+import androidx.core.view.forEach
+import androidx.core.view.forEachIndexed
+import androidx.core.view.isEmpty
+import androidx.core.view.isNotEmpty
+import androidx.core.view.minusAssign
+import androidx.core.view.plusAssign
+import androidx.core.view.setMargins
+import androidx.core.view.setPadding
+import androidx.core.view.size
+import androidx.core.view.toBitmap
+import androidx.core.view.updateMargins
+import androidx.core.view.updateMarginsRelative
+import androidx.core.view.updatePadding
+import androidx.core.view.updatePaddingRelative
 import com.miguelbcr.ui.rx_paparazzo2.RxPaparazzo
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -125,16 +140,6 @@ class ExamplePresenter(view: ExampleView) : BasePresenter(view) {
         val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         //  Kotlin with Android KTX:
         val immKtx = context.systemService<InputMethodManager>()
-
-
-        ///////////////// /////////////////////// DATE /////////////////////////////////////////////////
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val (seconds, nanoseconds) = Instant.now()
-            val (year, month, day) = LocalDate.now()
-            val (hour, minute, second, nanosecond) = LocalTime.now()
-            val (localTime, ZoneOffset) = OffsetTime.now()
-        }
 
         ///////////////// /////////////////////// Handler /////////////////////////////////////////////////
 
