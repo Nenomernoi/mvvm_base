@@ -2,7 +2,6 @@ package org.mainsoft.basewithkodein.activity.base
 
 import android.Manifest
 import android.annotation.SuppressLint
-import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -18,9 +17,15 @@ import android.util.Log
 import android.view.inputmethod.InputMethodManager
 import androidx.core.content.systemService
 import androidx.core.net.toUri
-import com.google.android.gms.location.*
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationCallback
+import com.google.android.gms.location.LocationRequest
+import com.google.android.gms.location.LocationResult
+import com.google.android.gms.location.LocationServices
+import com.google.android.gms.location.LocationSettingsRequest
+import com.google.android.gms.location.SettingsClient
 import com.tbruyelle.rxpermissions2.RxPermissions
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.toolbar
 import org.kodein.generic.instance
 import org.mainsoft.basewithkodein.App
 import org.mainsoft.basewithkodein.R
@@ -348,8 +353,9 @@ abstract class BaseActivity : AppCompatActivity(), ActivityCallback {
 
                             DialogUtil.Companion.showErrorPermissionDialog(this,
                                     DialogInterface.OnClickListener { dialog, _ ->
-                                        startActivity(Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
-                                                "package:$packageName".toUri()))
+                                        startActivity(
+                                                Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+                                                        "package:$packageName".toUri()))
                                         dialog.dismiss()
                                         isStartSetting = false
                                     }, DialogInterface.OnClickListener { dialog, _ ->

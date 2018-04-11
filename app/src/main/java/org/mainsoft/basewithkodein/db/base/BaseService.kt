@@ -10,7 +10,8 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.functions.Consumer
 import io.reactivex.schedulers.Schedulers
-import java.util.*
+import java.util.ArrayList
+import java.util.Calendar
 import java.util.concurrent.Callable
 
 abstract class BaseService<T>(db: BoxStore) {
@@ -282,9 +283,7 @@ abstract class BaseService<T>(db: BoxStore) {
 
     protected abstract fun getType(): Class<T>
 
-
     ////////////////////////////////////////////////////////////////////////////
-
 
     protected fun getEndOfDay(date: Long): Long {
         val calendar = Calendar.getInstance()

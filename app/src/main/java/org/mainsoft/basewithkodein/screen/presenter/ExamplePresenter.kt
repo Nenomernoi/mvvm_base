@@ -6,7 +6,6 @@ import android.app.Activity
 import android.content.Context
 import android.graphics.Bitmap
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.text.SpannableStringBuilder
@@ -53,11 +52,6 @@ import org.mainsoft.basewithkodein.screen.presenter.base.BasePresenter
 import org.mainsoft.basewithkodein.screen.view.ExampleView
 import org.mainsoft.basewithkodein.util.Setting
 import java.io.File
-import java.time.Instant
-import java.time.LocalDate
-import java.time.LocalTime
-import java.time.OffsetTime
-
 
 class ExamplePresenter(view: ExampleView) : BasePresenter(view) {
 
@@ -177,7 +171,6 @@ class ExamplePresenter(view: ExampleView) : BasePresenter(view) {
         val bundleKtx1 = bundleOf("some_key" to 12, "another_key" to 15)
         val bundleKtx2 = persistableBundleOf("some_key" to 12, "another_key" to 15)
 
-
         /////////////////////////////// Text /////////////////////////////
 
         //  Kotlin with Android KTX:
@@ -191,7 +184,6 @@ class ExamplePresenter(view: ExampleView) : BasePresenter(view) {
                 }
 
         edtView.hint = buildSpannedString { bold { append("hitherejoe") } }
-
 
         /////////////////////////////// View /////////////////////////////
 
@@ -208,7 +200,11 @@ class ExamplePresenter(view: ExampleView) : BasePresenter(view) {
                 start = 16, end = 16, top = 16, bottom = 16)
 
         //конвертировать View в Bitmap
-        val bitmap = edtView.toBitmap(config = Bitmap.Config.ARGB_8888)
+        try {
+            val bitmap = edtView.toBitmap(config = Bitmap.Config.ARGB_8888)
+        } catch (e: Exception){
+            //
+        }
 
         ///////////////////////////// ViewGroup/////////////////////////////////
 
@@ -233,7 +229,7 @@ class ExamplePresenter(view: ExampleView) : BasePresenter(view) {
 
         //Подобное есть для меню
 
-       //  https:://android.github.io/android-ktx/core-ktx/index.html
+        //  https:://android.github.io/android-ktx/core-ktx/index.html
 
     }
 

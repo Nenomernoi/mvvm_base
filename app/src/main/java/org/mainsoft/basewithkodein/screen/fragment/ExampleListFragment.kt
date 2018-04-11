@@ -16,7 +16,7 @@ import org.mainsoft.basewithkodein.screen.view.ExampleListView
 class ExampleListFragment : BaseMainListFragment<CountryResponse>(), ExampleListView {
 
     init {
-        presenter = App.kodein.direct.instance<ExampleListView,ExampleListPresenter>(arg = this)
+        presenter = App.kodein.direct.instance<ExampleListView, ExampleListPresenter>(arg = this)
     }
 
     //////////////////////////////////////////////////////////////////////////////////////

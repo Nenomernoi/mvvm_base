@@ -22,7 +22,7 @@ class ApiRest {
 
             val builder = Retrofit.Builder().baseUrl(BASE_URL + BASE_CONTENT)
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create()).addConverterFactory(
-                    GsonConverterFactory.create())
+                            GsonConverterFactory.create())
                     .client(client)
 
             return builder.build().create(Api::class.java)

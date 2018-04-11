@@ -3,7 +3,11 @@ package org.mainsoft.basewithkodein.screen.fragment
 import android.Manifest
 import android.os.Bundle
 import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.fragment_base.*
+import kotlinx.android.synthetic.main.fragment_base.btnImage
+import kotlinx.android.synthetic.main.fragment_base.btnPermission
+import kotlinx.android.synthetic.main.fragment_base.btnPhoto
+import kotlinx.android.synthetic.main.fragment_base.imgBg
+import kotlinx.android.synthetic.main.fragment_base.txtList
 import org.kodein.direct
 import org.kodein.generic.instance
 import org.mainsoft.basewithkodein.App

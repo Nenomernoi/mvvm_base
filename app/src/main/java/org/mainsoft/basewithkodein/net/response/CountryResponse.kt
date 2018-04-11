@@ -8,10 +8,10 @@ import io.objectbox.annotation.Entity
 import io.objectbox.annotation.Id
 import io.objectbox.annotation.Index
 import io.objectbox.annotation.Transient
-import java.util.*
+import java.util.ArrayList
 
 @Entity
-class CountryResponse() :  Parcelable {
+class CountryResponse() : Parcelable {
 
     @Id
     @Expose

@@ -29,7 +29,6 @@ class Currency() : Parcelable {
         parcel.writeString(symbol)
     }
 
-
     override fun describeContents(): Int {
         return 0
     }
