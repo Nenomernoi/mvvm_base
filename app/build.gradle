@@ -11,7 +11,7 @@ android {
         applicationId "org.mainsoft.basewithkodein"
         minSdkVersion 19
         targetSdkVersion 27
-        versionCode 1
+        versionCode  rootProject.ext.codeNameGlobal
         versionName rootProject.ext.versionNameGlobal
         multiDexEnabled true
     }
@@ -51,7 +51,7 @@ dependencies {
     implementation "com.android.support:recyclerview-v7:$base_version"
     implementation "com.android.support:design:$base_version"
     //kotlin
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     implementation 'androidx.core:core-ktx:0.3'
     //DI
     implementation 'org.kodein:kodein-generic-jvm:5.0.0-beta4'
