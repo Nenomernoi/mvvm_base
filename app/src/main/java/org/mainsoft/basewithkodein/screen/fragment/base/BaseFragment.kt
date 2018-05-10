@@ -185,7 +185,7 @@ abstract class BaseFragment : Fragment(), BaseView {
     }
 
     override fun showHideProgress(isShowHide: Boolean) {
-        pbLoad.visibility = if (isShowHide) View.VISIBLE else View.GONE
+        pbLoad?.visibility = if (isShowHide) View.VISIBLE else View.GONE
     }
 
     fun showSoftKeyboard(view: View) {

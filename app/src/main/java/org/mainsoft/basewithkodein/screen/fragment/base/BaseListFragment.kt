@@ -12,7 +12,7 @@ abstract class BaseListFragment : BaseFragment() {
     }
 
     open fun showHideNoData(isEmpty: Boolean) {
-        txtNoData.visibility = if (isEmpty) View.VISIBLE else View.GONE
+        txtNoData?.visibility = if (isEmpty) View.VISIBLE else View.GONE
     }
 
     protected abstract fun getNewData()

@@ -9,12 +9,13 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.functions.Consumer
+import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import java.util.ArrayList
 import java.util.Calendar
 import java.util.concurrent.Callable
 
-abstract class BaseService<T>(db: BoxStore) {
+abstract class BaseService<T : Any>(db: BoxStore) {
 
     private val subscriptions = CompositeDisposable()
 
@@ -231,12 +232,18 @@ abstract class BaseService<T>(db: BoxStore) {
         return Observable.fromCallable(callable)
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
-                .onErrorReturn { false }
-                .subscribe { t ->
-                    consumer.accept(t)
-                    reInit()
-                    onStop()
-                }
+                .subscribeBy(
+                        onNext = { t ->
+                            consumer.accept(t)
+                        },
+                        onError = {
+                            consumer.accept(false)
+                        },
+                        onComplete = {
+                            reInit()
+                            onStop()
+                        }
+                )
     }
 
     ////////////////////////////////////////////////////////////////////////////
@@ -245,12 +252,18 @@ abstract class BaseService<T>(db: BoxStore) {
         return Observable.fromCallable(callable)
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
-                .onErrorReturn { ArrayList() }
-                .subscribe { t ->
-                    consumer.accept(t)
-                    reInit()
-                    onStop()
-                }
+                .subscribeBy(
+                        onNext = { t ->
+                            consumer.accept(t)
+                        },
+                        onError = {
+                            consumer.accept(ArrayList())
+                        },
+                        onComplete = {
+                            reInit()
+                            onStop()
+                        }
+                )
     }
 
     ////////////////////////////////////////////////////////////////////////////
@@ -259,11 +272,18 @@ abstract class BaseService<T>(db: BoxStore) {
         return Observable.fromCallable(callable)
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe { t ->
-                    consumer.accept(t)
-                    reInit()
-                    onStop()
-                }
+                .subscribeBy(
+                        onNext = { t ->
+                            consumer.accept(t)
+                        },
+                        onError = {
+                            //
+                        },
+                        onComplete = {
+                            reInit()
+                            onStop()
+                        }
+                )
     }
 
     ////////////////////////////////////////////////////////////////////////////

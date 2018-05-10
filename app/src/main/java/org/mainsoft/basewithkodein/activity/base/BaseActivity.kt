@@ -301,8 +301,16 @@ abstract class BaseActivity : AppCompatActivity(), ActivityCallback {
 
     ////////////////////////////////////////////////////////////////////////////////////
 
-    override fun setTitle(title: String) {
-        toolbar.title = title
+    override fun setTitle(title: Any) {
+
+        if (title is Int) {
+            toolbar.setTitle(title)
+            return
+        }
+
+        if (title is String) {
+            toolbar.title = title
+        }
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////

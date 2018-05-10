@@ -11,7 +11,7 @@ interface ActivityCallback {
     fun hideSoftKeyboard()
     fun getLocation()
     fun initLocation()
-    fun setTitle(title: String)
+    fun setTitle(title: Any)
     fun openPermission(listener: PermissionListener, vararg permissions: String)
     fun openPermissionBase(isRepeat: Boolean, listener: PermissionListener, vararg permissions: String)
 }

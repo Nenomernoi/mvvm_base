@@ -2,6 +2,7 @@ package org.mainsoft.basewithkodein.net.manager
 
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
+import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import org.mainsoft.basewithkodein.net.Api
 import org.mainsoft.basewithkodein.net.manager.base.BaseListener
@@ -14,9 +15,16 @@ class GetCurrenciesManager(api: Api, listener: LoadListener) : BaseNetManager(ap
 
         listener.showHideProgress(true)
 
-        return api.getCurrencies(field).observeOn(AndroidSchedulers.mainThread()).subscribeOn(
-                Schedulers.io()).subscribe({ results -> (listener as LoadListener).onLoad(results) },
-                { throwable -> listener.showError(throwable.toString()) }, complite)
+        return api.getCurrencies(field)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribeBy(
+                        onNext = { results ->
+                            (listener as LoadListener).onLoad(results)
+                        },
+                        onError = consumerError,
+                        onComplete = complite
+                )
     }
 
     interface LoadListener : BaseListener {

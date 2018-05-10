@@ -1,6 +1,7 @@
 package org.mainsoft.basewithkodein.screen.fragment.base
 
 import android.os.Bundle
+import android.os.Handler
 import android.support.v7.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_list.rvMain
 import org.mainsoft.basewithkodein.R
@@ -16,9 +17,13 @@ abstract class BaseMainListFragment<T : Any> : BaseListFragment() {
     //////////////////////////////////////////////////////////////////////////////////////
 
     open fun showContent() {
-        showHideNoData((getPresenter() as? BaseListPresenter<*>)!!.isDataEmpty())
-        showHideProgress(false)
-        adapter?.notifyDataSetChanged()
+        Handler().postDelayed({
+
+            showHideNoData((getPresenter() as? BaseListPresenter<*>)!!.isDataEmpty())
+            showHideProgress(false)
+            adapter?.notifyDataSetChanged()
+
+        }, 300)
     }
 
     open fun setData(data: MutableList<T>) {

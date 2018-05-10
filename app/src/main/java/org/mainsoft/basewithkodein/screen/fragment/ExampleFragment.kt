@@ -41,10 +41,10 @@ class ExampleFragment : BaseFragment(), ExampleView {
     ///////////////////////////////////////////////////////////////////////////////////////
 
     override fun initListeners() {
-        txtList.setOnClickListener({ onClickDrawer() })
-        btnPhoto.setOnClickListener({ onClickPhoto() })
-        btnImage.setOnClickListener({ onClickImage() })
-        btnPermission.setOnClickListener({ onClickPermission() })
+        txtList?.setOnClickListener({ onClickDrawer() })
+        btnPhoto?.setOnClickListener({ onClickPhoto() })
+        btnImage?.setOnClickListener({ onClickImage() })
+        btnPermission?.setOnClickListener({ onClickPermission() })
     }
 
     private fun onClickDrawer() {
