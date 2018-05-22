@@ -11,9 +11,11 @@ import org.kodein.generic.singleton
 import org.mainsoft.basewithkodein.net.Api
 import org.mainsoft.basewithkodein.net.ApiRest
 import org.mainsoft.basewithkodein.net.response.MyObjectBox
+import org.mainsoft.basewithkodein.screen.presenter.ExampleConstrPresenter
 import org.mainsoft.basewithkodein.screen.presenter.ExampleListPresenter
 import org.mainsoft.basewithkodein.screen.presenter.ExamplePagePresenter
 import org.mainsoft.basewithkodein.screen.presenter.ExamplePresenter
+import org.mainsoft.basewithkodein.screen.view.ExampleConstView
 import org.mainsoft.basewithkodein.screen.view.ExampleListView
 import org.mainsoft.basewithkodein.screen.view.ExamplePageView
 import org.mainsoft.basewithkodein.screen.view.ExampleView
@@ -34,6 +36,7 @@ class App : Application() {
         bind<ExamplePresenter>() with factory { view: ExampleView -> ExamplePresenter(view) }
         bind<ExampleListPresenter>() with factory { view: ExampleListView -> ExampleListPresenter(view) }
         bind<ExamplePagePresenter>() with factory { view: ExamplePageView -> ExamplePagePresenter(view) }
+        bind<ExampleConstrPresenter>() with factory { view: ExampleConstView -> ExampleConstrPresenter(view) }
     }
 
     companion object {
