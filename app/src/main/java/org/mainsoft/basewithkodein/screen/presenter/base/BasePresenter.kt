@@ -36,6 +36,8 @@ abstract class BasePresenter(val view: BaseView) : Presenter {
 
     protected lateinit var netManager: BaseNetManager
 
+    protected var dis: Disposable? = null
+
     ////////////////////////////////////////////////////////////////////////////////////////
 
     protected var latitude: Double = EMPTY
@@ -63,12 +65,26 @@ abstract class BasePresenter(val view: BaseView) : Presenter {
 
     ////////////////////////////////////////////////////////////////////////////////////////
 
-    protected fun addSubscription(subscription: Disposable) {
-        compositeDisposable.add(subscription)
+    protected fun addSubscription(dis: Disposable?) {
+        if (dis == null) {
+            return
+        }
+        compositeDisposable.add(dis)
+    }
+
+    protected fun stopSubscription(dis: Disposable?) {
+        if (dis == null) {
+            return
+        }
+        compositeDisposable.remove(dis)
+    }
+
+    protected fun onAllRemoveSubs() {
+        compositeDisposable.clear()
     }
 
     override fun onStop() {
-        compositeDisposable.clear()
+        //
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////

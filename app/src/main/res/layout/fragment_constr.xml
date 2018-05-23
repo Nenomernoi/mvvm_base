@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:id="@+id/cnstMain"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
   <TextView
       android:id="@+id/textView"
@@ -25,19 +24,19 @@
       app:layout_constraintStart_toStartOf="@+id/textView"
       app:layout_constraintTop_toBottomOf="@+id/textView"
       />
+
   <ImageView
       android:id="@+id/imageView"
       android:layout_width="80dp"
       android:layout_height="80dp"
-      android:layout_marginEnd="8dp"
       android:layout_marginStart="8dp"
       android:layout_marginTop="8dp"
+      android:layout_marginEnd="8dp"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.406"
       app:layout_constraintStart_toEndOf="@+id/barrier4"
       app:layout_constraintTop_toTopOf="parent"
-      app:srcCompat="@android:color/holo_blue_dark"
-      />
+      app:srcCompat="@drawable/googleg_standard_color_18" />
   <android.support.constraint.Barrier
       android:id="@+id/barrier4"
       android:layout_width="wrap_content"
@@ -65,5 +64,20 @@
       app:layout_constraintCircleRadius="100dp"
       app:layout_constraintHorizontal_bias="0.29"
       />
+
+  <TextView
+      android:id="@+id/textView3"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="16dp"
+      android:layout_marginTop="16dp"
+      android:layout_marginEnd="16dp"
+      android:layout_marginBottom="16dp"
+      android:text="Vad är Lorem Ipsum? Lorem Ipsum är en utfyllnadstext från tryck- och förlagsindustrin. Lorem ipsum har varit standard ända sedan 1500-talet, när en okänd boksättare tog att antal bokstäver och blandade dem för att göra ett provexemplar av en bok. Lorem ipsum har inte bara överlevt fem århundraden, utan även övergången till elektronisk typografi utan större förändringar. Det blev allmänt känt på 1960-talet i samband med lanseringen av Letraset-ark med avsnitt av Lorem Ipsum, och senare med mjukvaror som Aldus PageMaker."
+      android:textAlignment="center"
+      app:layout_constraintBottom_toTopOf="@+id/button2"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
 </android.support.constraint.ConstraintLayout>

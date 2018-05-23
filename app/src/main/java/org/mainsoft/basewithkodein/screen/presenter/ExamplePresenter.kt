@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import com.miguelbcr.ui.rx_paparazzo2.RxPaparazzo
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import org.mainsoft.basewithkodein.screen.fragment.base.BaseFragment
 import org.mainsoft.basewithkodein.screen.presenter.base.BasePresenter
@@ -193,29 +194,39 @@ class ExamplePresenter(view: ExampleView) : BasePresenter(view) {
     //////////////////////////////////////////////////////////////////////////////////////////////////
 
     fun openCamera(fr: BaseFragment) {
-        RxPaparazzo.single(fr)
+        dis = RxPaparazzo.single(fr)
                 .usingCamera()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ response ->
+                .subscribeBy({ response ->
                     if (response.data() != null) {
                         image = response.data().file
                         getView<ExampleView>()?.initImage(image.absolutePath)
                     }
+                }, { th ->
+                    showError(th.message ?: "")
+                }, {
+                    //
                 })
+        addSubscription(dis)
     }
 
     fun openAlbum(fr: BaseFragment) {
-        RxPaparazzo.single(fr)
+        dis = RxPaparazzo.single(fr)
                 .usingGallery()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ response ->
+                .subscribeBy({ response ->
                     if (response.data() != null) {
                         image = response.data().file
                         getView<ExampleView>()?.initImage(image.absolutePath)
                     }
+                }, { th ->
+                    showError(th.message ?: "")
+                }, {
+                    //
                 })
+        addSubscription(dis)
     }
 
 }

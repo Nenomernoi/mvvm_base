@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.Point
 import android.os.Bundle
 import android.os.Handler
 import android.os.IBinder
@@ -29,6 +30,10 @@ abstract class BaseFragment : Fragment(), BaseView {
 
     protected open lateinit var activityCallback: ActivityCallback
     protected open lateinit var presenter: BasePresenter
+
+    protected var heightRoot: Int = 0
+    protected var widthRoot: Int = 0
+    protected var heightRealRoot: Int = 0
 
     //////////////////////////////////////////////////////////////////////////////////////
 
@@ -61,6 +66,17 @@ abstract class BaseFragment : Fragment(), BaseView {
 
     open fun updateScreen() {
         //
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////
+
+    protected fun initWidthHeight() {
+        val size = Point()
+        activity?.windowManager?.defaultDisplay?.getSize(size)
+        heightRoot = size.y
+        widthRoot = size.x
+        activity?.windowManager?.defaultDisplay?.getRealSize(size)
+        heightRealRoot = size.y
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////
