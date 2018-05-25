@@ -8,6 +8,7 @@ interface ActivityCallback {
     fun openFragment(fragmentClass: Class<out BaseFragment>, addToBackStack: Boolean, args: Bundle)
     fun openRootFragment(fragmentClass: Class<out BaseFragment>, args: Bundle)
     fun openNewActivity(intent: Intent)
+    fun openResultActivity(intent: Intent, code: Int)
     fun hideSoftKeyboard()
     fun getLocation()
     fun initLocation()
