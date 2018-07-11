@@ -25,7 +25,7 @@ class ExamplePageFragment : BasePageFragment(), ExamplePageView {
     }
 
     override fun setOffscreenPageLimit() {
-        vpMain?.offscreenPageLimit = 3
+        vpMain?.offscreenPageLimit = 2
     }
 
 }

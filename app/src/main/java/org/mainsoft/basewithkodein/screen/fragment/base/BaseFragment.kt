@@ -133,7 +133,7 @@ abstract class BaseFragment : Fragment(), BaseView {
         }
 
         edt.setCompoundDrawablesWithIntrinsicBounds(res, 0, R.drawable.remove_text, 0)
-        edt.setOnTouchListener(object : DrawableClickListener.RightDrawableClickListener(edt) {
+        edt?.setOnTouchListener(object : DrawableClickListener.RightDrawableClickListener(edt) {
             override fun onDrawableClick(): Boolean {
                 edt.setText("")
                 return true
@@ -206,11 +206,11 @@ abstract class BaseFragment : Fragment(), BaseView {
 
     fun showSoftKeyboard(view: View) {
         if (activity != null) {
-            Handler().post({
+            Handler().post {
                 view.requestFocus()
                 (activity!!.systemService<InputMethodManager>())
                         .showSoftInput(view, InputMethodManager.SHOW_IMPLICIT)
-            })
+            }
         }
     }
 

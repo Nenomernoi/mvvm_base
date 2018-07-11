@@ -52,12 +52,12 @@ abstract class BaseListPresenter<T : Any>(view: BaseListView<T>) : BasePresenter
     }
 
     open fun onError(er: Throwable) {
-        view.showError(er.message!!)
+        getView<BaseListView<T>>()?.showError(er.message!!)
         showHideProgress(false)
     }
 
     open fun onError(text: String) {
-        view.showError(text)
+        getView<BaseListView<T>>()?.showError(text)
         showHideProgress(false)
     }
 
