@@ -113,6 +113,11 @@ abstract class BaseActivity : AppCompatActivity(), ActivityCallback {
         startActivity(intent)
     }
 
+    override fun openResultActivity(intent: Intent, code: Int) {
+        intent.putExtra(UPDATE_SCREEN, true)
+        startActivityForResult(intent, code)
+    }
+
     //////////////////////////////////////////////////////////////////////////////////////////////////
 
     override fun openFragment(fragmentClass: Class<out BaseFragment>, addToBackStack: Boolean, args: Bundle) {
@@ -383,6 +388,8 @@ abstract class BaseActivity : AppCompatActivity(), ActivityCallback {
         for (fragment in supportFragmentManager.fragments) {
             fragment?.onActivityResult(requestCode, resultCode, data)
         }
+
+        //TODO ADD LISTENER ACTIVITY ON RESULT
     }
 
     ////////////////////////////////////////////////////////////////////////////////////
