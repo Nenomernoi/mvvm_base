@@ -8,10 +8,12 @@ import android.support.v4.content.res.ResourcesCompat
 import android.support.v7.app.AlertDialog
 import android.widget.TextView
 import org.mainsoft.basewithkodein.R
-import java.util.Calendar
+import java.util.*
 
 class DialogUtil {
     companion object {
+
+        private var dialog: AlertDialog? = null
 
         fun showErrorPermissionDialog(context: Context, listener: DialogInterface.OnClickListener,
                                       listenerCancel: DialogInterface.OnClickListener) {
@@ -35,6 +37,7 @@ class DialogUtil {
 
         fun showBaseCalendarDialog(context: Context, date: Long?, dateMin: Long?, dateMax: Long?,
                                    listener: OnDateSetListener) {
+
             val cal = Calendar.getInstance()
             if (date != null) {
                 cal.timeInMillis = date
@@ -56,7 +59,6 @@ class DialogUtil {
                 calMin.timeInMillis = dateMin
                 dialog.datePicker.minDate = calMin.timeInMillis
             }
-
             dialog.show()
         }
 
@@ -73,40 +75,64 @@ class DialogUtil {
                                message: String?, cancel: Int,
                                ok: Int, listener: DialogInterface.OnClickListener,
                                listenerCancel: DialogInterface.OnClickListener) {
+
+            if (dialog != null) {
+                return
+            }
+
             val builder = AlertDialog.Builder(context, R.style.AppCompatAlertDialogStyle)
             builder.setMessage(message)
             builder.setTitle(title)
             builder.setPositiveButton(ok, listener)
             builder.setNegativeButton(cancel, listenerCancel)
-
-            val dialog: AlertDialog = builder.show()
+            builder.setOnDismissListener {
+                dialog = null
+            }
+            dialog = builder.show()
 
             val face = ResourcesCompat.getFont(context, R.font.good_dog)
-            dialog.findViewById<TextView>(android.R.id.message)?.typeface = face
-            dialog.findViewById<TextView>(android.R.id.title)?.typeface = face
+            dialog?.findViewById<TextView>(android.R.id.message)?.typeface = face
+            dialog?.findViewById<TextView>(android.R.id.title)?.typeface = face
         }
 
         private fun baseMessageDialog(context: Context, title: Int, message: String?, ok: Int,
                                       listener: DialogInterface.OnClickListener) {
+
+            if (dialog != null) {
+                return
+            }
+
             val builder = AlertDialog.Builder(context, R.style.AppCompatAlertDialogStyle)
             builder.setMessage(message)
             builder.setTitle(title)
             builder.setPositiveButton(ok, listener)
-
-            val dialog: AlertDialog = builder.show()
+            builder.setOnDismissListener {
+                dialog = null
+            }
+            dialog = builder.show()
 
             val face = ResourcesCompat.getFont(context, R.font.good_dog)
-            dialog.findViewById<TextView>(android.R.id.message)?.typeface = face
-            dialog.findViewById<TextView>(android.R.id.title)?.typeface = face
+            dialog?.findViewById<TextView>(android.R.id.message)?.typeface = face
+            dialog?.findViewById<TextView>(android.R.id.title)?.typeface = face
         }
 
         private fun baseListDialog(context: Context, list: List<String>,
                                    title: Int, listener: ListenerDialogList) {
+
+            if (dialog != null) {
+                return
+            }
+
             val items = list.toTypedArray()
             val builder = AlertDialog.Builder(context, R.style.AppCompatAlertDialogStyle)
             builder.setTitle(title)
             builder.setItems(items) { dialog, position -> listener.onSelectItem(position, dialog) }
-            builder.show()
+
+            builder.setOnDismissListener {
+                dialog = null
+            }
+
+            dialog = builder.show()
         }
 
         interface ListenerDialogList {
