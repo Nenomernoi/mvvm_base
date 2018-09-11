@@ -10,7 +10,7 @@ interface Api {
     ///////////////////////////////////////////// GET  //////////////////////////////////////////
 
     @GET("all")
-    fun getCurrencies(@Query("fields")
-                      fields: String): Observable<MutableList<CountryResponse>>  //name;capital;currencies
+    fun getCurrencies(@Query("fields") fields: String)
+            : Observable<MutableList<CountryResponse>>  //name;capital;currencies
 
 }

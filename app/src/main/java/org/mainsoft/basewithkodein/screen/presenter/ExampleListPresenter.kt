@@ -65,7 +65,8 @@ class ExampleListPresenter(view: ExampleListView)
     //////////////////////////////////////////////////////////////////////////////////////////
 
     override fun loadCache(savedInstanceState: Bundle) {
-        onLoad(savedInstanceState.getParcelableArrayList<CountryResponse>(BUNDLE_LIST_KEY))
+        onLoad(savedInstanceState.getParcelableArrayList<CountryResponse>(BUNDLE_LIST_KEY)?.toMutableList()
+                ?: mutableListOf())
     }
 
     override fun saveCache(outState: Bundle) {

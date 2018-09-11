@@ -5,11 +5,15 @@ import org.mainsoft.basewithkodein.net.Api
 open class BaseNetManager(val api: Api, var listener: BaseListener?) {
 
     protected open val consumerError = { th: Throwable ->
-        listener?.showError(th.toString())
+        if (listener != null) {
+            listener?.showError(th.toString())
+        }
     }
 
     protected open val complete = {
-        listener?.onLoaded()
+        if (listener != null) {
+            listener?.onLoaded()
+        }
     }
 
 }

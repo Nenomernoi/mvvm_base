@@ -40,8 +40,8 @@ abstract class BasePresenter(val view: BaseView) : Presenter {
 
     ////////////////////////////////////////////////////////////////////////////////////////
 
-    protected var latitude: Double = EMPTY
-    protected var longitude: Double = EMPTY
+    protected var latitude: Double? = null
+    protected var longitude: Double? = null
 
     ////////////////////////////////////////////////////////////////////////////////////////
 
@@ -62,6 +62,7 @@ abstract class BasePresenter(val view: BaseView) : Presenter {
 
     fun getLng() = longitude
     fun getLat() = latitude
+    fun isEmptyLocation(): Boolean = longitude == null || latitude == null
 
     ////////////////////////////////////////////////////////////////////////////////////////
 

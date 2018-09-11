@@ -13,14 +13,14 @@ class GetCurrenciesManager(api: Api, listener: LoadListener) : BaseNetManager(ap
 
     fun getCityList(field: String): Disposable {
 
-        listener.showHideProgress(true)
+        listener?.showHideProgress(true)
 
         return api.getCurrencies(field)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribeBy(
                         onNext = { results ->
-                            (listener as LoadListener).onLoad(results)
+                            (listener as? LoadListener)?.onLoad(results)
                         },
                         onError = consumerError,
                         onComplete = complete
