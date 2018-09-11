@@ -2,14 +2,14 @@ package org.mainsoft.basewithkodein.net.manager.base
 
 import org.mainsoft.basewithkodein.net.Api
 
-open class BaseNetManager(val api: Api, val listener: BaseListener) {
+open class BaseNetManager(val api: Api, var listener: BaseListener?) {
 
     protected open val consumerError = { th: Throwable ->
-        listener.showError(th.toString())
+        listener?.showError(th.toString())
     }
 
-    protected open val complite = {
-        listener.onLoaded()
+    protected open val complete = {
+        listener?.onLoaded()
     }
 
 }

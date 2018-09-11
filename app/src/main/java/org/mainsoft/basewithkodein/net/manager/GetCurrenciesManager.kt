@@ -23,7 +23,7 @@ class GetCurrenciesManager(api: Api, listener: LoadListener) : BaseNetManager(ap
                             (listener as LoadListener).onLoad(results)
                         },
                         onError = consumerError,
-                        onComplete = complite
+                        onComplete = complete
                 )
     }
 

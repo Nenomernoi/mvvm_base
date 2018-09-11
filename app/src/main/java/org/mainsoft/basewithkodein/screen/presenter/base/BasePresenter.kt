@@ -34,7 +34,7 @@ abstract class BasePresenter(val view: BaseView) : Presenter {
 
     private val compositeDisposable: CompositeDisposable by App.kodein.instance()
 
-    protected lateinit var netManager: BaseNetManager
+    protected var netManager: BaseNetManager? = null
 
     protected var dis: Disposable? = null
 
@@ -84,7 +84,7 @@ abstract class BasePresenter(val view: BaseView) : Presenter {
     }
 
     override fun onStop() {
-        //
+        netManager?.listener = null
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////

@@ -10,4 +10,5 @@ interface BaseView {
     fun showMessageError(message: Int)
     fun showMessageError(message: Int, listener: DialogInterface.OnClickListener)
     fun getLocation()
+    fun firstLoad()
 }

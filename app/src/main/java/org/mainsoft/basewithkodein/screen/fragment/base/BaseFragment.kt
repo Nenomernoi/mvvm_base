@@ -69,6 +69,10 @@ abstract class BaseFragment : Fragment(), BaseView {
         //
     }
 
+    override fun firstLoad() {
+        //
+    }
+
     ////////////////////////////////////////////////////////////////////////////////////////
 
     protected fun initWidthHeight() {
