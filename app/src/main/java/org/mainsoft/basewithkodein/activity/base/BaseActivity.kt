@@ -2,6 +2,7 @@ package org.mainsoft.basewithkodein.activity.base
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -14,6 +15,7 @@ import android.support.v4.app.ActivityCompat
 import android.support.v4.app.FragmentManager
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.core.content.systemService
 import androidx.core.net.toUri
@@ -101,7 +103,7 @@ abstract class BaseActivity : AppCompatActivity(), ActivityCallback {
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
         setIntent(intent)
-        if (fm?.fragments?.size == 0 || intent!!.extras.getBoolean(UPDATE_SCREEN, false)) {
+        if (fm?.fragments?.size == 0 || intent?.extras?.getBoolean(UPDATE_SCREEN, false) == true) {
             startNewTask()
         }
     }
@@ -120,11 +122,11 @@ abstract class BaseActivity : AppCompatActivity(), ActivityCallback {
 
     //////////////////////////////////////////////////////////////////////////////////////////////////
 
-    override fun openFragment(fragmentClass: Class<out BaseFragment>, addToBackStack: Boolean, args: Bundle) {
+    override fun openFragment(fragmentClass: Class<out BaseFragment>, addToBackStack: Boolean, args: Bundle?) {
         openFragment(fragmentClass, addToBackStack, args, false)
     }
 
-    override fun openRootFragment(fragmentClass: Class<out BaseFragment>, args: Bundle) {
+    override fun openRootFragment(fragmentClass: Class<out BaseFragment>, args: Bundle?) {
 
         (0 until fm!!.backStackEntryCount)
                 .map { fm!!.getBackStackEntryAt(it).id }
@@ -135,13 +137,13 @@ abstract class BaseActivity : AppCompatActivity(), ActivityCallback {
 
     /////////////////////////////////////////////////////////////////////////////////////////////
 
-    private fun openFragment(fragmentClass: Class<out BaseFragment>, addToBackStack: Boolean, args: Bundle,
+    private fun openFragment(fragmentClass: Class<out BaseFragment>, addToBackStack: Boolean, args: Bundle?,
                              isReplace: Boolean) {
         openScreen(fragmentClass, addToBackStack, args, isReplace)
         closeDrawer()
     }
 
-    private fun openScreen(fragmentClass: Class<out BaseFragment>, addToBackStack: Boolean, args: Bundle,
+    private fun openScreen(fragmentClass: Class<out BaseFragment>, addToBackStack: Boolean, args: Bundle?,
                            isReplace: Boolean) {
 
         hideSoftKeyboard()
@@ -195,7 +197,7 @@ abstract class BaseActivity : AppCompatActivity(), ActivityCallback {
         }
     }
 
-    private fun createFragment(fragmentClass: Class<out BaseFragment>, args: Bundle): BaseFragment {
+    private fun createFragment(fragmentClass: Class<out BaseFragment>, args: Bundle?): BaseFragment {
         val fragment = fragmentClass.newInstance()
         fragment.setHasOptionsMenu(true)
         fragment.arguments = args
@@ -237,7 +239,7 @@ abstract class BaseActivity : AppCompatActivity(), ActivityCallback {
 
         settingsClient.checkLocationSettings(locationSettingsRequest).addOnCompleteListener(this) {
             client?.requestLocationUpdates(locationRequest, locationCallback, Looper.myLooper())
-        }.addOnFailureListener({ _ -> errorLocation() })
+        }.addOnFailureListener { _ -> errorLocation() }
     }
 
     private fun getDistanceCorrect(l: LocationResult): Double {
@@ -298,7 +300,7 @@ abstract class BaseActivity : AppCompatActivity(), ActivityCallback {
                 token = currentFocus!!.windowToken
             }
             if (token != null) {
-                val imm = systemService<InputMethodManager>()
+                val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 imm.hideSoftInputFromWindow(token, 0)
             }
         }

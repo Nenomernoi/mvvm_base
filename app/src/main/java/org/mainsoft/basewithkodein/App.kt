@@ -45,7 +45,7 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         RxPaparazzo.register(this)
-        Fabric.with(this, Crashlytics())
+       // Fabric.with(this, Crashlytics())
         kodein = Kodein {
             import(settingModule)
             import(screenModule)

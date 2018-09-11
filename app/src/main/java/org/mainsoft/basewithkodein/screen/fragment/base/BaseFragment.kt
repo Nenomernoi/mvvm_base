@@ -17,6 +17,7 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.core.content.systemService
+import com.google.android.gms.common.util.InputMethodUtils.showSoftInput
 import kotlinx.android.synthetic.main.fragment_base.pbLoad
 import org.mainsoft.basewithkodein.R
 import org.mainsoft.basewithkodein.activity.base.ActivityCallback
@@ -208,20 +209,20 @@ abstract class BaseFragment : Fragment(), BaseView {
         if (activity != null) {
             Handler().post {
                 view.requestFocus()
-                (activity!!.systemService<InputMethodManager>())
-                        .showSoftInput(view, InputMethodManager.SHOW_IMPLICIT)
+                (activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager)
+                        ?.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT)
             }
         }
     }
 
     fun hideSoftKeyboard(view: View?) {
-        val imm = activity!!.systemService<InputMethodManager>()
+        val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         var token: IBinder? = null
         if (view != null) {
             token = view.windowToken
         }
-        if (token == null && activity!!.currentFocus != null) {
-            token = activity!!.currentFocus.windowToken
+        if (token == null && activity?.currentFocus != null) {
+            token = activity?.currentFocus?.windowToken
         }
         if (token != null) {
             imm.hideSoftInputFromWindow(token, 0)
