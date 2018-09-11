@@ -8,8 +8,8 @@ import kotlinx.android.synthetic.main.fragment_base.btnPermission
 import kotlinx.android.synthetic.main.fragment_base.btnPhoto
 import kotlinx.android.synthetic.main.fragment_base.imgBg
 import kotlinx.android.synthetic.main.fragment_base.txtList
-import org.kodein.direct
-import org.kodein.generic.instance
+import org.kodein.di.direct
+import org.kodein.di.generic.instance
 import org.mainsoft.basewithkodein.App
 import org.mainsoft.basewithkodein.R
 import org.mainsoft.basewithkodein.activity.base.PermissionListener

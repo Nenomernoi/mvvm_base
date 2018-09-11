@@ -1,8 +1,8 @@
 package org.mainsoft.basewithkodein.screen.fragment
 
 import android.os.Bundle
-import org.kodein.direct
-import org.kodein.generic.instance
+import org.kodein.di.direct
+import org.kodein.di.generic.instance
 import org.mainsoft.basewithkodein.App
 import org.mainsoft.basewithkodein.R
 import org.mainsoft.basewithkodein.adapter.ExampleAdapter

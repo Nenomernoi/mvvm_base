@@ -28,7 +28,7 @@ import com.google.android.gms.location.LocationSettingsRequest
 import com.google.android.gms.location.SettingsClient
 import com.tbruyelle.rxpermissions2.RxPermissions
 import kotlinx.android.synthetic.main.activity_main.toolbar
-import org.kodein.generic.instance
+import org.kodein.di.generic.instance
 import org.mainsoft.basewithkodein.App
 import org.mainsoft.basewithkodein.R
 import org.mainsoft.basewithkodein.screen.fragment.base.BaseFragment

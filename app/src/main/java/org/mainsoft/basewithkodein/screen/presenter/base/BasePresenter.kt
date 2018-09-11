@@ -5,7 +5,8 @@ import android.os.Bundle
 import io.objectbox.BoxStore
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
-import org.kodein.generic.instance
+import org.kodein.di.generic.instance
+
 import org.mainsoft.basewithkodein.App
 import org.mainsoft.basewithkodein.net.Api
 import org.mainsoft.basewithkodein.net.manager.base.BaseNetManager

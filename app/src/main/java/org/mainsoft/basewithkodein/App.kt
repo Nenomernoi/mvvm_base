@@ -1,15 +1,13 @@
 package org.mainsoft.basewithkodein
 
 import android.app.Application
-import com.crashlytics.android.Crashlytics
 import com.miguelbcr.ui.rx_paparazzo2.RxPaparazzo
-import io.fabric.sdk.android.Fabric
 import io.objectbox.BoxStore
 import io.reactivex.disposables.CompositeDisposable
-import org.kodein.Kodein
-import org.kodein.generic.bind
-import org.kodein.generic.factory
-import org.kodein.generic.singleton
+import org.kodein.di.Kodein
+import org.kodein.di.generic.bind
+import org.kodein.di.generic.factory
+import org.kodein.di.generic.singleton
 import org.mainsoft.basewithkodein.net.Api
 import org.mainsoft.basewithkodein.net.ApiRest
 import org.mainsoft.basewithkodein.net.response.MyObjectBox
