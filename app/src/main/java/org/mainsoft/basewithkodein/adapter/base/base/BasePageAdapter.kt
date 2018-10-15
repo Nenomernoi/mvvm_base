@@ -1,10 +1,10 @@
 package org.mainsoft.basewithkodein.base
 
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentPagerAdapter
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentPagerAdapter
 
-abstract class BasePageAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
+abstract class BasePageAdapter(fm: androidx.fragment.app.FragmentManager) : androidx.fragment.app.FragmentPagerAdapter(fm) {
 
     private var tabs: MutableList<String> = ArrayList()
 
@@ -12,7 +12,7 @@ abstract class BasePageAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
         this.tabs = tabs
     }
 
-    override fun getItem(position: Int): Fragment = Fragment()
+    override fun getItem(position: Int): androidx.fragment.app.Fragment = androidx.fragment.app.Fragment()
 
     override fun getCount(): Int = tabs.size
 

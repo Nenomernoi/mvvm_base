@@ -1,9 +1,9 @@
 package org.mainsoft.basewithkodein.base
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 
 abstract class BaseSupportAdapter<T : Any>(private var items: MutableList<T>, var listener: OnItemClickListener) :
-        RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+        androidx.recyclerview.widget.RecyclerView.Adapter<androidx.recyclerview.widget.RecyclerView.ViewHolder>() {
 
     constructor(items: MutableList<T>) : this(items, object : OnItemClickListener {
         override fun onItemClick(position: Int) {

@@ -1,6 +1,6 @@
 package org.mainsoft.basewithkodein.adapter.drawer
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,7 +18,7 @@ class DrawerAdapter(data: MutableList<DrawerItem>, onItemClickListener: OnItemCl
         return ViewHolder(v)
     }
 
-    override fun onBindViewHolder(vwh: RecyclerView.ViewHolder, position: Int) {
+    override fun onBindViewHolder(vwh: androidx.recyclerview.widget.RecyclerView.ViewHolder, position: Int) {
         val item: DrawerItem = getItem(position)
         val vh: DrawerAdapter.ViewHolder = (vwh as? DrawerAdapter.ViewHolder)!!
 
@@ -27,7 +27,7 @@ class DrawerAdapter(data: MutableList<DrawerItem>, onItemClickListener: OnItemCl
         vh.itemView.setOnClickListener({ listener.onItemClick(position) })
     }
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
         val txtTitle = itemView.txtTitle!!
         val imgTitle = itemView.imgTitle!!
     }

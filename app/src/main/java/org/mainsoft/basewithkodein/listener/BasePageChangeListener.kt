@@ -1,8 +1,8 @@
 package org.mainsoft.basewithkodein.listener
 
-import android.support.v4.view.ViewPager
+import androidx.viewpager.widget.ViewPager
 
-interface BasePageChangeListener : ViewPager.OnPageChangeListener {
+interface BasePageChangeListener : androidx.viewpager.widget.ViewPager.OnPageChangeListener {
 
     override fun onPageScrollStateChanged(state: Int) {
         //

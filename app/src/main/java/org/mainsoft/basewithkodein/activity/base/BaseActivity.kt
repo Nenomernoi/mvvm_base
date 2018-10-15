@@ -11,13 +11,12 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.IBinder
 import android.os.Looper
-import android.support.v4.app.ActivityCompat
-import android.support.v4.app.FragmentManager
-import android.support.v7.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.fragment.app.FragmentManager
+import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import androidx.core.content.systemService
 import androidx.core.net.toUri
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationCallback
@@ -47,7 +46,7 @@ abstract class BaseActivity : AppCompatActivity(), ActivityCallback {
 
     protected val setting: Setting by App.kodein.instance()
 
-    private var fm: FragmentManager? = null
+    private var fm: androidx.fragment.app.FragmentManager? = null
 
     private var client: FusedLocationProviderClient? = null
     private lateinit var locationCallback: LocationCallback
@@ -130,7 +129,7 @@ abstract class BaseActivity : AppCompatActivity(), ActivityCallback {
 
         (0 until fm!!.backStackEntryCount)
                 .map { fm!!.getBackStackEntryAt(it).id }
-                .forEach { fm!!.popBackStack(it, FragmentManager.POP_BACK_STACK_INCLUSIVE) }
+                .forEach { fm!!.popBackStack(it, androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE) }
         openFragment(fragmentClass, true, args, true)
         setDrawerEnabled(true)
     }

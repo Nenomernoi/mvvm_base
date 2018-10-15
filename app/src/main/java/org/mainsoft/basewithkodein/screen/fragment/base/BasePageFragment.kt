@@ -1,6 +1,6 @@
 package org.mainsoft.basewithkodein.screen.fragment.base
 
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_base_page.tlMain
 import kotlinx.android.synthetic.main.fragment_base_page.vpMain
 import org.mainsoft.basewithkodein.R
@@ -64,7 +64,7 @@ abstract class BasePageFragment : BaseFragment() {
 
     /////////////////////////////////////////////////////////////////////////////////////////
 
-    protected fun getCurrentFragment(): Fragment? {
+    protected fun getCurrentFragment(): androidx.fragment.app.Fragment? {
 
         for (i in 0 until childFragmentManager.fragments.size) {
             val fragment = childFragmentManager.fragments[i]

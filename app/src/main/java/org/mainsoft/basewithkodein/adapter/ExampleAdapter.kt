@@ -1,6 +1,6 @@
 package org.mainsoft.basewithkodein.adapter
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,7 +19,7 @@ class ExampleAdapter(data: MutableList<CountryResponse>, onItemClickListener: On
         return ViewHolder(v)
     }
 
-    override fun onBindViewHolder(vwh: RecyclerView.ViewHolder, position: Int) {
+    override fun onBindViewHolder(vwh: androidx.recyclerview.widget.RecyclerView.ViewHolder, position: Int) {
         val item: CountryResponse = getItem(position)
         val vh: ViewHolder = (vwh as? ViewHolder)!!
 
@@ -28,7 +28,7 @@ class ExampleAdapter(data: MutableList<CountryResponse>, onItemClickListener: On
         vh.itemView.setOnClickListener({ listener.onItemClick(position) })
     }
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
         val txtName = itemView.txtName!!
         val txtCode = itemView.txtCode!!
     }

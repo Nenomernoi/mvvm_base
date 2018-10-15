@@ -4,8 +4,8 @@ import android.app.DatePickerDialog
 import android.app.DatePickerDialog.OnDateSetListener
 import android.content.Context
 import android.content.DialogInterface
-import android.support.v4.content.res.ResourcesCompat
-import android.support.v7.app.AlertDialog
+import androidx.core.content.res.ResourcesCompat
+import androidx.appcompat.app.AlertDialog
 import android.widget.TextView
 import org.mainsoft.basewithkodein.R
 import java.util.*

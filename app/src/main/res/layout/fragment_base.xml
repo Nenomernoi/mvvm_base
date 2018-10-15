@@ -54,7 +54,7 @@
       android:weightSum="90"
       >
 
-    <android.support.v7.widget.AppCompatButton
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnPhoto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -64,7 +64,7 @@
         style="@style/Widget.AppCompat.Button.Colored"
         />
 
-    <android.support.v7.widget.AppCompatButton
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnImage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -74,7 +74,7 @@
         style="@style/Widget.AppCompat.Button.Colored"
         />
 
-    <android.support.v7.widget.AppCompatButton
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnPermission"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -8,7 +8,7 @@ import android.graphics.Point
 import android.os.Bundle
 import android.os.Handler
 import android.os.IBinder
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.text.Editable
 import android.util.Log
 import android.view.LayoutInflater
@@ -16,7 +16,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
-import androidx.core.content.systemService
 import com.google.android.gms.common.util.InputMethodUtils.showSoftInput
 import kotlinx.android.synthetic.main.fragment_base.pbLoad
 import org.mainsoft.basewithkodein.R
@@ -27,7 +26,7 @@ import org.mainsoft.basewithkodein.screen.presenter.base.BasePresenter
 import org.mainsoft.basewithkodein.screen.view.base.BaseView
 import org.mainsoft.basewithkodein.util.DialogUtil
 
-abstract class BaseFragment : Fragment(), BaseView {
+abstract class BaseFragment : androidx.fragment.app.Fragment(), BaseView {
 
     protected open lateinit var activityCallback: ActivityCallback
     protected open lateinit var presenter: BasePresenter
