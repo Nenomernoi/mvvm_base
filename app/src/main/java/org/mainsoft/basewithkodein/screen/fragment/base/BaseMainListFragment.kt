@@ -35,6 +35,9 @@ abstract class BaseMainListFragment<T : Any> : BaseListFragment() {
         }
     }
 
+    protected fun getData(): MutableList<T> = getPresenter<BaseListPresenter<T>>()?.getData()
+            ?: mutableListOf()
+
     protected open fun setItems(data: MutableList<T>) {
         adapter?.setItems(data)
     }
