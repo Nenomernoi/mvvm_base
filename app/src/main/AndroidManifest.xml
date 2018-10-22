@@ -28,6 +28,20 @@
     </activity>
 
 
+    <activity android:name=".activity.ForegroundActivity"/>
+
+    <service
+        android:name=".services.VPN"
+        android:permission="android.permission.BIND_VPN_SERVICE">
+      <intent-filter>
+        <action android:name="android.net.VpnService"/>
+      </intent-filter>
+    </service>
+
+    <service
+        android:name=".services.ForeGroundService"
+        android:enabled="true"
+        android:exported="true" />
 
     <provider
         android:name="androidx.core.content.FileProvider"
@@ -38,6 +52,9 @@
           android:name="android.support.FILE_PROVIDER_PATHS"
           android:resource="@xml/file_provider_paths"/>
     </provider>
+
+
+
   </application>
 
 </manifest>

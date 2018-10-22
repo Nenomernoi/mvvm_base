@@ -14,7 +14,7 @@ android {
         }
     }
     compileSdkVersion 28
-    buildToolsVersion '28.0.2'
+    buildToolsVersion '28.0.3'
     defaultConfig {
         applicationId "org.mainsoft.basewithkodein"
         minSdkVersion 19
@@ -52,59 +52,59 @@ kapt {
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    api fileTree(include: ['*.jar'], dir: 'libs')
 
     ///
-    implementation 'androidx.multidex:multidex:2.0.0'
-    implementation 'androidx.multidex:multidex-instrumentation:2.0.0'
+    api 'androidx.multidex:multidex:2.0.0'
+    api 'androidx.multidex:multidex-instrumentation:2.0.0'
 
     //Base
-    implementation 'androidx.appcompat:appcompat:1.0.0'
-    implementation 'androidx.recyclerview:recyclerview:1.0.0'
-    implementation 'com.google.android.material:material:1.0.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
+    api 'androidx.appcompat:appcompat:1.0.0'
+    api 'androidx.recyclerview:recyclerview:1.0.0'
+    api 'com.google.android.material:material:1.0.0'
+    api 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
 
     //kotlin
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.0.0'
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    api 'androidx.core:core-ktx:1.0.0'
 
     //DI
-    implementation 'org.kodein.di:kodein-di-generic-jvm:5.2.0'
+    api 'org.kodein.di:kodein-di-generic-jvm:5.2.0'
 
     //RxJava2
-    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
-    implementation 'io.reactivex.rxjava2:rxkotlin:2.0.0'
+    api 'io.reactivex.rxjava2:rxandroid:2.0.2'
+    api 'io.reactivex.rxjava2:rxkotlin:2.0.0'
 
     /// RxPermissions
-    implementation 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar'
+    api 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar'
 
     ///Net
-    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
-    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
-    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
-    implementation 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.11.0'
-    implementation 'com.squareup.okhttp3:okhttp:3.11.0'
+    api "com.squareup.retrofit2:retrofit:$retrofit_version"
+    api "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
+    api "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    api 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
+    api 'com.squareup.okhttp3:logging-interceptor:3.11.0'
+    api 'com.squareup.okhttp3:okhttp:3.11.0'
 
     //DB
     kapt "io.objectbox:objectbox-processor:$objectbox_version"
-    implementation "io.objectbox:objectbox-kotlin:$objectbox_version"
+    api "io.objectbox:objectbox-kotlin:$objectbox_version"
 
     //LOCATION
-    implementation "com.google.android.gms:play-services-location:$service_version"
-    implementation "com.google.android.gms:play-services-maps:$service_version"
+    api "com.google.android.gms:play-services-location:$service_version"
+    api "com.google.android.gms:play-services-maps:$service_version"
 
     //Image Load
-    implementation 'com.github.bumptech.glide:glide:4.7.1'
-    implementation 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1'
-    implementation 'com.makeramen:roundedimageview:2.3.0'
+    api 'com.github.bumptech.glide:glide:4.7.1'
+    api 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1'
+    api 'com.makeramen:roundedimageview:2.3.0'
 
     //RXPhoto and Crop
-    implementation 'com.github.miguelbcr:RxPaparazzo:0.6.0-2.x'
-    implementation 'com.theartofdev.edmodo:android-image-cropper:2.7.0'
+    api 'com.github.miguelbcr:RxPaparazzo:0.6.0-2.x'
+    api 'com.theartofdev.edmodo:android-image-cropper:2.7.0'
 
     ///Crashlytics
-    implementation('com.crashlytics.sdk.android:crashlytics:2.9.4@aar') {
+    api('com.crashlytics.sdk.android:crashlytics:2.9.4@aar') {
         transitive = true
     }
 }

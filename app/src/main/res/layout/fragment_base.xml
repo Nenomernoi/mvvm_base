@@ -47,6 +47,7 @@
       />
 
   <LinearLayout
+      android:id="@+id/llBtn"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:gravity="center"
@@ -84,6 +85,17 @@
         style="@style/Widget.AppCompat.Button.Colored"
         />
   </LinearLayout>
+
+
+  <androidx.appcompat.widget.AppCompatButton
+      android:id="@+id/btnVpn"
+      android:layout_below="@+id/llBtn"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:fontFamily="@font/pacifico"
+      android:text="vpn"
+      style="@style/Widget.AppCompat.Button.Colored"
+      />
 
   <RelativeLayout
       android:id="@+id/pbLoad"
