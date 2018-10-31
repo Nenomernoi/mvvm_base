@@ -23,6 +23,6 @@
 
 
     <style name="AppFontStyle" parent="@android:style/TextAppearance.Small">
-        <item name="android:fontFamily">@font/good_dog</item>
+        <item name="android:fontFamily">@font/main</item>
     </style>
 </resources>

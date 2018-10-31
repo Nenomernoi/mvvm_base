@@ -27,7 +27,7 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_centerInParent="true"
-      android:fontFamily="@font/pacifico"
+      android:fontFamily="@font/main"
       android:gravity="center"
       android:text="@string/app_name"
       android:textColor="@color/colorPrimary"
@@ -60,7 +60,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="30"
-        android:fontFamily="@font/pacifico"
+        android:fontFamily="@font/main"
         android:text="@string/popup_open_open"
         style="@style/Widget.AppCompat.Button.Colored"
         />
@@ -70,7 +70,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="30"
-        android:fontFamily="@font/pacifico"
+        android:fontFamily="@font/main"
         android:text="@string/popup_open_open"
         style="@style/Widget.AppCompat.Button.Colored"
         />
@@ -80,7 +80,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="30"
-        android:fontFamily="@font/pacifico"
+        android:fontFamily="@font/main"
         android:text="@string/popup_open_open"
         style="@style/Widget.AppCompat.Button.Colored"
         />
@@ -92,7 +92,7 @@
       android:layout_below="@+id/llBtn"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:fontFamily="@font/pacifico"
+      android:fontFamily="@font/main"
       android:text="vpn"
       style="@style/Widget.AppCompat.Button.Colored"
       />

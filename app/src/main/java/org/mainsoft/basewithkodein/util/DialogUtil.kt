@@ -90,7 +90,7 @@ class DialogUtil {
             }
             dialog = builder.show()
 
-            val face = ResourcesCompat.getFont(context, R.font.good_dog)
+            val face = ResourcesCompat.getFont(context, R.font.main)
             dialog?.findViewById<TextView>(android.R.id.message)?.typeface = face
             dialog?.findViewById<TextView>(android.R.id.title)?.typeface = face
         }
@@ -111,7 +111,7 @@ class DialogUtil {
             }
             dialog = builder.show()
 
-            val face = ResourcesCompat.getFont(context, R.font.good_dog)
+            val face = ResourcesCompat.getFont(context, R.font.main)
             dialog?.findViewById<TextView>(android.R.id.message)?.typeface = face
             dialog?.findViewById<TextView>(android.R.id.title)?.typeface = face
         }
