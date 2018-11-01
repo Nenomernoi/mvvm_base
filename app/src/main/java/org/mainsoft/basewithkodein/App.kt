@@ -17,6 +17,7 @@ import org.mainsoft.basewithkodein.screen.presenter.ExamplePresenter
 import org.mainsoft.basewithkodein.screen.view.ExampleListView
 import org.mainsoft.basewithkodein.screen.view.ExamplePageView
 import org.mainsoft.basewithkodein.screen.view.ExampleView
+import org.mainsoft.basewithkodein.util.PresenterUtil
 import org.mainsoft.basewithkodein.util.Setting
 
 class App : Application() {
@@ -24,16 +25,19 @@ class App : Application() {
     private val settingModule = Kodein.Module {
         bind<Setting>() with singleton { Setting(this@App) }
         bind<Api>() with singleton { ApiRest.getApi() }
+        bind<PresenterUtil>() with singleton { PresenterUtil() }
         bind<CompositeDisposable>() with singleton { CompositeDisposable() }
         bind<BoxStore>() with singleton { initDb() }
     }
 
+    private val presenterUtil = PresenterUtil()
+
     private fun initDb() = MyObjectBox.builder().androidContext(this@App).build()
 
     private val screenModule = Kodein.Module {
-        bind<ExamplePresenter>() with factory { view: ExampleView -> ExamplePresenter(view) }
-        bind<ExampleListPresenter>() with factory { view: ExampleListView -> ExampleListPresenter(view) }
-        bind<ExamplePagePresenter>() with factory { view: ExamplePageView -> ExamplePagePresenter(view) }
+        bind<ExamplePresenter>() with factory { view: ExampleView -> presenterUtil.getPresenter<ExamplePresenter>(view) }
+        bind<ExampleListPresenter>() with factory { view: ExampleListView -> presenterUtil.getPresenter<ExampleListPresenter>(view) }
+        bind<ExamplePagePresenter>() with factory { view: ExamplePageView -> presenterUtil.getPresenter<ExamplePagePresenter>(view) }
     }
 
     companion object {

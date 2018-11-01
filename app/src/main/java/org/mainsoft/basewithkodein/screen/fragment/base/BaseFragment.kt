@@ -18,6 +18,8 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import com.google.android.gms.common.util.InputMethodUtils.showSoftInput
 import kotlinx.android.synthetic.main.fragment_base.pbLoad
+import org.kodein.di.generic.instance
+import org.mainsoft.basewithkodein.App
 import org.mainsoft.basewithkodein.R
 import org.mainsoft.basewithkodein.activity.base.ActivityCallback
 import org.mainsoft.basewithkodein.listener.BaseEditTextListener
@@ -25,8 +27,11 @@ import org.mainsoft.basewithkodein.listener.DrawableClickListener
 import org.mainsoft.basewithkodein.screen.presenter.base.BasePresenter
 import org.mainsoft.basewithkodein.screen.view.base.BaseView
 import org.mainsoft.basewithkodein.util.DialogUtil
+import org.mainsoft.basewithkodein.util.PresenterUtil
 
-abstract class BaseFragment : androidx.fragment.app.Fragment(), BaseView {
+abstract class BaseFragment : Fragment(), BaseView {
+
+    private val presenterUtil: PresenterUtil by App.kodein.instance()
 
     protected open lateinit var activityCallback: ActivityCallback
     protected open lateinit var presenter: BasePresenter
@@ -171,10 +176,12 @@ abstract class BaseFragment : androidx.fragment.app.Fragment(), BaseView {
     ////////////////////////////////////////////////////////////////////////////////////////
 
     protected fun openScreen(fragmentClass: Class<out BaseFragment>, args: Bundle) {
+        presenterUtil.removePresenter(fragmentClass)
         activityCallback.openFragment(fragmentClass, true, args)
     }
 
     protected fun openBaseScreen(fragmentClass: Class<out BaseFragment>, args: Bundle) {
+        presenterUtil.removePresenter(fragmentClass)
         activityCallback.openRootFragment(fragmentClass, args)
     }
 

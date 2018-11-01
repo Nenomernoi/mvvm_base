@@ -44,6 +44,7 @@ abstract class BaseActivity : AppCompatActivity(), ActivityCallback {
         const val UPDATE_SCREEN = "screenUpdate"
     }
 
+    private val presenterUtil: PresenterUtil by App.kodein.instance()
     protected val setting: Setting by App.kodein.instance()
 
     private var fm: androidx.fragment.app.FragmentManager? = null
@@ -61,6 +62,7 @@ abstract class BaseActivity : AppCompatActivity(), ActivityCallback {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        startAnim()
         setContentView(getLayout())
         fm = supportFragmentManager
         initData()
@@ -68,6 +70,20 @@ abstract class BaseActivity : AppCompatActivity(), ActivityCallback {
         startScreen(savedInstanceState)
     }
 
+    override fun onPause() {
+        stopAnim()
+        super.onPause()
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////
+
+    protected open fun startAnim() {
+        //
+    }
+
+    protected open fun stopAnim() {
+        //
+    }
     ///////////////////////////////////////////////////////////////////////////////////////////
 
     protected open fun getLayout() = R.layout.activity_main
@@ -324,16 +340,18 @@ abstract class BaseActivity : AppCompatActivity(), ActivityCallback {
     override fun onBackPressed() {
         hideSoftKeyboard()
 
-        if (fm!!.backStackEntryCount == 1) {
+        if (fm?.backStackEntryCount == 1) {
             finish()
             return
         }
+        Handler().postDelayed({
+            super.onBackPressed()
 
-        super.onBackPressed()
-
-        val fr = fm!!.findFragmentById(R.id.container) as BaseFragment
-        fr.onResumeFromBackStack()
-        setDrawerEnabled(fm!!.backStackEntryCount == 1)
+            val fr = fm?.findFragmentById(R.id.container) as? BaseFragment
+            fr?.onResumeFromBackStack()
+            setDrawerEnabled(fm?.backStackEntryCount ?: 0 < 2)
+            presenterUtil.removePresenter(fr!!::class.java)
+        }, 300)
     }
 
     ////////////////////////////////////////////////////////////////////////////////////

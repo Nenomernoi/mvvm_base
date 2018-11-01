@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="double_click_prevent_duration">100</integer>
+    <integer name="fragment_animation_duration_">150</integer>
+
+    <integer name="screen_long_anim">500</integer>
+    <integer name="screen_short_anim">400</integer>
+
+    <integer name="screen_open_long_anim">1000</integer>
+    <integer name="screen_open_short_anim">500</integer>
+</resources>

@@ -14,7 +14,7 @@ import org.mainsoft.basewithkodein.screen.fragment.base.BaseFragment
 import org.mainsoft.basewithkodein.screen.view.base.BaseView
 import org.mainsoft.basewithkodein.util.Setting
 
-abstract class BasePresenter(val view: BaseView) : Presenter {
+abstract class BasePresenter(v: BaseView) : Presenter {
 
     companion object {
         const val ARGUMENT_PAGE_NUMBER = "page"
@@ -26,6 +26,8 @@ abstract class BasePresenter(val view: BaseView) : Presenter {
         const val EMPTY = -1.0
         const val EMPTY_INT = -1
     }
+
+    private var view: BaseView = v
 
     protected val api: Api by App.kodein.instance()
 
@@ -43,6 +45,12 @@ abstract class BasePresenter(val view: BaseView) : Presenter {
 
     protected var latitude: Double? = null
     protected var longitude: Double? = null
+
+    ////////////////////////////////////////////////////////////////////////////////////////
+
+    fun setView(view: BaseView) {
+        this.view = view
+    }
 
     ////////////////////////////////////////////////////////////////////////////////////////
 

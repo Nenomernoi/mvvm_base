@@ -48,11 +48,11 @@ class DialogUtil {
                     cal.get(Calendar.MONTH),
                     cal.get(Calendar.DAY_OF_MONTH))
 
-            val calMax = Calendar.getInstance()
             if (dateMax != null) {
+                val calMax = Calendar.getInstance()
                 calMax.timeInMillis = dateMax
+                dialog.datePicker.maxDate = calMax.timeInMillis
             }
-            dialog.datePicker.maxDate = calMax.timeInMillis
 
             if (dateMin != null) {
                 val calMin = Calendar.getInstance()
