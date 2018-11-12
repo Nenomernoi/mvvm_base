@@ -361,11 +361,17 @@ abstract class BaseActivity : AppCompatActivity(), ActivityCallback {
     }
 
     override fun openPermissionBase(isRepeat: Boolean, listener: PermissionListener, vararg permissions: String) {
+
+        var count = permissions.size
+
         RxPermissions(this)
                 .requestEach(*permissions)
                 .subscribe { permission ->
                     if (permission.granted) {
-                        listener.onComplete()
+                        count--
+                        if (count == 0) {
+                            listener.onComplete()
+                        }
                     } else if (permission.shouldShowRequestPermissionRationale) {
 
                         if (!isRepeat) {
