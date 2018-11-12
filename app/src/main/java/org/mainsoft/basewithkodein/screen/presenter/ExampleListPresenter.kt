@@ -12,7 +12,7 @@ import org.mainsoft.basewithkodein.screen.view.ExampleListView
 
 class ExampleListPresenter(view: ExampleListView)
     : BaseListPresenter<CountryResponse>(view),
-      GetCurrenciesManager.LoadListener {
+        GetCurrenciesManager.LoadListener {
 
     init {
         netManager = GetCurrenciesManager(api, this)
@@ -38,20 +38,23 @@ class ExampleListPresenter(view: ExampleListView)
         }
 
         if (bundle == null && isDataEmpty()) {
-            firstLoad()
+            loadDb()
         }
     }
 
-    override fun firstLoad() {
+    private fun loadDb() {
         countryService.readAll(
                 Consumer { t ->
                     if (t.isEmpty()) {
-                        addSubscription((netManager as? GetCurrenciesManager)?.getCityList("name;capital;currencies"))
+                        firstLoad()
                         return@Consumer
                     }
                     onLoad(t)
                 })
+    }
 
+    override fun firstLoad() {
+        addSubscription((netManager as? GetCurrenciesManager)?.getCityList("name;capital;currencies"))
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////

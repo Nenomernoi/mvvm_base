@@ -9,11 +9,12 @@ import org.mainsoft.basewithkodein.adapter.ExampleAdapter
 import org.mainsoft.basewithkodein.base.OnItemClickListener
 import org.mainsoft.basewithkodein.net.response.CountryResponse
 import org.mainsoft.basewithkodein.screen.fragment.base.BaseMainListFragment
+import org.mainsoft.basewithkodein.screen.fragment.base.BaseSwipeMainListFragment
 import org.mainsoft.basewithkodein.screen.presenter.ExampleListPresenter
 import org.mainsoft.basewithkodein.screen.presenter.base.BasePresenter
 import org.mainsoft.basewithkodein.screen.view.ExampleListView
 
-class ExampleListFragment : BaseMainListFragment<CountryResponse>(), ExampleListView {
+class ExampleListFragment : BaseSwipeMainListFragment<CountryResponse>(), ExampleListView {
 
     init {
         presenter = App.kodein.direct.instance<ExampleListView, ExampleListPresenter>(arg = this)
@@ -52,11 +53,5 @@ class ExampleListFragment : BaseMainListFragment<CountryResponse>(), ExampleList
     override fun openItemScreen(bundle: Bundle) {
         openScreen(ExampleListFragment::class.java, bundle)
     }
-
-    override fun getNewData() {
-        getPresenter<ExampleListPresenter>()?.clearData()
-        getPresenter<ExampleListPresenter>()?.firstLoad()
-    }
-
 
 }
