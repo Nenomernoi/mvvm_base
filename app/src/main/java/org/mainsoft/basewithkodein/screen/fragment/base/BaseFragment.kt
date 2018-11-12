@@ -104,22 +104,16 @@ abstract class BaseFragment : Fragment(), BaseView {
 
     ////////////////////////////////////////////////////////////////////////////////////////
 
-    override fun showMessageError(message: String?) {
-        showMessageError(message,
-                DialogInterface.OnClickListener { _: DialogInterface, _: Int -> showHideProgress(false) })
+    override fun showToastError(message: Any?) {
+        val mes: String = message as? String ?: getString(message as Int)
+        Toast.makeText(context, mes, Toast.LENGTH_SHORT).show()
     }
 
-    override fun showMessageError(message: String?, listener: DialogInterface.OnClickListener) {
-        DialogUtil.showWarningErrorDialog(activity!!, message, listener)
-    }
-
-    override fun showMessageError(message: Int, listener: DialogInterface.OnClickListener) {
-        DialogUtil.showWarningErrorDialog(activity!!, getString(message), listener)
-    }
-
-    override fun showMessageError(message: Int) {
-        showMessageError(message,
-                DialogInterface.OnClickListener { _: DialogInterface, _: Int -> showHideProgress(false) })
+    override fun showMessageError(message: Any?, listener: DialogInterface.OnClickListener?) {
+        DialogUtil.showWarningErrorDialog(activity!!,
+                message as? String ?: getString(message as Int),
+                listener
+                        ?: DialogInterface.OnClickListener { _: DialogInterface, _: Int -> showHideProgress(false) })
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////

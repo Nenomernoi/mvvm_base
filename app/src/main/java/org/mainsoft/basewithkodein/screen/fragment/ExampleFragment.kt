@@ -42,10 +42,6 @@ class ExampleFragment : BaseFragment(), ExampleView {
     ///////////////////////////////////////////////////////////////////////////////////////
 
     override fun initListeners() {
-        btnVpn?.setOnClickListener {
-            openForeScreen()
-            //onVpn()
-        }
         txtList?.setOnClickListener { onClickDrawer() }
         btnPhoto?.setOnClickListener { onClickPhoto() }
         btnImage?.setOnClickListener { onClickImage() }
@@ -89,32 +85,6 @@ class ExampleFragment : BaseFragment(), ExampleView {
             }
         }, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.ACCESS_FINE_LOCATION)
 
-    }
-
-    ///////////////////////////////////////////////////////////////////////////////////////
-
-    private fun openForeScreen() {
-        activityCallback.openNewActivity(Intent(activity, ForegroundActivity::class.java))
-    }
-
-    ///////////////////////////////////////////////////////////////////////////////////////
-
-    private fun onVpn() {
-
-        val intent = VpnService.prepare(activity)
-        if (intent != null) {
-            startActivityForResult(intent, 0)
-        } else {
-            onActivityResult(0, Activity.RESULT_OK, null)
-        }
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == Activity.RESULT_OK) {
-            val intent = Intent(activity, VPN::class.java)
-            activity?.startService(intent)
-        }
     }
 
 }

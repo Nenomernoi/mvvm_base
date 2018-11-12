@@ -44,7 +44,7 @@ class ExampleListFragment : BaseMainListFragment<CountryResponse>(), ExampleList
     override fun initAdapter() {
         adapter = ExampleAdapter(getData(), object : OnItemClickListener {
             override fun onItemClick(position: Int) {
-                getPresenter<ExampleListPresenter>()?.openItemScreen(position)
+                showToastError("position-> $position")
             }
         })
     }
