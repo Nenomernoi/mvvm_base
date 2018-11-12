@@ -8,7 +8,7 @@ import io.objectbox.annotation.Entity
 import io.objectbox.annotation.Id
 import io.objectbox.annotation.Index
 import io.objectbox.annotation.Transient
-import java.util.ArrayList
+import java.util.*
 
 @Entity
 class CountryResponse() : Parcelable {

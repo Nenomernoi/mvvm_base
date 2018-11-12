@@ -1,6 +1,6 @@
 package org.mainsoft.basewithkodein.screen.fragment.base
 
-import kotlinx.android.synthetic.main.fragment_list.sRefresh
+import kotlinx.android.synthetic.main.fragment_list.*
 
 abstract class BaseSwipeMainListFragment<T : Any> : BaseMainListFragment<T>() {
 

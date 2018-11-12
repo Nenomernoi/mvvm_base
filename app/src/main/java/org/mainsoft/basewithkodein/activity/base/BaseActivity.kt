@@ -11,28 +11,21 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.IBinder
 import android.os.Looper
-import androidx.core.app.ActivityCompat
-import androidx.fragment.app.FragmentManager
-import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
-import android.view.View
 import android.view.inputmethod.InputMethodManager
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.core.net.toUri
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationCallback
-import com.google.android.gms.location.LocationRequest
-import com.google.android.gms.location.LocationResult
-import com.google.android.gms.location.LocationServices
-import com.google.android.gms.location.LocationSettingsRequest
-import com.google.android.gms.location.SettingsClient
+import com.google.android.gms.location.*
 import com.tbruyelle.rxpermissions2.RxPermissions
-import kotlinx.android.synthetic.main.activity_main.toolbar
+import kotlinx.android.synthetic.main.activity_main.*
 import org.kodein.di.generic.instance
 import org.mainsoft.basewithkodein.App
 import org.mainsoft.basewithkodein.R
 import org.mainsoft.basewithkodein.screen.fragment.base.BaseFragment
 import org.mainsoft.basewithkodein.screen.presenter.base.BasePresenter
 import org.mainsoft.basewithkodein.util.DialogUtil
+import org.mainsoft.basewithkodein.util.PresenterUtil
 import org.mainsoft.basewithkodein.util.Setting
 
 abstract class BaseActivity : AppCompatActivity(), ActivityCallback {

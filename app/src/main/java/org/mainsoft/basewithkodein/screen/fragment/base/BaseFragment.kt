@@ -8,7 +8,6 @@ import android.graphics.Point
 import android.os.Bundle
 import android.os.Handler
 import android.os.IBinder
-import androidx.fragment.app.Fragment
 import android.text.Editable
 import android.util.Log
 import android.view.LayoutInflater
@@ -16,8 +15,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
-import com.google.android.gms.common.util.InputMethodUtils.showSoftInput
-import kotlinx.android.synthetic.main.fragment_base.pbLoad
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import kotlinx.android.synthetic.main.fragment_base.*
 import org.kodein.di.generic.instance
 import org.mainsoft.basewithkodein.App
 import org.mainsoft.basewithkodein.R

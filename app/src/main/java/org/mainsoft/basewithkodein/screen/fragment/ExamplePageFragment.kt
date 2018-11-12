@@ -1,9 +1,8 @@
 package org.mainsoft.basewithkodein.screen.fragment
 
-import kotlinx.android.synthetic.main.fragment_base_page.vpMain
+import kotlinx.android.synthetic.main.fragment_base_page.*
 import org.kodein.di.direct
 import org.kodein.di.generic.instance
-
 import org.mainsoft.basewithkodein.App
 import org.mainsoft.basewithkodein.R
 import org.mainsoft.basewithkodein.adapter.ExamplePageAdapter

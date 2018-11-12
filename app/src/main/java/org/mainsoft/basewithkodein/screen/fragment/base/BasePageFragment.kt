@@ -1,8 +1,6 @@
 package org.mainsoft.basewithkodein.screen.fragment.base
 
-import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.fragment_base_page.tlMain
-import kotlinx.android.synthetic.main.fragment_base_page.vpMain
+import kotlinx.android.synthetic.main.fragment_base_page.*
 import org.mainsoft.basewithkodein.R
 import org.mainsoft.basewithkodein.base.BasePageAdapter
 import org.mainsoft.basewithkodein.listener.BasePageChangeListener

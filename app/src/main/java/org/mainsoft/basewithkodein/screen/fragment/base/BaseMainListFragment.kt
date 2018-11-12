@@ -2,8 +2,7 @@ package org.mainsoft.basewithkodein.screen.fragment.base
 
 import android.os.Bundle
 import android.os.Handler
-import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.fragment_list.rvMain
+import kotlinx.android.synthetic.main.fragment_list.*
 import org.mainsoft.basewithkodein.R
 import org.mainsoft.basewithkodein.base.BaseSupportAdapter
 import org.mainsoft.basewithkodein.screen.presenter.base.BaseListPresenter

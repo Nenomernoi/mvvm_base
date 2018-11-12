@@ -1,9 +1,5 @@
 package org.mainsoft.basewithkodein.base
 
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentPagerAdapter
-
 abstract class BasePageAdapter(fm: androidx.fragment.app.FragmentManager) : androidx.fragment.app.FragmentPagerAdapter(fm) {
 
     private var tabs: MutableList<String> = ArrayList()

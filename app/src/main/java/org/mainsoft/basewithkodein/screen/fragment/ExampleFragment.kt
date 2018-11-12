@@ -1,9 +1,6 @@
 package org.mainsoft.basewithkodein.screen.fragment
 
 import android.Manifest
-import android.app.Activity
-import android.content.Intent
-import android.net.VpnService
 import android.os.Bundle
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.fragment_base.*
@@ -11,13 +8,11 @@ import org.kodein.di.direct
 import org.kodein.di.generic.instance
 import org.mainsoft.basewithkodein.App
 import org.mainsoft.basewithkodein.R
-import org.mainsoft.basewithkodein.activity.ForegroundActivity
 import org.mainsoft.basewithkodein.activity.base.PermissionListener
 import org.mainsoft.basewithkodein.screen.fragment.base.BaseFragment
 import org.mainsoft.basewithkodein.screen.presenter.ExamplePresenter
 import org.mainsoft.basewithkodein.screen.presenter.base.BasePresenter
 import org.mainsoft.basewithkodein.screen.view.ExampleView
-import org.mainsoft.basewithkodein.services.VPN
 
 class ExampleFragment : BaseFragment(), ExampleView {
 
@@ -42,14 +37,10 @@ class ExampleFragment : BaseFragment(), ExampleView {
     ///////////////////////////////////////////////////////////////////////////////////////
 
     override fun initListeners() {
-        txtList?.setOnClickListener { onClickDrawer() }
         btnPhoto?.setOnClickListener { onClickPhoto() }
         btnImage?.setOnClickListener { onClickImage() }
         btnPermission?.setOnClickListener { onClickPermission() }
-    }
-
-    private fun onClickDrawer() {
-        activityCallback.openFragment(ExampleListFragment::class.java, true, Bundle())
+        initEditText(edt)
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////

@@ -2,7 +2,7 @@ package org.mainsoft.basewithkodein.screen.fragment.base
 
 import android.os.Bundle
 import android.view.View
-import kotlinx.android.synthetic.main.fragment_list.txtNoData
+import kotlinx.android.synthetic.main.fragment_list.*
 
 abstract class BaseListFragment : BaseFragment() {
 
