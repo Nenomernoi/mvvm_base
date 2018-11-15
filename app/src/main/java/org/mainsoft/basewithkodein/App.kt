@@ -32,7 +32,10 @@ class App : Application() {
 
     private val presenterUtil = PresenterUtil()
 
-    private fun initDb() = MyObjectBox.builder().androidContext(this@App).build()
+    private fun initDb() = MyObjectBox.builder()
+            .androidContext(this@App)
+            .directory(File(filesDir.parent, "${packageName}_db"))
+            .build()
 
     private val screenModule = Kodein.Module {
         bind<ExamplePresenter>() with factory { view: ExampleView -> presenterUtil.getPresenter<ExamplePresenter>(view) }
