@@ -18,7 +18,7 @@ abstract class BaseMainListFragment<T : Any> : BaseListFragment() {
     open fun showContent() {
         Handler().postDelayed({
 
-            showHideNoData((getPresenter() as? BaseListPresenter<*>)!!.isDataEmpty())
+            showHideNoData(adapter == null || adapter?.itemCount == 0)
             showHideProgress(false)
             adapter?.notifyDataSetChanged()
 

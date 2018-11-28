@@ -59,14 +59,14 @@ dependencies {
     api 'androidx.multidex:multidex-instrumentation:2.0.0'
 
     //Base
-    api 'androidx.appcompat:appcompat:1.0.0'
+    api 'androidx.appcompat:appcompat:1.0.2'
     api 'androidx.recyclerview:recyclerview:1.0.0'
     api 'com.google.android.material:material:1.0.0'
     api 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
 
     //kotlin
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-    api 'androidx.core:core-ktx:1.0.0'
+    api 'androidx.core:core-ktx:1.0.1'
 
     //DI
     api 'org.kodein.di:kodein-di-generic-jvm:5.3.0'
