@@ -5,8 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.item_base.view.*
 import org.mainsoft.basewithkodein.R
-import org.mainsoft.basewithkodein.base.BaseSupportAdapter
-import org.mainsoft.basewithkodein.base.OnItemClickListener
+import org.mainsoft.basewithkodein.adapter.base.BaseSupportAdapter
+import org.mainsoft.basewithkodein.adapter.base.OnItemClickListener
 import org.mainsoft.basewithkodein.net.response.CountryResponse
 
 class ExampleAdapter(data: MutableList<CountryResponse>, onItemClickListener: OnItemClickListener) :
@@ -23,7 +23,7 @@ class ExampleAdapter(data: MutableList<CountryResponse>, onItemClickListener: On
 
         vh.txtName.text = item.name
         vh.txtCode.text = item.capital
-        vh.itemView.setOnClickListener({ listener.onItemClick(position) })
+        vh.itemView.setOnClickListener { listener.onItemClick(position) }
     }
 
     class ViewHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {

@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.os.Handler
 import kotlinx.android.synthetic.main.fragment_list.*
 import org.mainsoft.basewithkodein.R
-import org.mainsoft.basewithkodein.base.BaseSupportAdapter
+import org.mainsoft.basewithkodein.adapter.base.BaseSupportAdapter
 import org.mainsoft.basewithkodein.screen.presenter.base.BaseListPresenter
 
 abstract class BaseMainListFragment<T : Any> : BaseListFragment() {

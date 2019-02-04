@@ -1,4 +1,4 @@
-package org.mainsoft.basewithkodein.base
+package org.mainsoft.basewithkodein.adapter.base
 
 abstract class BaseMapSupportAdapter<T : Any>(items: MutableList<T>, listener: OnItemClickListener) :
         BaseSupportAdapter<T>(items, listener) {

@@ -21,7 +21,7 @@ constructor(view: TextView, drawableIndex: Int, private val fuzz: Int = Drawable
 
     init {
         val drawables = view.compoundDrawables
-        if (drawables != null && drawables.size == DEFAULT_SIZE) {
+        if (drawables.size == DEFAULT_SIZE) {
             this.drawable = drawables[drawableIndex]
         }
     }

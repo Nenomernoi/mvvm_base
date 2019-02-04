@@ -43,7 +43,7 @@ abstract class BaseImagePresenter(view: BaseImageView) : BasePresenter(view) {
     }
 
     fun openCamera(fr: BaseFragment) {
-        RxPaparazzo.single(fr)
+        addSubscription(RxPaparazzo.single(fr)
                 .usingCamera()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -52,11 +52,11 @@ abstract class BaseImagePresenter(view: BaseImageView) : BasePresenter(view) {
                         image = response.data().file
                         getView<BaseImageView>()?.initFile(image)
                     }
-                }
+                })
     }
 
     fun openAlbum(fr: BaseFragment) {
-        RxPaparazzo.single(fr)
+        addSubscription(RxPaparazzo.single(fr)
                 .usingGallery()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -65,7 +65,7 @@ abstract class BaseImagePresenter(view: BaseImageView) : BasePresenter(view) {
                         image = response.data().file
                         getView<BaseImageView>()?.initFile(image)
                     }
-                }
+                })
     }
 
     fun setImageBase(img: File?) {

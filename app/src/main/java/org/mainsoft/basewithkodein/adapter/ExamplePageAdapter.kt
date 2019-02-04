@@ -1,10 +1,11 @@
 package org.mainsoft.basewithkodein.adapter
 
-import org.mainsoft.basewithkodein.base.BasePageAdapter
+import androidx.fragment.app.FragmentManager
+import org.mainsoft.basewithkodein.adapter.base.BasePageAdapter
 import org.mainsoft.basewithkodein.screen.fragment.ExampleFragment
 import org.mainsoft.basewithkodein.screen.fragment.ExampleListFragment
 
-class ExamplePageAdapter(fm: androidx.fragment.app.FragmentManager) : BasePageAdapter(fm) {
+class ExamplePageAdapter(fm: FragmentManager) : BasePageAdapter(fm) {
 
     override fun getItem(position: Int): androidx.fragment.app.Fragment {
         return when (position) {

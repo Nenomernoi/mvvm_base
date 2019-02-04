@@ -19,7 +19,7 @@ abstract class BaseService<T : Any>(db: BoxStore) {
     private val subscriptions = CompositeDisposable()
 
     private val notesBox: Box<T> = db.boxFor<T>(getType())
-    protected var builder: QueryBuilder<T> = notesBox.query()
+    private var builder: QueryBuilder<T> = notesBox.query()
 
     protected fun close() {
         builder.close()
@@ -34,7 +34,7 @@ abstract class BaseService<T : Any>(db: BoxStore) {
         addSubscribe(initDisposable({ builder.build().find() }, consumer))
     }
 
-    private fun readSortAll(property: Property, consumer: Consumer<MutableList<T>>, isAsc: Boolean) {
+    private fun readSortAll(property: Property<T>, consumer: Consumer<MutableList<T>>, isAsc: Boolean) {
         addSubscribe(initDisposable({
             if (isAsc) {
                 builder.order(property).build().find()
@@ -44,16 +44,16 @@ abstract class BaseService<T : Any>(db: BoxStore) {
         }, consumer))
     }
 
-    fun readSortAllAsc(property: Property, consumer: Consumer<MutableList<T>>) {
+    fun readSortAllAsc(property: Property<T>, consumer: Consumer<MutableList<T>>) {
         readSortAll(property, consumer, true)
     }
 
-    fun readSortAllDesc(property: Property, consumer: Consumer<MutableList<T>>) {
+    fun readSortAllDesc(property: Property<T>, consumer: Consumer<MutableList<T>>) {
         readSortAll(property, consumer, false)
     }
 
-    fun readSortAll(propertyWhere: Property, value: Long,
-                    propertyOrder: Property,
+    fun readSortAll(propertyWhere: Property<T>, value: Long,
+                    propertyOrder: Property<T>,
                     consumer: Consumer<MutableList<T>>) {
         addSubscribe(initDisposable({
             builder.equal(propertyWhere, value)
@@ -63,9 +63,9 @@ abstract class BaseService<T : Any>(db: BoxStore) {
         }, consumer))
     }
 
-    fun readLessSortAll(property: Property,
+    fun readLessSortAll(property: Property<T>,
                         value: Long,
-                        propertyOrder: Property,
+                        propertyOrder: Property<T>,
                         consumer: Consumer<MutableList<T>>) {
         addSubscribe(initDisposable({
             builder
@@ -77,8 +77,8 @@ abstract class BaseService<T : Any>(db: BoxStore) {
     }
 
     fun readGreaterSortAll(value: Long,
-                           property: Property,
-                           propertyOrder: Property,
+                           property: Property<T>,
+                           propertyOrder: Property<T>,
                            consumer: Consumer<MutableList<T>>) {
         addSubscribe(initDisposable({
             builder.greater(property, value)
@@ -89,8 +89,8 @@ abstract class BaseService<T : Any>(db: BoxStore) {
     }
 
     fun readBetweenSortAll(value: Long, valueSecond: Long,
-                           property: Property,
-                           propertyOrder: Property,
+                           property: Property<T>,
+                           propertyOrder: Property<T>,
                            consumer: Consumer<MutableList<T>>) {
         addSubscribe(initDisposable({
             builder.between(property, value, valueSecond)

@@ -1,4 +1,4 @@
-package org.mainsoft.basewithkodein.base
+package org.mainsoft.basewithkodein.adapter.base
 
 abstract class EndlessRecyclerViewScrollListener : androidx.recyclerview.widget.RecyclerView.OnScrollListener {
 

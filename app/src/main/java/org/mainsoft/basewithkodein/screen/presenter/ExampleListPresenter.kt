@@ -54,6 +54,7 @@ class ExampleListPresenter(view: ExampleListView)
     }
 
     override fun firstLoad() {
+        netManager?.listener = this
         addSubscription((netManager as? GetCurrenciesManager)?.getCityList("name;capital;currencies"))
     }
 

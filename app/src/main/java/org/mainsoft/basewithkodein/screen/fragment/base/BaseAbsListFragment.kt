@@ -1,7 +1,7 @@
 package org.mainsoft.basewithkodein.screen.fragment.base
 
 import android.os.Bundle
-import org.mainsoft.basewithkodein.base.BaseAbsAdapter
+import org.mainsoft.basewithkodein.adapter.base.BaseAbsAdapter
 import org.mainsoft.basewithkodein.screen.presenter.base.BaseListPresenter
 
 abstract class BaseAbsListFragment<T : Any> : BaseListFragment() {

@@ -11,6 +11,7 @@ import org.mainsoft.basewithkodein.R
 import java.util.*
 
 class DialogUtil {
+
     companion object {
 
         private var dialog: AlertDialog? = null

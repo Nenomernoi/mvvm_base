@@ -1,6 +1,5 @@
 package org.mainsoft.basewithkodein.screen.fragment.base
 
-
 import kotlinx.android.synthetic.main.fragment_list.*
 import org.mainsoft.basewithkodein.R
 

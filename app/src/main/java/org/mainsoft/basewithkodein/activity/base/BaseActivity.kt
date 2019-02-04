@@ -94,7 +94,7 @@ abstract class BaseActivity : AppCompatActivity(), ActivityCallback {
             restoreFragments()
             return
         }
-        if (fm!!.fragments!!.size == 0) {
+        if (fm?.fragments?.size == 0) {
             startNewTask()
         }
     }
@@ -179,30 +179,6 @@ abstract class BaseActivity : AppCompatActivity(), ActivityCallback {
             Log.e(javaClass.simpleName, Log.getStackTraceString(e), e)
         }
 
-    }
-
-    private fun openChildScreen(fragmentClass: Class<out BaseFragment>, addToBackStack: Boolean, args: Bundle,
-                                isReplace: Boolean) {
-        hideSoftKeyboard()
-        try {
-            val fragment = createFragment(fragmentClass, args)
-            val fragmentName = fragment.javaClass.simpleName
-            val transaction = fm!!.beginTransaction()
-
-            if (isReplace) {
-                transaction.replace(R.id.container, fragment, fragmentName)
-            } else {
-                transaction.add(R.id.container, fragment, fragmentName)
-            }
-
-            if (addToBackStack) {
-                transaction.addToBackStack(null)
-            }
-            transaction.commit()
-
-        } catch (e: Exception) {
-            Log.e(javaClass.simpleName, Log.getStackTraceString(e), e)
-        }
     }
 
     private fun createFragment(fragmentClass: Class<out BaseFragment>, args: Bundle?): BaseFragment {
@@ -382,7 +358,7 @@ abstract class BaseActivity : AppCompatActivity(), ActivityCallback {
 
                             listener.onError()
 
-                            DialogUtil.Companion.showErrorPermissionDialog(this,
+                            DialogUtil.showErrorPermissionDialog(this,
                                     DialogInterface.OnClickListener { dialog, _ ->
                                         startActivity(
                                                 Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
@@ -406,8 +382,6 @@ abstract class BaseActivity : AppCompatActivity(), ActivityCallback {
         for (fragment in supportFragmentManager.fragments) {
             fragment?.onActivityResult(requestCode, resultCode, data)
         }
-
-        //TODO ADD LISTENER ACTIVITY ON RESULT
     }
 
     ////////////////////////////////////////////////////////////////////////////////////

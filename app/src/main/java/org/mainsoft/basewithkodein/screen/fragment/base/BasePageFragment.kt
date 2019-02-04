@@ -2,7 +2,7 @@ package org.mainsoft.basewithkodein.screen.fragment.base
 
 import kotlinx.android.synthetic.main.fragment_base_page.*
 import org.mainsoft.basewithkodein.R
-import org.mainsoft.basewithkodein.base.BasePageAdapter
+import org.mainsoft.basewithkodein.adapter.base.BasePageAdapter
 import org.mainsoft.basewithkodein.listener.BasePageChangeListener
 
 abstract class BasePageFragment : BaseFragment() {

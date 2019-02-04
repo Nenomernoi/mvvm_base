@@ -1,4 +1,4 @@
-package org.mainsoft.basewithkodein.base
+package org.mainsoft.basewithkodein.adapter.base
 
 abstract class BaseSupportAdapter<T : Any>(private var items: MutableList<T>, var listener: OnItemClickListener) :
         androidx.recyclerview.widget.RecyclerView.Adapter<androidx.recyclerview.widget.RecyclerView.ViewHolder>() {

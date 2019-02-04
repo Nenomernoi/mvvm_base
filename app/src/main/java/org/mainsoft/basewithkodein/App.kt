@@ -19,6 +19,7 @@ import org.mainsoft.basewithkodein.screen.view.ExamplePageView
 import org.mainsoft.basewithkodein.screen.view.ExampleView
 import org.mainsoft.basewithkodein.util.PresenterUtil
 import org.mainsoft.basewithkodein.util.Setting
+import java.io.File
 
 class App : Application() {
 
@@ -50,7 +51,7 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         RxPaparazzo.register(this)
-       // Fabric.with(this, Crashlytics())
+        // Fabric.with(this, Crashlytics())
         kodein = Kodein {
             import(settingModule)
             import(screenModule)

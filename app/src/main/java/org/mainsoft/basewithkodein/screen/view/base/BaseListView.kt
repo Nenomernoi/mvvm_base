@@ -7,4 +7,3 @@ interface BaseListView<T : Any> : BaseView {
     fun showContent()
     fun openItemScreen(bundle: Bundle)
 }
-

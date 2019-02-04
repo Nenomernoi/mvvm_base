@@ -5,8 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.item_drawer.view.*
 import org.mainsoft.basewithkodein.R
-import org.mainsoft.basewithkodein.base.BaseSupportAdapter
-import org.mainsoft.basewithkodein.base.OnItemClickListener
+import org.mainsoft.basewithkodein.adapter.base.BaseSupportAdapter
+import org.mainsoft.basewithkodein.adapter.base.OnItemClickListener
 
 class DrawerAdapter(data: MutableList<DrawerItem>, onItemClickListener: OnItemClickListener) :
         BaseSupportAdapter<DrawerItem>(data, onItemClickListener) {
@@ -22,7 +22,7 @@ class DrawerAdapter(data: MutableList<DrawerItem>, onItemClickListener: OnItemCl
 
         vh.txtTitle.setText(item.resName)
         vh.imgTitle.setImageResource(item.imgResID)
-        vh.itemView.setOnClickListener({ listener.onItemClick(position) })
+        vh.itemView.setOnClickListener { listener.onItemClick(position) }
     }
 
     class ViewHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {

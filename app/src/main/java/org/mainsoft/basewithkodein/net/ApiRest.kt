@@ -21,8 +21,8 @@ class ApiRest {
             val client = OkHttpClient.Builder().addInterceptor(interceptor).build()
 
             val builder = Retrofit.Builder().baseUrl(BASE_URL + BASE_CONTENT)
-                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create()).addConverterFactory(
-                            GsonConverterFactory.create())
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                    .addConverterFactory(GsonConverterFactory.create())
                     .client(client)
 
             return builder.build().create(Api::class.java)

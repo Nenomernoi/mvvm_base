@@ -13,7 +13,6 @@ import org.mainsoft.basewithkodein.screen.view.ExamplePageView
 import org.mainsoft.basewithkodein.screen.view.ExampleView
 import org.mainsoft.basewithkodein.screen.view.base.BaseView
 
-
 class PresenterUtil {
 
     private val mapPresenter: HashMap<String, BasePresenter> = hashMapOf()
