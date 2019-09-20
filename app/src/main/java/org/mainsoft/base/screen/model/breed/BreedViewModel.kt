@@ -13,7 +13,7 @@ data class BreedViewState(
 
 class BreedViewModel(private val useCase: BreedUseCase) : BaseViewModel() {
 
-    private var id: String? = null
+    var id: String? = null
         set(value) {
             field = value
             loadData()
