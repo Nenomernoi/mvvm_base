@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.motion.widget.MotionLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            app:layoutDescription="@xml/collapsing_toolbar"
+            app:showPaths="true">
+
+            <ImageView
+                android:id="@+id/imgMain"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/breed_image_size"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop" />
+
+            <ImageView
+                android:id="@+id/imgBack"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/breed_image_size"
+                android:adjustViewBounds="true"
+                android:background="@color/colorPrimary"
+                android:scaleType="centerCrop" />
+
+            <ScrollView
+                android:id="@+id/svMain"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgMain">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/root_padding_middle">
+
+                    <TextView
+                        android:id="@+id/txtAltName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/root_padding_middle"
+                        android:gravity="center_vertical"
+                        android:text="Longhair, Persian Longhair, Shiraz, Shirazi"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/row_breed_desc_size" />
+
+                    <TextView
+                        android:id="@+id/txtDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/root_padding_middle"
+                        android:text="The Abyssinian is easy to care for, and a joy to have in your home. They’re affectionate cats and love both people and other animals."
+                        android:textSize="@dimen/row_breed_desc_size" />
+
+                    <TextView
+                        android:id="@+id/txtTemperament"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/root_padding_middle"
+                        android:drawableStart="@drawable/ic_field"
+                        android:drawableLeft="@drawable/ic_field"
+                        android:drawablePadding="@dimen/root_padding_middle"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/colorAccent"
+                        android:text="Affectionate, loyal, Sedate, Quiet"
+                        android:textSize="@dimen/row_breed_desc_size" />
+
+                    <TextView
+                        android:id="@+id/txtOrigin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/root_padding_middle"
+                        android:drawableStart="@drawable/ic_field"
+                        android:drawableLeft="@drawable/ic_field"
+                        android:drawablePadding="@dimen/root_padding_middle"
+                        android:gravity="center_vertical"
+                        android:text="AIran (Persia)"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/row_breed_desc_size" />
+
+                    <TextView
+                        android:id="@+id/txtLifeSpan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/root_padding_middle"
+                        android:drawableStart="@drawable/ic_field"
+                        android:drawableLeft="@drawable/ic_field"
+                        android:drawablePadding="@dimen/root_padding_middle"
+                        android:gravity="center_vertical"
+                        android:text="14 - 15"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/row_breed_desc_size" />
+
+                    <TextView
+                        android:id="@+id/txtLink"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/root_padding_middle"
+                        android:autoLink="all"
+                        android:gravity="center_vertical"
+                        android:text="https://en.wikipedia.org/wiki/Persian_(cat)\nhttps://vcahospitals.com/know-your-pet/cat-breeds/persian\nhttp://www.vetstreet.com/cats/persian\nhttp://cfa.org/Breeds/BreedsKthruR/Persian.aspx"
+                        android:textSize="@dimen/row_breed_desc_size" />
+
+                    <LinearLayout
+                        android:layout_marginTop="@dimen/root_padding_middle"
+                        android:layout_width="match_parent"
+                        android:weightSum="100"
+                        android:orientation="horizontal"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_weight="25"
+                            android:layout_width="match_parent"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:text="adaptability"
+                                android:textSize="@dimen/breed_item_text_size"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:id="@+id/txtAdaptability"
+                                android:text="5"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="@dimen/breed_item_value_text_size"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_weight="25"
+                            android:layout_width="match_parent"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:text="affection level"
+                                android:textSize="@dimen/breed_item_text_size"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:id="@+id/txtAdaptabilityLevel"
+                                android:text="5"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="@dimen/breed_item_value_text_size"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_weight="25"
+                            android:layout_width="match_parent"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:text="child friendly"
+                                android:textSize="@dimen/breed_item_text_size"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:id="@+id/txtChildFriendly"
+                                android:text="5"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="@dimen/breed_item_value_text_size"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_weight="25"
+                            android:layout_width="match_parent"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:text="dog_friendly"
+                                android:textSize="@dimen/breed_item_text_size"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:id="@+id/txtDogFriendly"
+                                android:text="5"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="@dimen/breed_item_value_text_size"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_marginTop="@dimen/root_padding_middle"
+                        android:layout_width="match_parent"
+                        android:weightSum="100"
+                        android:orientation="horizontal"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_weight="25"
+                            android:layout_width="match_parent"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:text="energy level"
+                                android:textSize="@dimen/breed_item_text_size"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:id="@+id/txtEnergyLevel"
+                                android:text="5"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="@dimen/breed_item_value_text_size"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_weight="25"
+                            android:layout_width="match_parent"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:text="grooming"
+                                android:textSize="@dimen/breed_item_text_size"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:id="@+id/txtGrooming"
+                                android:text="5"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="@dimen/breed_item_value_text_size"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_weight="25"
+                            android:layout_width="match_parent"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:text="health issues"
+                                android:textSize="@dimen/breed_item_text_size"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:id="@+id/txtHealthIssues"
+                                android:text="5"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="@dimen/breed_item_value_text_size"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_weight="25"
+                            android:layout_width="match_parent"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:text="intelligence"
+                                android:textSize="@dimen/breed_item_text_size"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:id="@+id/txtIntelligence"
+                                android:text="5"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="@dimen/breed_item_value_text_size"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_marginTop="@dimen/root_padding_middle"
+                        android:layout_width="match_parent"
+                        android:weightSum="100"
+                        android:orientation="horizontal"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_weight="25"
+                            android:layout_width="match_parent"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:text="shedding_level"
+                                android:textSize="@dimen/breed_item_text_size"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:id="@+id/txtSheddingLevel"
+                                android:text="5"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="@dimen/breed_item_value_text_size"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_weight="25"
+                            android:layout_width="match_parent"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:text="social_needs"
+                                android:textSize="@dimen/breed_item_text_size"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:id="@+id/txtSocialNeeds"
+                                android:text="5"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="@dimen/breed_item_value_text_size"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_weight="25"
+                            android:layout_width="match_parent"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:text="stranger_friendly"
+                                android:textSize="@dimen/breed_item_text_size"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:id="@+id/txtStrangerFriendly"
+                                android:text="5"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="@dimen/breed_item_value_text_size"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_weight="25"
+                            android:layout_width="match_parent"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:text="vocalisation"
+                                android:textSize="@dimen/breed_item_text_size"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:id="@+id/txtVocalisation"
+                                android:text="5"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="@dimen/breed_item_value_text_size"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </ScrollView>
+
+            <TextView
+                android:id="@+id/txtTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/root_padding_middle"
+                android:layout_marginLeft="@dimen/root_padding_middle"
+                android:layout_marginBottom="@dimen/root_status_bar" />
+
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fbAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_favorite_border" />
+
+        </androidx.constraintlayout.motion.widget.MotionLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</RelativeLayout>
