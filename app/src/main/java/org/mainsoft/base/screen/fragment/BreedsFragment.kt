@@ -6,9 +6,9 @@ import org.mainsoft.base.adapter.BreedListAdapter
 import org.mainsoft.base.lib.ViewStateStore
 import org.mainsoft.base.net.response.Breed
 import org.mainsoft.base.screen.fragment.base.BaseSwipeEndlessListFragment
-import org.mainsoft.base.screen.model.BreedsViewModel
-import org.mainsoft.base.screen.model.BreedsViewModelFactory
-import org.mainsoft.base.screen.model.BreedsViewState
+import org.mainsoft.base.screen.model.breeds.BreedsViewModel
+import org.mainsoft.base.screen.model.breeds.BreedsViewModelFactory
+import org.mainsoft.base.screen.model.breeds.BreedsViewState
 
 class BreedsFragment : BaseSwipeEndlessListFragment<Breed>() {
 

@@ -1,6 +1,7 @@
 package org.mainsoft.base.net
 
 import org.mainsoft.base.net.response.Breed
+import org.mainsoft.base.net.response.BreedImage
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -12,5 +13,9 @@ interface Api {
             @Query("page") page: Int
     ): MutableList<Breed>
 
+    @GET("images/search")
+    suspend fun getBreed(
+            @Query("breed_id") breedId: String
+    ): BreedImage
 
 }

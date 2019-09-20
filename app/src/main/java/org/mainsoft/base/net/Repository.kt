@@ -33,6 +33,13 @@ class Repository {
         }
     }.await()
 
+
+    suspend fun getBreed(breedId: String): Breed = coroutineScope {
+        async {
+            return@async db.breedDao().getItem(breedId) ?: api.getBreed(breedId).getBreed()
+        }
+    }.await()
+
     suspend fun clearData() = coroutineScope {
         async {
             db.breedDao().deleteAll()

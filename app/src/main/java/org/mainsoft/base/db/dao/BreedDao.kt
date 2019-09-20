@@ -15,6 +15,9 @@ interface BreedDao {
     @Query(value = "SELECT * FROM breeds ORDER BY name ASC")
     suspend fun getAll(): MutableList<Breed>
 
+    @Query(value = "SELECT * FROM breeds WHERE id = :id")
+    suspend fun getItem(id: String): Breed?
+
     @Query(value = "SELECT * FROM breeds ORDER BY name ASC LIMIT :limit OFFSET :offset")
     suspend fun getBreeds(offset: Int, limit: Int): MutableList<Breed>
 

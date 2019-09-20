@@ -1,9 +1,9 @@
-package org.mainsoft.base.screen.model
+package org.mainsoft.base.screen.model.breeds
 
 import org.mainsoft.base.lib.ViewStateStore
 import org.mainsoft.base.net.response.Breed
 import org.mainsoft.base.screen.model.base.BaseViewModel
-import org.mainsoft.base.screen.model.base.BreedsRefreshListState
+import org.mainsoft.base.screen.model.base.BaseRefreshListState
 
 data class BreedsViewState(
         override val data: MutableList<Breed> = mutableListOf(),
@@ -11,7 +11,7 @@ data class BreedsViewState(
         override val loading: Boolean = false,
         override val refresh: Boolean = false,
         override val error: Throwable? = null)
-    : BreedsRefreshListState<Breed>()
+    : BaseRefreshListState<Breed>()
 
 class BreedsViewModel(private val useCase: BreedsUseCase) : BaseViewModel() {
 

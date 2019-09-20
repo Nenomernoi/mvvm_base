@@ -42,7 +42,7 @@ data class Breed(@PrimaryKey
                  val vocalisation: Int = 0,
 
 
-                 val image_url: String? = null,
+                 var image_url: String? = null,
 
                  val showFull: Boolean = false) {
 

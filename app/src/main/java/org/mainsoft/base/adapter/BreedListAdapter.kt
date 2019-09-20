@@ -12,7 +12,7 @@ import org.mainsoft.base.R
 import org.mainsoft.base.adapter.base.BaseSupportAdapter
 import org.mainsoft.base.adapter.base.BaseViewHolder
 import org.mainsoft.base.net.response.Breed
-import org.mainsoft.base.screen.model.BreedsViewModel
+import org.mainsoft.base.screen.model.breeds.BreedsViewModel
 
 class BreedListAdapter(private val viewModel: BreedsViewModel) : BaseSupportAdapter<Breed>() {
 

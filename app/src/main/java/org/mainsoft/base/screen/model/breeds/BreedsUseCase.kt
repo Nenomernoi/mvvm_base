@@ -1,11 +1,8 @@
-package org.mainsoft.base.screen.model
+package org.mainsoft.base.screen.model.breeds
 
 import android.util.Log
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.channels.ProducerScope
 import kotlinx.coroutines.channels.ReceiveChannel
-import kotlinx.coroutines.channels.produce
 import org.mainsoft.base.lib.Action
 import org.mainsoft.base.net.Repository
 import org.mainsoft.base.screen.model.base.BaseUseCase

@@ -1,4 +1,4 @@
-package org.mainsoft.base.screen.model
+package org.mainsoft.base.screen.model.breeds
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
