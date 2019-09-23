@@ -14,14 +14,22 @@
             android:layout_height="match_parent"
             android:background="@color/white"
             app:layoutDescription="@xml/collapsing_toolbar"
-            app:showPaths="true">
+            app:showPaths="false">
 
             <ImageView
                 android:id="@+id/imgMain"
                 android:layout_width="0dp"
+                android:background="@color/bg_trans"
                 android:layout_height="@dimen/breed_image_size"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop" />
+
+            <View
+                android:id="@+id/vShadow"
+                android:background="@drawable/bg_shadow"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/breed_image_size"
+                android:adjustViewBounds="true"/>
 
             <ImageView
                 android:id="@+id/imgBack"
@@ -31,7 +39,7 @@
                 android:background="@color/colorPrimary"
                 android:scaleType="centerCrop" />
 
-            <ScrollView
+            <androidx.core.widget.NestedScrollView
                 android:id="@+id/svMain"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
@@ -104,15 +112,6 @@
                         android:textColor="@color/colorAccent"
                         android:textSize="@dimen/row_breed_desc_size" />
 
-                    <TextView
-                        android:id="@+id/txtLink"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/root_padding_middle"
-                        android:autoLink="all"
-                        android:gravity="center_vertical"
-                        android:text="https://en.wikipedia.org/wiki/Persian_(cat)\nhttps://vcahospitals.com/know-your-pet/cat-breeds/persian\nhttp://www.vetstreet.com/cats/persian\nhttp://cfa.org/Breeds/BreedsKthruR/Persian.aspx"
-                        android:textSize="@dimen/row_breed_desc_size" />
 
                     <LinearLayout
                         android:layout_marginTop="@dimen/root_padding_middle"
@@ -198,7 +197,7 @@
                             android:layout_height="wrap_content">
 
                             <TextView
-                                android:text="dog_friendly"
+                                android:text="dog friendly"
                                 android:textSize="@dimen/breed_item_text_size"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"/>
@@ -331,7 +330,7 @@
                             android:layout_height="wrap_content">
 
                             <TextView
-                                android:text="shedding_level"
+                                android:text="shedding level"
                                 android:textSize="@dimen/breed_item_text_size"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"/>
@@ -353,7 +352,7 @@
                             android:layout_height="wrap_content">
 
                             <TextView
-                                android:text="social_needs"
+                                android:text="social needs"
                                 android:textSize="@dimen/breed_item_text_size"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"/>
@@ -376,7 +375,7 @@
                             android:layout_height="wrap_content">
 
                             <TextView
-                                android:text="stranger_friendly"
+                                android:text="stranger friendly"
                                 android:textSize="@dimen/breed_item_text_size"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"/>
@@ -414,16 +413,47 @@
                         </LinearLayout>
 
                     </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/txtLink"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/root_padding_middle"
+                        android:autoLink="all"
+                        android:gravity="center_vertical"
+                        android:text="https://en.wikipedia.org/wiki/Persian_(cat)\nhttps://vcahospitals.com/know-your-pet/cat-breeds/persian\nhttp://www.vetstreet.com/cats/persian\nhttp://cfa.org/Breeds/BreedsKthruR/Persian.aspx"
+                        android:textSize="@dimen/row_breed_desc_size" />
                 </LinearLayout>
 
-            </ScrollView>
+            </androidx.core.widget.NestedScrollView>
+
+            <ImageView
+                android:id="@+id/btnBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/root_padding"
+                android:paddingLeft="@dimen/root_padding"
+                android:paddingTop="@dimen/root_padding"
+                android:paddingBottom="@dimen/root_padding"
+                android:src="@drawable/abc_ic_ab_back_material"
+                android:tint="?android:attr/textColorPrimaryInverse"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+
 
             <TextView
                 android:id="@+id/txtTitle"
+                android:text="Persian"
+                android:textColor="@color/white"
+                android:shadowColor="@color/colorPrimary"
+                android:shadowRadius="4"
+                android:gravity="start|left"
+                android:textSize="@dimen/breed_item_title_text_size"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/root_padding_middle"
-                android:layout_marginLeft="@dimen/root_padding_middle"
+                android:layout_marginStart="@dimen/root_padding"
+                android:layout_marginLeft="@dimen/root_padding"
                 android:layout_marginBottom="@dimen/root_status_bar" />
 
 
@@ -431,6 +461,7 @@
                 android:id="@+id/fbAdd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:tint="@color/white"
                 android:src="@drawable/ic_favorite_border" />
 
         </androidx.constraintlayout.motion.widget.MotionLayout>
@@ -444,6 +475,8 @@
         android:layout_centerInParent="true"
         android:layout_gravity="center"
         android:text="Retry"
+        android:visibility="gone"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/root_empty_text_small_size" />
 
     <RelativeLayout

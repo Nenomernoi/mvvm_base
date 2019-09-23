@@ -1,17 +1,19 @@
 package org.mainsoft.base.screen.fragment
 
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.get
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.fragment_breed.*
 import org.mainsoft.base.R
 import org.mainsoft.base.lib.ViewStateStore
 import org.mainsoft.base.net.response.Breed
 import org.mainsoft.base.screen.fragment.base.BaseFragment
+import org.mainsoft.base.screen.model.base.BaseViewModel
 import org.mainsoft.base.screen.model.breed.BreedViewModel
 import org.mainsoft.base.screen.model.breed.BreedViewModelFactory
 import org.mainsoft.base.screen.model.breed.BreedViewState
+import org.mainsoft.base.util.onBack
 
 class BreedFragment : BaseFragment() {
 
@@ -19,12 +21,22 @@ class BreedFragment : BaseFragment() {
 
     override fun initData() {
         viewModel = ViewModelProviders.of(this, BreedViewModelFactory).get()
-        getViewModel<BreedViewModel>().id = "pers"
+        getViewModel<BreedViewModel>().id = arguments?.getString(BaseViewModel.ARGUMENT_ID)
+        val breed = arguments?.getParcelable(BaseViewModel.ARGUMENT_EXTRA) as? Breed
+        if (breed != null) {
+            showHideProgress(false)
+            setData(breed)
+            return
+        }
+        getViewModel<BreedViewModel>().loadData()
     }
-
 
     override fun initListeners() {
         super.initListeners()
+
+        btnBack?.setOnClickListener {
+            onBack()
+        }
 
         getViewModel<BreedViewModel>()
                 .getStore<ViewStateStore<BreedViewState>>()
@@ -45,12 +57,38 @@ class BreedFragment : BaseFragment() {
         txtTitle?.text = model.name
         txtDescription?.text = model.description
 
+        txtAltName?.text = model.alt_names
+        txtAltName?.isVisible = !model.alt_names.isNullOrEmpty()
+
+        txtTemperament?.text = model.alt_names
+        txtOrigin?.text = model.origin
+        txtLifeSpan?.text = model.life_span
+
+        txtLink?.text = model.getLinks()
+
+        txtAdaptability?.text = model.adaptability.toString()
+        txtAdaptabilityLevel?.text = model.affection_level.toString()
+        txtChildFriendly?.text = model.child_friendly.toString()
+        txtDogFriendly?.text = model.dog_friendly.toString()
+
+        txtEnergyLevel?.text = model.energy_level.toString()
+        txtGrooming?.text = model.grooming.toString()
+        txtHealthIssues?.text = model.health_issues.toString()
+        txtIntelligence?.text = model.intelligence.toString()
+
+        txtSheddingLevel?.text = model.shedding_level.toString()
+        txtSocialNeeds?.text = model.social_needs.toString()
+        txtStrangerFriendly?.text = model.stranger_friendly.toString()
+        txtVocalisation?.text = model.vocalisation.toString()
+
+
+
+
         Glide.with(activity ?: return)
                 .load(model.image_url)
                 .centerCrop()
-                .placeholder(R.drawable.ic_cat)
-                .error(R.drawable.ic_cat)
-                .apply(RequestOptions.circleCropTransform())
+                .placeholder(R.drawable.bg_cat)
+                .error(R.drawable.bg_cat)
                 .into(imgMain)
     }
 

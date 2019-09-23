@@ -14,10 +14,6 @@ data class BreedViewState(
 class BreedViewModel(private val useCase: BreedUseCase) : BaseViewModel() {
 
     var id: String? = null
-        set(value) {
-            field = value
-            loadData()
-        }
 
     init {
         store = ViewStateStore(BreedViewState())
@@ -28,6 +24,7 @@ class BreedViewModel(private val useCase: BreedUseCase) : BaseViewModel() {
         getStore<ViewStateStore<BreedViewState>>().dispatchActions(useCase.getItem(id ?: return))
     }
 
+    override fun getState() = getStore<ViewStateStore<BreedViewState>>().state()
 
 }
 

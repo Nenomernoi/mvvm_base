@@ -7,7 +7,7 @@ import org.mainsoft.base.lib.Action
 import org.mainsoft.base.net.Repository
 import org.mainsoft.base.screen.model.base.BaseUseCase
 
-class BreedsUseCase(repository: Repository): BaseUseCase(repository) {
+class BreedsUseCase(repository: Repository) : BaseUseCase(repository) {
 
     @ExperimentalCoroutinesApi
     fun getList(state: BreedsViewState?, page: Int): ReceiveChannel<Action<BreedsViewState>> = produceActions {
@@ -24,13 +24,14 @@ class BreedsUseCase(repository: Repository): BaseUseCase(repository) {
         }
     }
 
-    suspend fun showFull(state: BreedsViewState, position: Int): Action<BreedsViewState> {
+    suspend fun addToFavorite(state: BreedsViewState, position: Int): Action<BreedsViewState> {
         val newBreed = repository.showFull(state.data[position])
         return Action {
             data[position] = newBreed
             copy(data = data)
         }
     }
+
 
     @ExperimentalCoroutinesApi
     fun clearData(): ReceiveChannel<Action<BreedsViewState>> = produceActions {

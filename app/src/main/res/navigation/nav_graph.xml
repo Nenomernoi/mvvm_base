@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/breedsFragment">
+
+    <fragment
+        android:id="@+id/breedsFragment"
+        android:name="org.mainsoft.base.screen.fragment.BreedsFragment"
+        android:label="BreedsFragment">
+        <action
+            android:id="@+id/action_breedsFragment_to_breedFragment"
+            app:destination="@id/breedFragment"
+            app:enterAnim="@anim/slide_out_right"
+            app:exitAnim="@anim/slide_in_right_slow"
+            app:popEnterAnim="@anim/slide_out_left_fast"
+            app:popExitAnim="@anim/slide_in_left"
+            app:popUpTo="@+id/breedsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/breedFragment"
+        android:name="org.mainsoft.base.screen.fragment.BreedFragment"
+        android:label="BreedFragment" />
+</navigation>

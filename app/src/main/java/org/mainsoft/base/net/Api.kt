@@ -16,6 +16,6 @@ interface Api {
     @GET("images/search")
     suspend fun getBreed(
             @Query("breed_id") breedId: String
-    ): BreedImage
+    ): MutableList<BreedImage>
 
 }

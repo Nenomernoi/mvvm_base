@@ -36,7 +36,7 @@ class Repository {
 
     suspend fun getBreed(breedId: String): Breed = coroutineScope {
         async {
-            return@async db.breedDao().getItem(breedId) ?: api.getBreed(breedId).getBreed()
+            return@async db.breedDao().getItem(breedId) ?: api.getBreed(breedId)[0].getBreed()
         }
     }.await()
 
@@ -54,7 +54,7 @@ class Repository {
 
     suspend fun showFull(user: Breed): Breed = coroutineScope {
         async {
-            user.copy(showFull = !user.showFull)
+            user.copy(favorite = !user.favorite)
         }
     }.await()
 }

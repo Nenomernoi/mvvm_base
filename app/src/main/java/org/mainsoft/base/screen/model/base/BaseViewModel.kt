@@ -6,6 +6,11 @@ import kotlinx.coroutines.cancel
 
 abstract class BaseViewModel : ViewModel() {
 
+    companion object {
+        const val ARGUMENT_ID = "argument_id"
+        const val ARGUMENT_EXTRA = "argument_extra"
+    }
+
     protected lateinit var store: CoroutineScope
 
     fun <V : Any> getStore(): V = store as V
@@ -15,4 +20,5 @@ abstract class BaseViewModel : ViewModel() {
     }
 
     abstract fun loadData()
+    abstract fun getState(): Any
 }

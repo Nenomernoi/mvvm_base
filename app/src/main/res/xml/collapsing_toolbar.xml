@@ -14,6 +14,15 @@
             motion:layout_constraintTop_toTopOf="parent" />
 
         <Constraint
+            android:id="@+id/vShadow"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/breed_image_size"
+            android:alpha="1.0"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent" />
+
+        <Constraint
             android:id="@+id/fbAdd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -27,8 +36,9 @@
             android:id="@+id/txtTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginStart="@dimen/root_padding"
+            android:layout_marginLeft="@dimen/root_padding"
+            android:layout_marginBottom="@dimen/root_padding"
             android:scaleX="1.0"
             android:scaleY="1.0"
             motion:layout_constraintBottom_toBottomOf="@id/imgMain"
@@ -57,6 +67,15 @@
             motion:layout_constraintTop_toTopOf="parent" />
 
         <Constraint
+            android:id="@+id/vShadow"
+            android:layout_width="0dp"
+            android:layout_height="?attr/actionBarSize"
+            android:alpha="0.2"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent" />
+
+        <Constraint
             android:id="@+id/fbAdd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -68,12 +87,13 @@
             android:id="@+id/txtTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/root_padding_small"
+            android:layout_marginStart="0dp"
+            android:layout_marginLeft="0dp"
             android:layout_marginBottom="0dp"
             android:scaleX="0.625"
             android:scaleY="0.625"
             motion:layout_constraintBottom_toBottomOf="@id/imgMain"
-            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintStart_toEndOf="@id/btnBack"
             motion:layout_constraintTop_toTopOf="@id/imgMain" />
 
         <Constraint

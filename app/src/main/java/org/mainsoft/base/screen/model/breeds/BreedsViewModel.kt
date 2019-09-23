@@ -2,8 +2,8 @@ package org.mainsoft.base.screen.model.breeds
 
 import org.mainsoft.base.lib.ViewStateStore
 import org.mainsoft.base.net.response.Breed
-import org.mainsoft.base.screen.model.base.BaseViewModel
 import org.mainsoft.base.screen.model.base.BaseRefreshListState
+import org.mainsoft.base.screen.model.base.BaseViewModel
 
 data class BreedsViewState(
         override val data: MutableList<Breed> = mutableListOf(),
@@ -29,18 +29,16 @@ class BreedsViewModel(private val useCase: BreedsUseCase) : BaseViewModel() {
     }
 
     fun loadNext(page: Int) {
-        getStore<ViewStateStore<BreedsViewState>>().dispatchActions(useCase.getList(getStore<ViewStateStore<BreedsViewState>>().state(), page))
+        getStore<ViewStateStore<BreedsViewState>>().dispatchActions(useCase.getList(getState(), page))
     }
 
-    fun showFullDescription(position: Int) {
+    fun addToFavorite(position: Int) {
         getStore<ViewStateStore<BreedsViewState>>().dispatchAction {
-            useCase.showFull(it, position)
+            useCase.addToFavorite(it, position)
         }
     }
 
-    fun openMode(position: Int) {
-
-    }
+    override fun getState() = getStore<ViewStateStore<BreedsViewState>>().state()
 
 }
 
