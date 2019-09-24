@@ -36,7 +36,6 @@ class BreedListAdapter(private val viewModel: BreedsViewModel,
         (holder as BreadViewHolder).bind(model)
 
         holder.itemView.setOnClickListener {
-
             it?.navigate(R.id.action_breedsFragment_to_breedFragment,
                     bundleOf(BaseViewModel.ARGUMENT_ID to position,
                             BaseViewModel.ARGUMENT_EXTRA to model,

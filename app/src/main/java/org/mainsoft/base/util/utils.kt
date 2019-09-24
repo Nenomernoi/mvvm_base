@@ -9,11 +9,8 @@ import android.os.Parcelable
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
-import androidx.navigation.NavOptions
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
-import org.mainsoft.base.R
-
 
 fun View.navigate(actionId: Int, bundle: Bundle? = null) {
     Navigation.findNavController(this).navigate(actionId, bundle)

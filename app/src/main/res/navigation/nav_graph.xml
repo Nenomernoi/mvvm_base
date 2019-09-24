@@ -3,7 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/breedsFragment">
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="org.mainsoft.base.screen.fragment.SplashFragment"
+        android:label="SplashFragment"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_breedFragment"
+            app:destination="@id/breedsFragment"
+            app:enterAnim="@anim/slide_out_right"
+            app:exitAnim="@anim/slide_in_right_slow"
+            app:popEnterAnim="@anim/slide_out_left_fast"
+            app:popExitAnim="@anim/slide_in_left"
+            app:popUpToInclusive="true"
+            app:popUpTo="@+id/splashFragment" />
+
+    </fragment>
 
     <fragment
         android:id="@+id/breedsFragment"
@@ -16,8 +33,7 @@
             app:enterAnim="@anim/slide_out_right"
             app:exitAnim="@anim/slide_in_right_slow"
             app:popEnterAnim="@anim/slide_out_left_fast"
-            app:popExitAnim="@anim/slide_in_left"
-            app:popUpTo="@+id/breedsFragment" />
+            app:popExitAnim="@anim/slide_in_left" />
     </fragment>
 
     <fragment

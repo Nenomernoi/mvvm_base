@@ -1,17 +1,16 @@
 package org.mainsoft.base.screen.fragment
 
-import android.content.Intent
 import android.view.animation.AnimationUtils
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.get
 import kotlinx.android.synthetic.main.fragment_splash.*
 import org.mainsoft.base.R
-import org.mainsoft.base.activity.MainActivity
 import org.mainsoft.base.lib.ViewStateStore
 import org.mainsoft.base.screen.fragment.base.BaseFragment
 import org.mainsoft.base.screen.model.splash.SplashViewModel
 import org.mainsoft.base.screen.model.splash.SplashViewModelFactory
 import org.mainsoft.base.screen.model.splash.SplashViewState
+import org.mainsoft.base.util.navigate
 
 class SplashFragment : BaseFragment() {
 
@@ -41,8 +40,7 @@ class SplashFragment : BaseFragment() {
     }
 
     private fun openNext() {
-        startActivity(Intent(activity, MainActivity::class.java))
-        activity?.finish()
+        navigate(R.id.action_splashFragment_to_breedFragment)
     }
 
 }
