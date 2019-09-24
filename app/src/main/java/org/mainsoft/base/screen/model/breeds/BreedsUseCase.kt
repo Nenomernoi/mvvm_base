@@ -5,9 +5,9 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.ReceiveChannel
 import org.mainsoft.base.lib.Action
 import org.mainsoft.base.net.Repository
-import org.mainsoft.base.screen.model.base.BaseUseCase
+import org.mainsoft.base.screen.model.base.BaseApiUseCase
 
-class BreedsUseCase(repository: Repository) : BaseUseCase(repository) {
+class BreedsUseCase(repository: Repository) : BaseApiUseCase(repository) {
 
     @ExperimentalCoroutinesApi
     fun getList(state: BreedsViewState?, page: Int): ReceiveChannel<Action<BreedsViewState>> = produceActions {
@@ -25,13 +25,22 @@ class BreedsUseCase(repository: Repository) : BaseUseCase(repository) {
     }
 
     suspend fun addToFavorite(state: BreedsViewState, position: Int): Action<BreedsViewState> {
-        val newBreed = repository.showFull(state.data[position])
+        val newBreed = repository.addFavorite(state.data[position])
         return Action {
             data[position] = newBreed
             copy(data = data)
         }
     }
 
+    suspend fun updateItem(state: BreedsViewState, position: Int): Action<BreedsViewState> {
+        val item = state.data[position]
+        val newBreed = repository.getBreed(item.id)
+
+        return Action {
+            data[position] = newBreed
+            copy(data = data)
+        }
+    }
 
     @ExperimentalCoroutinesApi
     fun clearData(): ReceiveChannel<Action<BreedsViewState>> = produceActions {

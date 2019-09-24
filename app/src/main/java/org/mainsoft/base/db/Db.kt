@@ -9,7 +9,7 @@ import org.mainsoft.base.db.converter.WeightConverter
 import org.mainsoft.base.db.dao.BreedDao
 import org.mainsoft.base.net.response.Breed
 
-@Database(entities = [Breed::class], version = 10)
+@Database(entities = [Breed::class], version = 12)
 @TypeConverters(WeightConverter::class)
 abstract class Db : RoomDatabase() {
 

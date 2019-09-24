@@ -9,6 +9,7 @@ import org.mainsoft.base.R
 import org.mainsoft.base.lib.ViewStateStore
 import org.mainsoft.base.net.response.Breed
 import org.mainsoft.base.screen.fragment.base.BaseFragment
+import org.mainsoft.base.screen.fragment.base.ResultCallback
 import org.mainsoft.base.screen.model.base.BaseViewModel
 import org.mainsoft.base.screen.model.breed.BreedViewModel
 import org.mainsoft.base.screen.model.breed.BreedViewModelFactory
@@ -21,8 +22,9 @@ class BreedFragment : BaseFragment() {
 
     override fun initData() {
         viewModel = ViewModelProviders.of(this, BreedViewModelFactory).get()
-        getViewModel<BreedViewModel>().id = arguments?.getString(BaseViewModel.ARGUMENT_ID)
         val breed = arguments?.getParcelable(BaseViewModel.ARGUMENT_EXTRA) as? Breed
+        getViewModel<BreedViewModel>().setModel(breed)
+
         if (breed != null) {
             showHideProgress(false)
             setData(breed)
@@ -31,16 +33,29 @@ class BreedFragment : BaseFragment() {
         getViewModel<BreedViewModel>().loadData()
     }
 
+    private fun sendUpdateEvent() {
+        val position = arguments?.getInt(BaseViewModel.ARGUMENT_ID) ?: return
+        val callback = arguments?.getSerializable(BaseViewModel.ARGUMENT_RETURN) as? BreedsReturnCallback?
+        callback?.onUpdateItem(position)
+    }
+
     override fun initListeners() {
         super.initListeners()
 
         btnBack?.setOnClickListener {
             onBack()
         }
-
+        fbAdd?.setOnClickListener {
+            getViewModel<BreedViewModel>().addToFavorite()
+        }
         getViewModel<BreedViewModel>()
                 .getStore<ViewStateStore<BreedViewState>>()
                 .observe(this) {
+
+                    if (it.update) {
+                        sendUpdateEvent()
+                        return@observe
+                    }
 
                     showHideProgress(it.loading)
 
@@ -60,7 +75,7 @@ class BreedFragment : BaseFragment() {
         txtAltName?.text = model.alt_names
         txtAltName?.isVisible = !model.alt_names.isNullOrEmpty()
 
-        txtTemperament?.text = model.alt_names
+        txtTemperament?.text = model.temperament
         txtOrigin?.text = model.origin
         txtLifeSpan?.text = model.life_span
 
@@ -81,8 +96,7 @@ class BreedFragment : BaseFragment() {
         txtStrangerFriendly?.text = model.stranger_friendly.toString()
         txtVocalisation?.text = model.vocalisation.toString()
 
-
-
+        fbAdd?.setImageResource(if (model.favorite) R.drawable.ic_favorite else R.drawable.ic_favorite_border)
 
         Glide.with(activity ?: return)
                 .load(model.image_url)
@@ -92,4 +106,8 @@ class BreedFragment : BaseFragment() {
                 .into(imgMain)
     }
 
+}
+
+interface BreedsReturnCallback : ResultCallback {
+    fun onUpdateItem(position: Int)
 }

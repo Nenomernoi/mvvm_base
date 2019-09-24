@@ -45,9 +45,10 @@ data class Breed(@PrimaryKey
                  val vocalisation: Int = 0,
 
 
+                 var image_id: String? = null,
                  var image_url: String? = null,
 
-                 val favorite: Boolean = false) : Parcelable {
+                 var favorite: Boolean = false) : Parcelable {
 
     constructor(parcel: Parcel) : this(
             parcel.readString(),
@@ -74,6 +75,7 @@ data class Breed(@PrimaryKey
             parcel.readInt(),
             parcel.readInt(),
             parcel.readInt(),
+            parcel.readString(),
             parcel.readString(),
             parcel.readByte() != 0.toByte())
 
@@ -126,6 +128,7 @@ data class Breed(@PrimaryKey
         parcel.writeInt(stranger_friendly)
         parcel.writeInt(vocalisation)
         parcel.writeString(image_url)
+        parcel.writeString(image_id)
         parcel.writeByte(if (favorite) 1 else 0)
     }
 

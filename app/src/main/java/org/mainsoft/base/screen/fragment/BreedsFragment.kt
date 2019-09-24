@@ -35,7 +35,11 @@ class BreedsFragment : BaseSwipeEndlessListFragment<Breed>() {
     }
 
     override fun initAdapter() {
-        adapter = BreedListAdapter(getViewModel())
+        adapter = BreedListAdapter(getViewModel(), object : BreedsReturnCallback{
+            override fun onUpdateItem(position: Int) {
+                getViewModel<BreedsViewModel>().updateItem(position)
+            }
+        })
     }
 
     override fun loadData() {

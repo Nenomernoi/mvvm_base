@@ -9,10 +9,12 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_list_refresh.*
 import org.mainsoft.base.screen.model.base.BaseViewModel
+import java.io.Serializable
 
 abstract class BaseFragment : Fragment() {
 
     protected open lateinit var viewModel: BaseViewModel
+    protected var resultListener : ResultCallback? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? =
@@ -73,3 +75,6 @@ abstract class BaseFragment : Fragment() {
 
     fun <V : Any> getViewModel(): V = viewModel as V
 }
+
+
+interface ResultCallback : Serializable

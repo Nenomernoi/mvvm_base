@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.os.bundleOf
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -14,11 +13,13 @@ import org.mainsoft.base.R
 import org.mainsoft.base.adapter.base.BaseSupportAdapter
 import org.mainsoft.base.adapter.base.BaseViewHolder
 import org.mainsoft.base.net.response.Breed
+import org.mainsoft.base.screen.fragment.BreedsReturnCallback
 import org.mainsoft.base.screen.model.base.BaseViewModel
 import org.mainsoft.base.screen.model.breeds.BreedsViewModel
 import org.mainsoft.base.util.navigate
 
-class BreedListAdapter(private val viewModel: BreedsViewModel) : BaseSupportAdapter<Breed>() {
+class BreedListAdapter(private val viewModel: BreedsViewModel,
+                       private val listener: BreedsReturnCallback) : BaseSupportAdapter<Breed>() {
 
     init {
         list = viewModel.getState().data
@@ -31,12 +32,23 @@ class BreedListAdapter(private val viewModel: BreedsViewModel) : BaseSupportAdap
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as BreadViewHolder).bind(list[position])
+        val model = list[position]
+        (holder as BreadViewHolder).bind(model)
+
+        holder.itemView.setOnClickListener {
+
+            it?.navigate(R.id.action_breedsFragment_to_breedFragment,
+                    bundleOf(BaseViewModel.ARGUMENT_ID to position,
+                            BaseViewModel.ARGUMENT_EXTRA to model,
+                            BaseViewModel.ARGUMENT_RETURN to listener))
+        }
+
     }
 
 }
 
-class BreadViewHolder(view: View, private val viewModel: BreedsViewModel) : BaseViewHolder<Breed>(view) {
+class BreadViewHolder(view: View,
+                      private val viewModel: BreedsViewModel) : BaseViewHolder<Breed>(view) {
 
     private var txtTitle: TextView = itemView.findViewById(R.id.txtTitle)
     private var txtDescription: TextView = itemView.findViewById(R.id.txtDescription)
@@ -54,7 +66,7 @@ class BreadViewHolder(view: View, private val viewModel: BreedsViewModel) : Base
         txtTitle.text = model.name
         txtDescription.text = model.description
 
-        btnFavorite.setImageResource(if(model.favorite) R.drawable.ic_favorite_color else R.drawable.ic_favorite_border_color)
+        btnFavorite.setImageResource(if (model.favorite) R.drawable.ic_favorite_color else R.drawable.ic_favorite_border_color)
 
         Glide.with(itemView.context)
                 .load(model.image_url)
@@ -63,12 +75,6 @@ class BreadViewHolder(view: View, private val viewModel: BreedsViewModel) : Base
                 .error(R.drawable.ic_cat)
                 .apply(RequestOptions.circleCropTransform())
                 .into(imgMain)
-
-        itemView.setOnClickListener {
-            it?.navigate(R.id.action_breedsFragment_to_breedFragment,
-                    bundleOf(BaseViewModel.ARGUMENT_ID to model.id,
-                            BaseViewModel.ARGUMENT_EXTRA to model))
-        }
 
     }
 

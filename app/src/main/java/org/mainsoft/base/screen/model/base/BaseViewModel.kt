@@ -9,6 +9,7 @@ abstract class BaseViewModel : ViewModel() {
     companion object {
         const val ARGUMENT_ID = "argument_id"
         const val ARGUMENT_EXTRA = "argument_extra"
+        const val ARGUMENT_RETURN = "argument_return"
     }
 
     protected lateinit var store: CoroutineScope

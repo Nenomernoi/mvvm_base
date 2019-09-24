@@ -8,11 +8,13 @@ import org.kodein.di.generic.singleton
 import org.mainsoft.base.db.Db
 import org.mainsoft.base.net.Api
 import org.mainsoft.base.net.ApiRest
+import org.mainsoft.base.util.SettingPrefs
 
 class App : Application() {
 
     private val settingModule = Kodein.Module(name = "APP") {
         bind<Api>() with singleton { ApiRest.getApi() }
+        bind<SettingPrefs>() with singleton { SettingPrefs.get(this@App) }
         bind<Db>() with singleton { Db.getInstance(this@App) }
 
     }

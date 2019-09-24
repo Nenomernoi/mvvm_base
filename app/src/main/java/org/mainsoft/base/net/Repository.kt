@@ -7,6 +7,9 @@ import org.mainsoft.base.App
 import org.mainsoft.base.BuildConfig
 import org.mainsoft.base.db.Db
 import org.mainsoft.base.net.response.Breed
+import org.mainsoft.base.util.SettingPrefs
+import org.mainsoft.base.util.addFavorite
+import org.mainsoft.base.util.isFavorite
 
 class Repository {
 
@@ -15,6 +18,7 @@ class Repository {
     }
 
     private val api: Api by App.kodein.instance()
+    private val setting: SettingPrefs by App.kodein.instance()
     private val db: Db by App.kodein.instance()
 
     suspend fun getBreeds(page: Int): MutableList<Breed> = coroutineScope {
@@ -26,7 +30,12 @@ class Repository {
                         .map { it to getImage(it.id) }
                         .map { (breed, image) ->
                             breed.copy(image_url = image)
-                        }.toMutableList()
+                        }
+                        .map { it to isFavorite(it.id) }
+                        .map { (breed, isFavorite) ->
+                            breed.copy(favorite = isFavorite)
+                        }
+                        .toMutableList()
                 db.breedDao().insert(items)
             }
             return@async items
@@ -36,7 +45,9 @@ class Repository {
 
     suspend fun getBreed(breedId: String): Breed = coroutineScope {
         async {
-            return@async db.breedDao().getItem(breedId) ?: api.getBreed(breedId)[0].getBreed()
+            val result = db.breedDao().getItem(breedId) ?: api.getBreed(breedId)[0].getBreed()
+            result.favorite = isFavorite(result.id)
+            return@async result
         }
     }.await()
 
@@ -46,15 +57,22 @@ class Repository {
         }
     }.await()
 
-    suspend fun getImage(id: String): String = coroutineScope {
+    private suspend fun getImage(id: String): String = coroutineScope {
         async {
             "${BuildConfig.BASE_URL}images/search?breed_id=$id&format=src"
         }
     }.await()
 
-    suspend fun showFull(user: Breed): Breed = coroutineScope {
+    private suspend fun isFavorite(id: String): Boolean = coroutineScope {
         async {
-            user.copy(favorite = !user.favorite)
+            setting.isFavorite(id)
+        }
+    }.await()
+
+    suspend fun addFavorite(breed: Breed): Breed = coroutineScope {
+        setting.addFavorite(breed.id)
+        async {
+            breed.copy(favorite = !breed.favorite)
         }
     }.await()
 }

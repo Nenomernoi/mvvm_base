@@ -56,6 +56,10 @@ dependencies {
     api"org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     api "androidx.core:core-ktx:1.1.0"
 
+    //Ktx Preferences
+    api "co.windly:ktx-prefs:1.4.5"
+    kapt "co.windly:ktx-prefs-compiler:1.4.5"
+
     //Navigation
     api 'androidx.navigation:navigation-fragment-ktx:2.1.0'
     api 'androidx.navigation:navigation-ui-ktx:2.1.0'

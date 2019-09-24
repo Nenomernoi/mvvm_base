@@ -10,6 +10,7 @@ data class BreedImage(
     fun getBreed() : Breed {
         val res = breeds[0]
         res.image_url = url
+        res.image_id = id
         return  res
     }
 }

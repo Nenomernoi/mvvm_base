@@ -24,6 +24,12 @@ class BreedsViewModel(private val useCase: BreedsUseCase) : BaseViewModel() {
         loadNext(0)
     }
 
+    fun updateItem(position: Int){
+        getStore<ViewStateStore<BreedsViewState>>().dispatchAction {
+            useCase.updateItem(it, position)
+        }
+    }
+
     fun reloadData() {
         getStore<ViewStateStore<BreedsViewState>>().dispatchActions(useCase.clearData())
     }
