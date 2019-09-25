@@ -34,7 +34,7 @@ class ImagesViewModel(private val useCase: ImagesUseCase) : BaseViewModel() {
 
     fun swipe() {
         getStore<ViewStateStore<ImagesViewState>>().dispatchAction {
-            useCase.swipe(getState())
+            useCase.swipe()
         }
     }
 

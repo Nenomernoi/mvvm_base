@@ -4,7 +4,7 @@
 
     <ConstraintSet android:id="@+id/rest">
 
-        <Constraint android:id="@+id/topCard">
+        <Constraint android:id="@id/topCard">
 
             <Layout
                 android:layout_width="match_parent"
@@ -16,7 +16,7 @@
 
         </Constraint>
 
-        <Constraint android:id="@+id/bottomCard">
+        <Constraint android:id="@id/bottomCard">
 
             <Layout
                 android:layout_width="match_parent"

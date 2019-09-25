@@ -81,6 +81,7 @@
             <ImageView
                 android:id="@+id/likeIcon"
                 android:layout_width="0dp"
+                android:elevation="@dimen/root_padding"
                 android:layout_height="0dp"
                 android:background="@drawable/backround_circle"
                 android:src="@drawable/ic_favorite_border" />
@@ -88,6 +89,7 @@
             <ImageView
                 android:id="@+id/passIcon"
                 android:layout_width="0dp"
+                android:elevation="@dimen/root_padding"
                 android:layout_height="0dp"
                 android:background="@drawable/backround_circle"
                 android:src="@drawable/ic_baseline_close" />

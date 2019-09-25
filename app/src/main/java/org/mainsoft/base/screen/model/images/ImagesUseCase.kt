@@ -22,8 +22,7 @@ class ImagesUseCase(repository: Repository) : BaseApiUseCase(repository) {
         }
     }
 
-
-    suspend fun swipe(state: ImagesViewState): Action<ImagesViewState> {
+    fun swipe(): Action<ImagesViewState> {
         return Action {
             data.removeAt(data.size - 1)
             copy(data = data, loading = false)
