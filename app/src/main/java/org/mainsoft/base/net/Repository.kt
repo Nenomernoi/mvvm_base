@@ -53,7 +53,7 @@ class Repository {
 
     suspend fun getImages(id: String, page: Int = 0): MutableList<Image> = coroutineScope {
         async {
-            var items = db.imageDao().getItems(page * LIMIT, LIMIT)
+            var items = db.imageDao().getItems(id, page * LIMIT, LIMIT)
             if (items.isNullOrEmpty()) {
                 items = api.getImages(id, page, LIMIT, "json")
                 items.map {

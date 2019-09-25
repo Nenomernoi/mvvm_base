@@ -11,7 +11,7 @@ import org.mainsoft.base.db.dao.ImageDao
 import org.mainsoft.base.net.response.Breed
 import org.mainsoft.base.net.response.Image
 
-@Database(entities = [Breed::class, Image::class], version = 13)
+@Database(entities = [Breed::class, Image::class], version = 14)
 @TypeConverters(WeightConverter::class)
 abstract class Db : RoomDatabase() {
 

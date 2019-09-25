@@ -6,29 +6,96 @@
     android:background="@color/white"
     android:orientation="vertical">
 
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-<androidx.constraintlayout.motion.widget.MotionLayout
-    android:id="@+id/motionLayout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:layoutDescription="@xml/scene_swipe"
-    app:motionDebug="SHOW_ALL">
-
-    <FrameLayout
-        android:id="@+id/topCard"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="@dimen/image_item_padding"
-        android:background="@color/colorPrimary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_height="match_parent">
 
-</androidx.constraintlayout.motion.widget.MotionLayout>
+
+        <androidx.constraintlayout.motion.widget.MotionLayout
+            android:id="@+id/mlMain"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipChildren="false"
+            app:layoutDescription="@xml/scene_swipe">
+
+            <!--Button
+                android:id="@+id/btnLoadMore"
+                android:text="Load more"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:padding="@dimen/root_padding"
+                android:layout_width="wrap_content"
+                android:elevation="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_height="wrap_content"/-->
+
+            <FrameLayout
+                android:id="@+id/bottomCard"
+                android:elevation="@dimen/root_padding_small"
+                android:layout_height="0dp"
+                android:layout_width="0dp">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/root_padding"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="@dimen/root_padding_middle"
+                    app:cardElevation="@dimen/root_padding_middle">
+
+                    <ImageView
+                        android:id="@+id/imgBottom"
+                        android:scaleType="centerCrop"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                </androidx.cardview.widget.CardView>
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/topCard"
+                android:elevation="@dimen/root_padding_middle"
+                android:layout_height="0dp"
+                android:layout_width="0dp">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/root_padding"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="@dimen/root_padding_middle"
+                    app:cardElevation="@dimen/root_padding_middle">
+
+                    <ImageView
+                        android:id="@+id/imgTop"
+                        android:scaleType="centerCrop"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                </androidx.cardview.widget.CardView>
+
+
+            </FrameLayout>
+
+            <ImageView
+                android:id="@+id/likeIcon"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/backround_circle"
+                android:src="@drawable/ic_favorite_border" />
+
+            <ImageView
+                android:id="@+id/passIcon"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/backround_circle"
+                android:src="@drawable/ic_baseline_close" />
+
+        </androidx.constraintlayout.motion.widget.MotionLayout>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
     <TextView
         android:id="@+id/txtError"
         android:layout_width="wrap_content"
@@ -36,16 +103,17 @@
         android:layout_centerInParent="true"
         android:layout_gravity="center"
         android:text="Retry"
-        android:visibility="gone"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="@dimen/root_empty_text_small_size" />
+        android:textSize="@dimen/root_empty_text_small_size"
+        android:visibility="gone" />
 
     <RelativeLayout
         android:id="@+id/pbLoad"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clickable="true"
-        android:focusable="true">
+        android:focusable="true"
+        android:visibility="gone">
 
         <ProgressBar
             android:layout_width="wrap_content"
@@ -53,5 +121,4 @@
             android:layout_centerInParent="true" />
 
     </RelativeLayout>
-
 </RelativeLayout>

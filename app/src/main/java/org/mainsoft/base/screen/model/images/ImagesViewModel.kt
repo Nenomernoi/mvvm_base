@@ -25,11 +25,17 @@ class ImagesViewModel(private val useCase: ImagesUseCase) : BaseViewModel() {
     }
 
     override fun loadData() {
-        loadNext(0)
+        loadNext()
     }
 
-    fun loadNext(page: Int) {
-        getStore<ViewStateStore<ImagesViewState>>().dispatchActions(useCase.getItems(getState(), id ?: return, page))
+    fun loadNext() {
+        getStore<ViewStateStore<ImagesViewState>>().dispatchActions(useCase.getItems(getState(), id ?: return))
+    }
+
+    fun swipe() {
+        getStore<ViewStateStore<ImagesViewState>>().dispatchAction {
+            useCase.swipe(getState())
+        }
     }
 
     override fun getState() = getStore<ViewStateStore<ImagesViewState>>().state()

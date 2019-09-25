@@ -9,7 +9,7 @@ class SplashUseCase : BaseUseCase() {
 
     fun startWork(): ReceiveChannel<Action<SplashViewState>> = produceActions {
         send { copy(startAnim = true, openNext = false) }
-        delay(3000L)
+        delay(1500L)
         send { copy(startAnim = false, openNext = true) }
     }
 
