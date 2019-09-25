@@ -24,4 +24,9 @@
     <dimen name="breed_item_value_text_size">42sp</dimen>
     <dimen name="breed_item_title_text_size">32sp</dimen>
 
+    <dimen name="image_item_padding">50dp</dimen>
+    <dimen name="image_item_padding_top">20dp</dimen>
+    <dimen name="image_item_padding_bottom">80dp</dimen>
+    <dimen name="image_item_padding_max">200dp</dimen>
+
 </resources>

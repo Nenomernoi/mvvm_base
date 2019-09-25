@@ -1,5 +1,6 @@
 package org.mainsoft.base.screen.fragment
 
+import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.get
@@ -14,6 +15,7 @@ import org.mainsoft.base.screen.model.base.BaseViewModel
 import org.mainsoft.base.screen.model.breed.BreedViewModel
 import org.mainsoft.base.screen.model.breed.BreedViewModelFactory
 import org.mainsoft.base.screen.model.breed.BreedViewState
+import org.mainsoft.base.util.navigate
 import org.mainsoft.base.util.onBack
 
 class BreedFragment : BaseFragment() {
@@ -44,6 +46,10 @@ class BreedFragment : BaseFragment() {
 
         btnBack?.setOnClickListener {
             onBack()
+        }
+        imgMain?.setOnClickListener {
+            val breed = arguments?.getParcelable(BaseViewModel.ARGUMENT_EXTRA) as? Breed
+            navigate(R.id.action_breedFragment_to_imagesFragment, bundleOf(BaseViewModel.ARGUMENT_ID to breed?.id))
         }
         fbAdd?.setOnClickListener {
             getViewModel<BreedViewModel>().addToFavorite()

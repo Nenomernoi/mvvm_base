@@ -9,7 +9,7 @@
         android:id="@+id/splashFragment"
         android:name="org.mainsoft.base.screen.fragment.SplashFragment"
         android:label="SplashFragment"
-        tools:layout="@layout/fragment_splash" >
+        tools:layout="@layout/fragment_splash">
         <action
             android:id="@+id/action_splashFragment_to_breedFragment"
             app:destination="@id/breedsFragment"
@@ -17,8 +17,8 @@
             app:exitAnim="@anim/slide_in_right_slow"
             app:popEnterAnim="@anim/slide_out_left_fast"
             app:popExitAnim="@anim/slide_in_left"
-            app:popUpToInclusive="true"
-            app:popUpTo="@+id/splashFragment" />
+            app:popUpTo="@+id/splashFragment"
+            app:popUpToInclusive="true" />
 
     </fragment>
 
@@ -40,7 +40,21 @@
         android:id="@+id/breedFragment"
         android:name="org.mainsoft.base.screen.fragment.BreedFragment"
         android:label="BreedFragment"
-        tools:layout="@layout/fragment_breed" />
+        tools:layout="@layout/fragment_breed">
+        <action
+            android:id="@+id/action_breedFragment_to_imagesFragment"
+            app:destination="@id/imagesFragment"
+            app:enterAnim="@anim/slide_out_right"
+            app:exitAnim="@anim/slide_in_right_slow"
+            app:popEnterAnim="@anim/slide_out_left_fast"
+            app:popExitAnim="@anim/slide_in_left" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/imagesFragment"
+        android:name="org.mainsoft.base.screen.fragment.ImagesFragment"
+        android:label="ImagesFragment"
+        tools:layout="@layout/fragment_images" />
 
 
 </navigation>

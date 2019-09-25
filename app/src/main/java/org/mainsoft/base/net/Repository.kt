@@ -7,6 +7,7 @@ import org.mainsoft.base.App
 import org.mainsoft.base.BuildConfig
 import org.mainsoft.base.db.Db
 import org.mainsoft.base.net.response.Breed
+import org.mainsoft.base.net.response.Image
 import org.mainsoft.base.util.SettingPrefs
 import org.mainsoft.base.util.addFavorite
 import org.mainsoft.base.util.isFavorite
@@ -23,7 +24,7 @@ class Repository {
 
     suspend fun getBreeds(page: Int): MutableList<Breed> = coroutineScope {
         async {
-            var items = db.breedDao().getBreeds(page * LIMIT, LIMIT)
+            var items = db.breedDao().getItems(page * LIMIT, LIMIT)
             if (items.isNullOrEmpty()) {
                 val buffer = api.getBreeds(LIMIT, page)
                 items = buffer
@@ -42,12 +43,26 @@ class Repository {
         }
     }.await()
 
-
     suspend fun getBreed(breedId: String): Breed = coroutineScope {
         async {
             val result = db.breedDao().getItem(breedId) ?: api.getBreed(breedId)[0].getBreed()
             result.favorite = isFavorite(result.id)
             return@async result
+        }
+    }.await()
+
+    suspend fun getImages(id: String, page: Int = 0): MutableList<Image> = coroutineScope {
+        async {
+            var items = db.imageDao().getItems(page * LIMIT, LIMIT)
+            if (items.isNullOrEmpty()) {
+                items = api.getImages(id, page, LIMIT, "json")
+                items.map {
+                    it.parentId = id
+                }
+                db.imageDao().insert(items)
+            }
+
+            return@async items
         }
     }.await()
 

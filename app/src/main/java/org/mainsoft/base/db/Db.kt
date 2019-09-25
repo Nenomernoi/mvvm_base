@@ -7,13 +7,16 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import org.mainsoft.base.db.converter.WeightConverter
 import org.mainsoft.base.db.dao.BreedDao
+import org.mainsoft.base.db.dao.ImageDao
 import org.mainsoft.base.net.response.Breed
+import org.mainsoft.base.net.response.Image
 
-@Database(entities = [Breed::class], version = 12)
+@Database(entities = [Breed::class, Image::class], version = 13)
 @TypeConverters(WeightConverter::class)
 abstract class Db : RoomDatabase() {
 
     abstract fun breedDao(): BreedDao
+    abstract fun imageDao(): ImageDao
 
     companion object {
 

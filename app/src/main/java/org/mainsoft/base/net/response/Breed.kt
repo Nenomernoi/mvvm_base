@@ -87,13 +87,13 @@ data class Breed(@PrimaryKey
         val builder = StringBuilder()
 
         if (!wikipedia_url.isNullOrEmpty()) {
-            builder.append("$wikipedia_url\n")
+            builder.append("$wikipedia_url\n\n")
         }
         if (!cfa_url.isNullOrEmpty()) {
-            builder.append("$cfa_url\n")
+            builder.append("$cfa_url\n\n")
         }
         if (!vetstreet_url.isNullOrEmpty()) {
-            builder.append("$vetstreet_url\n")
+            builder.append("$vetstreet_url\n\n")
         }
         if (!vcahospitals_url.isNullOrEmpty()) {
             builder.append("$vcahospitals_url")
