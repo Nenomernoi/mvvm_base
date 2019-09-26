@@ -8,17 +8,14 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_breed.*
-import kotlinx.android.synthetic.main.fragment_list_refresh.*
 import kotlinx.android.synthetic.main.fragment_list_refresh.pbLoad
 import kotlinx.android.synthetic.main.fragment_list_refresh.txtError
 import org.mainsoft.base.screen.model.base.BaseViewModel
 import org.mainsoft.base.util.onBack
-import java.io.Serializable
 
 abstract class BaseFragment : Fragment() {
 
     protected open lateinit var viewModel: BaseViewModel
-    protected var resultListener : ResultCallback? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? =
@@ -77,11 +74,14 @@ abstract class BaseFragment : Fragment() {
 
     //////////////////////////////////////////////////////////////////////////////////////////
 
+    open fun onRestoreInstanceState(savedInstanceState: Bundle?) {
+        //
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////////////
+
     abstract fun getLayout(): Int
     abstract fun initData()
 
     fun <V : Any> getViewModel(): V = viewModel as V
 }
-
-
-interface ResultCallback : Serializable

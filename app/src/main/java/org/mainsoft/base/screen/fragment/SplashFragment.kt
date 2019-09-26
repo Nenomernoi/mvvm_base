@@ -10,7 +10,7 @@ import org.mainsoft.base.screen.fragment.base.BaseFragment
 import org.mainsoft.base.screen.model.splash.SplashViewModel
 import org.mainsoft.base.screen.model.splash.SplashViewModelFactory
 import org.mainsoft.base.screen.model.splash.SplashViewState
-import org.mainsoft.base.util.navigate
+import org.mainsoft.base.util.navigateSplash
 
 class SplashFragment : BaseFragment() {
 
@@ -19,7 +19,6 @@ class SplashFragment : BaseFragment() {
     override fun initData() {
         viewModel = ViewModelProviders.of(this, SplashViewModelFactory).get()
     }
-
     override fun initListeners() {
         super.initListeners()
 
@@ -40,7 +39,7 @@ class SplashFragment : BaseFragment() {
     }
 
     private fun openNext() {
-        navigate(R.id.action_splashFragment_to_breedFragment)
+        navigateSplash(R.id.action_splashFragment_to_breedFragment)
     }
 
 }

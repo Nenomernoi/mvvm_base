@@ -13,13 +13,14 @@ import org.mainsoft.base.R
 import org.mainsoft.base.adapter.base.BaseSupportAdapter
 import org.mainsoft.base.adapter.base.BaseViewHolder
 import org.mainsoft.base.net.response.Breed
+import org.mainsoft.base.screen.fragment.BackCallback
 import org.mainsoft.base.screen.fragment.BreedsReturnCallback
 import org.mainsoft.base.screen.model.base.BaseViewModel
 import org.mainsoft.base.screen.model.breeds.BreedsViewModel
 import org.mainsoft.base.util.navigate
 
 class BreedListAdapter(private val viewModel: BreedsViewModel,
-                       private val listener: BreedsReturnCallback) : BaseSupportAdapter<Breed>() {
+                       private val listener: BackCallback) : BaseSupportAdapter<Breed>() {
 
     init {
         list = viewModel.getState().data
@@ -41,7 +42,6 @@ class BreedListAdapter(private val viewModel: BreedsViewModel,
                             BaseViewModel.ARGUMENT_EXTRA to model,
                             BaseViewModel.ARGUMENT_RETURN to listener))
         }
-
     }
 
 }

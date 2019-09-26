@@ -6,7 +6,7 @@ apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "it.codingjam.viewstatestore"
+        applicationId "org.mainsoft.base"
         minSdkVersion 16
         targetSdkVersion 28
         multiDexEnabled true

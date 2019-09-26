@@ -1,6 +1,5 @@
 package org.mainsoft.base.screen.fragment
 
-import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.get
@@ -10,13 +9,11 @@ import org.mainsoft.base.R
 import org.mainsoft.base.lib.ViewStateStore
 import org.mainsoft.base.net.response.Breed
 import org.mainsoft.base.screen.fragment.base.BaseFragment
-import org.mainsoft.base.screen.fragment.base.ResultCallback
 import org.mainsoft.base.screen.model.base.BaseViewModel
 import org.mainsoft.base.screen.model.breed.BreedViewModel
 import org.mainsoft.base.screen.model.breed.BreedViewModelFactory
 import org.mainsoft.base.screen.model.breed.BreedViewState
 import org.mainsoft.base.util.navigate
-import org.mainsoft.base.util.onBack
 
 class BreedFragment : BaseFragment() {
 
@@ -37,8 +34,8 @@ class BreedFragment : BaseFragment() {
 
     private fun sendUpdateEvent() {
         val position = arguments?.getInt(BaseViewModel.ARGUMENT_ID) ?: return
-        val callback = arguments?.getSerializable(BaseViewModel.ARGUMENT_RETURN) as? BreedsReturnCallback?
-        callback?.onUpdateItem(position)
+        val callback = arguments?.getSerializable(BaseViewModel.ARGUMENT_RETURN) as? BackCallback?
+        callback?.resultListener?.onUpdateItem(position)
     }
 
     override fun initListeners() {
@@ -109,8 +106,4 @@ class BreedFragment : BaseFragment() {
 
     }
 
-}
-
-interface BreedsReturnCallback : ResultCallback {
-    fun onUpdateItem(position: Int)
 }

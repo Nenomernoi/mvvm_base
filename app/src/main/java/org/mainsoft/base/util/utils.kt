@@ -9,8 +9,10 @@ import android.os.Parcelable
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavOptions
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
+import org.mainsoft.base.R
 
 fun View.navigate(actionId: Int, bundle: Bundle? = null) {
     Navigation.findNavController(this).navigate(actionId, bundle)
@@ -18,6 +20,13 @@ fun View.navigate(actionId: Int, bundle: Bundle? = null) {
 
 fun Fragment.navigate(actionId: Int, bundle: Bundle? = null) {
     findNavController().navigate(actionId, bundle)
+}
+
+fun Fragment.navigateSplash(actionId: Int) {
+    findNavController().navigate(actionId, null,
+            NavOptions.Builder()
+                    .setPopUpTo(R.id.splashFragment,
+                            true).build())
 }
 
 fun Fragment.onBack() {
