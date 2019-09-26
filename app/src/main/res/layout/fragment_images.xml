@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/bg_trans"
     android:orientation="vertical">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -16,24 +16,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clipChildren="false"
-            app:layoutDescription="@xml/scene_swipe">
-
-            <!--Button
-                android:id="@+id/btnLoadMore"
-                android:text="Load more"
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:padding="@dimen/root_padding"
-                android:layout_width="wrap_content"
-                android:elevation="0dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_height="wrap_content"/-->
+            app:layoutDescription="@xml/image_swipe">
 
             <FrameLayout
                 android:id="@+id/bottomCard"
-                android:elevation="@dimen/root_padding_small"
                 android:layout_height="0dp"
                 android:layout_width="0dp">
 
@@ -43,20 +29,26 @@
                     android:layout_margin="@dimen/root_padding"
                     app:cardBackgroundColor="@color/white"
                     app:cardCornerRadius="@dimen/root_padding_middle"
-                    app:cardElevation="@dimen/root_padding_middle">
+                    app:cardElevation="@dimen/root_padding_small">
 
                     <ImageView
                         android:id="@+id/imgBottom"
                         android:scaleType="centerCrop"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />
+
+                    <ImageView
+                        android:src="@drawable/ic_thumbs_up_down"
+                        android:layout_width="wrap_content"
+                        android:layout_marginBottom="@dimen/root_padding"
+                        android:layout_gravity="bottom|center_horizontal"
+                        android:layout_height="wrap_content"/>
                 </androidx.cardview.widget.CardView>
 
             </FrameLayout>
 
             <FrameLayout
                 android:id="@+id/topCard"
-                android:elevation="@dimen/root_padding_middle"
                 android:layout_height="0dp"
                 android:layout_width="0dp">
 
@@ -73,6 +65,13 @@
                         android:scaleType="centerCrop"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />
+
+                    <ImageView
+                        android:src="@drawable/ic_thumbs_up_down"
+                        android:layout_width="wrap_content"
+                        android:layout_marginBottom="@dimen/root_padding"
+                        android:layout_gravity="bottom|center_horizontal"
+                        android:layout_height="wrap_content"/>
                 </androidx.cardview.widget.CardView>
 
 
@@ -83,8 +82,8 @@
                 android:layout_width="0dp"
                 android:elevation="@dimen/root_padding"
                 android:layout_height="0dp"
-                android:background="@drawable/backround_circle"
-                android:src="@drawable/ic_favorite_border" />
+                android:background="@drawable/backround_circle_red"
+                android:src="@drawable/ic_thumb_up" />
 
             <ImageView
                 android:id="@+id/passIcon"
@@ -92,7 +91,34 @@
                 android:elevation="@dimen/root_padding"
                 android:layout_height="0dp"
                 android:background="@drawable/backround_circle"
-                android:src="@drawable/ic_baseline_close" />
+                android:src="@drawable/ic_thumb_down" />
+
+            <ImageView
+                android:id="@+id/btnBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/root_padding"
+                android:src="@drawable/abc_ic_ab_back_material"
+                android:tint="?android:attr/textColorPrimaryInverse"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/txtTitle"
+                android:text="Persian"
+                android:textColor="@color/white"
+                android:shadowColor="@color/colorPrimary"
+                android:shadowRadius="4"
+                android:paddingTop="@dimen/root_padding"
+                android:paddingBottom="@dimen/root_padding"
+                android:gravity="start|left|center_vertical"
+                android:textSize="@dimen/root_toolbar_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@+id/btnBack"
+                android:layout_marginStart="@dimen/root_padding"
+                android:layout_marginLeft="@dimen/root_padding"
+                android:layout_marginBottom="@dimen/root_status_bar" />
 
         </androidx.constraintlayout.motion.widget.MotionLayout>
 

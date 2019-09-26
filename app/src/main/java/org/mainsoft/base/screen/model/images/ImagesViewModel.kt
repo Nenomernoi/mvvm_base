@@ -32,10 +32,8 @@ class ImagesViewModel(private val useCase: ImagesUseCase) : BaseViewModel() {
         getStore<ViewStateStore<ImagesViewState>>().dispatchActions(useCase.getItems(getState(), id ?: return))
     }
 
-    fun swipe() {
-        getStore<ViewStateStore<ImagesViewState>>().dispatchAction {
-            useCase.swipe()
-        }
+    fun swipe(vote: Boolean) {
+        getStore<ViewStateStore<ImagesViewState>>().dispatchActions(useCase.swipe(getState(), vote))
     }
 
     override fun getState() = getStore<ViewStateStore<ImagesViewState>>().state()

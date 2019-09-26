@@ -13,6 +13,7 @@
     <dimen name="root_max_elevation">8dp</dimen>
     <dimen name="root_empty_text_size">18sp</dimen>
     <dimen name="root_empty_text_small_size">18sp</dimen>
+    <dimen name="root_toolbar_size">20sp</dimen>
 
     <dimen name="row_breed_border_image_size">71dp</dimen>
     <dimen name="row_breed_image_size">70dp</dimen>
@@ -29,6 +30,6 @@
     <dimen name="image_item_padding_t_end">100dp</dimen>
     <dimen name="image_item_padding_b_end">200dp</dimen>
     <dimen name="image_like_max">100dp</dimen>
-    <dimen name="image_like_min">40dp</dimen>
+    <dimen name="image_like_min">1dp</dimen>
 
 </resources>

@@ -125,9 +125,7 @@
             android:layout_marginEnd="500dp"
             android:layout_marginBottom="@dimen/image_item_padding_b_end"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintWidth_percent="0.9">
-
-        </Constraint>
+            app:layout_constraintWidth_percent="0.9"/>
 
         <Constraint android:id="@id/bottomCard">
             <Transform
@@ -233,7 +231,7 @@
         app:autoTransition="animateToEnd"
         app:constraintSetEnd="@+id/offScreenLike"
         app:constraintSetStart="@+id/like"
-        app:duration="150">
+        app:duration="250">
 
     </Transition>
 
@@ -241,7 +239,7 @@
         app:autoTransition="animateToEnd"
         app:constraintSetEnd="@+id/offScreenPass"
         app:constraintSetStart="@+id/pass"
-        app:duration="150">
+        app:duration="250">
 
     </Transition>
 

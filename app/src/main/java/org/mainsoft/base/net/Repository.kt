@@ -1,11 +1,13 @@
 package org.mainsoft.base.net
 
+import android.os.Build
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 import org.kodein.di.generic.instance
 import org.mainsoft.base.App
 import org.mainsoft.base.BuildConfig
 import org.mainsoft.base.db.Db
+import org.mainsoft.base.net.request.Vote
 import org.mainsoft.base.net.response.Breed
 import org.mainsoft.base.net.response.Image
 import org.mainsoft.base.util.SettingPrefs
@@ -61,7 +63,6 @@ class Repository {
                 }
                 db.imageDao().insert(items)
             }
-
             return@async items
         }
     }.await()
@@ -88,6 +89,12 @@ class Repository {
         setting.addFavorite(breed.id)
         async {
             breed.copy(favorite = !breed.favorite)
+        }
+    }.await()
+
+    suspend fun vote(idImage: String, vote: Int) = coroutineScope {
+        async {
+            api.vote(Vote(idImage, Build.DEVICE + Build.MODEL, vote))
         }
     }.await()
 }

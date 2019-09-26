@@ -7,8 +7,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import kotlinx.android.synthetic.main.fragment_breed.*
 import kotlinx.android.synthetic.main.fragment_list_refresh.*
+import kotlinx.android.synthetic.main.fragment_list_refresh.pbLoad
+import kotlinx.android.synthetic.main.fragment_list_refresh.txtError
 import org.mainsoft.base.screen.model.base.BaseViewModel
+import org.mainsoft.base.util.onBack
 import java.io.Serializable
 
 abstract class BaseFragment : Fragment() {
@@ -36,6 +40,9 @@ abstract class BaseFragment : Fragment() {
     protected open fun initListeners() {
         txtError?.setOnClickListener {
             tryLoadAgain()
+        }
+        btnBack?.setOnClickListener {
+            onBack()
         }
     }
 

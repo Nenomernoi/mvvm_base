@@ -43,13 +43,8 @@ class BreedFragment : BaseFragment() {
 
     override fun initListeners() {
         super.initListeners()
-
-        btnBack?.setOnClickListener {
-            onBack()
-        }
         imgMain?.setOnClickListener {
-            val breed = arguments?.getParcelable(BaseViewModel.ARGUMENT_EXTRA) as? Breed
-            navigate(R.id.action_breedFragment_to_imagesFragment, bundleOf(BaseViewModel.ARGUMENT_ID to breed?.id))
+            navigate(R.id.action_breedFragment_to_imagesFragment, arguments)
         }
         fbAdd?.setOnClickListener {
             getViewModel<BreedViewModel>().addToFavorite()
@@ -73,43 +68,45 @@ class BreedFragment : BaseFragment() {
     }
 
     private fun setData(model: Breed?) {
-        model ?: return
+        model?.let {
 
-        txtTitle?.text = model.name
-        txtDescription?.text = model.description
+            txtTitle?.text = model.name
+            txtDescription?.text = model.description
 
-        txtAltName?.text = model.alt_names
-        txtAltName?.isVisible = !model.alt_names.isNullOrEmpty()
+            txtAltName?.text = model.alt_names
+            txtAltName?.isVisible = !model.alt_names.isNullOrEmpty()
 
-        txtTemperament?.text = model.temperament
-        txtOrigin?.text = model.origin
-        txtLifeSpan?.text = model.life_span
+            txtTemperament?.text = model.temperament
+            txtOrigin?.text = model.origin
+            txtLifeSpan?.text = model.life_span
 
-        txtLink?.text = model.getLinks()
+            txtLink?.text = model.getLinks()
 
-        txtAdaptability?.text = model.adaptability.toString()
-        txtAdaptabilityLevel?.text = model.affection_level.toString()
-        txtChildFriendly?.text = model.child_friendly.toString()
-        txtDogFriendly?.text = model.dog_friendly.toString()
+            txtAdaptability?.text = model.adaptability.toString()
+            txtAdaptabilityLevel?.text = model.affection_level.toString()
+            txtChildFriendly?.text = model.child_friendly.toString()
+            txtDogFriendly?.text = model.dog_friendly.toString()
 
-        txtEnergyLevel?.text = model.energy_level.toString()
-        txtGrooming?.text = model.grooming.toString()
-        txtHealthIssues?.text = model.health_issues.toString()
-        txtIntelligence?.text = model.intelligence.toString()
+            txtEnergyLevel?.text = model.energy_level.toString()
+            txtGrooming?.text = model.grooming.toString()
+            txtHealthIssues?.text = model.health_issues.toString()
+            txtIntelligence?.text = model.intelligence.toString()
 
-        txtSheddingLevel?.text = model.shedding_level.toString()
-        txtSocialNeeds?.text = model.social_needs.toString()
-        txtStrangerFriendly?.text = model.stranger_friendly.toString()
-        txtVocalisation?.text = model.vocalisation.toString()
+            txtSheddingLevel?.text = model.shedding_level.toString()
+            txtSocialNeeds?.text = model.social_needs.toString()
+            txtStrangerFriendly?.text = model.stranger_friendly.toString()
+            txtVocalisation?.text = model.vocalisation.toString()
 
-        fbAdd?.setImageResource(if (model.favorite) R.drawable.ic_favorite else R.drawable.ic_favorite_border)
+            fbAdd?.setImageResource(if (model.favorite) R.drawable.ic_favorite else R.drawable.ic_favorite_border)
 
-        Glide.with(activity ?: return)
-                .load(model.image_url)
-                .centerCrop()
-                .placeholder(R.drawable.bg_cat)
-                .error(R.drawable.bg_cat)
-                .into(imgMain)
+            Glide.with(activity ?: return)
+                    .load(model.image_url)
+                    .centerCrop()
+                    .placeholder(R.drawable.bg_cat)
+                    .error(R.drawable.bg_cat)
+                    .into(imgMain)
+        }
+
     }
 
 }
