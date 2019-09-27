@@ -1,5 +1,6 @@
 package org.mainsoft.base.screen.fragment
 
+import android.util.Log
 import android.widget.ImageView
 import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.constraintlayout.motion.widget.TransitionAdapter
@@ -35,12 +36,35 @@ class ImagesFragment : BaseFragment() {
 
         mlMain?.setTransitionListener(object : TransitionAdapter() {
             override fun onTransitionCompleted(motionLayout: MotionLayout, currentId: Int) {
+
+                val text = when (currentId) {
+                    R.id.offScreenPass -> "offScreenPass"
+                    R.id.offScreenLike -> "offScreenLike"
+                    R.id.offScreenPassSecond -> "offScreenPassSecond"
+                    R.id.offScreenLikeSecond -> "offScreenLikeSecond"
+                    R.id.like -> "like"
+                    R.id.likeSecond -> "likeSecond"
+                    R.id.pass -> "pass"
+                    R.id.passSecond -> "passSecond"
+                    R.id.rest -> "rest"
+                    R.id.restSecond -> "restSecond"
+                    else -> "none"
+                }
+
+                Log.e("Image", text)
+
                 when (currentId) {
                     R.id.offScreenPass,
                     R.id.offScreenLike -> {
                         motionLayout.progress = 0f
+                        motionLayout.setTransition(R.id.restSecond, R.id.likeSecond)
+                        getViewModel<ImagesViewModel>().swipe(currentId)
+                    }
+                    R.id.offScreenPassSecond,
+                    R.id.offScreenLikeSecond -> {
+                        motionLayout.progress = 0f
                         motionLayout.setTransition(R.id.rest, R.id.like)
-                        getViewModel<ImagesViewModel>().swipe(currentId == R.id.offScreenLike)
+                        getViewModel<ImagesViewModel>().swipe(currentId)
                     }
                 }
             }
@@ -49,7 +73,7 @@ class ImagesFragment : BaseFragment() {
                 .getStore<ViewStateStore<ImagesViewState>>()
                 .observe(this) {
                     if (!it.loading) {
-                        setData(it.data)
+                        setData(it.data, it.isTopFirst)
                     }
                     showHideProgress(it.loading)
 
@@ -58,20 +82,32 @@ class ImagesFragment : BaseFragment() {
                 }
     }
 
-    private fun setData(items: MutableList<Image>) {
+    private fun setData(items: MutableList<Image>, isTopFirst: Boolean) {
         if (items.isNullOrEmpty()) {
             return
         }
         val currentIndex = items.size - 1
 
-        loadImage(imgTop, items[currentIndex])
+        if (isTopFirst) {
+            loadImage(imgTop, items[currentIndex])
+
+            if (items.size == 1) {
+                loadImage(imgBottom, items[currentIndex])
+                getViewModel<ImagesViewModel>().loadNext()
+                return
+            }
+            loadImage(imgBottom, items[currentIndex - 1])
+            return
+        }
+
+        loadImage(imgBottom, items[currentIndex])
 
         if (items.size == 1) {
-            loadImage(imgBottom, items[currentIndex])
+            loadImage(imgTop, items[currentIndex])
             getViewModel<ImagesViewModel>().loadNext()
             return
         }
-        loadImage(imgBottom, items[currentIndex - 1])
+        loadImage(imgTop, items[currentIndex - 1])
     }
 
 

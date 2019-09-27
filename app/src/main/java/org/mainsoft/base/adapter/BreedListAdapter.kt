@@ -12,9 +12,8 @@ import com.bumptech.glide.request.RequestOptions
 import org.mainsoft.base.R
 import org.mainsoft.base.adapter.base.BaseSupportAdapter
 import org.mainsoft.base.adapter.base.BaseViewHolder
+import org.mainsoft.base.listeners.BackCallback
 import org.mainsoft.base.net.response.Breed
-import org.mainsoft.base.screen.fragment.BackCallback
-import org.mainsoft.base.screen.fragment.BreedsReturnCallback
 import org.mainsoft.base.screen.model.base.BaseViewModel
 import org.mainsoft.base.screen.model.breeds.BreedsViewModel
 import org.mainsoft.base.util.navigate

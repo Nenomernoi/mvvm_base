@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_trans"
+    android:background="@drawable/bg_root"
     android:orientation="vertical">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -38,7 +38,7 @@
                         android:layout_height="match_parent" />
 
                     <ImageView
-                        android:src="@drawable/ic_thumbs_up_down"
+                        android:src="@drawable/ic_two"
                         android:layout_width="wrap_content"
                         android:layout_marginBottom="@dimen/root_padding"
                         android:layout_gravity="bottom|center_horizontal"
@@ -67,7 +67,7 @@
                         android:layout_height="match_parent" />
 
                     <ImageView
-                        android:src="@drawable/ic_thumbs_up_down"
+                        android:src="@drawable/ic_one"
                         android:layout_width="wrap_content"
                         android:layout_marginBottom="@dimen/root_padding"
                         android:layout_gravity="bottom|center_horizontal"
@@ -82,7 +82,7 @@
                 android:layout_width="0dp"
                 android:elevation="@dimen/root_padding"
                 android:layout_height="0dp"
-                android:background="@drawable/backround_circle_red"
+                android:background="@drawable/bg_circle"
                 android:src="@drawable/ic_thumb_up" />
 
             <ImageView
@@ -90,7 +90,7 @@
                 android:layout_width="0dp"
                 android:elevation="@dimen/root_padding"
                 android:layout_height="0dp"
-                android:background="@drawable/backround_circle"
+                android:background="@drawable/bg_circle_red"
                 android:src="@drawable/ic_thumb_down" />
 
             <ImageView

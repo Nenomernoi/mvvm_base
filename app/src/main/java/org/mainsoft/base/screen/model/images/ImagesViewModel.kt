@@ -9,6 +9,7 @@ data class ImagesViewState(
         override val data: MutableList<Image> = mutableListOf(),
         override val page: Int = 0,
         override val loading: Boolean = false,
+        val isTopFirst: Boolean = true,
         override val error: Throwable? = null)
     : BaseListState<Image>()
 
@@ -32,7 +33,7 @@ class ImagesViewModel(private val useCase: ImagesUseCase) : BaseViewModel() {
         getStore<ViewStateStore<ImagesViewState>>().dispatchActions(useCase.getItems(getState(), id ?: return))
     }
 
-    fun swipe(vote: Boolean) {
+    fun swipe(vote: Int) {
         getStore<ViewStateStore<ImagesViewState>>().dispatchActions(useCase.swipe(getState(), vote))
     }
 

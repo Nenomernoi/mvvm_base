@@ -7,6 +7,7 @@ import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.fragment_breed.*
 import org.mainsoft.base.R
 import org.mainsoft.base.lib.ViewStateStore
+import org.mainsoft.base.listeners.BackCallback
 import org.mainsoft.base.net.response.Breed
 import org.mainsoft.base.screen.fragment.base.BaseFragment
 import org.mainsoft.base.screen.model.base.BaseViewModel
