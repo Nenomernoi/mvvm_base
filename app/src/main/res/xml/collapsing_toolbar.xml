@@ -24,9 +24,9 @@
 
         <Constraint
             android:id="@+id/fbAdd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/root_status_bar"
+            android:layout_width="@dimen/breed_favorite_size"
+            android:layout_height="@dimen/breed_favorite_size"
+            android:layout_marginTop="@dimen/breed_favorite_margin_top"
             android:layout_marginEnd="@dimen/root_padding"
             android:alpha="1.0"
             motion:layout_constraintEnd_toEndOf="@id/imgMain"
@@ -77,8 +77,8 @@
 
         <Constraint
             android:id="@+id/fbAdd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/breed_favorite_size"
+            android:layout_height="@dimen/breed_favorite_size"
             android:alpha="0"
             motion:layout_constraintBottom_toBottomOf="@id/imgMain"
             motion:layout_constraintEnd_toEndOf="@id/imgMain" />

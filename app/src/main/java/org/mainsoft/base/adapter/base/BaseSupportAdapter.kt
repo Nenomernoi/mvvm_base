@@ -20,3 +20,4 @@ abstract class BaseViewHolder<T : Any>(view: View) : RecyclerView.ViewHolder(vie
         //
     }
 }
+

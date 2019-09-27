@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/sRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvMain"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlItem"
+        android:visibility="gone"
+        android:elevation="@dimen/root_padding_middle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/white"
+        android:padding="@dimen/root_padding_middle">
+
+        <RelativeLayout
+            android:id="@+id/rlImage"
+            android:layout_width="@dimen/row_breed_border_image_size"
+            android:layout_height="@dimen/row_breed_border_image_size"
+            android:layout_alignParentStart="true"
+            android:background="@drawable/bg_image"
+            android:layout_alignParentLeft="true">
+
+            <ImageView
+                android:id="@+id/imgMain"
+                android:layout_width="@dimen/row_breed_image_size"
+                android:layout_height="@dimen/row_breed_image_size"
+                android:src="@drawable/ic_cat"
+                android:layout_centerInParent="true" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/btnFavorite"
+            android:layout_width="wrap_content"
+            android:src="@drawable/ic_favorite_border_color"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:id="@+id/llMain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/root_padding_middle"
+            android:layout_toRightOf="@+id/rlImage"
+            android:layout_toLeftOf="@+id/imgOpen"
+            android:orientation="vertical"
+            android:layout_marginLeft="@dimen/root_padding_middle"
+            android:layout_toEndOf="@+id/rlImage"
+            android:layout_toStartOf="@+id/imgOpen">
+
+            <TextView
+                android:id="@+id/txtTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/row_breed_title_size" />
+
+            <TextView
+                android:id="@+id/txtDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="3"
+                android:textSize="@dimen/row_breed_desc_size" />
+
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imgOpen"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_arrow_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:layout_toRightOf="@+id/rlImage"
+            android:layout_below="@+id/llMain"
+            android:layout_marginTop="@dimen/root_padding_middle"
+            android:background="@color/colorPrimary" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/txtError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:text="Retry"
+        android:visibility="invisible"
+        android:textSize="@dimen/root_empty_text_small_size" />
+
+    <RelativeLayout
+        android:id="@+id/pbLoad"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:focusable="true">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

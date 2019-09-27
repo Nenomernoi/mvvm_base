@@ -5,21 +5,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import org.mainsoft.base.R
 import org.mainsoft.base.adapter.base.BaseSupportAdapter
 import org.mainsoft.base.adapter.base.BaseViewHolder
-import org.mainsoft.base.listeners.BackCallback
 import org.mainsoft.base.net.response.Breed
-import org.mainsoft.base.screen.model.base.BaseViewModel
 import org.mainsoft.base.screen.model.breeds.BreedsViewModel
-import org.mainsoft.base.util.navigate
 
-class BreedListAdapter(private val viewModel: BreedsViewModel,
-                       private val listener: BackCallback) : BaseSupportAdapter<Breed>() {
+class BreedListAdapter(private val viewModel: BreedsViewModel) : BaseSupportAdapter<Breed>() {
 
     init {
         list = viewModel.getState().data
@@ -32,17 +27,14 @@ class BreedListAdapter(private val viewModel: BreedsViewModel,
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val model = list[position]
-        (holder as BreadViewHolder).bind(model)
-
-        holder.itemView.setOnClickListener {
-            it?.navigate(R.id.action_breedsFragment_to_breedFragment,
-                    bundleOf(BaseViewModel.ARGUMENT_ID to position,
-                            BaseViewModel.ARGUMENT_EXTRA to model,
-                            BaseViewModel.ARGUMENT_RETURN to listener))
+        (holder as BreadViewHolder).bind(list[position])
+        holder.itemView.setOnClickListener { view ->
+            if (view.id == R.id.btnFavorite) {
+                return@setOnClickListener
+            }
+            viewModel.openItem(position)
         }
     }
-
 }
 
 class BreadViewHolder(view: View,

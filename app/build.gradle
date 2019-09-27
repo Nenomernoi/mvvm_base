@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'com.akaita.android.easylauncher'
 
 android {
     compileSdkVersion 28
@@ -29,6 +30,24 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+easylauncher {
+    iconNames "@mipmap/ic_launcher"
+    defaultFlavorNaming = true
+    buildTypes {
+        debug {
+            filters = customColorRibbonFilter("Beta", "#008577", "#FFFFFF")
+        }
+        release {
+            filters = customColorRibbonFilter("Beta", "#FF0000", "#FFFFFF")
+        }
+    }
+    variants {
+        productionDebug {
+            filters = customColorRibbonFilter("Beta", "#008577", "#FFFFFF")
+        }
     }
 }
 
@@ -72,6 +91,9 @@ dependencies {
     //Coroutines
     api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
+
+    //permission
+    api 'com.github.florent37:runtime-permission-kotlin:1.1.1'
 
     //Net
     api "com.squareup.retrofit2:retrofit:$retrofit_version"

@@ -81,6 +81,7 @@
                 android:id="@+id/likeIcon"
                 android:layout_width="0dp"
                 android:elevation="@dimen/root_padding"
+                android:padding="@dimen/root_padding"
                 android:layout_height="0dp"
                 android:background="@drawable/bg_circle"
                 android:src="@drawable/ic_thumb_up" />
@@ -89,6 +90,7 @@
                 android:id="@+id/passIcon"
                 android:layout_width="0dp"
                 android:elevation="@dimen/root_padding"
+                android:padding="@dimen/root_padding"
                 android:layout_height="0dp"
                 android:background="@drawable/bg_circle_red"
                 android:src="@drawable/ic_thumb_down" />

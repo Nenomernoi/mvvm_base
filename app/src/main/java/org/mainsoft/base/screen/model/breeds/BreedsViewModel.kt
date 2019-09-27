@@ -8,6 +8,8 @@ import org.mainsoft.base.screen.model.base.BaseViewModel
 data class BreedsViewState(
         override val data: MutableList<Breed> = mutableListOf(),
         override val page: Int = 0,
+        val position: Int = 0,
+        val model: Breed? = null,
         override val loading: Boolean = false,
         override val refresh: Boolean = false,
         override val error: Throwable? = null)
@@ -24,7 +26,7 @@ class BreedsViewModel(private val useCase: BreedsUseCase) : BaseViewModel() {
         loadNext(0)
     }
 
-    fun updateItem(position: Int){
+    fun updateItem(position: Int) {
         getStore<ViewStateStore<BreedsViewState>>().dispatchAction {
             useCase.updateItem(it, position)
         }
@@ -41,6 +43,12 @@ class BreedsViewModel(private val useCase: BreedsUseCase) : BaseViewModel() {
     fun addToFavorite(position: Int) {
         getStore<ViewStateStore<BreedsViewState>>().dispatchAction {
             useCase.addToFavorite(it, position)
+        }
+    }
+
+    fun openItem(position: Int) {
+        getStore<ViewStateStore<BreedsViewState>>().dispatchAction {
+            useCase.openItem(position)
         }
     }
 
