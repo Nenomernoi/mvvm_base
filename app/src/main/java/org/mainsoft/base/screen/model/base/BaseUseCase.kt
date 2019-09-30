@@ -6,6 +6,7 @@ import kotlinx.coroutines.channels.ProducerScope
 import kotlinx.coroutines.channels.ReceiveChannel
 import kotlinx.coroutines.channels.produce
 import org.mainsoft.base.lib.Action
+import org.mainsoft.base.net.Repository
 
 abstract class BaseUseCase {
 
@@ -15,3 +16,5 @@ abstract class BaseUseCase {
 
     suspend fun <T> ProducerScope<Action<T>>.send(f: T.() -> T) = send(Action(f))
 }
+
+abstract class BaseApiUseCase(protected val repository: Repository) : BaseUseCase()

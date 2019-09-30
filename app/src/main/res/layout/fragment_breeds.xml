@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white">
+
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/sRefresh"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvMain"
@@ -15,89 +21,75 @@
             android:layout_height="match_parent" />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-    <RelativeLayout
-        android:id="@+id/rlItem"
-        android:visibility="gone"
-        android:elevation="@dimen/root_padding_middle"
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/mlMain"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@color/white"
-        android:padding="@dimen/root_padding_middle">
+        android:layout_height="match_parent"
+        android:padding="@dimen/root_padding_middle"
+        app:layoutDescription="@xml/breed_open"
+      >
 
         <RelativeLayout
             android:id="@+id/rlImage"
             android:layout_width="@dimen/row_breed_border_image_size"
             android:layout_height="@dimen/row_breed_border_image_size"
-            android:layout_alignParentStart="true"
-            android:background="@drawable/bg_image"
-            android:layout_alignParentLeft="true">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:padding="@dimen/root_separate"
+            android:background="@drawable/bg_image">
 
             <ImageView
                 android:id="@+id/imgMain"
-                android:layout_width="@dimen/row_breed_image_size"
-                android:layout_height="@dimen/row_breed_image_size"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:src="@drawable/ic_cat"
                 android:layout_centerInParent="true" />
         </RelativeLayout>
 
         <ImageView
             android:id="@+id/btnFavorite"
+            app:layout_constraintTop_toTopOf="@+id/rlImage"
+            app:layout_constraintStart_toStartOf="parent"
             android:layout_width="wrap_content"
             android:src="@drawable/ic_favorite_border_color"
             android:layout_height="wrap_content"/>
 
-        <LinearLayout
-            android:id="@+id/llMain"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/txtTitle"
+            app:layout_constraintTop_toTopOf="@+id/rlImage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/rlImage"
+            android:paddingStart="@dimen/root_padding_middle"
+            android:paddingEnd="@dimen/root_padding_middle"
+            android:layout_width="0dp"
+            android:gravity="start|left"
+            android:shadowColor="@color/colorPrimary"
+            android:shadowRadius="4"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/root_padding_middle"
-            android:layout_toRightOf="@+id/rlImage"
-            android:layout_toLeftOf="@+id/imgOpen"
-            android:orientation="vertical"
-            android:layout_marginLeft="@dimen/root_padding_middle"
-            android:layout_toEndOf="@+id/rlImage"
-            android:layout_toStartOf="@+id/imgOpen">
+            android:textColor="@color/colorPrimary"/>
 
-            <TextView
-                android:id="@+id/txtTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/row_breed_title_size" />
-
-            <TextView
-                android:id="@+id/txtDescription"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="3"
-                android:textSize="@dimen/row_breed_desc_size" />
-
-
-        </LinearLayout>
-
-        <ImageView
-            android:id="@+id/imgOpen"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:src="@drawable/ic_arrow_right"
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/txtDescription"
+            android:layout_width="0dp"
+            android:gravity="start|left"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true" />
+            app:layout_constraintTop_toBottomOf="@+id/txtTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/rlImage"
+            android:paddingStart="@dimen/root_padding_middle"
+            android:paddingEnd="@dimen/root_padding_middle"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:textSize="@dimen/row_breed_desc_size" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.1dp"
-            android:layout_toRightOf="@+id/rlImage"
-            android:layout_below="@+id/llMain"
-            android:layout_marginTop="@dimen/root_padding_middle"
-            android:background="@color/colorPrimary" />
-
-    </RelativeLayout>
+</androidx.constraintlayout.motion.widget.MotionLayout>
 
     <TextView
         android:id="@+id/txtError"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
@@ -108,8 +100,12 @@
 
     <RelativeLayout
         android:id="@+id/pbLoad"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:clickable="true"
         android:focusable="true">
 
@@ -120,4 +116,4 @@
 
     </RelativeLayout>
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

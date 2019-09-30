@@ -1,6 +1,8 @@
 package org.mainsoft.base.screen.model.splash
 
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import org.mainsoft.base.lib.ViewStateStore
 import org.mainsoft.base.screen.model.base.BaseViewModel
 
@@ -25,4 +27,9 @@ class SplashViewModel(private val useCase: SplashUseCase) : BaseViewModel() {
 
     override fun getState() = getStore<ViewStateStore<SplashViewState>>().state()
 
+}
+
+object SplashViewModelFactory : ViewModelProvider.Factory {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T =
+            SplashViewModel(SplashUseCase()) as T
 }

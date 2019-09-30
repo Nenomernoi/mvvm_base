@@ -1,6 +1,8 @@
 package org.mainsoft.base.screen.fragment
 
-import androidx.core.view.isVisible
+import androidx.constraintlayout.motion.widget.MotionLayout
+import androidx.constraintlayout.motion.widget.TransitionAdapter
+import androidx.constraintlayout.widget.ConstraintSet
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.get
 import com.bumptech.glide.Glide
@@ -19,6 +21,13 @@ import org.mainsoft.base.screen.model.breeds.BreedsViewState
 
 class BreedsFragment : BaseSwipeEndlessListFragment<Breed>() {
 
+    private val heightBar by lazy {
+        val resourceId = resources.getIdentifier("navigation_bar_height", "dimen", "android")
+        if (resourceId > 0) {
+            resources.getDimensionPixelSize(resourceId)
+        } else 0
+    }
+
     override fun getLayout(): Int = R.layout.fragment_breeds
 
     private val backListener = BackCallback(object : BreedsReturnCallback {
@@ -35,6 +44,18 @@ class BreedsFragment : BaseSwipeEndlessListFragment<Breed>() {
     override fun initListeners() {
         super.initListeners()
 
+        mlMain?.setTransitionListener(object : TransitionAdapter() {
+            override fun onTransitionCompleted(motionLayout: MotionLayout, currentId: Int) {
+                when (currentId) {
+                    R.id.click -> {
+                     //   motionLayout.progress = 0f
+                     //   motionLayout.setTransition(R.id.click, R.id.rest)
+                     //   motionLayout.transitionToEnd()
+                    }
+                }
+            }
+        })
+
         getViewModel<BreedsViewModel>()
                 .getStore<ViewStateStore<BreedsViewState>>()
                 .observe(this) {
@@ -46,11 +67,11 @@ class BreedsFragment : BaseSwipeEndlessListFragment<Breed>() {
                     showMessageError(it.error?.message)
 
                     if (it.model != null) {
-                        initBreedOpen(it.model, true)
+                        initBreedOpen(it.model, it.originalPos)
                         return@observe
                     } else {
                         if (it.data.isNotEmpty()) {
-                            initBreedOpen(it.data[0], false)
+                            initBreedOpen(it.data[0])
                         }
                     }
 
@@ -87,7 +108,7 @@ class BreedsFragment : BaseSwipeEndlessListFragment<Breed>() {
  */
     }
 
-    private fun initBreedOpen(model: Breed, showHide: Boolean) {
+    private fun initBreedOpen(model: Breed, originalPos: IntArray? = null) {
 
         txtTitle?.text = model.name
         txtDescription?.text = model.description
@@ -102,6 +123,16 @@ class BreedsFragment : BaseSwipeEndlessListFragment<Breed>() {
                 .apply(RequestOptions.circleCropTransform())
                 .into(imgMain ?: return)
 
-        rlItem.isVisible = showHide
+        originalPos?.apply {
+            mlMain?.getConstraintSet(R.id.start)?.let {
+                it.setMargin(R.id.rlImage, ConstraintSet.TOP, originalPos[1] - heightBar)
+            }
+            mlMain?.setTransition(R.id.rest, R.id.start)
+            mlMain?.transitionToEnd()
+        }
+/*
+        mlMain?.transitionToState(R.id.click)
+ */
     }
+
 }

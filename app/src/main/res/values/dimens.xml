@@ -16,7 +16,6 @@
     <dimen name="root_toolbar_size">20sp</dimen>
 
     <dimen name="row_breed_border_image_size">71dp</dimen>
-    <dimen name="row_breed_image_size">70dp</dimen>
     <dimen name="row_breed_title_size">18sp</dimen>
     <dimen name="row_breed_desc_size">12sp</dimen>
 

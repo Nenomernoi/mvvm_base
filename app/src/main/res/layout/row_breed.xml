@@ -9,14 +9,15 @@
         android:id="@+id/rlImage"
         android:layout_width="@dimen/row_breed_border_image_size"
         android:layout_height="@dimen/row_breed_border_image_size"
+        android:padding="@dimen/root_separate"
         android:layout_alignParentStart="true"
         android:background="@drawable/bg_image"
         android:layout_alignParentLeft="true">
 
         <ImageView
             android:id="@+id/imgMain"
-            android:layout_width="@dimen/row_breed_image_size"
-            android:layout_height="@dimen/row_breed_image_size"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:src="@drawable/ic_cat"
             android:layout_centerInParent="true" />
     </RelativeLayout>

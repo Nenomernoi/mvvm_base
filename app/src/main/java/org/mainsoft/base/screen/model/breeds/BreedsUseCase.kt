@@ -32,10 +32,10 @@ class BreedsUseCase(repository: Repository) : BaseApiUseCase(repository) {
         }
     }
 
-    fun openItem(position: Int): Action<BreedsViewState> {
+    fun openItem(position: Int, originalPos: IntArray): Action<BreedsViewState> {
         return Action {
             val model = data[position]
-            copy(position = position, model = model)
+            copy(position = position, originalPos = originalPos, model = model)
         }
     }
 

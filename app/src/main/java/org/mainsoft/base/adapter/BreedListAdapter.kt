@@ -32,7 +32,10 @@ class BreedListAdapter(private val viewModel: BreedsViewModel) : BaseSupportAdap
             if (view.id == R.id.btnFavorite) {
                 return@setOnClickListener
             }
-            viewModel.openItem(position)
+            val originalPos = IntArray(2)
+          //  view.getLocationOnScreen(originalPos)
+            view.getLocationInWindow(originalPos)
+            viewModel.openItem(position, originalPos)
         }
     }
 }

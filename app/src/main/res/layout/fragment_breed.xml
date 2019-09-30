@@ -13,8 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/white"
-            app:layoutDescription="@xml/collapsing_toolbar"
-            app:showPaths="false">
+            app:layoutDescription="@xml/collapsing_toolbar">
 
             <ImageView
                 android:id="@+id/imgMain"

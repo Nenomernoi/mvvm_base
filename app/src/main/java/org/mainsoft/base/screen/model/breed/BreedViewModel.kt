@@ -1,6 +1,9 @@
 package org.mainsoft.base.screen.model.breed
 
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import org.mainsoft.base.lib.ViewStateStore
+import org.mainsoft.base.net.Repository
 import org.mainsoft.base.net.response.Breed
 import org.mainsoft.base.screen.model.base.BaseViewModel
 import org.mainsoft.base.screen.model.base.BaseViewState
@@ -32,4 +35,9 @@ class BreedViewModel(private val useCase: BreedUseCase) : BaseViewModel() {
 
     override fun getState() = getStore<ViewStateStore<BreedViewState>>().state()
 
+}
+
+object BreedViewModelFactory : ViewModelProvider.Factory {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T =
+            BreedViewModel(BreedUseCase(Repository())) as T
 }

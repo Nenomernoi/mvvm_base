@@ -1,6 +1,9 @@
 package org.mainsoft.base.screen.model.breeds
 
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import org.mainsoft.base.lib.ViewStateStore
+import org.mainsoft.base.net.Repository
 import org.mainsoft.base.net.response.Breed
 import org.mainsoft.base.screen.model.base.BaseRefreshListState
 import org.mainsoft.base.screen.model.base.BaseViewModel
@@ -9,6 +12,7 @@ data class BreedsViewState(
         override val data: MutableList<Breed> = mutableListOf(),
         override val page: Int = 0,
         val position: Int = 0,
+        val originalPos: IntArray? = null,
         val model: Breed? = null,
         override val loading: Boolean = false,
         override val refresh: Boolean = false,
@@ -46,13 +50,18 @@ class BreedsViewModel(private val useCase: BreedsUseCase) : BaseViewModel() {
         }
     }
 
-    fun openItem(position: Int) {
+    fun openItem(position: Int, originalPos: IntArray) {
         getStore<ViewStateStore<BreedsViewState>>().dispatchAction {
-            useCase.openItem(position)
+            useCase.openItem(position, originalPos)
         }
     }
 
     override fun getState() = getStore<ViewStateStore<BreedsViewState>>().state()
 
+}
+
+object BreedsViewModelFactory : ViewModelProvider.Factory {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T =
+            BreedsViewModel(BreedsUseCase(Repository())) as T
 }
 
