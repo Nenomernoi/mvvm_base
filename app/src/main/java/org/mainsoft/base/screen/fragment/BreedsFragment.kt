@@ -1,13 +1,18 @@
 package org.mainsoft.base.screen.fragment
 
-import androidx.constraintlayout.motion.widget.MotionLayout
-import androidx.constraintlayout.motion.widget.TransitionAdapter
-import androidx.constraintlayout.widget.ConstraintSet
+import android.os.Handler
+import android.view.animation.AccelerateInterpolator
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.get
+import androidx.transition.ChangeBounds
+import androidx.transition.Scene
+import androidx.transition.TransitionManager
+import androidx.transition.TransitionSet
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.fragment_breeds.*
+import kotlinx.android.synthetic.main.row_breed.*
 import org.mainsoft.base.R
 import org.mainsoft.base.adapter.BreedListAdapter
 import org.mainsoft.base.lib.ViewStateStore
@@ -48,19 +53,6 @@ class BreedsFragment : BaseSwipeEndlessListFragment<Breed>() {
     override fun initListeners() {
         super.initListeners()
 
-        mlMain?.setTransitionListener(object : TransitionAdapter() {
-            override fun onTransitionCompleted(motionLayout: MotionLayout, currentId: Int) {
-                when (currentId) {
-                    R.id.click -> {
-                        motionLayout.progress = 0f
-                        motionLayout.setTransition(R.id.click, R.id.rest)
-                        motionLayout.transitionToEnd()
-                        openBreed()
-                    }
-                }
-            }
-        })
-
         getViewModel<BreedsViewModel>()
                 .getStore<ViewStateStore<BreedsViewState>>()
                 .observe(this) {
@@ -72,17 +64,15 @@ class BreedsFragment : BaseSwipeEndlessListFragment<Breed>() {
                     showMessageError(it.error?.message)
 
                     if (it.model != null) {
-                        //openBreed()
+                        // initBreedOpen(it.model,it.position, it.originalPos)
                         openBreed(it.position, it.model)
-                         //initBreedOpen(it.model, it.originalPos)
                         return@observe
-                    }   /*else {
-
+                    } else {
                         if (it.data.isNotEmpty()) {
-                            initBreedOpen(it.data[0])
+                            initBreedOpen(it.data[0], 0)
                         }
                     }
-                        */
+
                     setData(it.data, it.page)
                 }
     }
@@ -106,12 +96,6 @@ class BreedsFragment : BaseSwipeEndlessListFragment<Breed>() {
 
     //////////////////////////////////////////////////////
 
-    private fun openBreed() {
-        getViewModel<BreedsViewModel>().getState().apply {
-            openBreed(position, model)
-        }
-    }
-
     private fun openBreed(position: Int, model: Breed?) {
         navigate(R.id.action_breedsFragment_to_breedFragment,
                 bundleOf(BaseViewModel.ARGUMENT_ID to position,
@@ -119,14 +103,13 @@ class BreedsFragment : BaseSwipeEndlessListFragment<Breed>() {
                         BaseViewModel.ARGUMENT_RETURN to backListener))
     }
 
-    private fun initBreedOpen(model: Breed, originalPos: IntArray? = null) {
+    private fun initBreedOpen(model: Breed, position: Int, originalPos: IntArray? = null) {
 
         txtTitle?.text = model.name
         txtDescription?.text = model.description
 
         fbAdd?.setImageResource(if (model.favorite) R.drawable.ic_favorite_color else R.drawable.ic_favorite_border_color)
-        fbAdd?.setAltDrawable(if (model.favorite) R.drawable.ic_favorite else R.drawable.ic_favorite_border)
-        fbAdd?.setBackgroundDrawable(R.drawable.bg_circle)
+        //fbAdd?.setBackgroundResource(R.drawable.bg_circle)
 
         model.image_url?.let {
             Glide.with(activity ?: return)
@@ -136,17 +119,25 @@ class BreedsFragment : BaseSwipeEndlessListFragment<Breed>() {
                     .into(imgMain ?: return)
         }
 
-        originalPos?.apply {
-            mlMain?.getConstraintSet(R.id.start)?.let {
-                it.setMargin(R.id.imgMain, ConstraintSet.TOP, originalPos[1] - heightBar)
-                it.setMargin(R.id.vBg, ConstraintSet.TOP, originalPos[1] - heightBar)
-            }
-            mlMain?.setTransition(R.id.rest, R.id.start)
-            mlMain?.transitionToEnd()
+        if (originalPos == null) {
+            scRoot.isVisible = false
+            return
         }
-/*
-        mlMain?.transitionToState(R.id.click)
- */
+        scRoot.isVisible = true
+
+        val set = TransitionSet()
+        // set.addTransition(Fade())
+        set.addTransition(ChangeBounds())
+        set.ordering = TransitionSet.ORDERING_TOGETHER
+        set.duration = 1000
+        set.interpolator = AccelerateInterpolator()
+        TransitionManager.go(Scene.getSceneForLayout(scRoot, R.layout.row_breed_max, activity ?: return), set)
+
+        Handler().postDelayed({
+            openBreed(position, model)
+        }, 1000L)
+
+
     }
 
 }

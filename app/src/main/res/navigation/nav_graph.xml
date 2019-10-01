@@ -26,10 +26,6 @@
 
         <action
             android:id="@+id/action_breedsFragment_to_breedFragment"
-            app:enterAnim="@anim/slide_out_right"
-            app:exitAnim="@anim/slide_in_right_slow"
-            app:popEnterAnim="@anim/slide_out_left_fast"
-            app:popExitAnim="@anim/slide_in_left"
             app:destination="@id/breedFragment"/>
     </fragment>
 

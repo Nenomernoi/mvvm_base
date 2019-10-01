@@ -3,7 +3,6 @@ package org.mainsoft.base.screen.model.breeds
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import org.mainsoft.base.lib.ViewStateStore
-import org.mainsoft.base.net.Repository
 import org.mainsoft.base.net.response.Breed
 import org.mainsoft.base.screen.model.base.BaseRefreshListState
 import org.mainsoft.base.screen.model.base.BaseViewModel
@@ -51,9 +50,9 @@ class BreedsViewModel(private val useCase: BreedsUseCase) : BaseViewModel() {
     }
 
     fun openItem(position: Int, originalPos: IntArray) {
-        getStore<ViewStateStore<BreedsViewState>>().dispatchAction {
-            useCase.openItem(position, originalPos)
-        }
+        getStore<ViewStateStore<BreedsViewState>>().dispatchActions(
+                useCase.openItem(getState(), position, originalPos)
+        )
     }
 
     override fun getState() = getStore<ViewStateStore<BreedsViewState>>().state()

@@ -3,8 +3,8 @@ package org.mainsoft.base.screen.model.breeds
 import android.util.Log
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.ReceiveChannel
+import kotlinx.coroutines.delay
 import org.mainsoft.base.lib.Action
-import org.mainsoft.base.net.Repository
 import org.mainsoft.base.screen.model.base.BaseApiUseCase
 
 class BreedsUseCase : BaseApiUseCase() {
@@ -32,11 +32,11 @@ class BreedsUseCase : BaseApiUseCase() {
         }
     }
 
-    fun openItem(position: Int, originalPos: IntArray): Action<BreedsViewState> {
-        return Action {
-            val model = data[position]
-            copy(position = position, originalPos = originalPos, model = model)
-        }
+    fun openItem(state: BreedsViewState,position: Int, originalPos: IntArray): ReceiveChannel<Action<BreedsViewState>> = produceActions {
+        val model = state.data[position]
+        send { copy(position = position, originalPos = originalPos, model = model) }
+        delay(2000L)
+        send { copy(originalPos = null, model = null) }
     }
 
     suspend fun updateItem(state: BreedsViewState, position: Int): Action<BreedsViewState> {

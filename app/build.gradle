@@ -83,6 +83,9 @@ dependencies {
     api 'androidx.navigation:navigation-fragment-ktx:2.1.0'
     api 'androidx.navigation:navigation-ui-ktx:2.1.0'
 
+    ///Anim
+    api "com.andkulikov:transitionseverywhere:2.0.0"
+
     //Room
     api 'androidx.room:room-runtime:2.1.0'
     api 'androidx.room:room-ktx:2.1.0'

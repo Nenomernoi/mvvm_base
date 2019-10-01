@@ -1,11 +1,14 @@
 package org.mainsoft.base.adapter
 
+import android.graphics.Rect
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import androidx.transition.*
+import androidx.transition.Transition.EpicenterCallback
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import org.mainsoft.base.R
@@ -32,12 +35,43 @@ class BreedListAdapter(private val viewModel: BreedsViewModel) : BaseSupportAdap
             if (view.id == R.id.fbAdd) {
                 return@setOnClickListener
             }
-            val originalPos = IntArray(2)
-          //  view.getLocationOnScreen(originalPos)
-            view.getLocationInWindow(originalPos)
-            viewModel.openItem(position, originalPos)
+            // save rect of view in screen coordinated
+            val viewRect = Rect()
+            holder.itemView.getGlobalVisibleRect(viewRect)
+
+            val explode = Explode()
+            explode.epicenterCallback = object : EpicenterCallback() {
+                override fun onGetEpicenter(transition: Transition): Rect {
+                    return viewRect
+                }
+            }
+            explode.excludeTarget(holder.itemView, true)
+            val set = TransitionSet()
+                    .addTransition(explode)
+                    .addTransition(Fade().addTarget(holder.itemView))
+                    .addListener(object : TransitionListenerAdapter() {
+                        override fun onTransitionEnd(transition: Transition) {
+                            transition.removeListener(this)
+
+                            val originalPos = IntArray(2)
+                            //  view.getLocationOnScreen(originalPos)
+                            view.getLocationInWindow(originalPos)
+                          //  viewModel.openItem(position, originalPos)
+                        }
+                    })
+            TransitionManager.beginDelayedTransition(rvMain, set)
+            rvMain.adapter = null
+
         }
     }
+
+    private lateinit var rvMain: RecyclerView
+
+    override fun onAttachedToRecyclerView(rvMain: RecyclerView) {
+        super.onAttachedToRecyclerView(rvMain)
+        this.rvMain = rvMain
+    }
+
 }
 
 class BreadViewHolder(view: View,
