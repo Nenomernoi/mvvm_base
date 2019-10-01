@@ -4,5 +4,6 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#415F5B</color>
     <color name="bg_trans">#4000574B</color>
+    <color name="trans">#0000574B</color>
     <color name="white">#FFFFFF</color>
 </resources>

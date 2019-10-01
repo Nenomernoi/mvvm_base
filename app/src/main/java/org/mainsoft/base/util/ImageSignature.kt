@@ -7,10 +7,9 @@ import java.security.MessageDigest
 
 class ImageSignature(private val currentVersion: String) : Key {
 
-    override fun equals(o: Any?): Boolean {
-        if (o is ImageSignature) {
-            val other = o as ImageSignature?
-            return currentVersion == other?.currentVersion?:false
+    override fun equals(key: Any?): Boolean {
+        if (key is ImageSignature) {
+            return currentVersion == key.currentVersion
         }
         return false
     }

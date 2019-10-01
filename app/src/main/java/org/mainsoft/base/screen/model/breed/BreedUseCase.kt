@@ -7,7 +7,7 @@ import org.mainsoft.base.net.Repository
 import org.mainsoft.base.net.response.Breed
 import org.mainsoft.base.screen.model.base.BaseApiUseCase
 
-class BreedUseCase(repository: Repository) : BaseApiUseCase(repository) {
+class BreedUseCase : BaseApiUseCase() {
 
     fun getItem(id: String): ReceiveChannel<Action<BreedViewState>> = produceActions {
         send { copy(loading = true, error = null) }

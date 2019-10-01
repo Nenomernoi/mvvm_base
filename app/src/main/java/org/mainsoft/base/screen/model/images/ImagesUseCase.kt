@@ -8,7 +8,7 @@ import org.mainsoft.base.net.Repository
 import org.mainsoft.base.net.response.Image
 import org.mainsoft.base.screen.model.base.BaseApiUseCase
 
-class ImagesUseCase(repository: Repository) : BaseApiUseCase(repository) {
+class ImagesUseCase() : BaseApiUseCase() {
 
     fun getItems(state: ImagesViewState?, id: String): ReceiveChannel<Action<ImagesViewState>> = produceActions {
         send { copy(loading = true, error = null) }

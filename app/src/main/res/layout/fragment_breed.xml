@@ -55,6 +55,14 @@
                     android:padding="@dimen/root_padding_middle">
 
                     <TextView
+                        android:id="@+id/txtDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/root_padding_middle"
+                        android:text="The Abyssinian is easy to care for, and a joy to have in your home. They’re affectionate cats and love both people and other animals."
+                        android:textSize="@dimen/row_breed_desc_size" />
+
+                    <TextView
                         android:id="@+id/txtAltName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -64,13 +72,7 @@
                         android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/row_breed_desc_size" />
 
-                    <TextView
-                        android:id="@+id/txtDescription"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/root_padding_middle"
-                        android:text="The Abyssinian is easy to care for, and a joy to have in your home. They’re affectionate cats and love both people and other animals."
-                        android:textSize="@dimen/row_breed_desc_size" />
+
 
                     <TextView
                         android:id="@+id/txtTemperament"

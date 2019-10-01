@@ -3,59 +3,184 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ConstraintSet android:id="@+id/rest">
-
         <Constraint
-            android:id="@+id/rlImage"
-            android:layout_width="@dimen/row_breed_border_image_size"
-            android:layout_height="@dimen/row_breed_border_image_size"
+            android:id="@+id/vBg"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_marginTop="0dp"
             android:alpha="0.0"
-            android:padding="@dimen/root_separate"
+            android:background="@color/trans"
+            app:layout_constraintBottom_toBottomOf="@+id/txtDescription"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+            <CustomAttribute
+                app:attributeName="backgroundColor"
+                app:customColorValue="@color/trans" />
+        </Constraint>
 
+        <Constraint
+            android:id="@+id/imgMain"
+            android:layout_width="@dimen/row_breed_border_image_size"
+            android:layout_height="@dimen/row_breed_border_image_size"
+            android:layout_marginStart="@dimen/root_padding_middle"
+            android:layout_marginTop="@dimen/root_padding_middle"
+            android:alpha="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </Constraint>
+
+        <Constraint
+            android:id="@+id/txtTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:alpha="0.0"
+            android:gravity="start|left"
+            android:paddingStart="@dimen/root_padding_middle"
+            android:paddingEnd="@dimen/root_padding_middle"
+            android:shadowColor="@color/colorPrimary"
+            android:shadowRadius="4"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imgMain"
+            app:layout_constraintTop_toTopOf="@+id/imgMain" />
+
+        <Constraint
+            android:id="@+id/txtDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:alpha="0.0"
+            android:ellipsize="end"
+            android:gravity="start|left"
+            android:maxLines="3"
+            android:paddingStart="@dimen/root_padding_middle"
+            android:paddingEnd="@dimen/root_padding_middle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imgMain"
+            app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
+
+        <Constraint
+            android:id="@+id/fbAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha="0.0"
+            android:src="@drawable/ic_favorite_border_color"
+            app:customDrawable="@drawable/ic_favorite_border"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imgMain" />
 
     </ConstraintSet>
 
 
     <ConstraintSet android:id="@+id/start">
 
+        <Constraint
+            android:id="@+id/vBg"
+            android:layout_marginTop="0dp"
+            android:alpha="1.0"
+            app:layout_constraintBottom_toBottomOf="@+id/txtDescription"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+            <CustomAttribute
+                app:attributeName="backgroundColor"
+                app:customColorValue="@color/white" />
+        </Constraint>
 
         <Constraint
             android:id="@+id/rlImage"
             android:layout_width="@dimen/row_breed_border_image_size"
             android:layout_height="@dimen/row_breed_border_image_size"
-            android:layout_marginTop="0dp"
+            android:layout_marginStart="@dimen/root_padding_middle"
+            android:layout_marginTop="@dimen/root_padding_middle"
             android:alpha="1.0"
-            android:padding="@dimen/root_separate"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
+            <Transform android:elevation="@dimen/root_padding_small" />
+        </Constraint>
+
+        <Constraint
+            android:id="@+id/txtTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:alpha="1.0"
+            android:paddingStart="@dimen/root_padding_middle"
+            android:paddingEnd="@dimen/root_padding_middle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imgMain"
+            app:layout_constraintTop_toTopOf="@+id/imgMain">
+            <CustomAttribute
+                app:attributeName="textColor"
+                app:customColorValue="@color/colorPrimary" />
+            <CustomAttribute
+                app:attributeName="textSize"
+                app:customFloatValue="18" />
+            <Transform android:elevation="@dimen/root_padding_middle" />
+        </Constraint>
+
+        <Constraint
+            android:id="@+id/txtDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:alpha="1.0"
+            android:gravity="start|left"
+            android:paddingStart="@dimen/root_padding_middle"
+            android:paddingEnd="@dimen/root_padding_middle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imgMain"
+            app:layout_constraintTop_toBottomOf="@+id/txtTitle">
+
+            <CustomAttribute
+                app:attributeName="textSize"
+                app:customFloatValue="12" />
+        </Constraint>
+
+        <Constraint
+            android:id="@+id/fbAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha="1.0"
+            android:src="@drawable/ic_favorite_border_color"
+            app:customDrawable="@drawable/ic_favorite_border"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imgMain">
+            <CustomAttribute
+                app:attributeName="crossfade"
+                app:customFloatValue="0" />
+            <Transform android:elevation="@dimen/root_padding_middle" />
+        </Constraint>
 
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/click">
 
         <Constraint
-            android:id="@+id/rlImage"
+            android:id="@+id/vBg"
+            android:layout_marginTop="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+            <CustomAttribute
+                app:attributeName="backgroundColor"
+                app:customColorValue="@color/white" />
+        </Constraint>
+
+        <Constraint
+            android:id="@+id/imgMain"
             android:layout_width="0dp"
             android:layout_height="@dimen/breed_image_size"
             android:layout_marginTop="0dp"
             android:alpha="1.0"
-            android:padding="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <Constraint
-            android:id="@+id/btnFavorite"
-            android:layout_width="@dimen/breed_favorite_size"
-            android:layout_height="@dimen/breed_favorite_size"
-            android:background="@drawable/bg_circle"
-            android:padding="@dimen/breed_favorite_padding"
-            android:src="@drawable/ic_favorite_border"
-            app:layout_constraintBottom_toBottomOf="@id/rlImage"
-            app:layout_constraintEnd_toEndOf="@id/rlImage" />
+            <Transform android:elevation="@dimen/root_padding_small" />
+        </Constraint>
+
 
         <Constraint
             android:id="@+id/txtTitle"
@@ -64,16 +189,49 @@
             android:layout_marginStart="@dimen/root_padding"
             android:layout_marginLeft="@dimen/root_padding"
             android:layout_marginBottom="@dimen/root_status_bar"
-            app:layout_constraintBottom_toBottomOf="@id/rlImage"
+            android:alpha="1.0"
+            app:layout_constraintBottom_toBottomOf="@id/imgMain"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
             <CustomAttribute
                 app:attributeName="textColor"
                 app:customColorValue="@color/white" />
             <CustomAttribute
                 app:attributeName="textSize"
-                app:customDimension="@dimen/breed_item_title_text_size" />
+                app:customFloatValue="32" />
+            <Transform android:elevation="@dimen/root_padding_middle" />
         </Constraint>
 
+
+        <Constraint
+            android:id="@+id/txtDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/root_padding"
+            android:alpha="1.0"
+            android:gravity="start|left"
+            android:paddingStart="@dimen/root_padding_middle"
+            android:paddingEnd="@dimen/root_padding_middle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgMain" />
+
+
+        <Constraint
+            android:id="@+id/fbAdd"
+            android:layout_width="@dimen/breed_favorite_size"
+            android:layout_height="@dimen/breed_favorite_size"
+            android:layout_marginTop="@dimen/breed_favorite_margin_top"
+            android:layout_marginEnd="@dimen/root_padding"
+            android:alpha="1.0"
+            android:src="@drawable/ic_favorite_border"
+            app:layout_constraintEnd_toEndOf="@id/imgMain"
+            app:layout_constraintTop_toTopOf="@id/txtTitle">
+            <CustomAttribute
+                app:attributeName="crossfade"
+                app:customFloatValue="1" />
+            <Transform android:elevation="@dimen/root_padding_middle" />
+        </Constraint>
     </ConstraintSet>
 
     <Transition

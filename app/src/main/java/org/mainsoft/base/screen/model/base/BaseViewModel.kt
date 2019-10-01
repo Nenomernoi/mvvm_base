@@ -3,6 +3,9 @@ package org.mainsoft.base.screen.model.base
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.cancel
+import org.kodein.di.generic.instance
+import org.mainsoft.base.App
+import org.mainsoft.base.net.Repository
 
 abstract class BaseViewModel : ViewModel() {
 

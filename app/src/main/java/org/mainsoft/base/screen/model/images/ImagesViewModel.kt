@@ -46,6 +46,6 @@ class ImagesViewModel(private val useCase: ImagesUseCase) : BaseViewModel() {
 
 object ImagesViewModelFactory : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T =
-            ImagesViewModel(ImagesUseCase(Repository())) as T
+            ImagesViewModel(ImagesUseCase()) as T
 }
 

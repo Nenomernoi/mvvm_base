@@ -62,6 +62,6 @@ class BreedsViewModel(private val useCase: BreedsUseCase) : BaseViewModel() {
 
 object BreedsViewModelFactory : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T =
-            BreedsViewModel(BreedsUseCase(Repository())) as T
+            BreedsViewModel(BreedsUseCase()) as T
 }
 

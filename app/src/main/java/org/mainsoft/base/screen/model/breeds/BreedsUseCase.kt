@@ -7,7 +7,7 @@ import org.mainsoft.base.lib.Action
 import org.mainsoft.base.net.Repository
 import org.mainsoft.base.screen.model.base.BaseApiUseCase
 
-class BreedsUseCase(repository: Repository) : BaseApiUseCase(repository) {
+class BreedsUseCase : BaseApiUseCase() {
 
     @ExperimentalCoroutinesApi
     fun getList(state: BreedsViewState?, page: Int): ReceiveChannel<Action<BreedsViewState>> = produceActions {

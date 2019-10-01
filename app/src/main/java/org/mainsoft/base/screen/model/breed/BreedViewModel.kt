@@ -39,5 +39,5 @@ class BreedViewModel(private val useCase: BreedUseCase) : BaseViewModel() {
 
 object BreedViewModelFactory : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T =
-            BreedViewModel(BreedUseCase(Repository())) as T
+            BreedViewModel(BreedUseCase()) as T
 }

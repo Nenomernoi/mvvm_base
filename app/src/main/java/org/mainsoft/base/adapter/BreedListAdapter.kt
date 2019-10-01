@@ -29,7 +29,7 @@ class BreedListAdapter(private val viewModel: BreedsViewModel) : BaseSupportAdap
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         (holder as BreadViewHolder).bind(list[position])
         holder.itemView.setOnClickListener { view ->
-            if (view.id == R.id.btnFavorite) {
+            if (view.id == R.id.fbAdd) {
                 return@setOnClickListener
             }
             val originalPos = IntArray(2)
@@ -46,7 +46,7 @@ class BreadViewHolder(view: View,
     private var txtTitle: TextView = itemView.findViewById(R.id.txtTitle)
     private var txtDescription: TextView = itemView.findViewById(R.id.txtDescription)
     private var imgMain: ImageView = itemView.findViewById(R.id.imgMain)
-    private var btnFavorite: ImageView = itemView.findViewById(R.id.btnFavorite)
+    private var btnFavorite: ImageView = itemView.findViewById(R.id.fbAdd)
 
     init {
         btnFavorite.setOnClickListener {

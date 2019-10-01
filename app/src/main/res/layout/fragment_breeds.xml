@@ -25,46 +25,53 @@
         android:id="@+id/mlMain"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/root_padding_middle"
         app:layoutDescription="@xml/breed_open"
       >
 
-        <RelativeLayout
-            android:id="@+id/rlImage"
-            android:layout_width="@dimen/row_breed_border_image_size"
-            android:layout_height="@dimen/row_breed_border_image_size"
-            app:layout_constraintTop_toTopOf="parent"
+        <View
+            android:id="@+id/vBg"
+            android:layout_width="0dp"
             app:layout_constraintStart_toStartOf="parent"
-            android:padding="@dimen/root_separate"
-            android:background="@drawable/bg_image">
-
-            <ImageView
-                android:id="@+id/imgMain"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/ic_cat"
-                android:layout_centerInParent="true" />
-        </RelativeLayout>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@color/trans"
+            app:layout_constraintBottom_toBottomOf="@+id/txtDescription"
+            android:layout_height="0dp"/>
 
         <ImageView
-            android:id="@+id/btnFavorite"
-            app:layout_constraintTop_toTopOf="@+id/rlImage"
+            android:id="@+id/imgMain"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="@dimen/row_breed_border_image_size"
+            android:layout_height="@dimen/row_breed_border_image_size"
+            android:elevation="@dimen/root_padding_small"
+            android:scaleType="centerCrop"
+            android:layout_centerInParent="true" />
+
+        <org.mainsoft.base.lib.view.MotionImageView
+            android:id="@+id/fbAdd"
+            android:padding="@dimen/breed_favorite_padding"
+            app:layout_constraintTop_toTopOf="@+id/imgMain"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_width="wrap_content"
+            android:elevation="@dimen/root_padding_middle"
             android:src="@drawable/ic_favorite_border_color"
+            app:customDrawable="@drawable/ic_favorite_border"
             android:layout_height="wrap_content"/>
 
         <TextView
             android:id="@+id/txtTitle"
-            app:layout_constraintTop_toTopOf="@+id/rlImage"
+            app:layout_constraintTop_toTopOf="@+id/imgMain"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/rlImage"
+            app:layout_constraintStart_toEndOf="@+id/imgMain"
             android:paddingStart="@dimen/root_padding_middle"
             android:paddingEnd="@dimen/root_padding_middle"
             android:layout_width="0dp"
+            android:elevation="@dimen/root_padding_middle"
             android:gravity="start|left"
             android:shadowColor="@color/colorPrimary"
             android:shadowRadius="4"
+            android:textSize="@dimen/row_breed_title_size"
             android:layout_height="wrap_content"
             android:textColor="@color/colorPrimary"/>
 
@@ -75,7 +82,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/txtTitle"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/rlImage"
+            app:layout_constraintStart_toEndOf="@+id/imgMain"
             android:paddingStart="@dimen/root_padding_middle"
             android:paddingEnd="@dimen/root_padding_middle"
             android:ellipsize="end"
