@@ -11,8 +11,6 @@ data class BreedsViewState(
         override val data: MutableList<Breed> = mutableListOf(),
         override val page: Int = 0,
         val position: Int = 0,
-        val originalPos: IntArray? = null,
-        val model: Breed? = null,
         override val loading: Boolean = false,
         override val refresh: Boolean = false,
         override val error: Throwable? = null)
@@ -47,12 +45,6 @@ class BreedsViewModel(private val useCase: BreedsUseCase) : BaseViewModel() {
         getStore<ViewStateStore<BreedsViewState>>().dispatchAction {
             useCase.addToFavorite(it, position)
         }
-    }
-
-    fun openItem(position: Int, originalPos: IntArray) {
-        getStore<ViewStateStore<BreedsViewState>>().dispatchActions(
-                useCase.openItem(getState(), position, originalPos)
-        )
     }
 
     override fun getState() = getStore<ViewStateStore<BreedsViewState>>().state()

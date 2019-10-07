@@ -1,27 +1,31 @@
 package org.mainsoft.base.adapter
 
-import android.graphics.Rect
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.RecyclerView
-import androidx.transition.*
-import androidx.transition.Transition.EpicenterCallback
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import org.mainsoft.base.R
 import org.mainsoft.base.adapter.base.BaseSupportAdapter
 import org.mainsoft.base.adapter.base.BaseViewHolder
+import org.mainsoft.base.listeners.BackCallback
 import org.mainsoft.base.net.response.Breed
+import org.mainsoft.base.screen.model.base.BaseViewModel
 import org.mainsoft.base.screen.model.breeds.BreedsViewModel
+import org.mainsoft.base.util.navigate
 
-class BreedListAdapter(private val viewModel: BreedsViewModel) : BaseSupportAdapter<Breed>() {
+class BreedListAdapter(private val viewModel: BreedsViewModel,
+                       private val backListener: BackCallback) : BaseSupportAdapter<Breed>() {
 
     init {
         list = viewModel.getState().data
     }
+
+    fun getItem(position: Int) = list[position]
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BreadViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -30,46 +34,20 @@ class BreedListAdapter(private val viewModel: BreedsViewModel) : BaseSupportAdap
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as BreadViewHolder).bind(list[position])
+        (holder as BreadViewHolder).bind(getItem(position))
         holder.itemView.setOnClickListener { view ->
             if (view.id == R.id.fbAdd) {
                 return@setOnClickListener
             }
-            // save rect of view in screen coordinated
-            val viewRect = Rect()
-            holder.itemView.getGlobalVisibleRect(viewRect)
-
-            val explode = Explode()
-            explode.epicenterCallback = object : EpicenterCallback() {
-                override fun onGetEpicenter(transition: Transition): Rect {
-                    return viewRect
-                }
-            }
-            explode.excludeTarget(holder.itemView, true)
-            val set = TransitionSet()
-                    .addTransition(explode)
-                    .addTransition(Fade().addTarget(holder.itemView))
-                    .addListener(object : TransitionListenerAdapter() {
-                        override fun onTransitionEnd(transition: Transition) {
-                            transition.removeListener(this)
-
-                            val originalPos = IntArray(2)
-                            //  view.getLocationOnScreen(originalPos)
-                            view.getLocationInWindow(originalPos)
-                          //  viewModel.openItem(position, originalPos)
-                        }
-                    })
-            TransitionManager.beginDelayedTransition(rvMain, set)
-            rvMain.adapter = null
-
+            openBreed(view, position)
         }
     }
 
-    private lateinit var rvMain: RecyclerView
-
-    override fun onAttachedToRecyclerView(rvMain: RecyclerView) {
-        super.onAttachedToRecyclerView(rvMain)
-        this.rvMain = rvMain
+    private fun openBreed(view: View, position: Int) {
+        view.navigate(R.id.action_breedsFragment_to_breedFragment,
+                bundleOf(BaseViewModel.ARGUMENT_ID to position,
+                        BaseViewModel.ARGUMENT_EXTRA to getItem(position),
+                        BaseViewModel.ARGUMENT_RETURN to backListener))
     }
 
 }

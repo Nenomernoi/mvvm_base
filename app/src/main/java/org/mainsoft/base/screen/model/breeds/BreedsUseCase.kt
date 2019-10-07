@@ -11,15 +11,15 @@ class BreedsUseCase : BaseApiUseCase() {
 
     @ExperimentalCoroutinesApi
     fun getList(state: BreedsViewState?, page: Int): ReceiveChannel<Action<BreedsViewState>> = produceActions {
-        send { copy(loading = page == 0, error = null, page = page, model = null) }
+        send { copy(loading = page == 0, error = null, page = page) }
         try {
 
             val results = state?.data ?: mutableListOf()
             results.addAll(repository.getBreeds(page))
 
-            send { copy(data = results, loading = false, page = page, model = null) }
+            send { copy(data = results, loading = false, page = page) }
         } catch (e: Exception) {
-            send { copy(error = e, loading = false, page = page, model = null) }
+            send { copy(error = e, loading = false, page = page) }
             Log.e("BreedsUseCase", e.message, e)
         }
     }
@@ -28,15 +28,8 @@ class BreedsUseCase : BaseApiUseCase() {
         val newBreed = repository.addFavorite(state.data[position])
         return Action {
             data[position] = newBreed
-            copy(data = data, model = null)
+            copy(data = data)
         }
-    }
-
-    fun openItem(state: BreedsViewState,position: Int, originalPos: IntArray): ReceiveChannel<Action<BreedsViewState>> = produceActions {
-        val model = state.data[position]
-        send { copy(position = position, originalPos = originalPos, model = model) }
-        delay(2000L)
-        send { copy(originalPos = null, model = null) }
     }
 
     suspend fun updateItem(state: BreedsViewState, position: Int): Action<BreedsViewState> {
@@ -45,19 +38,19 @@ class BreedsUseCase : BaseApiUseCase() {
 
         return Action {
             data[position] = newBreed
-            copy(data = data, model = null)
+            copy(data = data)
         }
     }
 
     @ExperimentalCoroutinesApi
     fun clearData(): ReceiveChannel<Action<BreedsViewState>> = produceActions {
-        send { copy(data = mutableListOf(), refresh = false, loading = true, error = null, page = 0, model = null) }
+        send { copy(data = mutableListOf(), refresh = false, loading = true, error = null, page = 0) }
         try {
             repository.clearData()
             val breeds = repository.getBreeds(0)
-            send { copy(data = breeds.toMutableList(), loading = false, page = page, model = null) }
+            send { copy(data = breeds.toMutableList(), loading = false, page = page) }
         } catch (e: Exception) {
-            send { copy(error = e, loading = false, page = page, model = null) }
+            send { copy(error = e, loading = false, page = page) }
             Log.e("BreedsUseCase", e.message, e)
         }
     }

@@ -12,7 +12,6 @@ import org.mainsoft.base.net.Repository
 
 abstract class BaseUseCase {
 
-
     @ExperimentalCoroutinesApi
     fun <T> produceActions(f: suspend ProducerScope<Action<T>>.() -> Unit): ReceiveChannel<Action<T>> =
             GlobalScope.produce(block = f)
@@ -20,6 +19,6 @@ abstract class BaseUseCase {
     suspend fun <T> ProducerScope<Action<T>>.send(f: T.() -> T) = send(Action(f))
 }
 
-abstract class BaseApiUseCase() : BaseUseCase() {
+abstract class BaseApiUseCase : BaseUseCase() {
     protected val repository: Repository by App.kodein.instance()
 }
