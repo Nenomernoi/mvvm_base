@@ -40,7 +40,6 @@ class ViewStateStore<T : Any>(initialState: T) : CoroutineScope {
         }
     }
 
-    @ExperimentalCoroutinesApi
     fun dispatchActions(channel: ReceiveChannel<Action<T>>) {
         launch {
             channel.consumeEach { action ->

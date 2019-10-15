@@ -9,7 +9,6 @@ import org.mainsoft.base.screen.model.base.BaseApiUseCase
 
 class BreedsUseCase : BaseApiUseCase() {
 
-    @ExperimentalCoroutinesApi
     fun getList(state: BreedsViewState?, page: Int): ReceiveChannel<Action<BreedsViewState>> = produceActions {
         send { copy(loading = page == 0, error = null, page = page) }
         try {
@@ -42,7 +41,6 @@ class BreedsUseCase : BaseApiUseCase() {
         }
     }
 
-    @ExperimentalCoroutinesApi
     fun clearData(): ReceiveChannel<Action<BreedsViewState>> = produceActions {
         send { copy(data = mutableListOf(), refresh = false, loading = true, error = null, page = 0) }
         try {

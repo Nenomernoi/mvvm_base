@@ -49,7 +49,6 @@ class BreedListAdapter(private val viewModel: BreedsViewModel,
                         BaseViewModel.ARGUMENT_EXTRA to getItem(position),
                         BaseViewModel.ARGUMENT_RETURN to backListener))
     }
-
 }
 
 class BreadViewHolder(view: View,

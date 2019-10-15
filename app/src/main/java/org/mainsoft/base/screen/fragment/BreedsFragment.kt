@@ -13,7 +13,6 @@ import org.mainsoft.base.screen.model.breeds.BreedsViewModel
 import org.mainsoft.base.screen.model.breeds.BreedsViewModelFactory
 import org.mainsoft.base.screen.model.breeds.BreedsViewState
 
-
 class BreedsFragment : BaseSwipeEndlessListFragment<Breed>() {
 
     override fun getLayout(): Int = R.layout.fragment_list_refresh
