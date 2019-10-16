@@ -44,20 +44,12 @@ class ExampleGridFragment : BaseEndlessMainListFragment<String>(), ExampleGridVi
         rvMain?.setHasFixedSize(true)
     }
 
-    override fun initEndless() {
-        endLess = object : EndlessScrollListener(rvMain?.layoutManager as SpannedGridLayoutManager) {
-            override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView?) {
-                loadNext()
-            }
-        }
-    }
-
     override fun loadNext() {
         getPresenter<ExampleGridPresenter>()?.firstLoad()
     }
 
     override fun initRclView() {
-        val manager = SpannedGridLayoutManager(
+        val manager = SpannedGridLayoutManager(activity,
                 SpannedGridLayoutManager.GridSpanLookup { position ->
                     when (position % 18) {
                         0, 10 -> SpannedGridLayoutManager.SpanInfo(2, 2)

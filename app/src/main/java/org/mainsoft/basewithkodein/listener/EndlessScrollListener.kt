@@ -27,7 +27,7 @@ abstract class EndlessScrollListener : RecyclerView.OnScrollListener {
 
     constructor(layoutManager: SpannedGridLayoutManager) {
         this.mLayoutManager = layoutManager
-        visibleThreshold *= 3
+        visibleThreshold *= 2
     }
 
     constructor(layoutManager: StaggeredGridLayoutManager) {
@@ -35,7 +35,7 @@ abstract class EndlessScrollListener : RecyclerView.OnScrollListener {
         visibleThreshold *= layoutManager.spanCount
     }
 
-    fun getLastVisibleItem(lastVisibleItemPositions: IntArray): Int {
+    private fun getLastVisibleItem(lastVisibleItemPositions: IntArray): Int {
         var maxSize = 0
         for (i in lastVisibleItemPositions.indices) {
             if (i == 0) {
@@ -48,27 +48,17 @@ abstract class EndlessScrollListener : RecyclerView.OnScrollListener {
     }
 
     override fun onScrolled(view: RecyclerView, dx: Int, dy: Int) {
-        var lastVisibleItemPosition = 0
         val totalItemCount = mLayoutManager.itemCount
 
-        when (mLayoutManager) {
+        val lastVisibleItemPosition = when (mLayoutManager) {
             is StaggeredGridLayoutManager -> {
-                val lastVisibleItemPositions = (mLayoutManager as StaggeredGridLayoutManager)
-                        .findLastVisibleItemPositions(null)
-                lastVisibleItemPosition = getLastVisibleItem(lastVisibleItemPositions)
+                val lastVisibleItemPositions = (mLayoutManager as StaggeredGridLayoutManager).findLastVisibleItemPositions(null)
+                getLastVisibleItem(lastVisibleItemPositions)
             }
-            /*
-            is SpannedGridLayoutManager -> {
-                val lastVisibleItemPositions = (mLayoutManager as SpannedGridLayoutManager).lastVisiblePositions
-                lastVisibleItemPosition = getLastVisibleItem(lastVisibleItemPositions)
-            }
-            */
-            is SpannedGridLayoutManager -> lastVisibleItemPosition = (mLayoutManager as SpannedGridLayoutManager)
-                    .lastVisiblePosition
-            is GridLayoutManager -> lastVisibleItemPosition = (mLayoutManager as GridLayoutManager)
-                    .findLastVisibleItemPosition()
-            is LinearLayoutManager -> lastVisibleItemPosition = (mLayoutManager as LinearLayoutManager)
-                    .findLastVisibleItemPosition()
+            is SpannedGridLayoutManager -> (mLayoutManager as SpannedGridLayoutManager).findLastVisibleItemPosition()
+            is GridLayoutManager -> (mLayoutManager as GridLayoutManager).findLastVisibleItemPosition()
+            is LinearLayoutManager -> (mLayoutManager as LinearLayoutManager).findLastVisibleItemPosition()
+            else -> 0
         }
 
         if (totalItemCount < previousTotalItemCount) {
@@ -90,7 +80,7 @@ abstract class EndlessScrollListener : RecyclerView.OnScrollListener {
         }
     }
 
-    fun setLoading(loading: Boolean){
+    fun setLoading(loading: Boolean) {
         this.loading = loading
     }
 

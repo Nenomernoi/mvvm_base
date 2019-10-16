@@ -5,12 +5,13 @@ import android.content.res.TypedArray;
 import android.graphics.PointF;
 import android.graphics.Rect;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSmoothScroller;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,7 +20,7 @@ import org.mainsoft.basewithkodein.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SpannedGridLayoutManager extends RecyclerView.LayoutManager {
+public class SpannedGridLayoutManager extends LinearLayoutManager {
 
     private GridSpanLookup spanLookup;
     public int columns = 1;
@@ -37,33 +38,30 @@ public class SpannedGridLayoutManager extends RecyclerView.LayoutManager {
     private int totalRows;
     private final Rect itemDecorationInsets = new Rect();
 
-    public SpannedGridLayoutManager(GridSpanLookup spanLookup, int columns, float cellAspectRatio) {
-        this.spanLookup = spanLookup;
-        this.columns = columns;
-        this.cellAspectRatio = cellAspectRatio;
-        super.setAutoMeasureEnabled(true);
+    public SpannedGridLayoutManager(Context context) {
+        super(context);
     }
 
-    public int[] getLastVisiblePositions() {
-        int[] into = new int[2];
-        into[0] = lastVisiblePosition - 1;
-        into[1] = lastVisiblePosition;
-        return into;
+    public SpannedGridLayoutManager(Context context, int orientation, boolean reverseLayout) {
+        super(context, orientation, reverseLayout);
     }
 
-    public int getLastVisiblePosition() {
-        return lastVisiblePosition;
-    }
-
-    @Keep /* XML constructor, see RecyclerView#createLayoutManager */
-    public SpannedGridLayoutManager(
-            Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public SpannedGridLayoutManager(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
         TypedArray a = context.obtainStyledAttributes(
                 attrs, R.styleable.SpannableGridLayoutManager, defStyleAttr, defStyleRes);
         columns = a.getInt(R.styleable.SpannableGridLayoutManager_spanCount, 1);
         parseAspectRatio(a.getString(R.styleable.SpannableGridLayoutManager_aspectRatio));
         int orientation = a.getInt(R.styleable.SpannableGridLayoutManager_android_orientation, RecyclerView.VERTICAL);
         a.recycle();
+        super.setAutoMeasureEnabled(true);
+    }
+
+    public SpannedGridLayoutManager(Context context, GridSpanLookup spanLookup, int columns, float cellAspectRatio) {
+        super(context);
+        this.spanLookup = spanLookup;
+        this.columns = columns;
+        this.cellAspectRatio = cellAspectRatio;
         super.setAutoMeasureEnabled(true);
     }
 
@@ -442,6 +440,11 @@ public class SpannedGridLayoutManager extends RecyclerView.LayoutManager {
                 : state.getItemCount() - 1;
     }
 
+
+    public int getLastVisiblePosition() {
+        return lastVisiblePosition;
+    }
+
     /**
      * Lay out a given 'row'. We might actually add more that one row if the requested row contains
      * a row-spanning cell. Returns the pixel height of the rows laid out.
@@ -452,6 +455,7 @@ public class SpannedGridLayoutManager extends RecyclerView.LayoutManager {
     private int layoutRow(int rowIndex, int startTop, RecyclerView.Recycler recycler, RecyclerView.State state) {
         int firstPositionInRow = getFirstPositionInSpannedRow(rowIndex);
         int lastPositionInRow = getLastPositionInSpannedRow(rowIndex, state);
+        //   Log.w("Spanned", "firstPositionInRow->" + firstPositionInRow + " lastPositionInRow->" + lastPositionInRow);
         boolean containsRemovedItems = false;
 
         int insertPosition = (rowIndex < firstVisibleRow) ? 0 : getChildCount();
@@ -490,6 +494,7 @@ public class SpannedGridLayoutManager extends RecyclerView.LayoutManager {
             lastVisiblePosition = lastPositionInRow;
             lastVisibleRow = getRowIndex(lastVisiblePosition);
         }
+
         if (containsRemovedItems) return 0; // don't consume space for rows with disappearing items
 
         GridCell first = cells.get(firstPositionInRow);
@@ -501,10 +506,11 @@ public class SpannedGridLayoutManager extends RecyclerView.LayoutManager {
      * Remove and recycle all items in this 'row'. If the row includes a row-spanning cell then all
      * cells in the spanned rows will be removed.
      */
-    private void recycleRow(
-            int rowIndex, RecyclerView.Recycler recycler, RecyclerView.State state) {
+    private void recycleRow(int rowIndex, RecyclerView.Recycler recycler, RecyclerView.State state) {
         int firstPositionInRow = getFirstPositionInSpannedRow(rowIndex);
         int lastPositionInRow = getLastPositionInSpannedRow(rowIndex, state);
+        Log.d("Spanned", "firstPositionInRow->" + firstPositionInRow + "   lastPositionInRow->" + lastPositionInRow);
+
         int toRemove = lastPositionInRow;
         while (toRemove >= firstPositionInRow) {
             int index = toRemove - firstVisiblePosition;
@@ -521,8 +527,7 @@ public class SpannedGridLayoutManager extends RecyclerView.LayoutManager {
         }
     }
 
-    private void layoutDisappearingViews(
-            RecyclerView.Recycler recycler, RecyclerView.State state, int startTop) {
+    private void layoutDisappearingViews(RecyclerView.Recycler recycler, RecyclerView.State state, int startTop) {
         // TODO
     }
 
