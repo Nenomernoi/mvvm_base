@@ -6,7 +6,7 @@ import org.kodein.di.generic.instance
 import org.mainsoft.basewithkodein.App
 import org.mainsoft.basewithkodein.R
 import org.mainsoft.basewithkodein.adapter.ExampleAdapter
-import org.mainsoft.basewithkodein.adapter.base.OnItemClickListener
+import org.mainsoft.basewithkodein.listener.OnItemClickListener
 import org.mainsoft.basewithkodein.net.response.CountryResponse
 import org.mainsoft.basewithkodein.screen.fragment.base.BaseSwipeMainListFragment
 import org.mainsoft.basewithkodein.screen.presenter.ExampleListPresenter

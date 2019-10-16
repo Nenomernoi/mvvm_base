@@ -26,16 +26,17 @@ class ExamplePresenter(view: ExampleView) : BasePresenter(view) {
                 .usingCamera()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeBy({ response ->
-                    if (response.data() != null) {
-                        image = response.data().file
-                        getView<ExampleView>()?.initImage(image.absolutePath)
-                    }
-                }, { th ->
-                    showError(th.message ?: "")
-                }, {
-                    //
-                })
+                .subscribeBy(
+                        onNext = { response ->
+                            if (response.data() != null) {
+                                image = response.data().file
+                                getView<ExampleView>()?.initImage(image.absolutePath)
+                            }
+                        },
+                        onError = { th ->
+                            showError(th.message ?: "")
+                        }
+                )
         addSubscription(dis)
     }
 
@@ -44,16 +45,17 @@ class ExamplePresenter(view: ExampleView) : BasePresenter(view) {
                 .usingGallery()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeBy({ response ->
-                    if (response.data() != null) {
-                        image = response.data().file
-                        getView<ExampleView>()?.initImage(image.absolutePath)
-                    }
-                }, { th ->
-                    showError(th.message ?: "")
-                }, {
-                    //
-                })
+                .subscribeBy(
+                        onNext = { response ->
+                            if (response.data() != null) {
+                                image = response.data().file
+                                getView<ExampleView>()?.initImage(image.absolutePath)
+                            }
+                        },
+                        onError = { th ->
+                            showError(th.message ?: "")
+                        }
+                )
         addSubscription(dis)
     }
 

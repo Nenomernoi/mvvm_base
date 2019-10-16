@@ -1,13 +1,16 @@
 package org.mainsoft.basewithkodein.util
 
 import org.mainsoft.basewithkodein.screen.fragment.ExampleFragment
+import org.mainsoft.basewithkodein.screen.fragment.ExampleGridFragment
 import org.mainsoft.basewithkodein.screen.fragment.ExampleListFragment
 import org.mainsoft.basewithkodein.screen.fragment.ExamplePageFragment
 import org.mainsoft.basewithkodein.screen.fragment.base.BaseFragment
+import org.mainsoft.basewithkodein.screen.presenter.ExampleGridPresenter
 import org.mainsoft.basewithkodein.screen.presenter.ExampleListPresenter
 import org.mainsoft.basewithkodein.screen.presenter.ExamplePagePresenter
 import org.mainsoft.basewithkodein.screen.presenter.ExamplePresenter
 import org.mainsoft.basewithkodein.screen.presenter.base.BasePresenter
+import org.mainsoft.basewithkodein.screen.view.ExampleGridView
 import org.mainsoft.basewithkodein.screen.view.ExampleListView
 import org.mainsoft.basewithkodein.screen.view.ExamplePageView
 import org.mainsoft.basewithkodein.screen.view.ExampleView
@@ -30,6 +33,9 @@ class PresenterUtil {
             }
             ExamplePageFragment::class.java.simpleName -> {
                 saveAndGetPresenter(name, ExamplePagePresenter(v as ExamplePageView))
+            }
+            ExampleGridFragment::class.java.simpleName -> {
+                saveAndGetPresenter(name, ExampleGridPresenter(v as ExampleGridView))
             }
             else -> {
                 null as P

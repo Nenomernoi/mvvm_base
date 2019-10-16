@@ -4,6 +4,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import org.mainsoft.basewithkodein.adapter.base.SpannedGridLayoutManager
 
 abstract class EndlessScrollListener : RecyclerView.OnScrollListener {
 
@@ -22,6 +23,11 @@ abstract class EndlessScrollListener : RecyclerView.OnScrollListener {
     constructor(layoutManager: GridLayoutManager) {
         this.mLayoutManager = layoutManager
         visibleThreshold *= layoutManager.spanCount
+    }
+
+    constructor(layoutManager: SpannedGridLayoutManager) {
+        this.mLayoutManager = layoutManager
+        visibleThreshold *= 3
     }
 
     constructor(layoutManager: StaggeredGridLayoutManager) {
@@ -51,6 +57,14 @@ abstract class EndlessScrollListener : RecyclerView.OnScrollListener {
                         .findLastVisibleItemPositions(null)
                 lastVisibleItemPosition = getLastVisibleItem(lastVisibleItemPositions)
             }
+            /*
+            is SpannedGridLayoutManager -> {
+                val lastVisibleItemPositions = (mLayoutManager as SpannedGridLayoutManager).lastVisiblePositions
+                lastVisibleItemPosition = getLastVisibleItem(lastVisibleItemPositions)
+            }
+            */
+            is SpannedGridLayoutManager -> lastVisibleItemPosition = (mLayoutManager as SpannedGridLayoutManager)
+                    .lastVisiblePosition
             is GridLayoutManager -> lastVisibleItemPosition = (mLayoutManager as GridLayoutManager)
                     .findLastVisibleItemPosition()
             is LinearLayoutManager -> lastVisibleItemPosition = (mLayoutManager as LinearLayoutManager)
@@ -76,10 +90,14 @@ abstract class EndlessScrollListener : RecyclerView.OnScrollListener {
         }
     }
 
+    fun setLoading(loading: Boolean){
+        this.loading = loading
+    }
+
     fun resetState() {
         this.currentPage = this.startingPageIndex
         this.previousTotalItemCount = 0
-        this.loading = true
+        this.loading = false
     }
 
     abstract fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView?)

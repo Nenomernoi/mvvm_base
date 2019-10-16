@@ -12,6 +12,10 @@ abstract class BaseEndlessMainListFragment<T : Any> : BaseMainListFragment<T>() 
 
     override fun initData() {
         super.initData()
+        initEndless()
+    }
+
+    protected open fun initEndless() {
         endLess = object : EndlessScrollListener(rvMain?.layoutManager as LinearLayoutManager) {
             override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView?) {
                 loadNext()
@@ -31,6 +35,7 @@ abstract class BaseEndlessMainListFragment<T : Any> : BaseMainListFragment<T>() 
     }
 
     override fun setItems(data: MutableList<T>) {
+        endLess?.setLoading(false)
         adapter?.addItems(data)
     }
 

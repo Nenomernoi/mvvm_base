@@ -1,5 +1,7 @@
 package org.mainsoft.basewithkodein.adapter.base
 
+import org.mainsoft.basewithkodein.listener.OnItemClickListener
+
 abstract class BaseMapSupportAdapter<T : Any>(items: MutableList<T>, listener: OnItemClickListener) :
         BaseSupportAdapter<T>(items, listener) {
 

@@ -4,6 +4,7 @@
     <string-array name="main_tab">
         <item>@string/drawer_open</item>
         <item>@string/drawer_close</item>
+        <item>@string/drawer_close</item>
     </string-array>
 
 </resources>

@@ -188,7 +188,7 @@ abstract class BaseFragment : Fragment(), BaseView {
 
     ////////////////////////////////////////////////////////////////////////////////////////
 
-    override fun onAttach(activity: Context?) {
+    override fun onAttach(activity: Context) {
         super.onAttach(activity)
         try {
             activityCallback = activity as ActivityCallback

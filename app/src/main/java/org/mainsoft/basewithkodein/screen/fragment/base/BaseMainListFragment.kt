@@ -2,6 +2,7 @@ package org.mainsoft.basewithkodein.screen.fragment.base
 
 import android.os.Bundle
 import android.os.Handler
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_list.*
 import org.mainsoft.basewithkodein.R
 import org.mainsoft.basewithkodein.adapter.base.BaseSupportAdapter
@@ -70,7 +71,7 @@ abstract class BaseMainListFragment<T : Any> : BaseListFragment() {
     }
 
     protected open fun initRclView() {
-        rvMain?.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(activity)
+        rvMain?.layoutManager = LinearLayoutManager(activity)
     }
 
     //////////////////////////////////////////////////////////////////////////////////////

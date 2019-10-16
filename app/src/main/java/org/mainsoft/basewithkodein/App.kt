@@ -11,9 +11,11 @@ import org.kodein.di.generic.singleton
 import org.mainsoft.basewithkodein.net.Api
 import org.mainsoft.basewithkodein.net.ApiRest
 import org.mainsoft.basewithkodein.net.response.MyObjectBox
+import org.mainsoft.basewithkodein.screen.presenter.ExampleGridPresenter
 import org.mainsoft.basewithkodein.screen.presenter.ExampleListPresenter
 import org.mainsoft.basewithkodein.screen.presenter.ExamplePagePresenter
 import org.mainsoft.basewithkodein.screen.presenter.ExamplePresenter
+import org.mainsoft.basewithkodein.screen.view.ExampleGridView
 import org.mainsoft.basewithkodein.screen.view.ExampleListView
 import org.mainsoft.basewithkodein.screen.view.ExamplePageView
 import org.mainsoft.basewithkodein.screen.view.ExampleView
@@ -40,6 +42,7 @@ class App : Application() {
 
     private val screenModule = Kodein.Module {
         bind<ExamplePresenter>() with factory { view: ExampleView -> presenterUtil.getPresenter<ExamplePresenter>(view) }
+        bind<ExampleGridPresenter>() with factory { view: ExampleGridView -> presenterUtil.getPresenter<ExampleGridPresenter>(view) }
         bind<ExampleListPresenter>() with factory { view: ExampleListView -> presenterUtil.getPresenter<ExampleListPresenter>(view) }
         bind<ExamplePagePresenter>() with factory { view: ExamplePageView -> presenterUtil.getPresenter<ExamplePagePresenter>(view) }
     }

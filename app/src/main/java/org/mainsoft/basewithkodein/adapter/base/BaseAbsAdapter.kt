@@ -1,6 +1,7 @@
 package org.mainsoft.basewithkodein.adapter.base
 
 import android.widget.BaseAdapter
+import org.mainsoft.basewithkodein.listener.OnItemClickListener
 
 abstract class BaseAbsAdapter<T : Any>(private var items: MutableList<T>, var listener: OnItemClickListener) :
         BaseAdapter() {
