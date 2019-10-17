@@ -22,8 +22,19 @@
         android:layout_centerInParent="true"
         android:layout_gravity="center"
         android:text="Retry"
-        android:visibility="invisible"
-        android:textSize="@dimen/root_empty_text_small_size" />
+        android:textSize="@dimen/root_empty_text_small_size"
+        android:visibility="invisible" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone"
+        android:layout_margin="@dimen/root_padding"
+        android:src="@drawable/ic_favorite_border" />
 
     <RelativeLayout
         android:id="@+id/pbLoad"

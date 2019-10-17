@@ -2,33 +2,15 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph"
-    app:startDestination="@id/splashFragment">
-
-    <fragment
-        android:id="@+id/splashFragment"
-        android:name="org.mainsoft.base.screen.fragment.SplashFragment"
-        android:label="SplashFragment"
-        tools:layout="@layout/fragment_splash">
-        <action
-            android:id="@+id/action_splashFragment_to_breedFragment"
-            app:destination="@id/breedsFragment"
-            app:popUpTo="@+id/splashFragment"
-            app:popUpToInclusive="true" />
-
-
-
-    </fragment>
+    android:id="@+id/nav_home"
+    app:startDestination="@id/breedsFragment">
 
     <fragment
         android:id="@+id/breedsFragment"
         android:name="org.mainsoft.base.screen.fragment.BreedsFragment"
         android:label="BreedsFragment"
         tools:layout="@layout/fragment_list_refresh">
-        <argument
-            android:name="argument_id"
-            android:defaultValue="true"
-            app:argType="boolean" />
+
         <action
             android:id="@+id/action_breedsFragment_to_breedFragment"
             app:destination="@id/breedFragment"
@@ -36,6 +18,7 @@
             app:exitAnim="@anim/slide_in_right_slow"
             app:popEnterAnim="@anim/slide_out_left_fast"
             app:popExitAnim="@anim/slide_in_left" />
+
     </fragment>
 
     <fragment
@@ -57,6 +40,5 @@
         android:name="org.mainsoft.base.screen.fragment.ImagesFragment"
         android:label="ImagesFragment"
         tools:layout="@layout/fragment_images" />
-
 
 </navigation>

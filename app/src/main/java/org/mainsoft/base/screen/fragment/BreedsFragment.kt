@@ -1,14 +1,19 @@
 package org.mainsoft.base.screen.fragment
 
+import android.content.Intent
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.get
+import kotlinx.android.synthetic.main.fragment_list_refresh.*
 import org.mainsoft.base.R
+import org.mainsoft.base.activity.MenuActivity
 import org.mainsoft.base.adapter.BreedListAdapter
 import org.mainsoft.base.lib.ViewStateStore
 import org.mainsoft.base.listeners.BackCallback
 import org.mainsoft.base.listeners.BreedsReturnCallback
 import org.mainsoft.base.net.response.Breed
 import org.mainsoft.base.screen.fragment.base.BaseSwipeEndlessListFragment
+import org.mainsoft.base.screen.model.base.BaseViewModel
 import org.mainsoft.base.screen.model.breeds.BreedsViewModel
 import org.mainsoft.base.screen.model.breeds.BreedsViewModelFactory
 import org.mainsoft.base.screen.model.breeds.BreedsViewState
@@ -25,6 +30,7 @@ class BreedsFragment : BaseSwipeEndlessListFragment<Breed>() {
 
     override fun initData() {
         viewModel = ViewModelProviders.of(this, BreedsViewModelFactory).get()
+        fabMain?.isVisible = arguments != null || arguments?.containsKey(BaseViewModel.ARGUMENT_ID) == true
         super.initData()
     }
 
@@ -43,6 +49,12 @@ class BreedsFragment : BaseSwipeEndlessListFragment<Breed>() {
 
                     setData(it.data, it.page)
                 }
+
+        fabMain?.setOnClickListener {
+            val intent = Intent(activity, MenuActivity::class.java)
+            intent.putExtra(BaseViewModel.ARGUMENT_ID, true)
+            startActivity(intent)
+        }
     }
 
     override fun initAdapter() {

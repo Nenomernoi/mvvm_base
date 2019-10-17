@@ -7,7 +7,7 @@ import org.mainsoft.base.listeners.EndlessScrollListener
 
 abstract class BaseEndlessListFragment<T : Any> : BaseListFragment<T>() {
 
-    private var endLess: EndlessScrollListener? = null
+    protected var endLess: EndlessScrollListener? = null
 
     override fun initData() {
         super.initData()
