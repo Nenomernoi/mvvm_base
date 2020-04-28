@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="root_status_bar">24dp</dimen>
+
+    <dimen name="root_padding">16dp</dimen>
+    <dimen name="root_padding_large">12dp</dimen>
+    <dimen name="root_padding_middle">8dp</dimen>
+    <dimen name="root_padding_small">4dp</dimen>
+    <dimen name="root_padding_small_min">-3dp</dimen>
+    <dimen name="root_padding_min">2dp</dimen>
+    <dimen name="root_separate">1dp</dimen>
+    <dimen name="root_error_text">18sp</dimen>
+
+    <dimen name="logo_image_size">90dp</dimen>
+    <dimen name="logo_title_text_size">20sp</dimen>
+
+    <dimen name="row_breed_border_image_size">71dp</dimen>
+    <dimen name="row_breed_title_size">18sp</dimen>
+    <dimen name="row_breed_desc_size">12sp</dimen>
+
+</resources>

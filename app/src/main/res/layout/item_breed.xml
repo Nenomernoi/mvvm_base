@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="breed"
+            type="by.nrstudio.mvvm.net.response.Breed" />
+
+        <variable
+            name="listener"
+            type="by.nrstudio.mvvm.adapter.BreedListener" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> listener.onClick(breed)}"
+        android:orientation="horizontal"
+        android:padding="@dimen/root_padding_middle">
+
+        <RelativeLayout
+            android:id="@+id/rlImage"
+            android:layout_width="@dimen/row_breed_border_image_size"
+            android:layout_height="@dimen/row_breed_border_image_size"
+            android:layout_alignParentStart="true"
+            android:background="@drawable/bg_image"
+            android:padding="@dimen/root_separate">
+
+            <ImageView
+                android:id="@+id/imgMain"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_cat"
+                app:circle="@{true}"
+                app:imageBreed="@{breed}" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/llMain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/root_padding_middle"
+            android:layout_toEndOf="@+id/rlImage"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{breed.name}"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/row_breed_title_size"
+                tools:text="Abyssinian" />
+
+            <TextView
+                android:id="@+id/txtDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="3"
+                android:text="@{breed.description}"
+                android:textColor="@color/white"
+                android:textSize="@dimen/row_breed_desc_size"
+                tools:text="The Abyssinian is easy to care for, and a joy to have in your home. They’re affectionate cats and love both people and other animals." />
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+</layout>

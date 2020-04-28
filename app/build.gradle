@@ -1,0 +1,123 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url "https://jitpack.io" }
+        maven { url "http://dl.bintray.com/euzee/Libs" }
+        maven { url "https://plugins.gradle.org/m2/" }
+        jcenter()
+    }
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'androidx.navigation.safeargs'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+
+    defaultConfig {
+        applicationId "by.nrstudio.mvvm"
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode rootProject.ext.codeNameGlobal
+        versionName rootProject.ext.versionNameGlobal
+        renderscriptTargetApi 21
+        multiDexEnabled true
+        renderscriptSupportModeEnabled true
+    }
+
+    buildTypes {
+        release {
+            buildConfigField "String", "BASE_URL", '"https://api.thecatapi.com/v1/"'
+            buildConfigField "boolean", "ALLOW_INVALID_CERTIFICATE", "false"
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            buildConfigField "String", "BASE_URL", '"https://api.thecatapi.com/v1/"'
+            buildConfigField "boolean", "ALLOW_INVALID_CERTIFICATE", "false"
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    ///MultiDex
+    api "androidx.multidex:multidex:$multidex_version"
+    api "androidx.multidex:multidex-instrumentation:$multidex_version"
+
+    //Base
+    api "androidx.appcompat:appcompat:$base_version"
+    api "androidx.constraintlayout:constraintlayout:2.0.0-beta4"
+    api "androidx.swiperefreshlayout:swiperefreshlayout:$base_version"
+    api "com.google.android.material:material:$base_version"
+    api "androidx.recyclerview:recyclerview-selection:$base_version"
+
+    ///Life
+    api "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+    api "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+
+    //DI
+    api "org.kodein.di:kodein-di-generic-jvm:$kodein_version"
+    api "org.kodein.di:kodein-di-framework-android-x:$kodein_version"
+
+    //Kotlin
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    api "androidx.core:core-ktx:1.2.0"
+
+    //Net
+    api "com.squareup.retrofit2:retrofit:$retrofit_version"
+    api "com.squareup.retrofit2:converter-moshi:$retrofit_version"
+    api "com.squareup.okhttp3:okhttp:$okhttp_version"
+    api "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
+
+    //Ktx Preferences
+    api "co.windly:ktx-prefs:$ktx_prefs_version"
+    kapt "co.windly:ktx-prefs-compiler:$ktx_prefs_version"
+
+    ///Image
+    api "com.github.bumptech.glide:glide:$glide_version"
+    kapt "com.github.bumptech.glide:compiler:$glide_version"
+
+    //DB
+    api "androidx.room:room-runtime:$room_version"
+    api "androidx.room:room-ktx:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+
+    //Navigation
+    api "androidx.navigation:navigation-fragment-ktx:$ktx_navigation_version"
+    api "androidx.navigation:navigation-ui-ktx:$ktx_navigation_version"
+
+    //DataBinding
+    kapt "com.android.databinding:compiler:$data_binding_version"
+
+    //Coroutines
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
+
+}
+
+
+kotlin {
+    experimental {
+        coroutines "enable"
+    }
+}
