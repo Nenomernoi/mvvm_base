@@ -55,8 +55,7 @@ fun bindCountryRecyclerView(recyclerView: RecyclerView?, data: List<Breed>?) {
 	}
 }
 
-@SuppressLint("CheckResult")
-@BindingAdapter("bind:imageBreed", "bind:circle")
+@BindingAdapter("imageBreed", "circle")
 fun imageBreed(view: ImageView?, model: Breed?, isCircle: Boolean) {
 
 	val req = RequestOptions()

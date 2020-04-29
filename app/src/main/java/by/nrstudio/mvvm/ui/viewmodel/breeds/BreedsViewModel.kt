@@ -1,60 +1,42 @@
 package by.nrstudio.mvvm.ui.viewmodel.breeds
 
-import android.view.View
-import androidx.lifecycle.*
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import by.nrstudio.mvvm.net.Repository
 import by.nrstudio.mvvm.net.response.Breed
 import by.nrstudio.mvvm.ui.Status
+import by.nrstudio.mvvm.ui.viewmodel.base.BaseListViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class BreedsViewModel(private val repository: Repository) : ViewModel() {
-
-	private var breedList: MutableList<Breed> = mutableListOf()
-	private val _breeds = MutableLiveData<MutableList<Breed>>()
-	val breeds: LiveData<MutableList<Breed>>
-		get() = _breeds
-
-	private val _status = MutableLiveData<Status>()
-	val status: LiveData<Status>
-		get() = _status
-
-	fun isError() = if (status.value == Status.ERROR) View.VISIBLE else View.GONE
+class BreedsViewModel(private val repository: Repository) : BaseListViewModel<Breed>() {
 
 	init {
 		onLoadNext(0)
 	}
 
-	fun clearData() {
-		viewModelScope.launch(Dispatchers.Main) {
-			breedList = mutableListOf()
-			_breeds.value = breedList
-			launch(Dispatchers.IO) {
-				repository.clearData()
-			}
-		}
+	override suspend fun baseClearData() {
+		repository.clearData()
 	}
 
-	fun onLoadNext(page: Int) {
+	override fun onLoadNext(page: Int) {
 		viewModelScope.launch(Dispatchers.Main) {
 			try {
 
 				if (page == 0) {
-					_status.value = Status.LOADING
+					changeState(Status.LOADING)
 				}
 
 				launch(Dispatchers.IO) {
-					breedList.addAll(repository.loadBreeds(page))
-					_breeds.postValue(breedList)
-					_status.postValue(Status.DONE)
+					setData(repository.loadBreeds(page))
+					changeState(Status.DONE, ioThread = true)
 				}
-
 			} catch (e: Exception) {
-				_status.value = Status.ERROR
+				changeState(Status.ERROR, error = e)
 			}
 		}
 	}
-
 }
 
 @Suppress("UNCHECKED_CAST")
@@ -63,4 +45,3 @@ class BreedsViewModelFactory(private val repository: Repository) : ViewModelProv
 		return BreedsViewModel(repository) as T
 	}
 }
-

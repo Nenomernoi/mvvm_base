@@ -1,16 +1,15 @@
 package by.nrstudio.mvvm.ui.viewmodel.splash
 
-import androidx.lifecycle.*
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import by.nrstudio.mvvm.ui.Status
+import by.nrstudio.mvvm.ui.viewmodel.base.BaseViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class SplashViewModel : ViewModel() {
-
-	private val _status = MutableLiveData<Status>()
-	val status: LiveData<Status>
-		get() = _status
+class SplashViewModel : BaseViewModel() {
 
 	init {
 		onWork()
@@ -19,11 +18,11 @@ class SplashViewModel : ViewModel() {
 	private fun onWork() {
 		viewModelScope.launch(Dispatchers.Main) {
 			try {
-				_status.value = Status.LOADING
+				changeState(Status.LOADING)
 				delay(3000L)
-				_status.value = Status.DONE
+				changeState(Status.DONE)
 			} catch (e: Exception) {
-				_status.value = Status.ERROR
+				changeState(Status.ERROR, error = e)
 			}
 		}
 	}

@@ -28,7 +28,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:listBreeds="@{breedsViewModel.breeds}"
+                app:listBreeds="@{breedsViewModel.items}"
                 tools:listitem="@layout/item_breed" />
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 

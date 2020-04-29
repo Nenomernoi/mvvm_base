@@ -9,7 +9,7 @@ import by.nrstudio.mvvm.db.converter.WeightConverter
 import by.nrstudio.mvvm.db.dao.BreedDao
 import by.nrstudio.mvvm.net.response.Breed
 
-@Database(entities = [Breed::class], version = 1)
+@Database(entities = [Breed::class], version = 2, exportSchema = false)
 @TypeConverters(WeightConverter::class)
 abstract class Db : RoomDatabase() {
 

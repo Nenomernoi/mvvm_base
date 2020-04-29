@@ -21,9 +21,8 @@ class App : Application(), KodeinAware {
 		import(androidXModule(this@App))
 
 		bind() from singleton { ApiRest.getApi() }
-		bind() from singleton { Repository(instance(), instance()) }
-
 		bind() from singleton { Db.getInstance(this@App) }
+		bind() from singleton { Repository(instance(), instance()) }
 
 		bind() from provider { SplashViewModelFactory() }
 		bind() from provider { BreedsViewModelFactory(instance()) }

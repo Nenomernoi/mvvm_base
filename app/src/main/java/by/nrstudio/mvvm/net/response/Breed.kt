@@ -142,8 +142,8 @@ data class Breed(
 		val CREATOR = createParcel { Breed(it) }
 	}
 
-	override fun equals(obj: Any?): Boolean {
-		obj?.let {
+	override fun equals(other: Any?): Boolean {
+		other?.let {
 			if (it !is Breed) return false
 
 			return it.id == id && it.name == name && it.image_url == image_url
