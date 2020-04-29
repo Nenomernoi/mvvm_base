@@ -2,14 +2,13 @@ package by.nrstudio.mvvm.ui.viewmodel.breeds
 
 import android.view.View
 import androidx.lifecycle.*
-import by.nrstudio.mvvm.db.Db
 import by.nrstudio.mvvm.net.Repository
 import by.nrstudio.mvvm.net.response.Breed
 import by.nrstudio.mvvm.ui.Status
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class BreedsViewModel(private val api: Repository, private val db: Db) : ViewModel() {
+class BreedsViewModel(private val repository: Repository) : ViewModel() {
 
 	private var breedList: MutableList<Breed> = mutableListOf()
 	private val _breeds = MutableLiveData<MutableList<Breed>>()
@@ -30,7 +29,9 @@ class BreedsViewModel(private val api: Repository, private val db: Db) : ViewMod
 		viewModelScope.launch(Dispatchers.Main) {
 			breedList = mutableListOf()
 			_breeds.value = breedList
-			db.breedDao().deleteAll()
+			launch(Dispatchers.IO) {
+				repository.clearData()
+			}
 		}
 	}
 
@@ -43,7 +44,7 @@ class BreedsViewModel(private val api: Repository, private val db: Db) : ViewMod
 				}
 
 				launch(Dispatchers.IO) {
-					breedList.addAll(getItems(page))
+					breedList.addAll(repository.loadBreeds(page))
 					_breeds.postValue(breedList)
 					_status.postValue(Status.DONE)
 				}
@@ -54,20 +55,12 @@ class BreedsViewModel(private val api: Repository, private val db: Db) : ViewMod
 		}
 	}
 
-	private suspend fun getItems(page: Int): MutableList<Breed> {
-		var items = db.breedDao().getItems(page * Repository.LIMIT_PAGE, Repository.LIMIT_PAGE)
-		if (items.isNullOrEmpty()) {
-			items = api.loadBreeds(page).toMutableList()
-			db.breedDao().insert(items)
-		}
-		return items
-	}
 }
 
 @Suppress("UNCHECKED_CAST")
-class BreedsViewModelFactory(private val repository: Repository, private val db: Db) : ViewModelProvider.NewInstanceFactory() {
+class BreedsViewModelFactory(private val repository: Repository) : ViewModelProvider.NewInstanceFactory() {
 	override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-		return BreedsViewModel(repository, db) as T
+		return BreedsViewModel(repository) as T
 	}
 }
 
