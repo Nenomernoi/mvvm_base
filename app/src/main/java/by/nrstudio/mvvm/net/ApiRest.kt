@@ -38,7 +38,7 @@ object ApiRest {
 		return builder.build().create(Api::class.java)
 	}
 
-	////////////////////////////////////////////////////////////////////////////////
+	// //////////////////////////////////////////////////////////////////////////////
 
 	private fun makeLoggingInterceptor(): HttpLoggingInterceptor {
 		val logging = HttpLoggingInterceptor()
@@ -46,13 +46,13 @@ object ApiRest {
 		return logging
 	}
 
-	////////////////////////////////////////////////////////////////////////////////
+	// //////////////////////////////////////////////////////////////////////////////
 
 	private fun getSafeOkHttpClient(): OkHttpClient.Builder {
 		return OkHttpClient.Builder()
 	}
 
-	////////////////////////////////////////////////////////////////////////////////
+ 	// //////////////////////////////////////////////////////////////////////////////
 
 	private fun getUnsafeOkHttpClient(): OkHttpClient.Builder {
 		try {
@@ -68,7 +68,6 @@ object ApiRest {
 				override fun getAcceptedIssuers(): Array<X509Certificate> {
 					return arrayOf()
 				}
-
 			})
 			val sslContext = SSLContext.getInstance("SSL")
 			sslContext.init(null, trustAllCerts, java.security.SecureRandom())
@@ -83,7 +82,6 @@ object ApiRest {
 			return OkHttpClient.Builder()
 		}
 	}
-
 }
 
 abstract class SafeApiRequest {
@@ -97,7 +95,7 @@ abstract class SafeApiRequest {
 		} else {
 			response.errorBody()?.toString()?.let {
 				try {
-					//TODO get message error
+					// TODO get message error
 					message.append(JSONObject(it).getString("message"))
 				} catch (e: JSONException) {
 					message.append("\n")

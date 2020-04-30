@@ -34,4 +34,3 @@ class SplashViewModelFactory() : ViewModelProvider.NewInstanceFactory() {
 		return SplashViewModel() as T
 	}
 }
-

@@ -48,7 +48,6 @@ class BreedAdapter(private val listener: BreedListener) : ListAdapter<Breed, Bre
 		val country = getItem(position)
 		holder.bind(country, listener)
 	}
-
 }
 
 class BreedListener(val clickListener: (model: Breed) -> Unit) {

@@ -45,7 +45,6 @@ data class Breed(
 	val stranger_friendly: Int = 0,
 	val vocalisation: Int = 0,
 
-
 	var image_id: String? = null,
 	var image_url: String? = null
 

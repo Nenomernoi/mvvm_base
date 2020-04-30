@@ -21,7 +21,6 @@ fun <T : Parcelable> Parcel.readParcelable(creator: Parcelable.Creator<T>): T? {
 	return if (readString() != null) creator.createFromParcel(this) else null
 }
 
-
 // //////////// NAVIGATION ////////////////////////// //
 
 fun Fragment.navigateSplash(
