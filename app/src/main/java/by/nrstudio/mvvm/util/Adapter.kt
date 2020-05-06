@@ -3,6 +3,7 @@ package by.nrstudio.mvvm.util
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -47,11 +48,16 @@ fun refStatus(srl: SwipeRefreshLayout?, status: Status?) {
 // ///////////////////////// Breeds screen /////////////////////// //
 
 @BindingAdapter("listBreeds")
-fun bindCountryRecyclerView(recyclerView: RecyclerView?, data: List<Breed>?) {
+fun bindRecyclerView(recyclerView: RecyclerView?, data: List<Breed>?) {
 	val adapter = recyclerView?.adapter as BreedAdapter
 	data?.let {
 		adapter.submitList(data)
 	}
+}
+
+@BindingAdapter("textInt")
+fun setTextInt(view: TextView?, value: Int?) {
+    view?.text = "${value?.toString()}"
 }
 
 @BindingAdapter("imageBreed", "circle")
@@ -60,7 +66,7 @@ fun imageBreed(view: ImageView?, model: Breed?, isCircle: Boolean) {
 	val req = RequestOptions()
 		.signature(ImageSignature("${model?.id} ${model?.image_url}"))
 		.timeout(ApiRest.IMAGE_TIME_OUT)
-		.placeholder(R.drawable.bg_image)
+        .placeholder(if (isCircle) R.drawable.bg_image else R.drawable.bg_shadow)
 		.diskCacheStrategy(DiskCacheStrategy.RESOURCE)
 		.error(R.drawable.ic_cat)
 

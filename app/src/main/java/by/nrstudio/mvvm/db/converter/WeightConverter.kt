@@ -1,6 +1,7 @@
 package by.nrstudio.mvvm.db.converter
 
 import androidx.room.TypeConverter
+import by.nrstudio.mvvm.net.response.Image
 import by.nrstudio.mvvm.net.response.Weight
 
 class WeightConverter {
@@ -19,3 +20,4 @@ class WeightConverter {
         return Weight(list[0], list[1])
     }
 }
+

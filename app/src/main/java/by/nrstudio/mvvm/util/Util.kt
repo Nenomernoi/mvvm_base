@@ -37,3 +37,21 @@ fun Fragment.navigateSplash(
 			).build()
 	)
 }
+
+fun Fragment.navigate(
+    actionId: Int,
+    bundle: Bundle = bundleOf()
+) {
+    this.findNavController().navigate(
+        actionId, bundle,
+        NavOptions.Builder().build()
+    )
+}
+
+fun Fragment.onBack() {
+    this.activity?.let { activity ->
+        if (!findNavController().navigateUp()) {
+            activity.finish()
+        }
+    }
+}

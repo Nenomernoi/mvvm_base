@@ -21,14 +21,14 @@ abstract class BaseListFragment<T : Any, VB : Any, VM : BaseListViewModel<T>> : 
 		}
 
 	protected val endLess: EndlessScrollListener by lazy {
-		object : EndlessScrollListener(layoutManager) {
+		object : EndlessScrollListener(lManager) {
 			override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView?) {
 				loadNext(page)
 			}
 		}
 	}
 
-	protected open val layoutManager = LinearLayoutManager(activity)
+	protected open val lManager = LinearLayoutManager(activity)
 
 	protected val refListener: SwipeRefreshLayout.OnRefreshListener by lazy {
 		SwipeRefreshLayout.OnRefreshListener { onReloadData() }

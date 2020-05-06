@@ -19,4 +19,9 @@
     <dimen name="row_breed_title_size">18sp</dimen>
     <dimen name="row_breed_desc_size">12sp</dimen>
 
+    <dimen name="breed_image_size">270dp</dimen>
+    <dimen name="breed_item_text_size">10sp</dimen>
+    <dimen name="breed_item_value_text_size">42sp</dimen>
+    <dimen name="breed_item_title_text_size">32sp</dimen>
+
 </resources>

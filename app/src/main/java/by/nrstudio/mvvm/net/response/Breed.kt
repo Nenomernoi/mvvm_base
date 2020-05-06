@@ -3,52 +3,107 @@ package by.nrstudio.mvvm.net.response
 import android.os.Parcel
 import android.os.Parcelable
 import androidx.room.Entity
+import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 import by.nrstudio.mvvm.db.converter.WeightConverter
 import by.nrstudio.mvvm.util.createParcel
+import org.json.JSONException
+import org.json.JSONObject
+
+@Entity(tableName = "images")
+open class Image(
+    @PrimaryKey
+    open val id: String,
+    open val url: String,
+    open val width: Int,
+    open val height: Int
+) : Parcelable {
+
+    constructor(parcel: Parcel) : this(
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.readInt(),
+        parcel.readInt()
+    )
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(id)
+        parcel.writeString(url)
+        parcel.writeInt(width)
+        parcel.writeInt(height)
+
+    }
+
+    fun toJson(): String? {
+        return try {
+            JSONObject().apply {
+                put("id", id)
+                put("url", url)
+                put("width", width)
+                put("height", height)
+            }.toString()
+        } catch (e: JSONException) {
+            ""
+        }
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object {
+        @JvmField
+        @Suppress("unused")
+        val CREATOR = createParcel { Image(it) }
+    }
+}
 
 @Entity(tableName = "breeds")
 data class Breed(
-	@PrimaryKey
+    @PrimaryKey
 	val id: String,
 
-	val name: String?,
-	val alt_names: String? = null,
-	val description: String?,
+    val name: String?,
+    val alt_names: String? = null,
+    val description: String?,
 
-	val temperament: String?,
-	val life_span: String?,
+    val temperament: String?,
+    val life_span: String?,
 
-	val origin: String?,
+    val origin: String?,
 
-	@TypeConverters(WeightConverter::class)
+    @TypeConverters(WeightConverter::class)
 	val weight: Weight? = null,
 
-	val wikipedia_url: String? = null,
-	val cfa_url: String? = null,
-	val vetstreet_url: String? = null,
-	val vcahospitals_url: String? = null,
+    val wikipedia_url: String? = null,
+    val cfa_url: String? = null,
+    val vetstreet_url: String? = null,
+    val vcahospitals_url: String? = null,
 
-	val adaptability: Int = 0,
-	val affection_level: Int = 0,
-	val child_friendly: Int = 0,
-	val dog_friendly: Int = 0,
+    val adaptability: Int = 0,
+    val affection_level: Int = 0,
+    val child_friendly: Int = 0,
+    val dog_friendly: Int = 0,
 
-	val energy_level: Int = 0,
-	val grooming: Int = 0,
-	val health_issues: Int = 0,
-	val intelligence: Int = 0,
+    val energy_level: Int = 0,
+    val grooming: Int = 0,
+    val health_issues: Int = 0,
+    val intelligence: Int = 0,
 
-	val shedding_level: Int = 0,
-	val social_needs: Int = 0,
-	val stranger_friendly: Int = 0,
-	val vocalisation: Int = 0,
+    val shedding_level: Int = 0,
+    val social_needs: Int = 0,
+    val stranger_friendly: Int = 0,
+    val vocalisation: Int = 0,
 
-	var image_id: String? = null,
-	var image_url: String? = null
+    var image_id: String? = null,
+    var image_url: String? = null
+
 
 ) : Parcelable {
+
+    @Ignore
+    var images: MutableList<Image> = mutableListOf()
 
 	constructor(parcel: Parcel) : this(
 		parcel.readString() ?: "",

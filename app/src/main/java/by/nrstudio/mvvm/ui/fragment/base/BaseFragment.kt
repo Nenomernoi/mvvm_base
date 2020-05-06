@@ -4,13 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
+import by.nrstudio.mvvm.util.onBack
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.kodein
 
 abstract class BaseFragment<VB : Any, VM : Any> : Fragment(), KodeinAware {
+
+    companion object {
+        const val  ARG_OBJECT= "arg_object"
+    }
 
 	override val kodein by kodein()
 
@@ -27,9 +33,13 @@ abstract class BaseFragment<VB : Any, VM : Any> : Fragment(), KodeinAware {
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 		initData(inflater)
-		initListeners()
 		return binding.root
 	}
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initListeners()
+    }
 
 	protected open fun initData(inflater: LayoutInflater) {
 		initBinding(inflater)

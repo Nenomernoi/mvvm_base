@@ -6,6 +6,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
+import by.nrstudio.mvvm.net.Repository
 import by.nrstudio.mvvm.net.response.Breed
 
 @Dao
@@ -28,7 +29,7 @@ interface BreedDao {
 	suspend fun getItem(id: String): Breed?
 
 	@Query(value = "SELECT * FROM $TABLE_NAME ORDER BY name ASC LIMIT :limit OFFSET :offset")
-	suspend fun getItems(offset: Int, limit: Int): MutableList<Breed>
+	suspend fun getItems(offset: Int, limit: Int = Repository.LIMIT_PAGE): MutableList<Breed>
 
 	@Update
 	suspend fun update(it: Breed)

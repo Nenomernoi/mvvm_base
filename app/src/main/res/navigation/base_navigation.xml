@@ -28,6 +28,23 @@
         android:id="@+id/navigation_breeds"
         android:name="by.nrstudio.mvvm.ui.fragment.breeds.BreedsFragment"
         android:label="BreedsFragment"
-        tools:layout="@layout/fragment_breed_list_refresh" />
+        tools:layout="@layout/fragment_breed_list_refresh">
+
+        <action
+            android:id="@+id/action_breedsFragment_to_breedFragment"
+            app:destination="@id/navigation_breed"
+            app:enterAnim="@anim/slide_out_right"
+            app:exitAnim="@anim/slide_in_right_slow"
+            app:popEnterAnim="@anim/slide_out_left_fast"
+            app:popExitAnim="@anim/slide_in_left" />
+
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/navigation_breed"
+        android:name="by.nrstudio.mvvm.ui.fragment.breeds.BreedFragment"
+        android:label="BreedFragment"
+        tools:layout="@layout/fragment_breed" />
 
 </navigation>

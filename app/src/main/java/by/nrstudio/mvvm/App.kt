@@ -6,6 +6,7 @@ import androidx.multidex.MultiDex
 import by.nrstudio.mvvm.db.Db
 import by.nrstudio.mvvm.net.ApiRest
 import by.nrstudio.mvvm.net.Repository
+import by.nrstudio.mvvm.ui.viewmodel.breeds.BreedViewModelFactory
 import by.nrstudio.mvvm.ui.viewmodel.breeds.BreedsViewModelFactory
 import by.nrstudio.mvvm.ui.viewmodel.splash.SplashViewModelFactory
 import org.kodein.di.Kodein
@@ -26,6 +27,7 @@ class App : Application(), KodeinAware {
 
 		bind() from provider { SplashViewModelFactory() }
 		bind() from provider { BreedsViewModelFactory(instance()) }
+		bind() from provider { BreedViewModelFactory(instance()) }
 	}
 
 	override fun attachBaseContext(base: Context?) {
