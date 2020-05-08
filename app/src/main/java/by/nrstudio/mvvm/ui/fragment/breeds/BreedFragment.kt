@@ -25,10 +25,4 @@ class BreedFragment : BaseFragment<FragmentBreedBinding, BreedViewModel>() {
         super.initData(inflater)
         getViewModel().loadData(arguments?.getParcelable(ARG_OBJECT) as? Breed)
     }
-
-    override fun initListeners() {
-        btnBack?.setOnClickListener {
-            onBack()
-        }
-    }
 }

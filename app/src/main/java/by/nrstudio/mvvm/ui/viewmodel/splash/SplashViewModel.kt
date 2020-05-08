@@ -11,6 +11,10 @@ import kotlinx.coroutines.launch
 
 class SplashViewModel : BaseViewModel() {
 
+    companion object {
+        private const val ANIM_TIME = 3000L
+    }
+
 	init {
 		onWork()
 	}
@@ -19,7 +23,7 @@ class SplashViewModel : BaseViewModel() {
 		viewModelScope.launch(Dispatchers.Main) {
 			try {
 				changeState(Status.LOADING)
-				delay(3000L)
+				delay(ANIM_TIME)
 				changeState(Status.DONE)
 			} catch (e: Exception) {
 				changeState(Status.ERROR, error = e)

@@ -78,7 +78,7 @@ fun imageBreed(view: ImageView?, model: Breed?, isCircle: Boolean) {
 		Glide.with(view.context)
 			.load(model?.image_url)
 			.apply(req)
-			.transition(DrawableTransitionOptions.withCrossFade(500))
+            .transition(DrawableTransitionOptions.withCrossFade(ApiRest.FADE_TIME_OUT))
 			.into(view)
 	}
 }

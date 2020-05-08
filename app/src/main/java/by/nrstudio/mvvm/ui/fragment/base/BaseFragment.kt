@@ -4,11 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
-import by.nrstudio.mvvm.util.onBack
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.kodein
 
@@ -46,9 +44,11 @@ abstract class BaseFragment<VB : Any, VM : Any> : Fragment(), KodeinAware {
 		binding.lifecycleOwner = this
 	}
 
-	abstract fun initBinding(inflater: LayoutInflater)
-	abstract fun initListeners()
-
+    protected open fun initListeners() {
+        //
+    }
 	protected fun getBinding() = binding as VB
 	protected fun getViewModel() = viewModel as VM
+
+    abstract fun initBinding(inflater: LayoutInflater)
 }

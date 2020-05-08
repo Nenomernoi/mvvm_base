@@ -20,6 +20,7 @@ object ApiRest {
 
 	const val TIME_OUT = 25_000L
 	const val IMAGE_TIME_OUT = 45_000
+	const val FADE_TIME_OUT = 500
 
 	private val client = (if (BuildConfig.ALLOW_INVALID_CERTIFICATE) getSafeOkHttpClient() else getUnsafeOkHttpClient())
 		.addInterceptor(makeLoggingInterceptor())

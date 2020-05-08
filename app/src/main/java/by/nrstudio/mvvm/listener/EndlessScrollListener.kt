@@ -7,7 +7,11 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 
 abstract class EndlessScrollListener : RecyclerView.OnScrollListener {
 
-	private var visibleThreshold = 5
+    companion object {
+        private const val MIN_POSITION_TO_LOAD= 5
+    }
+
+	private var visibleThreshold : Int = MIN_POSITION_TO_LOAD
 	private var currentPage = 0
 	private var previousTotalItemCount = 0
 	private var loading = true

@@ -490,6 +490,7 @@
                     android:paddingStart="@dimen/root_padding"
                     android:paddingTop="@dimen/root_padding"
                     android:paddingBottom="@dimen/root_padding"
+                    android:onClick="onBack"
                     android:src="@drawable/abc_ic_ab_back_material"
                     android:tint="?android:attr/textColorPrimaryInverse"
                     app:layout_constraintStart_toStartOf="parent"
