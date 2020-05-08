@@ -13,7 +13,7 @@ import org.kodein.di.android.x.kodein
 abstract class BaseFragment<VB : Any, VM : Any> : Fragment(), KodeinAware {
 
     companion object {
-        const val  ARG_OBJECT= "arg_object"
+        const val ARG_OBJECT = "arg_object"
     }
 
 	override val kodein by kodein()

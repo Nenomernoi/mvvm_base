@@ -23,7 +23,6 @@ class BreedsViewModel(private val repository: Repository) : BaseListViewModel<Br
 	override fun onLoadNext(page: Int) {
 		viewModelScope.launch(Dispatchers.Main) {
 			try {
-
 				if (page == 0) {
 					changeState(Status.LOADING)
 				}

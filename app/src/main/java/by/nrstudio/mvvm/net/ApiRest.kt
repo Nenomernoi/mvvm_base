@@ -30,7 +30,6 @@ object ApiRest {
 		.build()
 
 	fun getApi(): Api {
-
 		val builder = Retrofit.Builder()
 			.baseUrl(BuildConfig.BASE_URL)
 			.addConverterFactory(MoshiConverterFactory.create())
@@ -87,7 +86,6 @@ object ApiRest {
 
 abstract class SafeApiRequest {
 	suspend fun <T : Any> apiRequest(call: suspend () -> Response<T>): T {
-
 		val response = call.invoke()
 		val message = StringBuilder()
 

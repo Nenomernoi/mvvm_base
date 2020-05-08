@@ -32,7 +32,6 @@ open class Image(
         parcel.writeString(url)
         parcel.writeInt(width)
         parcel.writeInt(height)
-
     }
 
     fun toJson(): String? {
@@ -98,7 +97,6 @@ data class Breed(
 
     var image_id: String? = null,
     var image_url: String? = null
-
 
 ) : Parcelable {
 

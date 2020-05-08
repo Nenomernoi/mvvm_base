@@ -27,12 +27,10 @@ class BreedViewModel(private val repository: Repository) : BaseViewModel() {
 
         viewModelScope.launch(Dispatchers.Main) {
             try {
-
                 changeState(Status.LOADING)
                 setData(model)
 
                 launch(Dispatchers.IO) {
-
                     model.images = repository.loadImages(model.id)
                     setData(model)
                     changeState(Status.DONE, ioThread = true)

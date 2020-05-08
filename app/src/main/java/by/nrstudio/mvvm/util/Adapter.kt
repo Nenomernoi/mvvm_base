@@ -62,7 +62,6 @@ fun setTextInt(view: TextView?, value: Int?) {
 
 @BindingAdapter("imageBreed", "circle")
 fun imageBreed(view: ImageView?, model: Breed?, isCircle: Boolean) {
-
 	val req = RequestOptions()
 		.signature(ImageSignature("${model?.id} ${model?.image_url}"))
 		.timeout(ApiRest.IMAGE_TIME_OUT)

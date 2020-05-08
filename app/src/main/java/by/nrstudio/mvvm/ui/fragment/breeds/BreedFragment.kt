@@ -7,7 +7,6 @@ import by.nrstudio.mvvm.net.response.Breed
 import by.nrstudio.mvvm.ui.fragment.base.BaseFragment
 import by.nrstudio.mvvm.ui.viewmodel.breeds.BreedViewModel
 import by.nrstudio.mvvm.ui.viewmodel.breeds.BreedViewModelFactory
-import by.nrstudio.mvvm.util.onBack
 import kotlinx.android.synthetic.main.fragment_breed.*
 import org.kodein.di.generic.instance
 

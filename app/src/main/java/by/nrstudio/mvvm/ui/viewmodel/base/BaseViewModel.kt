@@ -17,7 +17,6 @@ open class BaseViewModel : ViewModel() {
 		get() = _status
 
 	protected fun changeState(state: Status, ioThread: Boolean = false, error: Exception? = null) {
-
 		if (ioThread) {
 			_status.postValue(state)
 		} else {
