@@ -9,6 +9,7 @@
       <module name="BaseModulesMvi.core.navigation" target="11" />
       <module name="BaseModulesMvi.core.views" target="11" />
       <module name="BaseModulesMvi.features.breeds" target="11" />
+      <module name="BaseModulesMvi.features.favorites" target="11" />
       <module name="BaseModulesMvi.utils" target="11" />
     </bytecodeTargetLevel>
   </component>

@@ -20,7 +20,7 @@ data class BreedResponse(
     @field:Json(name = "hairless") val hairless: Int,
     @field:Json(name = "health_issues") val healthIssues: Int,
     @field:Json(name = "hypoallergenic") val hypoallergenic: Int,
-    @field:Json(name = "image") val image: Image?,
+    @field:Json(name = "image") val image: ImageResponse?,
     @field:Json(name = "indoor") val indoor: Int,
     @field:Json(name = "intelligence") val intelligence: Int,
     @field:Json(name = "lap") val lap: Int,
@@ -39,18 +39,18 @@ data class BreedResponse(
     @field:Json(name = "vcahospitals_url") val vcaHospitalsUrl: String,
     @field:Json(name = "vetstreet_url") val vetStreetUrl: String,
     @field:Json(name = "vocalisation") val vocalisation: Int,
-    @field:Json(name = "weight") val weight: Weight,
+    @field:Json(name = "weight") val weight: WeightResponse,
     @field:Json(name = "wikipedia_url") val wikipediaUrl: String
 )
 
-data class Image(
+data class ImageResponse(
     @field:Json(name = "height") val height: Int,
     @field:Json(name = "id") val id: String,
     @field:Json(name = "url") val url: String,
     @field:Json(name = "width") val width: Int
 )
 
-data class Weight(
+data class WeightResponse(
     @field:Json(name = "imperial") val imperial: String,
     @field:Json(name = "metric") val metric: String
 )

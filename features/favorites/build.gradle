@@ -1,0 +1,46 @@
+apply from: "$rootDir/common-android-library.gradle"
+apply plugin: 'kotlin-kapt'
+apply plugin: 'androidx.navigation.safeargs.kotlin'
+
+android {
+
+  buildFeatures {
+    viewBinding = true
+  }
+}
+
+dependencies {
+  implementation project(':common:models')
+  implementation project(':common:ui_components')
+
+  implementation project(':functional-programming')
+
+  implementation project(':core:views')
+  implementation project(':core:network')
+  implementation project(':core:mvi')
+
+  implementation project(':utils')
+
+  // Image
+  api "io.coil-kt:coil:$coil_version"
+
+  //DI
+  implementation "org.kodein.di:kodein-di-generic-jvm:$di_version"
+  implementation "org.kodein.di:kodein-di-framework-android-x:$di_version"
+
+  //Coroutines
+  implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
+
+  //Navigation
+  implementation "androidx.navigation:navigation-fragment-ktx:$ktx_navigation_version"
+  implementation "androidx.navigation:navigation-ui-ktx:$ktx_navigation_version"
+
+  implementation "androidx.swiperefreshlayout:swiperefreshlayout:$base_version"
+
+  // Test
+  testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version"
+  testImplementation "io.mockk:mockk:$mockk_version"
+  testImplementation "com.squareup.okhttp3:mockwebserver:$mockwebserver_version"
+
+  // TODO testImplementation project(Modules.testShared)
+}
