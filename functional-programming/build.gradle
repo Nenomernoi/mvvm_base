@@ -1,0 +1,16 @@
+apply from: "$rootDir/common-kotlin-library.gradle"
+
+java {
+  sourceCompatibility = JavaVersion.VERSION_1_8
+  targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+dependencies {
+
+  // Coroutines
+  api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
+
+  // Test
+  testImplementation "junit:junit:$junit_version"
+  testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version"
+}

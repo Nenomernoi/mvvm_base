@@ -1,0 +1,45 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+  <!-- Base application theme. -->
+  <style name="Base.DayNight" parent="Theme.Base" />
+
+  <style name="Theme.Base" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <!-- Primary brand color. -->
+    <item name="colorPrimary">@color/base_blue_700</item>
+    <item name="colorPrimaryVariant">@color/base_blue_800</item>
+    <item name="colorOnPrimary">@color/base_white_50</item>
+    <!-- Secondary brand color. -->
+    <item name="colorSecondary">@color/base_orange_500</item>
+    <item name="colorSecondaryVariant">@color/base_orange_400</item>
+    <item name="colorOnSecondary">@color/black</item>
+
+    <item name="android:colorBackground">@color/base_blue_50</item>
+    <item name="colorSurface">@color/base_white_50</item>
+    <item name="colorError">@color/base_red_400</item>
+
+    <item name="colorPrimarySurfaceVariant">?attr/colorPrimaryVariant</item>
+
+    <item name="colorOnBackground">@color/base_black_900</item>
+    <item name="colorOnSurface">@color/base_black_900</item>
+    <item name="colorOnError">@color/base_black_900</item>
+
+    <!--Typography-->
+    <item name="textAppearanceHeadline2">@style/TextAppearance.Base.Headline2</item>
+    <item name="textAppearanceHeadline3">@style/TextAppearance.Base.Headline3</item>
+    <item name="textAppearanceHeadline4">@style/TextAppearance.Base.Headline4</item>
+    <item name="textAppearanceHeadline5">@style/TextAppearance.Base.Headline5</item>
+    <item name="textAppearanceHeadline6">@style/TextAppearance.Base.Headline6</item>
+    <item name="textAppearanceSubtitle1">@style/TextAppearance.Base.Subtitle1</item>
+    <item name="textAppearanceSubtitle2">@style/TextAppearance.Movies.Subtitle2</item>
+    <item name="textAppearanceBody1">@style/TextAppearance.Base.Body1</item>
+    <item name="textAppearanceBody2">@style/TextAppearance.Base.Body2</item>
+    <item name="textAppearanceButton">@style/TextAppearance.Base.Button</item>
+    <item name="textAppearanceCaption">@style/TextAppearance.Base.Caption</item>
+    <item name="textAppearanceOverline">@style/TextAppearance.Base.Overline</item>
+
+
+    <!-- Status bar color. -->
+    <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+    <!-- Customize your theme here. -->
+  </style>
+</resources>

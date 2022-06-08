@@ -1,0 +1,22 @@
+apply from: "$rootDir/common-android-library.gradle"
+apply plugin: 'kotlin-kapt'
+
+android {
+
+  buildFeatures {
+    viewBinding = true
+  }
+}
+
+dependencies {
+
+  //Base
+  api "androidx.appcompat:appcompat:$appcompat_version"
+  api "androidx.constraintlayout:constraintlayout:$constraintlayout_version"
+  api "androidx.core:core-ktx:$ktx_version"
+  api "com.google.android.material:material:$material_version"
+  api "androidx.fragment:fragment-ktx:$fragment_ktx_version"
+
+  api "androidx.navigation:navigation-fragment-ktx:$ktx_navigation_version"
+  api "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+}

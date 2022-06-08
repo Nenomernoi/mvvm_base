@@ -1,0 +1,21 @@
+import org.jlleitschuh.gradle.ktlint.reporter.*
+apply plugin: "org.jlleitschuh.gradle.ktlint"
+
+ktlint {
+    version = "0.36.0"
+    debug = true
+    verbose = true
+    android = false
+    outputToConsole = true
+    //reporters = [ReporterType.PLAIN, ReporterType.CHECKSTYLE]
+    //ignoreFailures = true
+    enableExperimentalRules = true
+    additionalEditorconfigFile = file(".editorconfig")
+    kotlinScriptAdditionalPaths {
+        include fileTree("scripts/")
+    }
+    filter {
+        exclude("**/generated/**")
+        include("**/kotlin/**")
+    }
+}

@@ -1,0 +1,13 @@
+apply from: "$rootDir/common-android-library.gradle"
+
+dependencies {
+
+  implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
+  // Coroutines
+  implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
+
+  // Test
+  testImplementation "io.mockk:mockk:$mockk_version"
+  testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version"
+
+}

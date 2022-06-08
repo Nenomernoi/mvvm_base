@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:paddingStart="@dimen/padding_small_medium"
+  android:paddingTop="@dimen/padding_small"
+  android:paddingEnd="@dimen/padding_small_medium"
+  android:paddingBottom="@dimen/padding_small">
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_breed_item"
+    android:elevation="@dimen/padding_small"
+    android:padding="@dimen/padding_small">
+
+    <ImageView
+      android:id="@+id/imgMain"
+      android:layout_width="@dimen/row_breed_border_image_size"
+      android:layout_height="@dimen/row_breed_border_image_size"
+      android:adjustViewBounds="true"
+      android:background="@drawable/bg_image"
+      android:src="@drawable/ic_cat"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+      android:id="@+id/fbAdd"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      tools:src="@drawable/ic_favorite_border_color"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+      android:id="@+id/txtTitle"
+      android:layout_marginStart="@dimen/padding_small"
+      android:orientation="vertical"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textColor="@color/base_blue_700"
+      android:textSize="@dimen/row_breed_title_size"
+      android:fontFamily="@font/work_sans"
+      app:layout_constraintStart_toEndOf="@+id/imgMain"
+      tools:text="Abyssinian" />
+
+    <ImageView
+      android:id="@+id/imgFlag"
+      android:layout_width="@dimen/row_breed_border_flag_image_size"
+      android:layout_height="@dimen/row_breed_border_flag_image_size"
+      android:layout_marginStart="@dimen/padding_small"
+      android:adjustViewBounds="true"
+      app:layout_constraintBottom_toBottomOf="@+id/txtTitle"
+      app:layout_constraintStart_toEndOf="@+id/txtTitle"
+      app:layout_constraintTop_toTopOf="@+id/txtTitle"
+      tools:src="@drawable/ic_cat" />
+
+    <TextView
+      android:id="@+id/txtDescription"
+      android:layout_width="0dp"
+      android:fontFamily="@font/work_sans"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/padding_small"
+      android:ellipsize="end"
+      android:maxLines="3"
+      android:orientation="vertical"
+      android:textSize="@dimen/row_breed_desc_size"
+      app:layout_constraintEnd_toStartOf="@+id/imgOpen"
+      app:layout_constraintStart_toEndOf="@+id/imgMain"
+      app:layout_constraintTop_toBottomOf="@+id/txtTitle"
+      tools:text="The Abyssinian is easy to care for, and a joy to have in your home. They’re affectionate cats and love both people and other animals." />
+
+    <ImageView
+      android:id="@+id/imgOpen"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:src="@drawable/ic_arrow_right"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

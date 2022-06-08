@@ -1,0 +1,17 @@
+rootProject.name = "BaseModulesMvi"
+include ':app'
+
+include ':utils'
+include ':functional-programming'
+
+include ':core:network'
+include ':core:navigation'
+include ':core:views'
+include ':core:mvi'
+
+include ':common:models'
+include ':common:ui_components'
+
+include ':features:breeds'
+
+
