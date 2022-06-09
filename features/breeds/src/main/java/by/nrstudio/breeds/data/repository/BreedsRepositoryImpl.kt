@@ -8,14 +8,14 @@ import by.nrstudio.common.models.domain.Breed
 import by.nrstudio.common.models.mapper.BreedMapper
 
 class BreedsRepositoryImpl(
-    private val remoteDataSource: BreedsRemoteDataSource,
-    private val mapper: BreedMapper
+    private val remoteDataSourceBreeds: BreedsRemoteDataSource,
+    private val mapperBreeds: BreedMapper
 ) : BreedsRepository {
 
     override suspend fun getBreeds(page: Int, limit: Int): Either<Failure, List<Breed>> {
-        return remoteDataSource.getBreeds(page, limit)
+        return remoteDataSourceBreeds.getBreeds(page, limit)
             .coMapSuccess { items ->
-                mapper.mapRemoteListToDomain(items)
+                mapperBreeds.mapRemoteListToDomain(items)
             }
     }
 }

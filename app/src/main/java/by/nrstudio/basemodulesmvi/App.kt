@@ -5,6 +5,7 @@ import by.nrstudio.basemodulesmvi.di.appModule
 import by.nrstudio.basemodulesmvi.di.commonModelsModule
 import by.nrstudio.basemodulesmvi.di.coroutinesModule
 import by.nrstudio.breeds.di.featureBreedsModule
+import by.nrstudio.favorites.di.featureFavoritesModule
 import middleWareModule
 import networkModule
 import org.kodein.di.Kodein
@@ -21,6 +22,7 @@ class App : Application(), KodeinAware {
         import(middleWareModule)
         import(commonModelsModule)
 
+        import(featureFavoritesModule)
         import(featureBreedsModule)
     }
 }

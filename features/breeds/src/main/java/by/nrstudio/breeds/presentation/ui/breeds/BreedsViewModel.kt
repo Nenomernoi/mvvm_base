@@ -18,7 +18,7 @@ import kotlinx.coroutines.launch
 
 @ExperimentalCoroutinesApi
 class BreedsViewModel(
-    private val actionProcessorHolder: BreedsProcessorHolder,
+    private val actionProcessorHolderBreeds: BreedsProcessorHolder,
 ) : BaseEndlessListViewModel<BreedUi, BreedsIntent, BreedsAction, BreedsUiState>() {
 
     private val _uiState = MutableStateFlow(BreedsUiState())
@@ -35,7 +35,7 @@ class BreedsViewModel(
             actions.receiveAsFlow()
                 .flatMapLatest {
 
-                    actionProcessorHolder.processAction(
+                    actionProcessorHolderBreeds.processAction(
                         action = it,
                         when (it) {
                             BreedsAction.LoadNextBreedsAction, BreedsAction.ReLoadLastBreedsAction -> uiState.value.page

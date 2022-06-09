@@ -5,9 +5,9 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class FavoriteUi(
-    val id: Long,
+    var id: Long,
     val imageId: String,
     val image: String,
 
-    val isFavorite: Boolean = false,
+    var isFavorite: Boolean = false,
 ) : Parcelable

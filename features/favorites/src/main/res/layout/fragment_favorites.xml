@@ -12,13 +12,13 @@
     android:layout_height="wrap_content"
     android:fontFamily="@font/work_sans_bold"
     android:padding="@dimen/padding_regular"
-    android:text="@string/root_breed_title"
-    android:textSize="@dimen/row_breed_title_size" />
+    android:text="@string/root_favorite_title"
+    android:textSize="@dimen/row_favorite_title_size" />
 
   <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
     android:id="@+id/sRefresh"
-    android:layout_height="0dp"
     android:layout_width="match_parent"
+    android:layout_height="0dp"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/tvTitle">
 
@@ -27,19 +27,21 @@
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:orientation="vertical"
-      tools:itemCount="9"
-      tools:listitem="@layout/row_breed" />
+      app:layoutManager="by.nrstudio.ui_components.adapter.managers.BaseGridLayoutManager"
+      app:spanCount="2"
+      tools:itemCount="7"
+      tools:listitem="@layout/row_favorite" />
   </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
   <TextView
     android:id="@+id/tvError"
     android:layout_width="0dp"
-    android:background="@drawable/bg_breed_item"
     android:layout_height="wrap_content"
+    android:background="@drawable/bg_favorite_item"
     android:fontFamily="@font/work_sans_bold"
+    android:gravity="center"
     android:padding="@dimen/padding_regular"
     android:text="@string/retry"
-    android:gravity="center"
     android:textColor="@color/base_orange_500"
     android:textSize="@dimen/root_empty_text_small_size"
     android:visibility="gone"

@@ -3,13 +3,21 @@
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
   android:id="@+id/base_navigation"
-  app:startDestination="@id/navigation_breeds">
+  app:startDestination="@id/navigation_favorites">
 
   <fragment
     android:id="@+id/navigation_breeds"
     android:name="by.nrstudio.breeds.presentation.ui.breeds.BreedsFragment"
-    android:label="SplashFragment"
+    android:label="BreedsFragment"
     tools:layout="@layout/fragment_breeds">
+
+  </fragment>
+
+  <fragment
+    android:id="@+id/navigation_favorites"
+    android:name="by.nrstudio.favorites.presentation.ui.favorites.FavoritesFragment"
+    android:label="FavoritesFragment"
+    tools:layout="@layout/fragment_favorites">
 
   </fragment>
 

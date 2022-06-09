@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/clRoot"
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
   android:paddingStart="@dimen/padding_small_medium"
@@ -10,28 +11,21 @@
   android:paddingBottom="@dimen/padding_small">
 
   <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/clMain"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/bg_breed_item"
     android:elevation="@dimen/padding_small"
     android:padding="@dimen/padding_small">
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
       android:id="@+id/imgMain"
       android:layout_width="@dimen/row_breed_border_image_size"
       android:layout_height="@dimen/row_breed_border_image_size"
       android:adjustViewBounds="true"
-      android:background="@drawable/bg_image"
-      android:src="@drawable/ic_cat"
+      android:background="@drawable/bg_breed_image"
+      android:src="@drawable/ic_breed_cat"
       app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-      android:id="@+id/fbAdd"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      tools:src="@drawable/ic_favorite_border_color"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent" />
 
@@ -47,7 +41,7 @@
       app:layout_constraintStart_toEndOf="@+id/imgMain"
       tools:text="Abyssinian" />
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
       android:id="@+id/imgFlag"
       android:layout_width="@dimen/row_breed_border_flag_image_size"
       android:layout_height="@dimen/row_breed_border_flag_image_size"
@@ -56,7 +50,7 @@
       app:layout_constraintBottom_toBottomOf="@+id/txtTitle"
       app:layout_constraintStart_toEndOf="@+id/txtTitle"
       app:layout_constraintTop_toTopOf="@+id/txtTitle"
-      tools:src="@drawable/ic_cat" />
+      tools:src="@drawable/ic_breed_cat" />
 
     <TextView
       android:id="@+id/txtDescription"
@@ -73,11 +67,11 @@
       app:layout_constraintTop_toBottomOf="@+id/txtTitle"
       tools:text="The Abyssinian is easy to care for, and a joy to have in your home. They’re affectionate cats and love both people and other animals." />
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
       android:id="@+id/imgOpen"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:src="@drawable/ic_arrow_right"
+      android:src="@drawable/ic_breed_arrow_right"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintTop_toTopOf="parent" />

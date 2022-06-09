@@ -39,14 +39,11 @@ class BreedAdapter(listener: BaseItemListener) : BaseSupportAdapter<BreedUi>(lis
         override fun bind(model: BreedUi) {
             binding.apply {
                 itemView.tag = model.id
-                fbAdd.setImageResource(if (model.isFavorite) R.drawable.ic_favorite_border_color else R.drawable.ic_favorite_border)
-                fbAdd.setDebouncedClickListener {
-                    listener?.onItem(adapterPosition, it.id)
-                }
+
                 txtTitle.text = model.name
                 txtDescription.text = model.description
                 imgMain.load(model.image) {
-                    placeholder(R.drawable.ic_cat)
+                    placeholder(R.drawable.ic_breed_cat)
                     crossfade(durationMillis = 200)
                     transformations(CircleCropTransformation())
                 }

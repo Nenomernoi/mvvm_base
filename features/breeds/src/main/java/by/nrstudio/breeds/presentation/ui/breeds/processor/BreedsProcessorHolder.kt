@@ -12,8 +12,8 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 class BreedsProcessorHolder(
-    private val repository: BreedsRepository,
-    private val mapper: BreedMapper
+    private val repositoryBreeds: BreedsRepository,
+    private val mapperBreeds: BreedMapper
 ) : MviProcessorHolder<BreedsAction, BreedsResult> {
 
     override fun processAction(action: BreedsAction, vararg values: Any): Flow<BreedsResult> {
@@ -22,9 +22,9 @@ class BreedsProcessorHolder(
                 BreedsAction.LoadBreedsAction, BreedsAction.ReLoadLastBreedsAction, BreedsAction.LoadNextBreedsAction -> {
                     if (action != BreedsAction.LoadNextBreedsAction) emit(BreedsResult.Loading)
                     val response: Either<Failure, List<BreedUi>> =
-                        repository.getBreeds(page = values.first() as Int, limit = values[1] as Int)
+                        repositoryBreeds.getBreeds(page = values.first() as Int, limit = values[1] as Int)
                             .coMapSuccess { domain ->
-                                mapper.mapRemoteListToUi(domain)
+                                mapperBreeds.mapRemoteListToUi(domain)
                             }
                     val result = handleSuccessOrFailure(result = response)
                     emit(result)

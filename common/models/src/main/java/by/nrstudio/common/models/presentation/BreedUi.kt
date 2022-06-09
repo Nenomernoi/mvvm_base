@@ -12,6 +12,4 @@ data class BreedUi(
     val image: String,
 
     val countryFlag: String,
-
-    val isFavorite: Boolean = false,
 ) : Parcelable

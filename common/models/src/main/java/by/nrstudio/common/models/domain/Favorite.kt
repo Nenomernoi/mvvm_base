@@ -5,5 +5,5 @@ data class Favorite(
     val imageId: String,
     val image: String,
 
-    val isFavorite: Boolean = false,
+    var isFavorite: Boolean = false,
 )

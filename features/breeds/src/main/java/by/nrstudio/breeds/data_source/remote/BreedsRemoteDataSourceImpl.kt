@@ -15,7 +15,7 @@ internal class BreedsRemoteDataSourceImpl(
     private val middlewareProvider: MiddlewareProvider,
     private val ioDispatcher: CoroutineDispatcher,
     private val adapter: JsonAdapter<ResponseError>,
-    private val movieService: BreedsService
+    private val serviceBreeds: BreedsService
 ) : BreedsRemoteDataSource {
 
     override suspend fun getBreeds(page: Int, limit: Int): Either<Failure, List<BreedResponse>> {
@@ -24,7 +24,7 @@ internal class BreedsRemoteDataSourceImpl(
             ioDispatcher = ioDispatcher,
             adapter = adapter,
             retrofitCall = {
-                movieService.getBreeds(
+                serviceBreeds.getBreeds(
                     limit = limit,
                     page = page
                 )

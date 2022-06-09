@@ -1,4 +1,4 @@
-package by.nrstudio.favorites.data_source.remote
+package by.nrstudio.favorites.data_source.remote.retrofit_service
 
 import by.nrstudio.common.models.data.FavoriteAddedSuccessResponse
 import by.nrstudio.common.models.data.FavoriteRemoveSuccessResponse

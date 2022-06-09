@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:layout_margin="@dimen/padding_extra_small">
+
+  <androidx.appcompat.widget.AppCompatImageView
+    android:id="@+id/imgFavoriteMain"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/row_favorite_size"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    tools:background="@color/base_blue_600" />
+
+  <androidx.appcompat.widget.AppCompatImageView
+    android:id="@+id/fbAdd"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/padding_extra_small"
+    android:background="@drawable/bg_favorite_add"
+    android:padding="@dimen/padding_extra_small"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    tools:src="@drawable/ic_favorite_border" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -36,6 +36,7 @@ dependencies {
   implementation "androidx.navigation:navigation-ui-ktx:$ktx_navigation_version"
 
   implementation "androidx.swiperefreshlayout:swiperefreshlayout:$base_version"
+  implementation project(path: ':features:breeds')
 
   // Test
   testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version"
