@@ -1,9 +1,6 @@
 package org.base.network.utils
 
 import com.squareup.moshi.JsonAdapter
-import java.net.SocketTimeoutException
-import javax.net.ssl.SSLException
-import javax.net.ssl.SSLHandshakeException
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import okio.BufferedSource
@@ -18,6 +15,9 @@ import org.base.network.models.exception.SSLError
 import org.base.network.models.exception.ServiceBodyFailure
 import org.base.network.models.exception.TimeOut
 import retrofit2.HttpException
+import java.net.SocketTimeoutException
+import javax.net.ssl.SSLException
+import javax.net.ssl.SSLHandshakeException
 
 /**
  * @param middleWares list of customizable [NetworkMiddleware] that would returns its error if one of them is not valid.
@@ -31,8 +31,7 @@ suspend inline fun <T> call(
     adapter: JsonAdapter<ResponseError>,
     crossinline retrofitCall: suspend () -> T
 ): Either<Failure, T> {
-    return runMiddleWares(middleWares = middleWares)?.toError()
-        ?: executeRetrofitCall(ioDispatcher, adapter, retrofitCall)
+    return runMiddleWares(middleWares = middleWares)?.toError() ?: executeRetrofitCall(ioDispatcher, adapter, retrofitCall)
 }
 
 /**

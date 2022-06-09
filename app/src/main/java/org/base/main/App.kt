@@ -1,6 +1,7 @@
 package org.base.main
 
 import android.app.Application
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import middleWareModule
 import networkModule
 import org.base.breeds.di.featureBreedsModule
@@ -12,6 +13,7 @@ import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.androidXModule
 
+@ExperimentalCoroutinesApi
 class App : Application(), KodeinAware {
 
     override val kodein by Kodein.lazy {

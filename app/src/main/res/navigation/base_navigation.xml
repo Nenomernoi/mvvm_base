@@ -3,22 +3,24 @@
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
   android:id="@+id/base_navigation"
-  app:startDestination="@id/navigation_favorites">
+  app:startDestination="@id/navigation_home">
+
+  <fragment
+    android:id="@+id/navigation_home"
+    android:name="by.nrstudio.home.presentation.ui.HomeContainerFragment"
+    android:label="HomeContainerFragment"
+    tools:layout="@layout/fragment_home" />
 
   <fragment
     android:id="@+id/navigation_breeds"
     android:name="org.base.breeds.presentation.ui.breeds.BreedsFragment"
     android:label="BreedsFragment"
-    tools:layout="@layout/fragment_breeds">
-
-  </fragment>
+    tools:layout="@layout/fragment_breeds" />
 
   <fragment
     android:id="@+id/navigation_favorites"
     android:name="org.base.favorites.presentation.ui.favorites.FavoritesFragment"
     android:label="FavoritesFragment"
-    tools:layout="@layout/fragment_favorites">
-
-  </fragment>
+    tools:layout="@layout/fragment_favorites" />
 
 </navigation>

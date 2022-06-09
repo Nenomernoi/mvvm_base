@@ -1,6 +1,5 @@
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
-import java.util.concurrent.TimeUnit
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.base.main.BuildConfig
@@ -12,6 +11,7 @@ import org.kodein.di.generic.instance
 import org.kodein.di.generic.singleton
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import java.util.concurrent.TimeUnit
 
 val networkModule: Kodein.Module = Kodein.Module(name = "NetworkModule") {
     bind<HttpClientFactory>() with singleton { HttpClientFactory() }

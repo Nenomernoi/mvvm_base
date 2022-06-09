@@ -75,8 +75,7 @@ dependencies {
 
   implementation project(":common:models")
 
-  implementation project(":features:breeds")
-  implementation project(":features:favorites")
+  api project(":features:home")
 
   //analytics
   implementation "com.google.firebase:firebase-crashlytics:$crashlytics_version"

@@ -102,13 +102,9 @@ abstract class BaseListFragment<T : Any, I : MviIntent, S : MviViewState>(layout
 
 // BASE FRAGMENT
 
-abstract class BaseFragment<I : MviIntent,
-    S : MviViewState>(layout: Int) : Fragment(layout), MviView<I, S>, KodeinAware {
+abstract class BaseEmptyFragment(layout: Int) : Fragment(layout), KodeinAware {
 
     override val kodein: Kodein by closestKodein()
-
-    protected var pbLoad: RelativeLayout? = null
-    protected var tvError: View? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -120,8 +116,10 @@ abstract class BaseFragment<I : MviIntent,
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initData()
-        initListeners()
+        if (savedInstanceState == null) {
+            initData()
+            initListeners()
+        }
     }
 
     abstract fun initListeners()
@@ -130,6 +128,12 @@ abstract class BaseFragment<I : MviIntent,
         inflater: LayoutInflater,
         container: ViewGroup?,
     ): ViewBinding
+}
+
+abstract class BaseFragment<I : MviIntent, S : MviViewState>(layout: Int) : BaseEmptyFragment(layout), MviView<I, S> {
+
+    protected var pbLoad: RelativeLayout? = null
+    protected var tvError: View? = null
 
     // ////////////////////////////////////////////////////////////////////////////////////////
 
