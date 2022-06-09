@@ -27,7 +27,7 @@
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:orientation="vertical"
-      app:layoutManager="by.nrstudio.ui_components.adapter.managers.BaseGridLayoutManager"
+      app:layoutManager="org.base.ui_components.adapter.managers.BaseGridLayoutManager"
       app:spanCount="2"
       tools:itemCount="7"
       tools:listitem="@layout/row_favorite" />

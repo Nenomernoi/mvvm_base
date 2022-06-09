@@ -31,13 +31,13 @@
 
     <TextView
       android:id="@+id/txtTitle"
-      android:layout_marginStart="@dimen/padding_small"
-      android:orientation="vertical"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/padding_small"
+      android:fontFamily="@font/work_sans"
+      android:orientation="vertical"
       android:textColor="@color/base_blue_700"
       android:textSize="@dimen/row_breed_title_size"
-      android:fontFamily="@font/work_sans"
       app:layout_constraintStart_toEndOf="@+id/imgMain"
       tools:text="Abyssinian" />
 
@@ -55,10 +55,10 @@
     <TextView
       android:id="@+id/txtDescription"
       android:layout_width="0dp"
-      android:fontFamily="@font/work_sans"
       android:layout_height="wrap_content"
       android:layout_marginStart="@dimen/padding_small"
       android:ellipsize="end"
+      android:fontFamily="@font/work_sans"
       android:maxLines="3"
       android:orientation="vertical"
       android:textSize="@dimen/row_breed_desc_size"

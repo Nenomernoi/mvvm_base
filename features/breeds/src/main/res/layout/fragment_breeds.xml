@@ -17,8 +17,8 @@
 
   <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
     android:id="@+id/sRefresh"
-    android:layout_height="0dp"
     android:layout_width="match_parent"
+    android:layout_height="0dp"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/tvTitle">
 
@@ -34,12 +34,12 @@
   <TextView
     android:id="@+id/tvError"
     android:layout_width="0dp"
-    android:background="@drawable/bg_breed_item"
     android:layout_height="wrap_content"
+    android:background="@drawable/bg_breed_item"
     android:fontFamily="@font/work_sans_bold"
+    android:gravity="center"
     android:padding="@dimen/padding_regular"
     android:text="@string/retry"
-    android:gravity="center"
     android:textColor="@color/base_orange_500"
     android:textSize="@dimen/root_empty_text_small_size"
     android:visibility="gone"

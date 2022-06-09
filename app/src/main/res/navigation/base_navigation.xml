@@ -7,7 +7,7 @@
 
   <fragment
     android:id="@+id/navigation_breeds"
-    android:name="by.nrstudio.breeds.presentation.ui.breeds.BreedsFragment"
+    android:name="org.base.breeds.presentation.ui.breeds.BreedsFragment"
     android:label="BreedsFragment"
     tools:layout="@layout/fragment_breeds">
 
@@ -15,7 +15,7 @@
 
   <fragment
     android:id="@+id/navigation_favorites"
-    android:name="by.nrstudio.favorites.presentation.ui.favorites.FavoritesFragment"
+    android:name="org.base.favorites.presentation.ui.favorites.FavoritesFragment"
     android:label="FavoritesFragment"
     tools:layout="@layout/fragment_favorites">
 

@@ -1,5 +1,5 @@
 <resources>
-    <string name="module_title">Views</string>
+  <string name="module_title">Views</string>
 
-    <string name="retry">Retry request</string>
+  <string name="retry">Retry request</string>
 </resources>
