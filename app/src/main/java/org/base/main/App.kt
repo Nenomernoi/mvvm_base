@@ -3,6 +3,7 @@ package org.base.main
 import android.app.Application
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import middleWareModule
+import org.base.breed.di.featureBreedModule
 import org.base.breeds.di.featureBreedsModule
 import org.base.favorites.di.featureFavoritesModule
 import org.base.main.di.appModule
@@ -28,5 +29,6 @@ class App : Application(), KodeinAware {
 
         import(featureFavoritesModule)
         import(featureBreedsModule)
+        import(featureBreedModule)
     }
 }

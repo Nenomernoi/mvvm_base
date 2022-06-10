@@ -1,11 +1,11 @@
 package org.base.common.models.mapper
 
-import org.base.db.model.FavoriteDb
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import org.base.common.models.data.FavoriteResponse
 import org.base.common.models.domain.Favorite
 import org.base.common.models.presentation.FavoriteUi
+import org.base.db.model.FavoriteDb
 
 class FavoriteMapperImpl(
     private val defaultDispatcher: CoroutineDispatcher
@@ -36,7 +36,7 @@ class FavoriteMapperImpl(
     }
 
     override suspend fun mapDomainToDb(domain: Favorite) = FavoriteDb(
-        id = domain.id,
+        uuid = domain.id,
         imageId = domain.imageId,
         image = domain.image,
 
@@ -68,7 +68,7 @@ class FavoriteMapperImpl(
     }
 
     override suspend fun mapDbToUi(db: FavoriteDb) = FavoriteUi(
-        id = db.id,
+        id = db.uuid,
         imageId = db.imageId,
         image = db.image,
 

@@ -5,18 +5,28 @@
       <map>
         <entry key="../../../../../layout/custom_preview.xml" value="0.23860182370820668" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.32760416666666664" />
+        <entry key="features/breed/src/main/res/drawable/bg_favorite_add.xml" value="0.344" />
+        <entry key="features/breed/src/main/res/drawable/ic_close.xml" value="0.344" />
+        <entry key="features/breed/src/main/res/layout/fragment_breed.xml" value="0.5177083333333333" />
+        <entry key="features/breed/src/main/res/layout/row_image.xml" value="0.5177083333333333" />
         <entry key="features/breeds/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1855" />
         <entry key="features/breeds/src/main/res/drawable/bg_breed_image.xml" value="0.344" />
         <entry key="features/breeds/src/main/res/drawable/bg_breed_item.xml" value="0.1855" />
+        <entry key="features/breeds/src/main/res/drawable/bg_favorite_add.xml" value="0.344" />
         <entry key="features/breeds/src/main/res/drawable/bg_image.xml" value="0.1855" />
         <entry key="features/breeds/src/main/res/drawable/ic_arrow_right.xml" value="0.1855" />
+        <entry key="features/breeds/src/main/res/drawable/ic_breed_arrow_right.xml" value="0.33" />
         <entry key="features/breeds/src/main/res/drawable/ic_breed_cat.xml" value="0.344" />
         <entry key="features/breeds/src/main/res/drawable/ic_cat.xml" value="0.1855" />
+        <entry key="features/breeds/src/main/res/drawable/ic_close.xml" value="0.344" />
         <entry key="features/breeds/src/main/res/drawable/ic_favorite_border.xml" value="0.1855" />
         <entry key="features/breeds/src/main/res/drawable/ic_favorite_border_color.xml" value="0.1855" />
         <entry key="features/breeds/src/main/res/drawable/ic_launcher_background.xml" value="0.344" />
+        <entry key="features/breeds/src/main/res/layout/fragment_breed.xml" value="0.4477477477477477" />
         <entry key="features/breeds/src/main/res/layout/fragment_breeds.xml" value="0.29907407407407405" />
         <entry key="features/breeds/src/main/res/layout/row_breed.xml" value="0.33" />
+        <entry key="features/breeds/src/main/res/layout/row_breed_favorite.xml" value="0.5166666666666667" />
+        <entry key="features/breeds/src/main/res/layout/row_image.xml" value="0.5177083333333333" />
         <entry key="features/favorites/src/main/res/drawable/bg_favorite_add.xml" value="0.344" />
         <entry key="features/favorites/src/main/res/drawable/bg_favorite_item.xml" value="0.344" />
         <entry key="features/favorites/src/main/res/drawable/ic_favorite_border.xml" value="0.344" />

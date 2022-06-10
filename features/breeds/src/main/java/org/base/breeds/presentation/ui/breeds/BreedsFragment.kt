@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import org.base.breeds.R
 import org.base.breeds.databinding.FragmentBreedsBinding
-import org.base.breeds.presentation.ui.breeds.adapter.BreedAdapter
+import org.base.breeds.presentation.ui.breeds.adapter.BreedsAdapter
 import org.base.breeds.presentation.ui.breeds.intent.BreedsIntent
 import org.base.common.models.presentation.BreedUi
 import org.base.mvi.Status
@@ -58,7 +58,7 @@ class BreedsFragment : BaseListFragment<BreedUi, BreedsIntent, BreedsUiState>(R.
     }
 
     override fun initAdapter() {
-        adapter = BreedAdapter(object : BaseItemListener {
+        adapter = BreedsAdapter(object : BaseItemListener {
             override fun onItem(position: Int, action: Int) {
                 // TODO select item
             }

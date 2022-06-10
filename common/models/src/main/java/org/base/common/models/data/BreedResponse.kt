@@ -43,13 +43,6 @@ data class BreedResponse(
     @field:Json(name = "wikipedia_url") val wikipediaUrl: String
 )
 
-data class ImageResponse(
-    @field:Json(name = "height") val height: Int,
-    @field:Json(name = "id") val id: String,
-    @field:Json(name = "url") val url: String,
-    @field:Json(name = "width") val width: Int
-)
-
 data class WeightResponse(
     @field:Json(name = "imperial") val imperial: String,
     @field:Json(name = "metric") val metric: String

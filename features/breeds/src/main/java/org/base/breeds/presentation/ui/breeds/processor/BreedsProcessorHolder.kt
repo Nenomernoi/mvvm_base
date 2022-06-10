@@ -2,7 +2,7 @@ package org.base.breeds.presentation.ui.breeds.processor
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import org.base.breeds.db.repository.BreedDbRepository
+import org.base.breeds.db.repository.BreedsDbRepository
 import org.base.breeds.domain.BreedsRepository
 import org.base.breeds.presentation.ui.breeds.action.BreedsAction
 import org.base.breeds.presentation.ui.breeds.result.BreedsResult
@@ -15,7 +15,7 @@ import org.base.mvi.MviProcessorHolder
 
 class BreedsProcessorHolder(
     private val repositoryBreeds: BreedsRepository,
-    private val repositoryDbBreeds: BreedDbRepository,
+    private val repositoryDbBreeds: BreedsDbRepository,
     private val mapperBreeds: BreedMapper
 ) : MviProcessorHolder<BreedsAction, BreedsResult> {
 

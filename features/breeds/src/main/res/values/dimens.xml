@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <dimen name="row_breed_border_image_size">71dp</dimen>
-  <dimen name="row_breed_border_flag_image_size">15dp</dimen>
-  <dimen name="row_breed_title_size">18sp</dimen>
-  <dimen name="row_breed_desc_size">12sp</dimen>
+  <dimen name="row_breeds_border_image_size">71dp</dimen>
+  <dimen name="row_breeds_border_flag_image_size">15dp</dimen>
+  <dimen name="row_breeds_title_size">18sp</dimen>
+  <dimen name="row_breeds_desc_size">12sp</dimen>
 
 </resources>

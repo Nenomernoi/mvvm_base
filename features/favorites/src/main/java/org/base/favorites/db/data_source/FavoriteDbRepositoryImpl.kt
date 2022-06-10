@@ -31,6 +31,15 @@ class FavoriteDbRepositoryImpl(
         ).let { response -> response.mapSuccess { responseItems -> responseItems } }
     }
 
+    override suspend fun saveFavorite(item: FavoriteDb): Either<Failure, Boolean> {
+        return call(
+            ioDispatcher = ioDispatcher,
+            dbCall = {
+                daoFavorites.insert(item) > 0L
+            }
+        ).let { response -> response.mapSuccess { responseItems -> responseItems } }
+    }
+
     override suspend fun removeAllFavorites(): Either<Failure, Unit> {
         return call(
             ioDispatcher = ioDispatcher,

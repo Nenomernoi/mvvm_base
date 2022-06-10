@@ -22,8 +22,8 @@
 
     <androidx.appcompat.widget.AppCompatImageView
       android:id="@+id/imgMain"
-      android:layout_width="@dimen/row_breed_border_image_size"
-      android:layout_height="@dimen/row_breed_border_image_size"
+      android:layout_width="@dimen/row_breeds_border_image_size"
+      android:layout_height="@dimen/row_breeds_border_image_size"
       android:adjustViewBounds="true"
       android:background="@drawable/bg_breed_image"
       android:src="@drawable/ic_breed_cat"

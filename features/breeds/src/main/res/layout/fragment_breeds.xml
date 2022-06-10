@@ -12,8 +12,8 @@
     android:layout_height="wrap_content"
     android:fontFamily="@font/work_sans_bold"
     android:padding="@dimen/padding_regular"
-    android:text="@string/root_breed_title"
-    android:textSize="@dimen/row_breed_title_size" />
+    android:text="@string/root_breeds_title"
+    android:textSize="@dimen/row_breeds_title_size" />
 
   <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
     android:id="@+id/sRefresh"

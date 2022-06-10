@@ -7,8 +7,10 @@ import org.base.db.dao.FavoriteDao
 @Entity(tableName = FavoriteDao.TABLE_NAME)
 data class FavoriteDb(
     @PrimaryKey(autoGenerate = false)
-    val id: Long,
+    val uuid: Long,
+
     val imageId: String,
+
     val image: String,
 
     var isFavorite: Boolean = false,

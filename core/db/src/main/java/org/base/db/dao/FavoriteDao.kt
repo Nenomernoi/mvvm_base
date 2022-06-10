@@ -16,32 +16,35 @@ interface FavoriteDao {
     }
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(it: FavoriteDb): Long
+    fun insert(it: FavoriteDb): Long
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(it: List<FavoriteDb>): MutableList<Long>
+    fun insert(it: List<FavoriteDb>): MutableList<Long>
 
-    @Query(value = "SELECT * FROM $TABLE_NAME ORDER BY id ASC")
-    suspend fun getAll(): MutableList<FavoriteDb>
+    @Query(value = "SELECT * FROM $TABLE_NAME ORDER BY uuid ASC")
+    fun getAll(): MutableList<FavoriteDb>
 
-    @Query(value = "SELECT * FROM $TABLE_NAME ORDER BY id ASC LIMIT :limit OFFSET :offset")
-    suspend fun getPage(offset: Int, limit: Int): MutableList<FavoriteDb>
+    @Query(value = "SELECT * FROM $TABLE_NAME WHERE imageId IN(:imageIds) ORDER BY uuid ASC")
+    fun getAllFromIds(imageIds: List<String>): MutableList<FavoriteDb>
 
-    @Query(value = "SELECT * FROM $TABLE_NAME WHERE id = :uuid")
-    suspend fun getItem(uuid: Long): FavoriteDb?
+    @Query(value = "SELECT * FROM $TABLE_NAME ORDER BY uuid ASC LIMIT :limit OFFSET :offset")
+    fun getPage(offset: Int, limit: Int): MutableList<FavoriteDb>
+
+    @Query(value = "SELECT * FROM $TABLE_NAME WHERE uuid = :uuid")
+    fun getItem(uuid: Long): FavoriteDb?
 
     @Query(value = "SELECT * FROM $TABLE_NAME WHERE imageId = :imageId")
-    suspend fun getItem(imageId: String): FavoriteDb?
+    fun getItem(imageId: String): FavoriteDb?
 
     @Update
-    suspend fun update(it: FavoriteDb)
+    fun update(it: FavoriteDb)
 
     @Delete
-    suspend fun delete(it: FavoriteDb)
+    fun delete(it: FavoriteDb)
 
     @Query("DELETE FROM $TABLE_NAME")
-    suspend fun deleteAll()
+    fun deleteAll()
 
     @Query("DELETE FROM $TABLE_NAME WHERE isFavorite = 0")
-    suspend fun deleteUnFavoriteAll()
+    fun deleteUnFavoriteAll()
 }

@@ -16,26 +16,26 @@ interface BreedDao {
     }
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(it: BreedDb): Long
+    fun insert(it: BreedDb): Long
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(it: List<BreedDb>): MutableList<Long>
+    fun insert(it: List<BreedDb>): MutableList<Long>
 
     @Query(value = "SELECT * FROM $TABLE_NAME ORDER BY name ASC")
-    suspend fun getAll(): MutableList<BreedDb>
+    fun getAll(): MutableList<BreedDb>
 
     @Query(value = "SELECT * FROM $TABLE_NAME ORDER BY name ASC LIMIT :limit OFFSET :offset")
-    suspend fun getPage(offset: Int, limit: Int): MutableList<BreedDb>
+    fun getPage(offset: Int, limit: Int): MutableList<BreedDb>
 
     @Query(value = "SELECT * FROM $TABLE_NAME WHERE uuid = :uuid")
-    suspend fun getItem(uuid: String): BreedDb?
+    fun getItem(uuid: String): BreedDb?
 
     @Update
-    suspend fun update(it: BreedDb)
+    fun update(it: BreedDb)
 
     @Delete
-    suspend fun delete(it: BreedDb)
+    fun delete(it: BreedDb)
 
     @Query("DELETE FROM $TABLE_NAME")
-    suspend fun deleteAll()
+    fun deleteAll()
 }

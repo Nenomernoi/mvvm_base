@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <dimen name="breed_detail_height_size">200dp</dimen>
+  <dimen name="breed_detail_row_favorite_size">150dp</dimen>
+
+  <dimen name="row_breed_border_flag_image_size">15dp</dimen>
+  <dimen name="row_breed_title_size">18sp</dimen>
+  <dimen name="row_breed_desc_size">12sp</dimen>
+
+</resources>

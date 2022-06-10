@@ -1,8 +1,8 @@
 package org.base.favorites.di
 
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import org.base.favorites.data.repository.FavoritesRepositoryImpl
-import org.base.favorites.data_source.remote.FavoritesRemoteDtaSourceImpl
+import org.base.favorites.data.data_source.FavoritesRepositoryImpl
+import org.base.favorites.data_source.remote.FavoritesRemoteDataSourceImpl
 import org.base.favorites.data_source.remote.retrofit_service.FavoritesService
 import org.base.favorites.db.data_source.FavoriteDbRepositoryImpl
 import org.base.favorites.db.repository.FavoriteDbRepository
@@ -20,8 +20,8 @@ val featureFavoritesModule = Kodein.Module(name = "FeatureFavoritesModule") {
 
     bind<FavoritesService>() with singleton { provideFavoritesService(retrofitFavorites = instance()) }
 
-    bind<FavoritesRemoteDtaSourceImpl>() with singleton {
-        FavoritesRemoteDtaSourceImpl(
+    bind<FavoritesRemoteDataSourceImpl>() with singleton {
+        FavoritesRemoteDataSourceImpl(
             middlewareProvider = instance(),
             ioDispatcher = instance(arg = "ioDispatcher"),
             adapter = instance(),

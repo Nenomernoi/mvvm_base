@@ -1,5 +1,5 @@
 buildscript {
-  ext.kotlin_version = '1.6.21'
+  ext.kotlin_version = '1.7.0'
   ext.coroutines_version = '1.+'
 
   ext.multidex_version = '2.0.1'
@@ -82,7 +82,7 @@ ext {
   compileSdkVersion = 32
   minSdkVersion = 21
   targetSdkVersion = 32
-  applicationId = "by.nrstudio.basemodulesmvi"
+  applicationId = "org.base.basemodulesmvi"
 }
 
 ext {

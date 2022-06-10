@@ -21,6 +21,7 @@
             <option value="$PROJECT_DIR$/core/network" />
             <option value="$PROJECT_DIR$/core/views" />
             <option value="$PROJECT_DIR$/features" />
+            <option value="$PROJECT_DIR$/features/breed" />
             <option value="$PROJECT_DIR$/features/breeds" />
             <option value="$PROJECT_DIR$/features/favorites" />
             <option value="$PROJECT_DIR$/features/home" />

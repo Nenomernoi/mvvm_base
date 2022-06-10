@@ -1,9 +1,9 @@
 package org.base.common.models.mapper
 
-import org.base.db.model.FavoriteDb
 import org.base.common.models.data.FavoriteResponse
 import org.base.common.models.domain.Favorite
 import org.base.common.models.presentation.FavoriteUi
+import org.base.db.model.FavoriteDb
 
 interface FavoriteMapper {
     suspend fun mapRemoteListToDomain(remoteList: List<FavoriteResponse>): List<Favorite>

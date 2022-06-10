@@ -6,12 +6,15 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import org.base.db.dao.BreedDao
 import org.base.db.dao.FavoriteDao
+import org.base.db.dao.ImageDao
 import org.base.db.model.BreedDb
 import org.base.db.model.FavoriteDb
+import org.base.db.model.ImageDb
 
-@Database(entities = [BreedDb::class, FavoriteDb::class], version = 3)
+@Database(entities = [ImageDb::class, BreedDb::class, FavoriteDb::class], version = 1)
 abstract class Db : RoomDatabase() {
 
+    abstract fun imageDao(): ImageDao
     abstract fun breedDao(): BreedDao
     abstract fun favoriteDao(): FavoriteDao
 
@@ -24,6 +27,7 @@ abstract class Db : RoomDatabase() {
             INSTANCE ?: createDatabase(context).also { INSTANCE = it }
         }
 
+        fun imageDao(context: Context) = getInstance(context).imageDao()
         fun breedDao(context: Context) = getInstance(context).breedDao()
         fun favoriteDao(context: Context) = getInstance(context).favoriteDao()
 
