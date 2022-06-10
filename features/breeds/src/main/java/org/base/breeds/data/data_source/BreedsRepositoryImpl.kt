@@ -1,6 +1,6 @@
-package org.base.breeds.data.repository
+package org.base.breeds.data.data_source
 
-import org.base.breeds.data.data_source.BreedsRemoteDataSource
+import org.base.breeds.data.repository.BreedsRemoteDataSource
 import org.base.breeds.domain.BreedsRepository
 import org.base.common.models.domain.Breed
 import org.base.common.models.mapper.BreedMapper

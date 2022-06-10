@@ -1,3 +1,5 @@
+package org.base.main.di
+
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import okhttp3.OkHttpClient

@@ -5,6 +5,7 @@ include ':utils'
 include ':functional-programming'
 
 include ':core:network'
+include ':core:db'
 include ':core:navigation'
 include ':core:views'
 include ':core:mvi'
@@ -15,3 +16,4 @@ include ':common:ui_components'
 include ':features:breeds'
 include ':features:favorites'
 include ':features:home'
+

@@ -2,7 +2,7 @@ package org.base.breeds.data_source.remote
 
 import com.squareup.moshi.JsonAdapter
 import kotlinx.coroutines.CoroutineDispatcher
-import org.base.breeds.data.data_source.BreedsRemoteDataSource
+import org.base.breeds.data.repository.BreedsRemoteDataSource
 import org.base.breeds.data_source.remote.retrofit_service.BreedsService
 import org.base.common.models.data.BreedResponse
 import org.base.main.functional_programming.Either

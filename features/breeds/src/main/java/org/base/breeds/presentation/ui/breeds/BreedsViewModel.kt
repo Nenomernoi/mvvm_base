@@ -34,7 +34,6 @@ class BreedsViewModel(
         viewModelScope.launch {
             actions.receiveAsFlow()
                 .flatMapLatest {
-
                     actionProcessorHolderBreeds.processAction(
                         action = it,
                         when (it) {
@@ -52,8 +51,8 @@ class BreedsViewModel(
         viewModelScope.launch {
             when (intent) {
                 is BreedsIntent.LoadNextIntent -> setPage(values.first() as Int)
-                BreedsIntent.LoadLast -> _uiState.value.page
-                BreedsIntent.InitialIntent, BreedsIntent.SwipeOnRefresh -> clearItems()
+                BreedsIntent.LoadLastIntent -> _uiState.value.page
+                BreedsIntent.InitialIntent, BreedsIntent.SwipeOnRefreshIntent -> clearItems()
             }
             actions.send(mapIntentToAction(intent = intent))
         }
@@ -62,8 +61,8 @@ class BreedsViewModel(
     override fun mapIntentToAction(intent: BreedsIntent): BreedsAction {
         return when (intent) {
             BreedsIntent.InitialIntent -> BreedsAction.LoadBreedsAction
-            BreedsIntent.SwipeOnRefresh -> BreedsAction.LoadBreedsAction
-            BreedsIntent.LoadLast -> BreedsAction.ReLoadLastBreedsAction
+            BreedsIntent.SwipeOnRefreshIntent -> BreedsAction.ReLoadBreedsAction
+            BreedsIntent.LoadLastIntent -> BreedsAction.ReLoadLastBreedsAction
             is BreedsIntent.LoadNextIntent -> BreedsAction.LoadNextBreedsAction
         }
     }
@@ -78,10 +77,26 @@ class BreedsViewModel(
 
     private fun reduce(result: BreedsResult) {
         when (result) {
+            is BreedsResult.SuccessSave -> {
+                _uiState.value = uiState.value.copy(
+                    status = Status.DONE,
+                    error = null
+                )
+            }
+
             is BreedsResult.Success -> {
                 val newItems = mutableListOf<BreedUi>().apply {
                     addAll(_uiState.value.data)
-                    addAll(result.items)
+                    when {
+                        result.replaceOrAdd && result.items.isNotEmpty() && this.isNotEmpty() -> {
+                            for (i in 0 until this.size) {
+                                result.items.firstOrNull { it.id == this[i].id }?.let {
+                                    this[i] = it
+                                }
+                            }
+                        }
+                        else -> addAll(result.items)
+                    }
                 }
                 _uiState.value = uiState.value.copy(
                     status = Status.DONE,
@@ -89,12 +104,14 @@ class BreedsViewModel(
                     error = null
                 )
             }
+
             is BreedsResult.Error -> {
                 _uiState.value = uiState.value.copy(
                     status = Status.ERROR,
                     error = result.failure.toOneTimeEvent()
                 )
             }
+
             BreedsResult.Loading -> {
                 _uiState.value = uiState.value.copy(
                     status = Status.LOADING,

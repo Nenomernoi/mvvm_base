@@ -14,6 +14,8 @@
     android:id="@+id/clMain"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true"
     android:background="@drawable/bg_breed_item"
     android:elevation="@dimen/padding_small"
     android:padding="@dimen/padding_small">
@@ -62,6 +64,7 @@
       android:maxLines="3"
       android:orientation="vertical"
       android:textSize="@dimen/row_breed_desc_size"
+      android:textColor="@color/base_black_900_alpha_060"
       app:layout_constraintEnd_toStartOf="@+id/imgOpen"
       app:layout_constraintStart_toEndOf="@+id/imgMain"
       app:layout_constraintTop_toBottomOf="@+id/txtTitle"

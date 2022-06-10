@@ -1,9 +1,11 @@
 package org.base.breeds.di
 
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import org.base.breeds.data.repository.BreedsRepositoryImpl
+import org.base.breeds.data.data_source.BreedsRepositoryImpl
 import org.base.breeds.data_source.remote.BreedsRemoteDataSourceImpl
 import org.base.breeds.data_source.remote.retrofit_service.BreedsService
+import org.base.breeds.db.data_source.BreedsDbRepositoryImpl
+import org.base.breeds.db.repository.BreedDbRepository
 import org.base.breeds.domain.BreedsRepository
 import org.base.breeds.presentation.ui.breeds.BreedsViewModel
 import org.base.breeds.presentation.ui.breeds.processor.BreedsProcessorHolder
@@ -31,7 +33,20 @@ val featureBreedsModule = Kodein.Module(name = "FeatureBreedsModule") {
         BreedsRepositoryImpl(remoteDataSourceBreeds = instance(), mapperBreeds = instance())
     }
 
-    bind<BreedsProcessorHolder>() with singleton { BreedsProcessorHolder(repositoryBreeds = instance(), mapperBreeds = instance()) }
+    bind<BreedDbRepository>() with singleton {
+        BreedsDbRepositoryImpl(
+            ioDispatcher = instance(arg = "ioDispatcher"),
+            daoBreeds = instance()
+        )
+    }
+
+    bind<BreedsProcessorHolder>() with singleton {
+        BreedsProcessorHolder(
+            repositoryBreeds = instance(),
+            repositoryDbBreeds = instance(),
+            mapperBreeds = instance()
+        )
+    }
 
     bind<BreedsViewModel>() with singleton { BreedsViewModel(actionProcessorHolderBreeds = instance()) }
 }

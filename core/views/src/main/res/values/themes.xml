@@ -37,6 +37,8 @@
     <item name="textAppearanceCaption">@style/TextAppearance.Base.Caption</item>
     <item name="textAppearanceOverline">@style/TextAppearance.Base.Overline</item>
 
+    <item name="colorControlHighlight">@color/ripple_material_dark</item>
+
   </style>
 
 </resources>

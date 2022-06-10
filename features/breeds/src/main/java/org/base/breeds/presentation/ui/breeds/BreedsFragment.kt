@@ -82,9 +82,9 @@ class BreedsFragment : BaseListFragment<BreedUi, BreedsIntent, BreedsUiState>(R.
 
     override fun intents(): Flow<BreedsIntent> {
         val flowIntents = listOf(
-            binding.sRefresh.flowRefresh().map { BreedsIntent.SwipeOnRefresh },
+            binding.sRefresh.flowRefresh().map { BreedsIntent.SwipeOnRefreshIntent },
             binding.rvMain.flowEndless().map { BreedsIntent.LoadNextIntent(it) },
-            binding.tvError.flowClick().map { BreedsIntent.LoadLast }
+            binding.tvError.flowClick().map { BreedsIntent.LoadLastIntent }
         )
         return flowIntents.asFlow().flattenMerge(flowIntents.size)
     }

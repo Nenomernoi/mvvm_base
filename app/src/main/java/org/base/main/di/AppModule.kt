@@ -1,6 +1,7 @@
 package org.base.main.di
 
 import android.content.Context
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.base.main.App
 import org.base.main.util.connectivity.ConnectivityUtilsImpl
 import org.base.main.util.resource_provider.ResourceProviderImpl
@@ -12,6 +13,7 @@ import org.kodein.di.generic.instance
 import org.kodein.di.generic.multiton
 import org.kodein.di.generic.singleton
 
+@ExperimentalCoroutinesApi
 val appModule = Kodein.Module(name = "AppModule") {
     bind<Context>() with multiton { app: App ->
         app.applicationContext

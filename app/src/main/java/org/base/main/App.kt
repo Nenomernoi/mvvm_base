@@ -3,12 +3,13 @@ package org.base.main
 import android.app.Application
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import middleWareModule
-import networkModule
 import org.base.breeds.di.featureBreedsModule
 import org.base.favorites.di.featureFavoritesModule
 import org.base.main.di.appModule
 import org.base.main.di.commonModelsModule
 import org.base.main.di.coroutinesModule
+import org.base.main.di.dbModule
+import org.base.main.di.networkModule
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.androidXModule
@@ -23,6 +24,7 @@ class App : Application(), KodeinAware {
         import(networkModule)
         import(middleWareModule)
         import(commonModelsModule)
+        import(dbModule)
 
         import(featureFavoritesModule)
         import(featureBreedsModule)

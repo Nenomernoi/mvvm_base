@@ -1,0 +1,22 @@
+apply from: "$rootDir/common-android-library.gradle"
+apply plugin: 'kotlin-kapt'
+
+java {
+  sourceCompatibility = JavaVersion.VERSION_1_8
+  targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+dependencies {
+
+  //DB
+  implementation "androidx.room:room-runtime:$room_version"
+  implementation "androidx.room:room-ktx:$room_version"
+  implementation "androidx.room:room-common:$room_version"
+  kapt "androidx.room:room-compiler:$room_version"
+
+  // Other
+  implementation project(":functional-programming")
+
+  // Coroutines
+  api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
+}

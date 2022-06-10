@@ -1,4 +1,4 @@
-package org.base.breeds.data.data_source
+package org.base.breeds.data.repository
 
 import org.base.common.models.data.BreedResponse
 import org.base.main.functional_programming.Either

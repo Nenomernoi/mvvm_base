@@ -1,6 +1,7 @@
 plugins {
   id 'com.android.application'
   id 'org.jetbrains.kotlin.android'
+  id 'com.google.firebase.crashlytics'
 }
 
 android {
@@ -72,6 +73,7 @@ dependencies {
   implementation project(":core:network")
   implementation project(":core:navigation")
   implementation project(":core:views")
+  implementation project(":core:db")
 
   implementation project(":common:models")
 

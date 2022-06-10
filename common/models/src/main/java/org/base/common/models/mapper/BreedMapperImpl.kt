@@ -5,6 +5,7 @@ import kotlinx.coroutines.withContext
 import org.base.common.models.data.BreedResponse
 import org.base.common.models.domain.Breed
 import org.base.common.models.presentation.BreedUi
+import org.base.db.model.BreedDb
 
 class BreedMapperImpl(
     private val defaultDispatcher: CoroutineDispatcher
@@ -12,7 +13,7 @@ class BreedMapperImpl(
 
     override suspend fun mapRemoteListToDomain(remoteList: List<BreedResponse>): List<Breed> {
         return withContext(defaultDispatcher) {
-            remoteList.map {
+            remoteList.sortedBy { it.name }.map {
                 mapRemoteToDomain(it)
             }
         }
@@ -30,9 +31,28 @@ class BreedMapperImpl(
             origin = remote.origin,
         )
 
+    override suspend fun mapDomainListToDb(domainList: List<Breed>): List<BreedDb> {
+        return withContext(defaultDispatcher) {
+            domainList.sortedBy { it.name }.map {
+                mapDomainToDb(it)
+            }
+        }
+    }
+
+    override suspend fun mapDomainToDb(domain: Breed) = BreedDb(
+        uuid = domain.id,
+        name = domain.name,
+        description = domain.description,
+        image = domain.image,
+        weight = domain.weight,
+        lifeSpan = domain.lifeSpan,
+        countryCode = domain.countryCode,
+        origin = domain.origin,
+    )
+
     override suspend fun mapRemoteListToUi(domainList: List<Breed>): List<BreedUi> {
         return withContext(defaultDispatcher) {
-            domainList.map {
+            domainList.sortedBy { it.name }.map {
                 mapRemoteToUi(it)
             }
         }
@@ -46,4 +66,20 @@ class BreedMapperImpl(
             image = domain.image,
             countryFlag = "https://countryflagsapi.com/png/${domain.countryCode.lowercase()}",
         )
+
+    override suspend fun mapDbListToUi(dbList: List<BreedDb>): List<BreedUi> {
+        return withContext(defaultDispatcher) {
+            dbList.map {
+                mapDbToUi(it)
+            }
+        }
+    }
+
+    override suspend fun mapDbToUi(db: BreedDb) = BreedUi(
+        id = db.uuid,
+        name = db.name,
+        description = db.description,
+        image = db.image,
+        countryFlag = "https://countryflagsapi.com/png/${db.countryCode.lowercase()}",
+    )
 }

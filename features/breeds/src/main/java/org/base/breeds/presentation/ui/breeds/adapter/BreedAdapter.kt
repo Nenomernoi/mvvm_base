@@ -45,6 +45,7 @@ class BreedAdapter(listener: BaseItemListener) : BaseSupportAdapter<BreedUi>(lis
                 imgMain.load(model.image) {
                     placeholder(R.drawable.ic_breed_cat)
                     crossfade(durationMillis = 200)
+                    error(R.drawable.ic_breed_cat)
                     transformations(CircleCropTransformation())
                 }
                 imgFlag.load(model.countryFlag) {

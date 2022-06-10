@@ -65,7 +65,7 @@ class FavoritesViewModel(
     override fun mapIntentToAction(intent: FavoritesIntent): FavoritesAction {
         return when (intent) {
             FavoritesIntent.InitialIntent -> FavoritesAction.LoadFavoritesAction
-            FavoritesIntent.SwipeOnRefresh -> FavoritesAction.LoadFavoritesAction
+            FavoritesIntent.SwipeOnRefresh -> FavoritesAction.ReLoadFavoritesAction
             FavoritesIntent.LoadLast -> FavoritesAction.ReLoadLastFavoritesAction
             FavoritesIntent.AddToFavorites -> FavoritesAction.AddItemAction
             FavoritesIntent.RemoveFromFavorites -> FavoritesAction.RemoveItemAction
@@ -125,10 +125,27 @@ class FavoritesViewModel(
                     error = null
                 )
             }
+
+            FavoritesResult.SuccessSave -> {
+                _uiState.value = uiState.value.copy(
+                    status = Status.DONE,
+                    error = null
+                )
+            }
+
             is FavoritesResult.Success -> {
                 val newItems = mutableListOf<FavoriteUi>().apply {
                     addAll(_uiState.value.data)
-                    addAll(result.items)
+                    when {
+                        result.replaceOrAdd && result.items.isNotEmpty() && this.isNotEmpty() -> {
+                            for (i in 0 until this.size) {
+                                result.items.firstOrNull { it.id == this[i].id }?.let {
+                                    this[i] = it
+                                }
+                            }
+                        }
+                        else -> addAll(result.items)
+                    }
                 }
                 _uiState.value = uiState.value.copy(
                     status = Status.DONE,
@@ -136,12 +153,14 @@ class FavoritesViewModel(
                     error = null
                 )
             }
+
             is FavoritesResult.Error -> {
                 _uiState.value = uiState.value.copy(
                     status = Status.ERROR,
                     error = result.failure.toOneTimeEvent()
                 )
             }
+
             FavoritesResult.Loading -> {
                 _uiState.value = uiState.value.copy(
                     status = Status.LOADING,
