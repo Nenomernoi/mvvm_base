@@ -13,7 +13,15 @@ include ':core:mvi'
 include ':common:models'
 include ':common:ui_components'
 
+// features
 include ':features:home'
+
 include ':features:breeds'
+include ':features:breeds_data'
+
 include ':features:breed'
+include ':features:breed_data'
+
 include ':features:favorites'
+include ':features:favorites_data'
+

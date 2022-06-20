@@ -4,7 +4,7 @@
     <item
         android:id="@+id/nav_feature_movies"
         android:icon="@drawable/ic_cat_menu"
-        android:title="@string/root_breed_title" />
+        android:title="@string/root_breeds_title" />
 
     <item
         android:id="@+id/nav_feature_actors"

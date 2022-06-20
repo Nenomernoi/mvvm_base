@@ -22,6 +22,8 @@ dependencies {
 
   implementation project(':utils')
 
+  api project(':features:favorites_data')
+
   // Image
   api "io.coil-kt:coil:$coil_version"
 

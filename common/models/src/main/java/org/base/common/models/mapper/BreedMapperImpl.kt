@@ -4,6 +4,7 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import org.base.common.models.data.BreedResponse
 import org.base.common.models.domain.Breed
+import org.base.common.models.presentation.BreedFullUi
 import org.base.common.models.presentation.BreedUi
 import org.base.db.model.BreedDb
 
@@ -82,4 +83,42 @@ class BreedMapperImpl(
         image = db.image,
         countryFlag = "https://countryflagsapi.com/png/${db.countryCode.lowercase()}",
     )
+
+    override suspend fun mapDbListToFullUi(dbList: List<BreedDb>): List<BreedFullUi> {
+        return withContext(defaultDispatcher) {
+            dbList.map {
+                mapDbToFullUi(it)
+            }
+        }
+    }
+
+    override suspend fun mapDbToFullUi(db: BreedDb) =
+        BreedFullUi(
+            id = db.uuid,
+            name = db.name,
+            description = db.description,
+            image = db.image,
+
+            weight = db.weight,
+            lifeSpan = db.lifeSpan,
+
+            countryFlag = "https://countryflagsapi.com/png/${db.countryCode.lowercase()}",
+        )
+
+    override suspend fun mapUiListToFullUi(uiList: List<BreedUi>): List<BreedFullUi> {
+        return withContext(defaultDispatcher) {
+            uiList.map {
+                mapUiToFullUi(it)
+            }
+        }
+    }
+
+    override suspend fun mapUiToFullUi(ui: BreedUi) =
+        BreedFullUi(
+            id = ui.id,
+            name = ui.name,
+            description = ui.description,
+            image = ui.image,
+            countryFlag = ui.countryFlag,
+        )
 }

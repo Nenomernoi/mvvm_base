@@ -1,14 +1,14 @@
 package org.base.favorites.di
 
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import org.base.favorites.data.data_source.FavoritesRepositoryImpl
-import org.base.favorites.data_source.remote.FavoritesRemoteDataSourceImpl
-import org.base.favorites.data_source.remote.retrofit_service.FavoritesService
-import org.base.favorites.db.data_source.FavoriteDbRepositoryImpl
-import org.base.favorites.db.repository.FavoriteDbRepository
-import org.base.favorites.domain.FavoritesRepository
 import org.base.favorites.presentation.ui.favorites.FavoritesViewModel
 import org.base.favorites.presentation.ui.favorites.processor.FavoritesProcessorHolder
+import org.base.favorites_data.data.data_source.FavoritesRepositoryImpl
+import org.base.favorites_data.data_source.remote.FavoritesRemoteDataSourceImpl
+import org.base.favorites_data.data_source.remote.retrofit_service.FavoritesService
+import org.base.favorites_data.db.data_source.FavoriteDbRepositoryImpl
+import org.base.favorites_data.db.repository.FavoriteDbRepository
+import org.base.favorites_data.domain.FavoritesRepository
 import org.kodein.di.Kodein
 import org.kodein.di.generic.bind
 import org.kodein.di.generic.instance

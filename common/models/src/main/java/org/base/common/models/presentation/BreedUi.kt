@@ -13,3 +13,17 @@ data class BreedUi(
 
     val countryFlag: String,
 ) : Parcelable
+
+@Parcelize
+data class BreedFullUi(
+    val id: String,
+
+    val name: String,
+    val description: String,
+    val image: String,
+
+    val weight: String = "---",
+    val lifeSpan: String = "---",
+
+    val countryFlag: String,
+) : Parcelable

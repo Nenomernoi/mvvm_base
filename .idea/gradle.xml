@@ -22,8 +22,11 @@
             <option value="$PROJECT_DIR$/core/views" />
             <option value="$PROJECT_DIR$/features" />
             <option value="$PROJECT_DIR$/features/breed" />
+            <option value="$PROJECT_DIR$/features/breed_data" />
             <option value="$PROJECT_DIR$/features/breeds" />
+            <option value="$PROJECT_DIR$/features/breeds_data" />
             <option value="$PROJECT_DIR$/features/favorites" />
+            <option value="$PROJECT_DIR$/features/favorites_data" />
             <option value="$PROJECT_DIR$/features/home" />
             <option value="$PROJECT_DIR$/functional-programming" />
             <option value="$PROJECT_DIR$/utils" />

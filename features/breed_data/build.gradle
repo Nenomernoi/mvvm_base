@@ -1,0 +1,21 @@
+apply from: "$rootDir/common-android-library.gradle"
+
+dependencies {
+  implementation project(':common:models')
+
+  implementation project(':functional-programming')
+
+  implementation project(':core:network')
+  implementation project(':core:db')
+
+  implementation project(':utils')
+
+  //Coroutines
+  implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
+
+  // Test
+  testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version"
+  testImplementation "io.mockk:mockk:$mockk_version"
+  testImplementation "com.squareup.okhttp3:mockwebserver:$mockwebserver_version"
+
+}

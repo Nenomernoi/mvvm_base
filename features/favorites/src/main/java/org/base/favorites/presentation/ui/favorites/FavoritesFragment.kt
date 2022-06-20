@@ -69,10 +69,10 @@ class FavoritesFragment : BaseListFragment<FavoriteUi, FavoritesIntent, Favorite
             override fun onItem(position: Int, action: Int) {
                 when (action) {
                     R.drawable.ic_favorite_border_color -> {
-                        viewModel.processIntents(FavoritesIntent.RemoveFromFavorites, position)
+                        viewModel.processIntents(FavoritesIntent.RemoveFromFavoritesIntent, position)
                     }
                     R.drawable.ic_favorite_border -> {
-                        viewModel.processIntents(FavoritesIntent.AddToFavorites, position)
+                        viewModel.processIntents(FavoritesIntent.AddToFavoritesIntent, position)
                     }
                     else -> {
                         // TODO select item
@@ -99,9 +99,9 @@ class FavoritesFragment : BaseListFragment<FavoriteUi, FavoritesIntent, Favorite
 
     override fun intents(): Flow<FavoritesIntent> {
         val flowIntents = listOf(
-            binding.sRefresh.flowRefresh().map { FavoritesIntent.SwipeOnRefresh },
+            binding.sRefresh.flowRefresh().map { FavoritesIntent.SwipeOnRefreshIntent },
             binding.rvMain.flowEndless().map { FavoritesIntent.LoadNextIntent(it) },
-            binding.tvError.flowClick().map { FavoritesIntent.LoadLast }
+            binding.tvError.flowClick().map { FavoritesIntent.LoadLastIntent }
         )
         return flowIntents.asFlow().flattenMerge(flowIntents.size)
     }

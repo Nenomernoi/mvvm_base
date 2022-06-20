@@ -1,5 +1,4 @@
 apply from: "$rootDir/common-android-library.gradle"
-apply plugin: 'kotlin-kapt'
 apply plugin: 'androidx.navigation.safeargs.kotlin'
 
 android {
@@ -23,6 +22,7 @@ dependencies {
   implementation project(':utils')
 
   api project(":features:breed")
+  api project(":features:breeds_data")
 
   // Image
   api "io.coil-kt:coil:$coil_version"

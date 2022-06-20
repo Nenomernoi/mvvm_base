@@ -1,14 +1,14 @@
 package org.base.breeds.di
 
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import org.base.breeds.data.data_source.BreedsRepositoryImpl
-import org.base.breeds.data_source.remote.BreedsRemoteDataSourceImpl
-import org.base.breeds.data_source.remote.retrofit_service.BreedsService
-import org.base.breeds.db.data_source.BreedsDbRepositoryImpl
-import org.base.breeds.db.repository.BreedsDbRepository
-import org.base.breeds.domain.BreedsRepository
 import org.base.breeds.presentation.ui.breeds.BreedsViewModel
 import org.base.breeds.presentation.ui.breeds.processor.BreedsProcessorHolder
+import org.base.breeds_data.data.data_source.BreedsRepositoryImpl
+import org.base.breeds_data.data_source.remote.BreedsRemoteDataSourceImpl
+import org.base.breeds_data.data_source.remote.retrofit_service.BreedsService
+import org.base.breeds_data.db.data_source.BreedsDbRepositoryImpl
+import org.base.breeds_data.db.repository.BreedsDbRepository
+import org.base.breeds_data.domain.BreedsRepository
 import org.kodein.di.Kodein
 import org.kodein.di.generic.bind
 import org.kodein.di.generic.instance

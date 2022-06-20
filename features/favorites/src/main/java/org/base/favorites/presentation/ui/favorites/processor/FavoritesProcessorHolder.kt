@@ -6,8 +6,8 @@ import org.base.common.models.data.FavoriteRequest
 import org.base.common.models.domain.Favorite
 import org.base.common.models.mapper.FavoriteMapper
 import org.base.common.models.presentation.FavoriteUi
-import org.base.favorites.db.repository.FavoriteDbRepository
-import org.base.favorites.domain.FavoritesRepository
+import org.base.favorites_data.db.repository.FavoriteDbRepository
+import org.base.favorites_data.domain.FavoritesRepository
 import org.base.favorites.presentation.ui.favorites.action.FavoritesAction
 import org.base.favorites.presentation.ui.favorites.result.FavoritesResult
 import org.base.main.functional_programming.Either

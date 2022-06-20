@@ -2,18 +2,21 @@ package org.base.breed.presentation.ui.breed.processor
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import org.base.breed.db.repository.ImageDbRepository
-import org.base.breed.domain.ImagesRepository
 import org.base.breed.presentation.ui.breed.action.ImagesAction
 import org.base.breed.presentation.ui.breed.result.ImagesResult
+import org.base.breed_data.db.repository.ImageDbRepository
+import org.base.breed_data.domain.ImagesRepository
+import org.base.breeds_data.db.repository.BreedsDbRepository
 import org.base.common.models.data.FavoriteRequest
 import org.base.common.models.domain.Favorite
 import org.base.common.models.domain.Image
+import org.base.common.models.mapper.BreedMapper
 import org.base.common.models.mapper.FavoriteMapper
 import org.base.common.models.mapper.ImageMapper
+import org.base.common.models.presentation.BreedFullUi
 import org.base.common.models.presentation.ImageUi
-import org.base.favorites.db.repository.FavoriteDbRepository
-import org.base.favorites.domain.FavoritesRepository
+import org.base.favorites_data.db.repository.FavoriteDbRepository
+import org.base.favorites_data.domain.FavoritesRepository
 import org.base.main.functional_programming.Either
 import org.base.main.functional_programming.Failure
 import org.base.mvi.MviProcessorHolder
@@ -23,6 +26,8 @@ class BreedProcessorHolder(
     private val repositoryImages: ImagesRepository,
     private val repositoryDbFavorites: FavoriteDbRepository,
     private val repositoryDbImages: ImageDbRepository,
+    private val repositoryDbBreeds: BreedsDbRepository,
+    private val mapperBreed: BreedMapper,
     private val mapperFavorites: FavoriteMapper,
     private val mapperImages: ImageMapper
 ) : MviProcessorHolder<ImagesAction, ImagesResult> {
@@ -30,7 +35,6 @@ class BreedProcessorHolder(
     override fun processAction(action: ImagesAction, vararg values: Any): Flow<ImagesResult> {
         return flow {
             when (action) {
-
                 ImagesAction.LoadFavoritesAction,
                 ImagesAction.ReLoadLastFavoritesAction,
                 ImagesAction.LoadNextFavoritesAction -> {
@@ -41,6 +45,19 @@ class BreedProcessorHolder(
                     val breedId = values.first().toString()
                     val page = values[1] as Int
                     val limit = values[2] as Int
+
+                    if (action == ImagesAction.LoadFavoritesAction) {
+                        val responseDb: Either<Failure, BreedFullUi?> =
+                            repositoryDbBreeds.getBreed(breedId = breedId)
+                                .coMapSuccess { db ->
+                                    db?.let { mapperBreed.mapDbToFullUi(it) }
+                                }
+
+                        if (responseDb.isSuccess && responseDb.getSuccessOrNull() != null) {
+                            val result = handleModelSuccessOrFailure(result = responseDb)
+                            emit(result)
+                        }
+                    }
 
                     val responseDb: Either<Failure, List<ImageUi>> =
                         repositoryDbImages.getPageImages(breedId = breedId, page = page as Int, limit = limit)
@@ -134,6 +151,13 @@ class BreedProcessorHolder(
         return when (result) {
             is Either.Error -> ImagesResult.Error(failure = result.error)
             is Either.Success -> ImagesResult.SuccessSave
+        }
+    }
+
+    private fun handleModelSuccessOrFailure(result: Either<Failure, BreedFullUi?>): ImagesResult {
+        return when (result) {
+            is Either.Error -> ImagesResult.Error(failure = result.error)
+            is Either.Success -> ImagesResult.SetModel(model = result.success)
         }
     }
 

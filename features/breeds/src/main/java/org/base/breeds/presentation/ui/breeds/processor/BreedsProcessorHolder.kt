@@ -2,8 +2,8 @@ package org.base.breeds.presentation.ui.breeds.processor
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import org.base.breeds.db.repository.BreedsDbRepository
-import org.base.breeds.domain.BreedsRepository
+import org.base.breeds_data.db.repository.BreedsDbRepository
+import org.base.breeds_data.domain.BreedsRepository
 import org.base.breeds.presentation.ui.breeds.action.BreedsAction
 import org.base.breeds.presentation.ui.breeds.result.BreedsResult
 import org.base.common.models.domain.Breed

@@ -18,6 +18,7 @@ dependencies {
   implementation project(':core:mvi')
 
   api project(":features:breeds")
+  api project(":features:breeds")
   api project(":features:favorites")
 
   //DI

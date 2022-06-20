@@ -54,9 +54,9 @@ class FavoritesViewModel(
         viewModelScope.launch {
             when (intent) {
                 is FavoritesIntent.LoadNextIntent -> setPage(values.first() as Int)
-                FavoritesIntent.AddToFavorites, FavoritesIntent.RemoveFromFavorites -> setChangeItem(values.first() as Int)
-                FavoritesIntent.LoadLast -> _uiState.value.page
-                FavoritesIntent.InitialIntent, FavoritesIntent.SwipeOnRefresh -> clearItems()
+                FavoritesIntent.AddToFavoritesIntent, FavoritesIntent.RemoveFromFavoritesIntent -> setChangeItem(values.first() as Int)
+                FavoritesIntent.LoadLastIntent -> _uiState.value.page
+                FavoritesIntent.InitialIntent, FavoritesIntent.SwipeOnRefreshIntent -> clearItems()
             }
             actions.send(mapIntentToAction(intent = intent))
         }
@@ -65,10 +65,10 @@ class FavoritesViewModel(
     override fun mapIntentToAction(intent: FavoritesIntent): FavoritesAction {
         return when (intent) {
             FavoritesIntent.InitialIntent -> FavoritesAction.LoadFavoritesAction
-            FavoritesIntent.SwipeOnRefresh -> FavoritesAction.ReLoadFavoritesAction
-            FavoritesIntent.LoadLast -> FavoritesAction.ReLoadLastFavoritesAction
-            FavoritesIntent.AddToFavorites -> FavoritesAction.AddItemAction
-            FavoritesIntent.RemoveFromFavorites -> FavoritesAction.RemoveItemAction
+            FavoritesIntent.SwipeOnRefreshIntent -> FavoritesAction.ReLoadFavoritesAction
+            FavoritesIntent.LoadLastIntent -> FavoritesAction.ReLoadLastFavoritesAction
+            FavoritesIntent.AddToFavoritesIntent -> FavoritesAction.AddItemAction
+            FavoritesIntent.RemoveFromFavoritesIntent -> FavoritesAction.RemoveItemAction
             is FavoritesIntent.LoadNextIntent -> FavoritesAction.LoadNextFavoritesAction
         }
     }
