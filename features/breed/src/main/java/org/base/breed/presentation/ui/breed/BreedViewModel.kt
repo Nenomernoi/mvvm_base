@@ -25,7 +25,6 @@ class BreedViewModel(private val actionProcessorHolderBreed: BreedProcessorHolde
     override fun getState() = _uiState
 
     init {
-        processIntents(ImagesIntent.InitialIntent)
         subscribeActions()
     }
 
@@ -38,8 +37,8 @@ class BreedViewModel(private val actionProcessorHolderBreed: BreedProcessorHolde
                         uiState.value.breedId,
                         when (it) {
                             ImagesAction.LoadNextFavoritesAction, ImagesAction.ReLoadLastFavoritesAction -> uiState.value.page
-                            ImagesAction.AddItemAction -> uiState.value.data[uiState.value.changeItem].id
-                            ImagesAction.RemoveItemAction -> uiState.value.data[uiState.value.changeItem].idFavorite
+                            ImagesAction.AddItemAction -> uiState.value.data[uiState.value.changeItem]
+                            ImagesAction.RemoveItemAction -> uiState.value.data[uiState.value.changeItem]
                             else -> 0
                         },
                         PAGE_SIZE

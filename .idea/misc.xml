@@ -6,6 +6,7 @@
         <entry key="../../../../../layout/custom_preview.xml" value="0.23860182370820668" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.32760416666666664" />
         <entry key="features/breed/src/main/res/drawable/bg_favorite_add.xml" value="0.344" />
+        <entry key="features/breed/src/main/res/drawable/bg_sheet_root.xml" value="0.3765" />
         <entry key="features/breed/src/main/res/drawable/ic_close.xml" value="0.344" />
         <entry key="features/breed/src/main/res/layout/fragment_breed.xml" value="0.5177083333333333" />
         <entry key="features/breed/src/main/res/layout/row_image.xml" value="0.5177083333333333" />
@@ -14,6 +15,7 @@
         <entry key="features/breeds/src/main/res/drawable/bg_breed_item.xml" value="0.1855" />
         <entry key="features/breeds/src/main/res/drawable/bg_favorite_add.xml" value="0.344" />
         <entry key="features/breeds/src/main/res/drawable/bg_image.xml" value="0.1855" />
+        <entry key="features/breeds/src/main/res/drawable/bg_sheet_root.xml" value="0.3765" />
         <entry key="features/breeds/src/main/res/drawable/ic_arrow_right.xml" value="0.1855" />
         <entry key="features/breeds/src/main/res/drawable/ic_breed_arrow_right.xml" value="0.33" />
         <entry key="features/breeds/src/main/res/drawable/ic_breed_cat.xml" value="0.344" />

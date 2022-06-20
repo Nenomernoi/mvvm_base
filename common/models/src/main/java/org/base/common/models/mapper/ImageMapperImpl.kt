@@ -38,17 +38,18 @@ class ImageMapperImpl(
         url = domain.url,
     )
 
-    override suspend fun mapRemoteListToUi(domainList: List<Image>): List<ImageUi> {
+    override suspend fun mapRemoteListToUi(domainList: List<Image>, map: Map<String, Long>): List<ImageUi> {
         return withContext(defaultDispatcher) {
             domainList.sortedBy { it.id }.map {
-                mapRemoteToUi(it)
+                mapRemoteToUi(it, map.getOrElse(it.id) { 0L })
             }
         }
     }
 
-    override suspend fun mapRemoteToUi(domain: Image) = ImageUi(
+    override suspend fun mapRemoteToUi(domain: Image, idFavorite: Long) = ImageUi(
         id = domain.id,
         url = domain.url,
+        idFavorite = idFavorite
     )
 
     override suspend fun mapDbListToUi(dbList: List<ImageDb>): List<ImageUi> {

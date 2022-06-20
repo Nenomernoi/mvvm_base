@@ -12,8 +12,8 @@ interface ImageMapper {
     suspend fun mapDomainListToDb(domainList: List<Image>, breedId: String): List<ImageDb>
     suspend fun mapDomainToDb(domain: Image, breedId: String): ImageDb
 
-    suspend fun mapRemoteListToUi(domainList: List<Image>): List<ImageUi>
-    suspend fun mapRemoteToUi(domain: Image): ImageUi
+    suspend fun mapRemoteListToUi(domainList: List<Image>, map: Map<String, Long>): List<ImageUi>
+    suspend fun mapRemoteToUi(domain: Image, idFavorite: Long): ImageUi
 
     suspend fun mapDbListToUi(dbList: List<ImageDb>): List<ImageUi>
     suspend fun mapDbToUi(db: ImageDb): ImageUi

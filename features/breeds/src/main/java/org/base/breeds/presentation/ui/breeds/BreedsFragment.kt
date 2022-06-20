@@ -2,6 +2,7 @@ package org.base.breeds.presentation.ui.breeds
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
@@ -12,6 +13,7 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
+import org.base.breed.presentation.ui.breed.BredFragment
 import org.base.breeds.R
 import org.base.breeds.databinding.FragmentBreedsBinding
 import org.base.breeds.presentation.ui.breeds.adapter.BreedsAdapter
@@ -60,7 +62,11 @@ class BreedsFragment : BaseListFragment<BreedUi, BreedsIntent, BreedsUiState>(R.
     override fun initAdapter() {
         adapter = BreedsAdapter(object : BaseItemListener {
             override fun onItem(position: Int, action: Int) {
-                // TODO select item
+                BredFragment()
+                    .apply {
+                        arguments = bundleOf(BredFragment.BREED_ID to viewModel.uiState.value.data[position].id)
+                    }
+                    .show(childFragmentManager, "BreedDetails")
             }
         })
         binding.rvMain.setHasFixedSize(true)

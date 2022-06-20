@@ -40,7 +40,7 @@ class ImageAdapter(listener: BaseItemListener) : BaseSupportAdapter<ImageUi>(lis
             binding.apply {
                 itemView.tag = model.id
 
-                val res = if (model.idFavorite == 0L) R.drawable.ic_favorite_border_color else R.drawable.ic_favorite_border
+                val res = if (model.idFavorite != 0L) R.drawable.ic_favorite_border_color else R.drawable.ic_favorite_border
                 fbImageAdd.setImageResource(res)
                 fbImageAdd.setDebouncedClickListener {
                     listener?.onItem(adapterPosition, res)
@@ -49,7 +49,7 @@ class ImageAdapter(listener: BaseItemListener) : BaseSupportAdapter<ImageUi>(lis
                 imgImageMain.load(model.url) {
                     crossfade(durationMillis = 200)
                     placeholder(R.drawable.bg_favorite_item)
-                    transformations(RoundedCornersTransformation(topLeft = 16f, topRight = 16f))
+                    transformations(RoundedCornersTransformation(16f))
                 }
             }
         }

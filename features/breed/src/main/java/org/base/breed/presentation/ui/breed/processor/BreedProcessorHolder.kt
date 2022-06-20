@@ -60,7 +60,7 @@ class BreedProcessorHolder(
                     }
 
                     val responseDb: Either<Failure, List<ImageUi>> =
-                        repositoryDbImages.getPageImages(breedId = breedId, page = page as Int, limit = limit)
+                        repositoryDbImages.getPageImages(breedId = breedId, page = page, limit = limit)
                             .coMapSuccess { db ->
                                 mapperImages.mapDbListToUi(db)
                             }
@@ -69,21 +69,24 @@ class BreedProcessorHolder(
                         emit(result)
                     }
 
+                    val idsFavorites = responseDb.getSuccessOrNull()?.associate { it.id to it.idFavorite } ?: mapOf()
+
                     val replaceOrAdd = (action == ImagesAction.LoadNextFavoritesAction && !responseDb.getSuccessOrNull().isNullOrEmpty()) ||
                         (action != ImagesAction.LoadNextFavoritesAction)
 
                     val response: Either<Failure, List<ImageUi>> =
                         repositoryImages.getImages(breedId = breedId, page = page, limit = limit)
                             .coMapSuccess { domain ->
-                                val resultDb = saveAllDb(breedId, domain)
-                                mapperImages.mapRemoteListToUi(domain)
+                                val resultDb = saveAllDb(breedId, domain, idsFavorites)
+                                mapperImages.mapRemoteListToUi(domain, idsFavorites)
                             }
                     emit(handleSuccessOrFailure(result = response, replaceOrAdd = replaceOrAdd))
                 }
 
                 ImagesAction.AddItemAction -> {
-                    val image = values.first() as ImageUi
-                    val breedId = values[1].toString()
+                    val breedId = values.first().toString()
+                    val image = values[1] as ImageUi
+
                     emit(ImagesResult.Loading)
 
                     val response: Either<Failure, Triple<String, Long, Boolean>> =
@@ -101,8 +104,8 @@ class BreedProcessorHolder(
                 }
 
                 ImagesAction.RemoveItemAction -> {
-                    val image = values.first() as ImageUi
-                    val breedId = values[1].toString()
+                    val breedId = values.first().toString()
+                    val image = values[1] as ImageUi
 
                     emit(ImagesResult.Loading)
                     val response: Either<Failure, Pair<Long, Boolean>> =
@@ -122,7 +125,7 @@ class BreedProcessorHolder(
         }
     }
 
-    private suspend fun saveAllDb(breedId: String, domain: List<Image>): ImagesResult {
+    private suspend fun saveAllDb(breedId: String, domain: List<Image>, map: Map<String, Long>): ImagesResult {
         val saveItem = mapperImages.mapDomainListToDb(domain, breedId)
         val response = repositoryDbImages.saveAllImages(list = saveItem)
         return handleSuccessOrFailureDb(response)
