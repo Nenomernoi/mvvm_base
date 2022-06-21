@@ -1,0 +1,1 @@
+We make other (FavoriteMapper, ImageMapper) mappers by example (BreedMapper => BreedMapperUnitTest)

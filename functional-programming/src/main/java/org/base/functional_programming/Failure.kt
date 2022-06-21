@@ -1,4 +1,4 @@
-package org.base.main.functional_programming
+package org.base.functional_programming
 
 sealed class Failure {
 

@@ -10,8 +10,8 @@ import org.base.favorites_data.db.repository.FavoriteDbRepository
 import org.base.favorites_data.domain.FavoritesRepository
 import org.base.favorites.presentation.ui.favorites.action.FavoritesAction
 import org.base.favorites.presentation.ui.favorites.result.FavoritesResult
-import org.base.main.functional_programming.Either
-import org.base.main.functional_programming.Failure
+import org.base.functional_programming.Either
+import org.base.functional_programming.Failure
 import org.base.mvi.MviProcessorHolder
 
 class FavoritesProcessorHolder(

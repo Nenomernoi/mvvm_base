@@ -2,10 +2,10 @@ package org.base.db
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
-import org.base.main.functional_programming.Either
-import org.base.main.functional_programming.Failure
-import org.base.main.functional_programming.utils.toError
-import org.base.main.functional_programming.utils.toSuccess
+import org.base.functional_programming.Either
+import org.base.functional_programming.Failure
+import org.base.functional_programming.utils.toError
+import org.base.functional_programming.utils.toSuccess
 
 suspend inline fun <T> call(
     ioDispatcher: CoroutineDispatcher,

@@ -8,8 +8,8 @@ import org.base.common.models.data.FavoriteRequest
 import org.base.common.models.data.FavoriteResponse
 import org.base.favorites_data.data.repository.FavoritesRemoteDataSource
 import org.base.favorites_data.data_source.remote.retrofit_service.FavoritesService
-import org.base.main.functional_programming.Either
-import org.base.main.functional_programming.Failure
+import org.base.functional_programming.Either
+import org.base.functional_programming.Failure
 import org.base.network.middleware.provider.MiddlewareProvider
 import org.base.network.models.base.ResponseError
 import org.base.network.utils.call

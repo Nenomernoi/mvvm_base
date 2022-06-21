@@ -4,8 +4,8 @@ import org.base.common.models.data.FavoriteAddedSuccessResponse
 import org.base.common.models.data.FavoriteRemoveSuccessResponse
 import org.base.common.models.data.FavoriteRequest
 import org.base.common.models.data.FavoriteResponse
-import org.base.main.functional_programming.Either
-import org.base.main.functional_programming.Failure
+import org.base.functional_programming.Either
+import org.base.functional_programming.Failure
 
 interface FavoritesRemoteDataSource {
     suspend fun getFavorites(page: Int, limit: Int): Either<Failure, List<FavoriteResponse>>

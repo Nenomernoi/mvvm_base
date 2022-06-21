@@ -1,6 +1,6 @@
 package org.base.ui_components.ui
 
-import org.base.main.functional_programming.Failure
+import org.base.functional_programming.Failure
 import org.base.mvi.MviViewState
 import org.base.mvi.Status
 import org.base.utils.OneTimeEvent

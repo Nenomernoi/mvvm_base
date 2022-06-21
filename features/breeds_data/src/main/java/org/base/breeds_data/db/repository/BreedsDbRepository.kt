@@ -1,8 +1,8 @@
 package org.base.breeds_data.db.repository
 
 import org.base.db.model.BreedDb
-import org.base.main.functional_programming.Either
-import org.base.main.functional_programming.Failure
+import org.base.functional_programming.Either
+import org.base.functional_programming.Failure
 
 interface BreedsDbRepository {
     suspend fun getPageBreeds(page: Int, limit: Int): Either<Failure, List<BreedDb>>

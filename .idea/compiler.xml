@@ -15,6 +15,7 @@
       <module name="BaseModulesMvi.features.favorites" target="11" />
       <module name="BaseModulesMvi.features.favorites_data" target="11" />
       <module name="BaseModulesMvi.features.home" target="11" />
+      <module name="BaseModulesMvi.test-shared" target="11" />
       <module name="BaseModulesMvi.utils" target="11" />
     </bytecodeTargetLevel>
   </component>

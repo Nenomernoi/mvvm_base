@@ -1,7 +1,7 @@
 package org.base.breeds.presentation.ui.breeds
 
 import org.base.common.models.presentation.BreedUi
-import org.base.main.functional_programming.Failure
+import org.base.functional_programming.Failure
 import org.base.mvi.Status
 import org.base.ui_components.ui.BaseListViewState
 import org.base.utils.OneTimeEvent

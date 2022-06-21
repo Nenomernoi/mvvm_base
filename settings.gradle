@@ -1,15 +1,18 @@
 rootProject.name = "BaseModulesMvi"
 include ':app'
 
+// Other
 include ':utils'
 include ':functional-programming'
 
+// Core
 include ':core:network'
 include ':core:db'
 include ':core:navigation'
 include ':core:views'
 include ':core:mvi'
 
+// Common
 include ':common:models'
 include ':common:ui_components'
 
@@ -25,3 +28,5 @@ include ':features:breed_data'
 include ':features:favorites'
 include ':features:favorites_data'
 
+// Test
+include ':test-shared'

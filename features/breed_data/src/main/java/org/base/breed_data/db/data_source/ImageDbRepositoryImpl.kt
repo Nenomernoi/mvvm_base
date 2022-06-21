@@ -5,8 +5,8 @@ import org.base.breed_data.db.repository.ImageDbRepository
 import org.base.db.call
 import org.base.db.dao.ImageDao
 import org.base.db.model.ImageDb
-import org.base.main.functional_programming.Either
-import org.base.main.functional_programming.Failure
+import org.base.functional_programming.Either
+import org.base.functional_programming.Failure
 
 class ImageDbRepositoryImpl(
     private val ioDispatcher: CoroutineDispatcher,

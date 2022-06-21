@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
-import org.base.main.functional_programming.Failure
+import org.base.functional_programming.Failure
 import org.base.mvi.MviIntent
 import org.base.mvi.MviView
 import org.base.mvi.MviViewState

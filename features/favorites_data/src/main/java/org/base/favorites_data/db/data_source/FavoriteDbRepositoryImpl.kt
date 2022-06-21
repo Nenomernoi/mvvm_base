@@ -5,8 +5,8 @@ import org.base.db.call
 import org.base.db.dao.FavoriteDao
 import org.base.db.model.FavoriteDb
 import org.base.favorites_data.db.repository.FavoriteDbRepository
-import org.base.main.functional_programming.Either
-import org.base.main.functional_programming.Failure
+import org.base.functional_programming.Either
+import org.base.functional_programming.Failure
 
 class FavoriteDbRepositoryImpl(
     private val ioDispatcher: CoroutineDispatcher,

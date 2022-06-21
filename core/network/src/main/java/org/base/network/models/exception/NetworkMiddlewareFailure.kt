@@ -1,6 +1,6 @@
 package org.base.network.models.exception
 
-import org.base.main.functional_programming.Failure
+import org.base.functional_programming.Failure
 
 class NetworkMiddlewareFailure(
     val middleWareExceptionMessage: String,

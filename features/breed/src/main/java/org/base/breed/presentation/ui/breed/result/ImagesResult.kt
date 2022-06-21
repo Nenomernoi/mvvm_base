@@ -2,7 +2,7 @@ package org.base.breed.presentation.ui.breed.result
 
 import org.base.common.models.presentation.BreedFullUi
 import org.base.common.models.presentation.ImageUi
-import org.base.main.functional_programming.Failure
+import org.base.functional_programming.Failure
 import org.base.mvi.MviResult
 
 sealed class ImagesResult : MviResult {

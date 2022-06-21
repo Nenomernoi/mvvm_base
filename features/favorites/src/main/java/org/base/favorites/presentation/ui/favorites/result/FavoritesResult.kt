@@ -1,7 +1,7 @@
 package org.base.favorites.presentation.ui.favorites.result
 
 import org.base.common.models.presentation.FavoriteUi
-import org.base.main.functional_programming.Failure
+import org.base.functional_programming.Failure
 import org.base.mvi.MviResult
 
 sealed class FavoritesResult : MviResult {

@@ -5,8 +5,8 @@ import org.base.common.models.domain.Favorite
 import org.base.common.models.mapper.FavoriteMapper
 import org.base.favorites_data.data.repository.FavoritesRemoteDataSource
 import org.base.favorites_data.domain.FavoritesRepository
-import org.base.main.functional_programming.Either
-import org.base.main.functional_programming.Failure
+import org.base.functional_programming.Either
+import org.base.functional_programming.Failure
 
 class FavoritesRepositoryImpl(
     private val remoteDataSourceFavorites: FavoritesRemoteDataSource,

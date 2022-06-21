@@ -1,8 +1,8 @@
-package org.base.main.functional_programming
+package org.base.functional_programming
 
-import org.base.main.functional_programming.Either.Error
-import org.base.main.functional_programming.Either.Success
-import org.base.main.functional_programming.utils.toSuccess
+import org.base.functional_programming.Either.Error
+import org.base.functional_programming.Either.Success
+import org.base.functional_programming.utils.toSuccess
 
 /**
  * Represents a value of one of two possible types (a disjoint union).

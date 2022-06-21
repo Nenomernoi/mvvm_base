@@ -13,8 +13,8 @@ interface BreedMapper {
     suspend fun mapDomainListToDb(domainList: List<Breed>): List<BreedDb>
     suspend fun mapDomainToDb(domain: Breed): BreedDb
 
-    suspend fun mapRemoteListToUi(domainList: List<Breed>): List<BreedUi>
-    suspend fun mapRemoteToUi(domain: Breed): BreedUi
+    suspend fun mapDomainListToUi(domainList: List<Breed>): List<BreedUi>
+    suspend fun mapDomainToUi(domain: Breed): BreedUi
 
     suspend fun mapDbListToUi(dbList: List<BreedDb>): List<BreedUi>
     suspend fun mapDbToUi(db: BreedDb): BreedUi

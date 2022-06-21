@@ -1,7 +1,7 @@
 package org.base.favorites.presentation.ui.favorites
 
 import org.base.common.models.presentation.FavoriteUi
-import org.base.main.functional_programming.Failure
+import org.base.functional_programming.Failure
 import org.base.mvi.Status
 import org.base.ui_components.ui.BaseListViewState
 import org.base.utils.OneTimeEvent

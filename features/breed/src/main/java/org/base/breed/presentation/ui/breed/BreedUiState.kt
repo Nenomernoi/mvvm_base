@@ -2,7 +2,7 @@ package org.base.breed.presentation.ui.breed
 
 import org.base.common.models.presentation.BreedFullUi
 import org.base.common.models.presentation.ImageUi
-import org.base.main.functional_programming.Failure
+import org.base.functional_programming.Failure
 import org.base.mvi.Status
 import org.base.ui_components.ui.BaseListViewState
 import org.base.utils.OneTimeEvent

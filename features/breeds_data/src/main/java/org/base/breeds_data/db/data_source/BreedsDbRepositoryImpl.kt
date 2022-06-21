@@ -5,8 +5,8 @@ import org.base.breeds_data.db.repository.BreedsDbRepository
 import org.base.db.call
 import org.base.db.dao.BreedDao
 import org.base.db.model.BreedDb
-import org.base.main.functional_programming.Either
-import org.base.main.functional_programming.Failure
+import org.base.functional_programming.Either
+import org.base.functional_programming.Failure
 
 class BreedsDbRepositoryImpl(
     private val ioDispatcher: CoroutineDispatcher,

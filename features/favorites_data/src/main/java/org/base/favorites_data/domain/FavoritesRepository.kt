@@ -2,8 +2,8 @@ package org.base.favorites_data.domain
 
 import org.base.common.models.data.FavoriteRequest
 import org.base.common.models.domain.Favorite
-import org.base.main.functional_programming.Either
-import org.base.main.functional_programming.Failure
+import org.base.functional_programming.Either
+import org.base.functional_programming.Failure
 
 interface FavoritesRepository {
 

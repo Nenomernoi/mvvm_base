@@ -1,6 +1,6 @@
-package org.base.main.functional_programming.utils
+package org.base.functional_programming.utils
 
-import org.base.main.functional_programming.Either
+import org.base.functional_programming.Either
 
 fun <R> R.toSuccess(): Either.Success<R> {
     return Either.Success(this)

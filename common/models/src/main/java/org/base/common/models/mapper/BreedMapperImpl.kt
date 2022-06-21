@@ -51,15 +51,15 @@ class BreedMapperImpl(
         origin = domain.origin,
     )
 
-    override suspend fun mapRemoteListToUi(domainList: List<Breed>): List<BreedUi> {
+    override suspend fun mapDomainListToUi(domainList: List<Breed>): List<BreedUi> {
         return withContext(defaultDispatcher) {
             domainList.sortedBy { it.name }.map {
-                mapRemoteToUi(it)
+                mapDomainToUi(it)
             }
         }
     }
 
-    override suspend fun mapRemoteToUi(domain: Breed) =
+    override suspend fun mapDomainToUi(domain: Breed) =
         BreedUi(
             id = domain.id,
             name = domain.name,

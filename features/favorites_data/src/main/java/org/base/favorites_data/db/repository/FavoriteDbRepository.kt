@@ -1,8 +1,8 @@
 package org.base.favorites_data.db.repository
 
 import org.base.db.model.FavoriteDb
-import org.base.main.functional_programming.Either
-import org.base.main.functional_programming.Failure
+import org.base.functional_programming.Either
+import org.base.functional_programming.Failure
 
 interface FavoriteDbRepository {
     suspend fun getPageFavorites(page: Int, limit: Int): Either<Failure, List<FavoriteDb>>

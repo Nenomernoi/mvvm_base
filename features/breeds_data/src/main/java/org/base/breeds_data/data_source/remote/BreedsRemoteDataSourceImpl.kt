@@ -5,8 +5,8 @@ import kotlinx.coroutines.CoroutineDispatcher
 import org.base.breeds_data.data.repository.BreedsRemoteDataSource
 import org.base.breeds_data.data_source.remote.retrofit_service.BreedsService
 import org.base.common.models.data.BreedResponse
-import org.base.main.functional_programming.Either
-import org.base.main.functional_programming.Failure
+import org.base.functional_programming.Either
+import org.base.functional_programming.Failure
 import org.base.network.middleware.provider.MiddlewareProvider
 import org.base.network.models.base.ResponseError
 import org.base.network.utils.call

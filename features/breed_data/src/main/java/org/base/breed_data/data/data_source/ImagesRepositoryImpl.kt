@@ -4,8 +4,8 @@ import org.base.breed_data.data.repository.ImagesRemoteDataSource
 import org.base.breed_data.domain.ImagesRepository
 import org.base.common.models.domain.Image
 import org.base.common.models.mapper.ImageMapper
-import org.base.main.functional_programming.Either
-import org.base.main.functional_programming.Failure
+import org.base.functional_programming.Either
+import org.base.functional_programming.Failure
 
 class ImagesRepositoryImpl(
     private val remoteDataSourceImage: ImagesRemoteDataSource,
