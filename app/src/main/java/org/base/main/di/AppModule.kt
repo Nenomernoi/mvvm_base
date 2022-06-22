@@ -7,14 +7,14 @@ import org.base.main.util.connectivity.ConnectivityUtilsImpl
 import org.base.main.util.resource_provider.ResourceProviderImpl
 import org.base.utils.connectivity.ConnectivityUtils
 import org.base.utils.resource_provider.ResourceProvider
-import org.kodein.di.Kodein
-import org.kodein.di.generic.bind
-import org.kodein.di.generic.instance
-import org.kodein.di.generic.multiton
-import org.kodein.di.generic.singleton
+import org.kodein.di.DI
+import org.kodein.di.bind
+import org.kodein.di.instance
+import org.kodein.di.multiton
+import org.kodein.di.singleton
 
 @ExperimentalCoroutinesApi
-val appModule = Kodein.Module(name = "AppModule") {
+val appModule = DI.Module(name = "AppModule") {
     bind<Context>() with multiton { app: App ->
         app.applicationContext
     }

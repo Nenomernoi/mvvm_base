@@ -9,14 +9,14 @@ import org.base.breed_data.data_source.remote.retrofit_service.ImagesService
 import org.base.breed_data.db.data_source.ImageDbRepositoryImpl
 import org.base.breed_data.db.repository.ImageDbRepository
 import org.base.breed_data.domain.ImagesRepository
-import org.kodein.di.Kodein
-import org.kodein.di.generic.bind
-import org.kodein.di.generic.instance
-import org.kodein.di.generic.singleton
+import org.kodein.di.DI
+import org.kodein.di.bind
+import org.kodein.di.instance
+import org.kodein.di.singleton
 import retrofit2.Retrofit
 
 @ExperimentalCoroutinesApi
-val featureBreedModule = Kodein.Module(name = "FeatureBreedModule") {
+val featureBreedModule = DI.Module(name = "FeatureBreedModule") {
 
     bind<ImagesService>() with singleton { provideImagesService(retrofitImages = instance()) }
 

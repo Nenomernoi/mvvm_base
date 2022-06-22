@@ -11,7 +11,7 @@ buildscript {
 
   ext.lifecycle_version = '2.+'
 
-  ext.di_version = '6.5.5'
+  ext.di_version = '7.12.0'
 
   ext.analytics_version = '21.0.0'
   ext.crashlytics_version = '18.2.11'

@@ -2,7 +2,6 @@ package org.base.breeds.presentation.ui.breeds
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.annotation.RestrictTo
 import androidx.core.os.bundleOf
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -26,7 +25,7 @@ import org.base.ui_components.adapter.listeners.flowEndless
 import org.base.ui_components.adapter.listeners.flowRefresh
 import org.base.ui_components.ui.BaseListFragment
 import org.base.ui_components.ui.listener.flowClick
-import org.kodein.di.generic.instance
+import org.kodein.di.instance
 
 @FlowPreview
 @ExperimentalCoroutinesApi

@@ -8,30 +8,28 @@ import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import org.base.breeds.presentation.ui.breeds.BreedsFragment
 import org.base.breeds.presentation.ui.breeds.BreedsUiState
+import org.base.breeds.presentation.ui.breeds.BreedsViewModel
 import org.base.mvi.Status
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.kodein.di.Kodein
-import org.kodein.di.KodeinAware
 
 @OptIn(FlowPreview::class)
 @RunWith(AndroidJUnit4::class)
 @ExperimentalCoroutinesApi
-class BreedsFragmentInstrumentedTest : KodeinAware {
-
-    override val kodein by Kodein.lazy {
-    }
+class BreedsFragmentInstrumentedTest {
 
     private lateinit var scenario: FragmentScenario<BreedsFragment>
+    private val breedsViewModel: BreedsViewModel = mockk(relaxed = true)
 
     @Before
     fun setUp() {
-        scenario = launchFragmentInContainer<BreedsFragment>()
+        scenario = launchFragmentInContainer()
         scenario.moveToState(newState = Lifecycle.State.STARTED)
     }
 

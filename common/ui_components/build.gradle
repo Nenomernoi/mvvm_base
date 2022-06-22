@@ -19,7 +19,6 @@ dependencies {
   implementation "androidx.swiperefreshlayout:swiperefreshlayout:$base_version"
 
   //DI
-  implementation "org.kodein.di:kodein-di-generic-jvm:$di_version"
   implementation "org.kodein.di:kodein-di-framework-android-x:$di_version"
 
   implementation project(':functional-programming')

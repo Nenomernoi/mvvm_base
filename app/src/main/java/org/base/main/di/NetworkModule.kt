@@ -7,15 +7,15 @@ import okhttp3.logging.HttpLoggingInterceptor
 import org.base.main.BuildConfig
 import org.base.network.HttpClientFactory
 import org.base.network.models.base.ResponseError
-import org.kodein.di.Kodein
-import org.kodein.di.generic.bind
-import org.kodein.di.generic.instance
-import org.kodein.di.generic.singleton
+import org.kodein.di.DI
+import org.kodein.di.bind
+import org.kodein.di.instance
+import org.kodein.di.singleton
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 
-val networkModule: Kodein.Module = Kodein.Module(name = "NetworkModule") {
+val networkModule = DI.Module(name = "NetworkModule") {
     bind<HttpClientFactory>() with singleton { HttpClientFactory() }
     bind<OkHttpClient.Builder>() with singleton { provideOkHttpBuilder(instance()) }
     bind<OkHttpClient>() with singleton { provideClient(instance()) }

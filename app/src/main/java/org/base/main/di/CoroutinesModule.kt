@@ -2,11 +2,11 @@ package org.base.main.di
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
-import org.kodein.di.Kodein
-import org.kodein.di.generic.bind
-import org.kodein.di.generic.factory
+import org.kodein.di.DI
+import org.kodein.di.bind
+import org.kodein.di.factory
 
-val coroutinesModule = Kodein.Module(name = "CoroutinesModule") {
+val coroutinesModule = DI.Module(name = "CoroutinesModule") {
 
     bind<CoroutineDispatcher>() with factory { value: String ->
         when (value) {

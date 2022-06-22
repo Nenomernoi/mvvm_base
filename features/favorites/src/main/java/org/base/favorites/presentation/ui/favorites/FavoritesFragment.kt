@@ -25,7 +25,7 @@ import org.base.ui_components.adapter.listeners.flowRefresh
 import org.base.ui_components.adapter.managers.BaseGridLayoutManager
 import org.base.ui_components.ui.BaseListFragment
 import org.base.ui_components.ui.listener.flowClick
-import org.kodein.di.generic.instance
+import org.kodein.di.instance
 
 @FlowPreview
 @ExperimentalCoroutinesApi

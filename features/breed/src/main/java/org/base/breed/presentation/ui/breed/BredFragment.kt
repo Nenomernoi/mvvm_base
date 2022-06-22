@@ -26,7 +26,7 @@ import org.base.ui_components.adapter.listeners.flowEndless
 import org.base.ui_components.adapter.managers.BaseLinearLayoutManager
 import org.base.ui_components.ui.BaseSheetListFragment
 import org.base.ui_components.ui.listener.setDebouncedClickListener
-import org.kodein.di.generic.instance
+import org.kodein.di.instance
 
 @FlowPreview
 @ExperimentalCoroutinesApi

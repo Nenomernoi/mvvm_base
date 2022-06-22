@@ -61,7 +61,6 @@ dependencies {
   implementation "androidx.navigation:navigation-ui-ktx:$ktx_navigation_version"
 
   //DI
-  implementation "org.kodein.di:kodein-di-generic-jvm:$di_version"
   implementation "org.kodein.di:kodein-di-framework-android-x:$di_version"
 
   //Kotlin

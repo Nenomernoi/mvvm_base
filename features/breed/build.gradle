@@ -30,7 +30,6 @@ dependencies {
   api "io.coil-kt:coil:$coil_version"
 
   //DI
-  implementation "org.kodein.di:kodein-di-generic-jvm:$di_version"
   implementation "org.kodein.di:kodein-di-framework-android-x:$di_version"
 
   //Coroutines
@@ -45,5 +44,6 @@ dependencies {
   testImplementation "io.mockk:mockk:$mockk_version"
   testImplementation "com.squareup.okhttp3:mockwebserver:$mockwebserver_version"
 
-// TODO testImplementation project(Modules.testShared)
+  testImplementation project(":test-shared")
+  androidTestImplementation project(':test-shared')
 }

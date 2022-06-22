@@ -11,14 +11,14 @@ import org.base.main.di.commonModelsModule
 import org.base.main.di.coroutinesModule
 import org.base.main.di.dbModule
 import org.base.main.di.networkModule
-import org.kodein.di.Kodein
-import org.kodein.di.KodeinAware
+import org.kodein.di.DI
+import org.kodein.di.DIAware
 import org.kodein.di.android.x.androidXModule
 
 @ExperimentalCoroutinesApi
-class App : Application(), KodeinAware {
+class App : Application(), DIAware {
 
-    override val kodein by Kodein.lazy {
+    override val di by DI.lazy {
         import(androidXModule(this@App))
         import(appModule)
         import(coroutinesModule)

@@ -22,7 +22,6 @@ dependencies {
   api project(":features:favorites")
 
   //DI
-  implementation "org.kodein.di:kodein-di-generic-jvm:$di_version"
   implementation "org.kodein.di:kodein-di-framework-android-x:$di_version"
 
   //Coroutines

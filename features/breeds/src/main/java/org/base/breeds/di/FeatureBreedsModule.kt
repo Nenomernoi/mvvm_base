@@ -9,14 +9,14 @@ import org.base.breeds_data.data_source.remote.retrofit_service.BreedsService
 import org.base.breeds_data.db.data_source.BreedsDbRepositoryImpl
 import org.base.breeds_data.db.repository.BreedsDbRepository
 import org.base.breeds_data.domain.BreedsRepository
-import org.kodein.di.Kodein
-import org.kodein.di.generic.bind
-import org.kodein.di.generic.instance
-import org.kodein.di.generic.singleton
+import org.kodein.di.DI
+import org.kodein.di.bind
+import org.kodein.di.instance
+import org.kodein.di.singleton
 import retrofit2.Retrofit
 
 @ExperimentalCoroutinesApi
-val featureBreedsModule = Kodein.Module(name = "FeatureBreedsModule") {
+val featureBreedsModule = DI.Module(name = "FeatureBreedsModule") {
 
     bind<BreedsService>() with singleton { provideBreedsService(retrofitBreeds = instance()) }
 

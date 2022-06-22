@@ -22,9 +22,9 @@ import org.base.ui_components.adapter.decorator.BottomSpaceItemDecoration
 import org.base.ui_components.adapter.managers.BaseLinearLayoutManager
 import org.base.utils.OneTimeEvent
 import org.base.utils.consumeOnce
-import org.kodein.di.Kodein
-import org.kodein.di.KodeinAware
-import org.kodein.di.android.x.closestKodein
+import org.kodein.di.DI
+import org.kodein.di.DIAware
+import org.kodein.di.android.x.closestDI
 
 // BASE LIST FRAGMENT
 
@@ -102,9 +102,9 @@ abstract class BaseListFragment<T : Any, I : MviIntent, S : MviViewState>(layout
 
 // BASE FRAGMENT
 
-abstract class BaseEmptyFragment(layout: Int) : Fragment(layout), KodeinAware {
+abstract class BaseEmptyFragment(layout: Int) : Fragment(layout), DIAware {
 
-    override val kodein: Kodein by closestKodein()
+    override val di: DI by closestDI()
 
     override fun onCreateView(
         inflater: LayoutInflater,

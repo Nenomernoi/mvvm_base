@@ -13,9 +13,9 @@ import org.base.mvi.MviView
 import org.base.mvi.MviViewState
 import org.base.ui_components.adapter.BaseSupportAdapter
 import org.base.ui_components.adapter.managers.BaseLinearLayoutManager
-import org.kodein.di.Kodein
-import org.kodein.di.KodeinAware
-import org.kodein.di.android.x.closestKodein
+import org.kodein.di.DI
+import org.kodein.di.DIAware
+import org.kodein.di.android.x.closestDI
 
 abstract class BaseSheetListFragment<T : Any, I : MviIntent, S : MviViewState>() : BaseSheetFragment<I, S>() {
 
@@ -88,9 +88,9 @@ abstract class BaseSheetFragment<I : MviIntent, S : MviViewState>() : BaseSheetE
 
 // BASE Bottom Sheet FRAGMENT
 
-abstract class BaseSheetEmptyFragment() : BottomSheetDialogFragment(), KodeinAware {
+abstract class BaseSheetEmptyFragment() : BottomSheetDialogFragment(), DIAware {
 
-    override val kodein: Kodein by closestKodein()
+    override val di: DI by closestDI()
 
     override fun onCreateView(
         inflater: LayoutInflater,

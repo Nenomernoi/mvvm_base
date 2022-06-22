@@ -9,14 +9,14 @@ import org.base.favorites_data.data_source.remote.retrofit_service.FavoritesServ
 import org.base.favorites_data.db.data_source.FavoriteDbRepositoryImpl
 import org.base.favorites_data.db.repository.FavoriteDbRepository
 import org.base.favorites_data.domain.FavoritesRepository
-import org.kodein.di.Kodein
-import org.kodein.di.generic.bind
-import org.kodein.di.generic.instance
-import org.kodein.di.generic.singleton
+import org.kodein.di.DI
+import org.kodein.di.bind
+import org.kodein.di.instance
+import org.kodein.di.singleton
 import retrofit2.Retrofit
 
 @ExperimentalCoroutinesApi
-val featureFavoritesModule = Kodein.Module(name = "FeatureFavoritesModule") {
+val featureFavoritesModule = DI.Module(name = "FeatureFavoritesModule") {
 
     bind<FavoritesService>() with singleton { provideFavoritesService(retrofitFavorites = instance()) }
 
