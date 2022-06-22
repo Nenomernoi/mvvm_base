@@ -41,7 +41,7 @@ class BreedViewModel(private val actionProcessorHolderBreed: BreedProcessorHolde
                             ImagesAction.RemoveItemAction -> uiState.value.data[uiState.value.changeItem]
                             else -> 0
                         },
-                        PAGE_SIZE
+                        PAGE_SMALL_SIZE
                     )
                 }
                 .collectLatest { reduce(it) }

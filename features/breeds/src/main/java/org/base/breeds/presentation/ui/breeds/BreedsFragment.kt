@@ -2,6 +2,7 @@ package org.base.breeds.presentation.ui.breeds
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.annotation.RestrictTo
 import androidx.core.os.bundleOf
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi

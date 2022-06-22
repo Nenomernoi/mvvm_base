@@ -1,0 +1,42 @@
+[
+  {
+    "weight": "3 - 5",
+    "id": "abys",
+    "name": "Abyssinian",
+    "origin": "Greece",
+    "countryCode": "GR",
+    "description": "The Abyssinian is easy to care for, and a joy to have in your home. They’re affectionate cats and love both people and other animals.",
+    "lifeSpan": "14 - 15",
+    "image": "https://cdn2.thecatapi.com/images/0XYvRd7oD.jpg"
+  },
+  {
+    "weight": "3 - 5",
+    "id": "aege",
+    "name": "Aegean",
+    "origin": "Greece",
+    "countryCode": "GR",
+    "description": "Native to the Greek islands known as the Cyclades in the Aegean Sea, these are natural cats, meaning they developed without humans getting involved in their breeding. As a breed, Aegean Cats are rare, although they are numerous on their home islands. They are generally friendly toward people and can be excellent cats for families with children.",
+    "lifeSpan": "9 - 12",
+    "image": "https://cdn2.thecatapi.com/images/ozEvzdVM-.jpg"
+  },
+  {
+    "weight": "3 - 7",
+    "id": "abob",
+    "name": "American Bobtail",
+    "origin": "United States",
+    "countryCode": "US",
+    "description": "American Bobtails are loving and incredibly intelligent cats possessing a distinctive wild appearance. They are extremely interactive cats that bond with their human family with great devotion.",
+    "lifeSpan": "11 - 15",
+    "image": "https://cdn2.thecatapi.com/images/hBXicehMA.jpg"
+  },
+  {
+    "weight": "2 - 5",
+    "id": "acur",
+    "name": "American Curl",
+    "origin": "United States",
+    "countryCode": "US",
+    "description": "Distinguished by truly unique ears that curl back in a graceful arc, offering an alert, perky, happily surprised expression, they cause people to break out into a big smile when viewing their first Curl. Curls are very people-oriented, faithful, affectionate soulmates, adjusting remarkably fast to other pets, children, and new situations.",
+    "lifeSpan": "12 - 16",
+    "image": "https://cdn2.thecatapi.com/images/xnsqonbjW.jpg"
+  }
+]

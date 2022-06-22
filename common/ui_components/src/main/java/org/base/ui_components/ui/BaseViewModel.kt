@@ -35,6 +35,7 @@ abstract class BaseListViewModel<T : Any, I : MviIntent, A : MviAction, S : Base
     MviViewModel<I, A, S> {
     companion object {
         const val PAGE_SIZE = 15
+        const val PAGE_SMALL_SIZE = 5
     }
 
     abstract fun clearItems()

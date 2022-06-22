@@ -83,6 +83,7 @@ dependencies {
   implementation "com.google.firebase:firebase-crashlytics:$crashlytics_version"
   implementation "com.google.firebase:firebase-analytics:$analytics_version"
 
+  // Test
   testImplementation "junit:junit:$junit_version"
   androidTestImplementation "androidx.test.ext:junit:$ext_junit_version"
   androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
