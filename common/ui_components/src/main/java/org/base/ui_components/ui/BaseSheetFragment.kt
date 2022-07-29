@@ -13,9 +13,6 @@ import org.base.mvi.MviView
 import org.base.mvi.MviViewState
 import org.base.ui_components.adapter.BaseSupportAdapter
 import org.base.ui_components.adapter.managers.BaseLinearLayoutManager
-import org.kodein.di.DI
-import org.kodein.di.DIAware
-import org.kodein.di.android.x.closestDI
 
 abstract class BaseSheetListFragment<T : Any, I : MviIntent, S : MviViewState>() : BaseSheetFragment<I, S>() {
 
@@ -88,9 +85,7 @@ abstract class BaseSheetFragment<I : MviIntent, S : MviViewState>() : BaseSheetE
 
 // BASE Bottom Sheet FRAGMENT
 
-abstract class BaseSheetEmptyFragment() : BottomSheetDialogFragment(), DIAware {
-
-    override val di: DI by closestDI()
+abstract class BaseSheetEmptyFragment() : BottomSheetDialogFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -102,10 +97,8 @@ abstract class BaseSheetEmptyFragment() : BottomSheetDialogFragment(), DIAware {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if (savedInstanceState == null) {
-            initData()
-            initListeners()
-        }
+        initData()
+        initListeners()
     }
 
     abstract fun initListeners()

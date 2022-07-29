@@ -20,6 +20,7 @@ import org.base.breeds.presentation.ui.breeds.adapter.BreedsAdapter
 import org.base.breeds.presentation.ui.breeds.intent.BreedsIntent
 import org.base.common.models.presentation.BreedUi
 import org.base.mvi.Status
+import org.base.ui_components.BaseApp
 import org.base.ui_components.adapter.BaseItemListener
 import org.base.ui_components.adapter.listeners.flowEndless
 import org.base.ui_components.adapter.listeners.flowRefresh
@@ -32,7 +33,7 @@ import org.kodein.di.instance
 class BreedsFragment : BaseListFragment<BreedUi, BreedsIntent, BreedsUiState>(R.layout.fragment_breeds) {
 
     private lateinit var binding: FragmentBreedsBinding
-    private val viewModel: BreedsViewModel by instance()
+    private val viewModel: BreedsViewModel by BaseApp.di.instance()
 
     override fun initBinding(
         inflater: LayoutInflater,
@@ -97,8 +98,8 @@ class BreedsFragment : BaseListFragment<BreedUi, BreedsIntent, BreedsUiState>(R.
 
     override fun render(state: BreedsUiState) {
         with(state) {
-            showHideProgress(state.status == Status.LOADING)
             setData(state.data)
+            showHideProgress(state.status == Status.LOADING)
             showError(error, state.status == Status.ERROR)
         }
     }

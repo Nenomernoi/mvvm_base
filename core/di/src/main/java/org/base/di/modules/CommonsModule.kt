@@ -1,4 +1,4 @@
-package org.base.main.di
+package org.base.di.modules
 
 import org.base.common.models.mapper.BreedMapper
 import org.base.common.models.mapper.BreedMapperImpl

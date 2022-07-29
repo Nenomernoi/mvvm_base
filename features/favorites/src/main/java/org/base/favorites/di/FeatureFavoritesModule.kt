@@ -12,15 +12,16 @@ import org.base.favorites_data.domain.FavoritesRepository
 import org.kodein.di.DI
 import org.kodein.di.bind
 import org.kodein.di.instance
+import org.kodein.di.provider
 import org.kodein.di.singleton
 import retrofit2.Retrofit
 
 @ExperimentalCoroutinesApi
 val featureFavoritesModule = DI.Module(name = "FeatureFavoritesModule") {
 
-    bind<FavoritesService>() with singleton { provideFavoritesService(retrofitFavorites = instance()) }
+    bind<FavoritesService>() with provider { provideFavoritesService(retrofitFavorites = instance()) }
 
-    bind<FavoritesRemoteDataSourceImpl>() with singleton {
+    bind<FavoritesRemoteDataSourceImpl>() with provider {
         FavoritesRemoteDataSourceImpl(
             middlewareProvider = instance(),
             ioDispatcher = instance(arg = "ioDispatcher"),
@@ -29,18 +30,18 @@ val featureFavoritesModule = DI.Module(name = "FeatureFavoritesModule") {
         )
     }
 
-    bind<FavoritesRepository>() with singleton {
+    bind<FavoritesRepository>() with provider {
         FavoritesRepositoryImpl(remoteDataSourceFavorites = instance(), mapperFavorites = instance())
     }
 
-    bind<FavoriteDbRepository>() with singleton {
+    bind<FavoriteDbRepository>() with provider {
         FavoriteDbRepositoryImpl(
             ioDispatcher = instance(arg = "ioDispatcher"),
             daoFavorites = instance()
         )
     }
 
-    bind<FavoritesProcessorHolder>() with singleton {
+    bind<FavoritesProcessorHolder>() with provider {
         FavoritesProcessorHolder(
             repositoryFavorites = instance(),
             repositoryDbFavorites = instance(),
@@ -48,7 +49,7 @@ val featureFavoritesModule = DI.Module(name = "FeatureFavoritesModule") {
         )
     }
 
-    bind<FavoritesViewModel>() with singleton { FavoritesViewModel(actionProcessorHolderFavorites = instance()) }
+    bind<FavoritesViewModel>() with provider { FavoritesViewModel(actionProcessorHolderFavorites = instance()) }
 }
 
 internal fun provideFavoritesService(

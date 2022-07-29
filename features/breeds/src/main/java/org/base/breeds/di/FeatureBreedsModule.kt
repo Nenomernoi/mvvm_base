@@ -12,15 +12,16 @@ import org.base.breeds_data.domain.BreedsRepository
 import org.kodein.di.DI
 import org.kodein.di.bind
 import org.kodein.di.instance
+import org.kodein.di.provider
 import org.kodein.di.singleton
 import retrofit2.Retrofit
 
 @ExperimentalCoroutinesApi
 val featureBreedsModule = DI.Module(name = "FeatureBreedsModule") {
 
-    bind<BreedsService>() with singleton { provideBreedsService(retrofitBreeds = instance()) }
+    bind<BreedsService>() with provider { provideBreedsService(retrofitBreeds = instance()) }
 
-    bind<BreedsRemoteDataSourceImpl>() with singleton {
+    bind<BreedsRemoteDataSourceImpl>() with provider {
         BreedsRemoteDataSourceImpl(
             middlewareProvider = instance(),
             ioDispatcher = instance(arg = "ioDispatcher"),
@@ -29,18 +30,18 @@ val featureBreedsModule = DI.Module(name = "FeatureBreedsModule") {
         )
     }
 
-    bind<BreedsRepository>() with singleton {
+    bind<BreedsRepository>() with provider {
         BreedsRepositoryImpl(remoteDataSourceBreeds = instance(), mapperBreeds = instance())
     }
 
-    bind<BreedsDbRepository>() with singleton {
+    bind<BreedsDbRepository>() with provider {
         BreedsDbRepositoryImpl(
             ioDispatcher = instance(arg = "ioDispatcher"),
             daoBreeds = instance()
         )
     }
 
-    bind<BreedsProcessorHolder>() with singleton {
+    bind<BreedsProcessorHolder>() with provider {
         BreedsProcessorHolder(
             repositoryBreeds = instance(),
             repositoryDbBreeds = instance(),
@@ -48,7 +49,7 @@ val featureBreedsModule = DI.Module(name = "FeatureBreedsModule") {
         )
     }
 
-    bind<BreedsViewModel>() with singleton { BreedsViewModel(actionProcessorHolderBreeds = instance()) }
+    bind<BreedsViewModel>() with provider { BreedsViewModel(actionProcessorHolderBreeds = instance()) }
 }
 
 internal fun provideBreedsService(

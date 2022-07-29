@@ -2,5 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
   package="org.base.breeds">
 
+  <uses-permission android:name="android.permission.INTERNET" />
+
   <application android:theme="@style/Base.DayNight" />
+
 </manifest>

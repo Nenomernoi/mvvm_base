@@ -19,6 +19,7 @@ import org.base.favorites.databinding.FragmentFavoritesBinding
 import org.base.favorites.presentation.ui.favorites.adapter.FavoriteAdapter
 import org.base.favorites.presentation.ui.favorites.intent.FavoritesIntent
 import org.base.mvi.Status
+import org.base.ui_components.BaseApp
 import org.base.ui_components.adapter.BaseItemListener
 import org.base.ui_components.adapter.listeners.flowEndless
 import org.base.ui_components.adapter.listeners.flowRefresh
@@ -32,7 +33,7 @@ import org.kodein.di.instance
 class FavoritesFragment : BaseListFragment<FavoriteUi, FavoritesIntent, FavoritesUiState>(R.layout.fragment_favorites) {
 
     private lateinit var binding: FragmentFavoritesBinding
-    private val viewModel: FavoritesViewModel by instance()
+    private val viewModel: FavoritesViewModel by BaseApp.di.instance()
 
     override fun initBinding(
         inflater: LayoutInflater,

@@ -1,5 +1,6 @@
-import org.base.main.middlewares.ConnectivityMiddleware
-import org.base.main.middlewares.provider.MiddlewareProviderImpl
+package org.base.di.modules
+import org.base.di.middlewares.ConnectivityMiddleware
+import org.base.di.middlewares.provider.MiddlewareProviderImpl
 import org.base.network.middleware.provider.MiddlewareProvider
 import org.kodein.di.DI
 import org.kodein.di.bind

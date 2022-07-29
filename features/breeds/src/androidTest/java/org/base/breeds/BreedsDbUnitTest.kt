@@ -57,7 +57,7 @@ class BreedsDbUnitTest {
 
     @Test
     fun stage1_writeBreedsFromRemote() {
-        val domainBreeds: List<Breed> = BreedsDbData.provideRemoteBreedsFromAssets()
+        val domainBreeds: List<Breed> = BreedsDbData.provideDomainBreedsFromAssets()
         testScope.runTest {
             val dbBreeds = mapper.mapDomainListToDb(domainBreeds)
             val result = db.saveAllBreeds(dbBreeds)
@@ -70,7 +70,7 @@ class BreedsDbUnitTest {
 
     @Test
     fun stage2_readEarlySaveBreeds() {
-        val domainBreeds: List<Breed> = BreedsDbData.provideRemoteBreedsFromAssets()
+        val domainBreeds: List<Breed> = BreedsDbData.provideDomainBreedsFromAssets()
         testScope.runTest {
             val dbBreeds = mapper.mapDomainListToDb(domainBreeds)
             db.saveAllBreeds(dbBreeds)

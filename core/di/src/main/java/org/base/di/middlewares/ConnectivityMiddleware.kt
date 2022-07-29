@@ -1,6 +1,6 @@
-package org.base.main.middlewares
+package org.base.di.middlewares
 
-import org.base.main.R
+import org.base.di.R
 import org.base.network.middleware.NetworkMiddleware
 import org.base.network.models.exception.NetworkMiddlewareFailure
 import org.base.utils.connectivity.ConnectivityUtils

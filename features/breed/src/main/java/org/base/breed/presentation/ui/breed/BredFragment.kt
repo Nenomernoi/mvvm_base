@@ -21,6 +21,7 @@ import org.base.breed.presentation.ui.breed.intent.ImagesIntent
 import org.base.common.models.presentation.BreedFullUi
 import org.base.common.models.presentation.ImageUi
 import org.base.favorites.R
+import org.base.ui_components.BaseApp
 import org.base.ui_components.adapter.BaseItemListener
 import org.base.ui_components.adapter.listeners.flowEndless
 import org.base.ui_components.adapter.managers.BaseLinearLayoutManager
@@ -37,7 +38,7 @@ class BredFragment : BaseSheetListFragment<ImageUi, ImagesIntent, BreedUiState>(
     }
 
     private lateinit var binding: FragmentBreedBinding
-    private val viewModel: BreedViewModel by instance()
+    private val viewModel: BreedViewModel by BaseApp.di.instance()
 
     override fun initBinding(
         inflater: LayoutInflater,

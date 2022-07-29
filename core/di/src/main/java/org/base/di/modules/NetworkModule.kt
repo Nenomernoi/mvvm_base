@@ -1,10 +1,10 @@
-package org.base.main.di
+package org.base.di.modules
 
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import org.base.main.BuildConfig
+import org.base.di.BuildConfig
 import org.base.network.HttpClientFactory
 import org.base.network.models.base.ResponseError
 import org.kodein.di.DI

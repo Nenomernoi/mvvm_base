@@ -1,4 +1,4 @@
-package org.base.main.util.resource_provider
+package org.base.di.util.resource_provider
 
 import android.content.Context
 import org.base.utils.resource_provider.ResourceProvider

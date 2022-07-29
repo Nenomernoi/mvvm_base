@@ -11,6 +11,7 @@ include ':core:db'
 include ':core:navigation'
 include ':core:views'
 include ':core:mvi'
+include ':core:di'
 
 // Common
 include ':common:models'
@@ -30,3 +31,4 @@ include ':features:favorites_data'
 
 // Test
 include ':test-shared'
+

@@ -22,9 +22,6 @@ import org.base.ui_components.adapter.decorator.BottomSpaceItemDecoration
 import org.base.ui_components.adapter.managers.BaseLinearLayoutManager
 import org.base.utils.OneTimeEvent
 import org.base.utils.consumeOnce
-import org.kodein.di.DI
-import org.kodein.di.DIAware
-import org.kodein.di.android.x.closestDI
 
 // BASE LIST FRAGMENT
 
@@ -102,9 +99,7 @@ abstract class BaseListFragment<T : Any, I : MviIntent, S : MviViewState>(layout
 
 // BASE FRAGMENT
 
-abstract class BaseEmptyFragment(layout: Int) : Fragment(layout), DIAware {
-
-    override val di: DI by closestDI()
+abstract class BaseEmptyFragment(layout: Int) : Fragment(layout) {
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -116,10 +111,10 @@ abstract class BaseEmptyFragment(layout: Int) : Fragment(layout), DIAware {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if (savedInstanceState == null) {
-            initData()
-            initListeners()
-        }
+       if (savedInstanceState == null) {
+           initData()
+           initListeners()
+       }
     }
 
     abstract fun initListeners()

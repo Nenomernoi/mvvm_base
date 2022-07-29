@@ -1,4 +1,4 @@
-package org.base.main.di
+package org.base.di.modules
 
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.base.db.Db

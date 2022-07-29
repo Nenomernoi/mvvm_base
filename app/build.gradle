@@ -22,12 +22,10 @@ android {
     release {
       minifyEnabled false
       proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-      buildConfigField "String", "BASE_URL", '"https://api.thecatapi.com/v1/"'
-      buildConfigField "String", "API_KEY", '"2370c0ae-2739-468a-a91c-5537b908a3d8"'
+
     }
     debug {
-      buildConfigField "String", "BASE_URL", '"https://api.thecatapi.com/v1/"'
-      buildConfigField "String", "API_KEY", '"2370c0ae-2739-468a-a91c-5537b908a3d8"'
+
     }
   }
   compileOptions {
@@ -67,14 +65,7 @@ dependencies {
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
   implementation "androidx.core:core-ktx:$ktx_version"
 
-  implementation project(":utils")
-
-  implementation project(":core:network")
-  implementation project(":core:navigation")
-  implementation project(":core:views")
-  implementation project(":core:db")
-
-  implementation project(":common:models")
+  implementation project(":core:di")
 
   api project(":features:home")
 

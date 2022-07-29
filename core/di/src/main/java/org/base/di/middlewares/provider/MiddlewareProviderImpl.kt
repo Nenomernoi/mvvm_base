@@ -1,4 +1,4 @@
-package org.base.main.middlewares.provider
+package org.base.di.middlewares.provider
 
 import org.base.network.middleware.NetworkMiddleware
 import org.base.network.middleware.provider.MiddlewareProvider

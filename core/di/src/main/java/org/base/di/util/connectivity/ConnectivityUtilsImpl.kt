@@ -1,4 +1,4 @@
-package org.base.main.util.connectivity
+package org.base.di.util.connectivity
 
 import android.content.Context
 import android.net.ConnectivityManager
