@@ -6,7 +6,7 @@ import retrofit2.http.Query
 
 interface ImagesService {
 
-    @GET("images/search")
+    @GET("v1/images/search")
     suspend fun getImages(
         @Query("breed_ids") breedId: String,
         @Query("limit") limit: Int = 15,

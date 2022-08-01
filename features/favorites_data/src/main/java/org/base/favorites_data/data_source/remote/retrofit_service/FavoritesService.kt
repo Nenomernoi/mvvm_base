@@ -13,19 +13,19 @@ import retrofit2.http.Query
 
 interface FavoritesService {
 
-    @GET("favourites")
+    @GET("v1/favourites")
     suspend fun getFavorites(
         @Query("limit") limit: Int = 15,
         @Query("page") page: Int,
         @Query("include_breeds") includeBreeds: Boolean = false,
     ): List<FavoriteResponse>
 
-    @POST("favourites")
+    @POST("v1/favourites")
     suspend fun addFavorite(
         @Body request: FavoriteRequest,
     ): FavoriteAddedSuccessResponse
 
-    @DELETE("favourites/{id}")
+    @DELETE("v1/favourites/{id}")
     suspend fun unFavorite(
         @Path("id") id: Long,
     ): FavoriteRemoveSuccessResponse
